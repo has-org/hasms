@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  min-height: 100vh;
+}
+
+
+footer
+{
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}

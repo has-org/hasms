@@ -1,7 +1,7 @@
 export default function Head() {
   return (
     <>
-      <title>Create Next App</title>
+      <title>Motoshop7</title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
       <meta name="description" content="Yamaha Motors & gear" />
       <link rel="icon" href="/favicon.ico" />
