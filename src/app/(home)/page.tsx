@@ -27,15 +27,26 @@ export default function Home() {
       <div className="flex flex-col w-100 px-20">
         <div className="w-full">
           <ul className=" flex justify-between">
-           {navigationMenu.map((navItem, index )=> {
-            return (
-              <>
-               <li key={index}>
-                <Link href={navItem.href ? navItem.href : ''}>{navItem.name}</Link>
-               </li>
-              </>
-            )
-           })}
+            {navigationMenu.map((navItem, index) => {
+              return (
+                <li key={index} className="flex">
+                  <Link href={navItem.href ? navItem.href : ""}>
+                    <div className="flex flex-col">
+                      <span className="nav-item-name">{navItem.name}</span>
+                      {navItem.subMenu.length > 1
+                        ? navItem.subMenu.map((subMenuItem, index) => {
+                            return (
+                              <div className="flex flex-col" key={index}>
+                                {subMenuItem.name}
+                              </div>
+                            );
+                          })
+                        : null}
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div className="flex pb-2">
