@@ -6,9 +6,12 @@ import styles from "./page.module.css";
 import EmblaCarousel from "@/components/EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel-react";
 import "./embla.css";
+import "./sandbox.css";
+import "./base.css";
 import Catalogue from "@/components/Catalogue";
 import SearchBox from "@/components/SearchBox";
-
+import Link from "next/link";
+import { navigationMenu } from "@/mockData/navigationMenu";
 const inter = Inter({ subsets: ["latin"] });
 
 const OPTIONS: EmblaOptionsType = {};
@@ -17,14 +20,24 @@ const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
 export default function Home() {
   return (
-    <main className="min-h-screen	">
+    <main className="sandbox">
       <section className="sandbox__carousel">
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </section>
-      <div className="flex lg:hidden">
-      <SearchBox />
-      </div>
       <div className="flex flex-col w-100 px-20">
+        <div className="w-full">
+          <ul className=" flex justify-between">
+           {navigationMenu.map((navItem, index )=> {
+            return (
+              <>
+               <li key={index}>
+                <Link href={navItem.href ? navItem.href : ''}>{navItem.name}</Link>
+               </li>
+              </>
+            )
+           })}
+          </ul>
+        </div>
         <div className="flex pb-2">
           <div className="flex-1">
             <Catalogue />

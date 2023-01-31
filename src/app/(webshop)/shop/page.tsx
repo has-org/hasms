@@ -1,5 +1,5 @@
-import Image from "next/image";
 import {PRODUCTS} from "@/mockData/products"
+import ProductCard from "@/components/ProductCard";
 export default function Shop() {
 
 
@@ -10,33 +10,7 @@ export default function Shop() {
 
       <div className="grid grid-cols-4 gap-4">
         {PRODUCTS.map((product, index) => (
-          <div
-            className="product-card border rounded-md border-slate-200 flex flex-col p-2"
-            key={index}
-          >
-            <Image
-              className="rounded mx-auto"
-              alt="Mountains"
-              src={product.image}
-              width={100}
-              height={64}
-              style={{
-                width: "100px",
-                height: "64px",
-              }}
-            />
-            <div className="flex flex-col items-center justify-center">
-              <h2 className="text-red-400 self-center text-2xl">
-                {product.name}
-              </h2>
-              <ul className="">
-                {product.colors.map((color, index) => (
-                  <li key={index}>{color.name}</li>
-                ))}
-              </ul>
-              <span className="">{product.price} {product.currency}</span>
-            </div>
-          </div>
+         <ProductCard product={product} key={index}/>
         ))}
       </div>
     </main>
