@@ -1,5 +1,5 @@
 import {PRODUCTS} from "@/mockData/products"
-import ProductCard from "@/components/ProductCard";
+import {ProductCard} from "@/components/ProductCard";
 export default function Shop() {
 
 

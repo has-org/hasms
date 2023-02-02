@@ -1,9 +1,8 @@
 import { StaticImageData } from 'next/image'
-import image4 from '../../public/slide-4.jpg'
-import logo from '../../public/logo.png'
-import logo1 from '../../public/logo2.jpg'
+import xmax300 from '../../public/xmax300.jpg'
+import prva1 from '../../public/prva1.jpg'
 
-export const images: StaticImageData[] = [logo, logo1, image4]
+export const images: StaticImageData[] = [  prva1, xmax300]
 
 const imageByIndex = (index: number): StaticImageData => images[index % images.length]
 

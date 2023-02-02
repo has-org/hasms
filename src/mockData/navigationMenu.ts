@@ -1,4 +1,24 @@
-export const navigationMenu = [
+export type SubMenuChildren = {
+  id: number;
+  name: string;
+  href?: string;
+};
+
+export type SubMenu = {
+  id: number;
+  name: string;
+  href?: string;
+  children?: Array<SubMenuChildren> | [];
+};
+
+export type NavigationMenu = {
+  id: number;
+  name: string;
+  subMenu: Array<SubMenu> | [];
+  href?: string;
+};
+
+export const navigationMenu: Array<NavigationMenu> = [
   { id: 0, name: "Motori", subMenu: [], href: "/shop" },
   { id: 1, name: "Skuteri", subMenu: [], href: "/shop" },
   {
@@ -11,6 +31,7 @@ export const navigationMenu = [
         children: [{ id: 0, name: "YAM 380 S", href: "" }],
       },
       { id: 1, name: "Jet Ski", href: "" },
+      { id: 2, name: "Vanbrodski Motori", href: "" },
     ],
   },
   {
@@ -18,7 +39,7 @@ export const navigationMenu = [
     name: "Kacige",
     subMenu: [
       { id: 0, name: "Integralne", href: "" },
-      { id: 1, name: "JET", href: "" },
+      { id: 1, name: "JET", href: "/shop" },
       { id: 2, name: "Modularne", href: "" },
       { id: 3, name: "CROSS & ATV", href: "" },
       { id: 4, name: "Djecije", href: "" },
@@ -29,7 +50,7 @@ export const navigationMenu = [
     id: 4,
     name: "Odjeca i obuca",
     subMenu: [
-      { id: 0, name: "Jakne", href: "" },
+      { id: 0, name: "Jakne", href: "/shop" },
       { id: 1, name: "Hlace", href: "" },
       { id: 2, name: "Rukavice", href: "" },
       { id: 3, name: "Cizme", href: "" },

@@ -27,14 +27,18 @@ type Product = {
     category: Category
 }
 
-export default function ProductCard(props: { product: Product }) {
-    const {product } = props
-  return (
+type ProductProp = {
+    product: Product
+}
+
+export const ProductCard: React.FC<ProductProp> = ({product}) => {
+
+    return (
     <div
       className="product-card border rounded-md border-slate-200 flex flex-col p-2"
     >
       <Image
-        className="rounded mx-auto object-container"
+        className="rounded mx-auto object-contain"
         alt="Mountains"
         src={product.image}
         width={200}
