@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../../public/logo2.jpg";
+import logo from "../../public/logom.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faShoppingCart,
@@ -9,18 +9,18 @@ import SearchBox from "./SearchBox";
 
 export default function Header() {
   return (
-    <div className="bg-[#9c8987] flex items-center px-6 h-[64px]">
+    <div className="bg-gray-300 flex border-b-4  border-red-800 items-center px-6 h-[64px]">
       <div className="space-y-2">
-        <div className="w-8 h-0.5 bg-gray-800"></div>
-        <div className="w-8 h-0.5 bg-gray-800"></div>
-        <div className="w-8 h-0.5 bg-gray-800"></div>
+        <div className="w-8 h-0.5 bg-blue-500"></div>
+        <div className="w-8 h-0.5 bg-blue-500"></div>
+        <div className="w-8 h-0.5 bg-blue-500"></div>
       </div>
       <div className="mx-auto">
         <Image
-          className="rounded w-[124px] h-[36px]"
+          className="rounded "
           alt="Mountains"
           src={logo}
-          width={124}
+          width={200}
           height={36}
         />
       </div>

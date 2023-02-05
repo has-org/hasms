@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Footer() {
   return (
-    <div className="bg-[#000]  flex flex-col text-white">
+    <div className="bg-[#000]  flex flex-col text-white font-serif">
       <div className="flex justify-between px-20 mt-10 text-white">
         <div className="flex flex-col">
           <h2>Maloprodaja</h2>
@@ -18,7 +18,6 @@ export default function Footer() {
                 width="450"
                 height="450"
                 style={{ border: 0 }}
-                allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
@@ -44,7 +43,7 @@ export default function Footer() {
             ></iframe>
           </ul>
         </div>
-        <div className="flex flex-col gap-y-4">
+        {/* <div className="flex flex-col gap-y-4">
           <h2>Kontaktirajte nas</h2>
           <select name="emails" id="emails" value={""}>
             <option value="">servis@motoshop7.ba</option>
@@ -57,9 +56,8 @@ export default function Footer() {
           <input type="text" id="fname" name="fname" />
           Blabnlablabla
           <input type="submit" value="Submit" />
-        </div>
+        </div> */}
       </div>
-      <FontAwesomeIcon icon={faShoppingCart} />
     </div>
   );
 }

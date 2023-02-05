@@ -1,22 +1,30 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import logo from "../../public/logo2.jpg";
 
 
+type Catalogue = {
+  id: number;
+  name: string;
+  image: string | StaticImageData;
+};
 
-export default function Catalogue() {
+type CatalogueProp = {
+  catalogue: Catalogue;
+  primary?: boolean
+};
+
+export const Catalogue: React.FC<CatalogueProp> = ({ catalogue, primary }) => {
   return (
     <Link href={"/"}>
-      <div className="bg-[#9c8987] flex justify-center">
+      <div className="border rounded-md border-slate-200 flex justify-center relative">
         <Image
-          className="rounded"
+          className="rounded object-fill"
           alt="Mountains"
-          src={logo}
-          width={150}
-          height={100}
+          src={catalogue?.image ? catalogue.image : ''}
           style={{
             width: "100%",
-            height: "128px",
+            height: primary ? "168px" : "108px",
           }}
         />
       </div>

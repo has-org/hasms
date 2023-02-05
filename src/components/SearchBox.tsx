@@ -48,7 +48,8 @@ export default function SearchBox() {
       <button type="submit">
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
-          style={{ fontSize: 32, color: "red" }}
+          style={{ fontSize: 32 }}
+          className="text-gray-900"
         />
       </button>
     </form>

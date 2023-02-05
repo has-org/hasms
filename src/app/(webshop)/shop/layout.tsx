@@ -1,7 +1,10 @@
+"use client";
+
 import "@/app/(home)/globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
+import { NavMenu } from "@/components/NavMenu";
+import { navigationMenu } from "@/mockData/navigationMenu";
 // import Font Awesome CSS
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
@@ -26,9 +29,15 @@ export default function ShopLayout({
         <nav>
           <Header />
         </nav>
-        <div className="sidebar hidden lg:flex lg:absolute lg:left-20 w-40 bg-red-200 justify-center h-full">
+        <div className="border-b-4  border-red-800">
+        <NavMenu navigationMenu={navigationMenu} />
+      </div>
+        <div className="sidebar hidden lg:flex lg:absolute lg:left-20 w-40 justify-center h-full bg-gray-300 text-black hover:text-blue-400 font-serif">
+          
           <ul>
-            <p>Brendovi</p>
+            <h2>
+              Brendovi
+            </h2>
             <li>...</li>
             <li>...</li>
             <li>...</li>
@@ -51,11 +60,11 @@ export default function ShopLayout({
           </ul>
         </div>
         <div className="mx-10 lg:ml-80 lg:mr-9">
-        {children}
+          {children}
         </div>
         <footer>
-            <Footer />
-          </footer>
+          <Footer />
+        </footer>
       </body>
     </html>
   );
