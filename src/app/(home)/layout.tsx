@@ -23,7 +23,7 @@ export default function RootLayout({
       */}
       <head />
       <body>
-        <nav>
+        <nav className=' sticky top-0 z-30'>
           <Header />
         </nav>
           {children}

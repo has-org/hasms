@@ -3,53 +3,32 @@ import logo from "../../public/logo2.jpg";
 import { useState } from "react";
 import Link from "next/link";
 import { NavigationMenu } from "@/mockData/navigationMenu";
+import { MenuItems } from "./MenuItems";
 
 type NavMenuProps = {
-    navigationMenu: Array<NavigationMenu>
+  navigationMenu: Array<NavigationMenu>
 }
 
-export const NavMenu: React.FC<NavMenuProps> = ({navigationMenu}) => {
-  const toggleMenu = () => {
+export const NavMenu: React.FC<NavMenuProps> = ({ navigationMenu }) => {
+  const toggleMenu = (item: any) => {
     setNavitemExpanded(!navItemExpanded);
+    setSelectedNavItem(item)
+
   };
   const [navItemExpanded, setNavitemExpanded] = useState(false);
+  const [selectedNavItem, setSelectedNavItem] = useState({} as NavigationMenu)
 
   return (
-    <ul className="sm:hidden lg:flex bg-gray-200 px-8 font-serif cursor-pointer">
-      <div className="flex mx-auto gap-x-5">
-
-      {navigationMenu.map((navItem: any, index: number) => {
-        return (
-          <li key={index} className="flex text-black ">
-            <div className="flex flex-col">
-              {navItem.subMenu.length < 1 ? (
-                <Link href={navItem.href ? navItem.href : ""}>
-                  <span className="nav-item-name hover:text-blue-400">{navItem.name}</span>
-                </Link>
-              ) : (
-                <div className="flex flex-col">
-                  <span className="nav-item-name hover:text-blue-400" onClick={toggleMenu}>
-                    {navItem.name}
-                  </span>
-                </div>
-              )}
-              {navItemExpanded && navItem.subMenu.length > 1
-                ? navItem.subMenu.map((subMenuItem: any, index: number) => {
-                    return (
-                      <div className="flex flex-col hover:text-blue-400" key={index}>
-                        <Link href={subMenuItem.href ? subMenuItem.href : '/'}>
-                        {subMenuItem.name}
-                        </Link>
-                      </div>
-                    );
-                  })
-                : null}
-            </div>
-          </li>
-        );
-      })}
-      </div>
-
-    </ul>
+    <>
+      <ul className="sm:hidden lg:flex bg-gray-200 px-8 font-serif cursor-pointer h-[32px]">
+        <div className="flex mx-auto gap-x-5">
+          {navigationMenu.map((navItem: any, index: number) => {
+            return (
+              <MenuItems navItem={navItem} key={index} />
+            );
+          })}
+        </div>
+      </ul>
+    </>
   );
 }

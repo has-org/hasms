@@ -13,3 +13,11 @@ footer
   width: 100%;
   bottom: 0;
 }
+
+.dropdown {
+  display: none;
+ }
+
+ .show{
+  display: block;
+ }

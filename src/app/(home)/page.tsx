@@ -23,9 +23,7 @@ export default function Home() {
       <section className="sandbox__carousel">
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </section>
-      <div className="w-full border-b-4  border-red-800">
-        <NavMenu navigationMenu={navigationMenu} />
-      </div>
+
       <div className="px-2 lg:px-20 h-screen">
 
       <div className="flex flex-col  pt-10">

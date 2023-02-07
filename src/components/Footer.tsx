@@ -19,7 +19,7 @@ export default function Footer() {
                 height="450"
                 style={{ border: 0 }}
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </li>
           </ul>

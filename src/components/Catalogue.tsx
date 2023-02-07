@@ -27,6 +27,9 @@ export const Catalogue: React.FC<CatalogueProp> = ({ catalogue, primary }) => {
             height: primary ? "168px" : "108px",
           }}
         />
+        <div className="absolute bottom-0 left-0 w-80 p-2 bg-gradient-to-r from-gray-50	">
+          asdasd
+        </div>
       </div>
     </Link>
   );
