@@ -1,15 +1,11 @@
 "use client";
 
 import { Inter } from "@next/font/google";
-import styles from "./page.module.css";
 import EmblaCarousel from "@/components/EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel-react";
 import "./embla.css";
 import "./base.css";
 import { Catalogue } from "@/components/Catalogue";
-import SearchBox from "@/components/SearchBox";
-import { NavMenu } from "@/components/NavMenu";
-import { navigationMenu } from "@/mockData/navigationMenu";
 import { CATALOGUES } from "@/mockData/catalogues";
 const inter = Inter({ subsets: ["latin"] });
 

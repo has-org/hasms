@@ -14,17 +14,21 @@ type CatalogueProp = {
   primary?: boolean
 };
 
+const PRIMARY_HEIGHT = '200px'
+const REGULAR_HEIGHT = "156px"
+
 export const Catalogue: React.FC<CatalogueProp> = ({ catalogue, primary }) => {
   return (
     <Link href={"/"}>
-      <div className="border rounded-md border-slate-200 flex justify-center relative">
+      <div className="flex justify-center relative">
         <Image
           className="rounded object-fill"
           alt="Mountains"
           src={catalogue?.image ? catalogue.image : ''}
           style={{
             width: "100%",
-            height: primary ? "168px" : "108px",
+            height: primary ? PRIMARY_HEIGHT : REGULAR_HEIGHT,
+            
           }}
         />
         <div className="absolute bottom-0 left-0 w-80 p-2 bg-gradient-to-r from-gray-50	">

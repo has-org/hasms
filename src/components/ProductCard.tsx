@@ -36,9 +36,9 @@ type ProductProp = {
 export const ProductCard: React.FC<ProductProp> = ({ product }) => {
   return (
     <Link href={`product/${product.id}`}>
-      <div className="product-card border rounded-md border-slate-200 flex flex-col p-2">
+      <div className="product-card flex flex-col p-2">
         <Image
-          className="rounded mx-auto object-contain"
+          className="rounded mx-auto"
           alt="Mountains"
           src={product.image}
           width={200}
@@ -46,6 +46,7 @@ export const ProductCard: React.FC<ProductProp> = ({ product }) => {
           style={{
             width: "200px",
             height: "200px",
+            objectFit: 'contain'
           }}
         />
         <div className="flex flex-col items-center justify-center mt-5 gap-y-2">

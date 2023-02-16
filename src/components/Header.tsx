@@ -13,27 +13,23 @@ import { navigationMenu } from "@/mockData/navigationMenu";
 
 export default function Header() {
   return (
-    <>
-      <div className="bg-gray-300 flex items-center px-6 h-[64px]">
-        <div className="space-y-2"> 
-          <div className="w-8 h-0.5 bg-blue-500"></div>
-          <div className="w-8 h-0.5 bg-blue-500"></div>
-          <div className="w-8 h-0.5 bg-blue-500"></div>
-        </div>
-        <div className="mx-auto">
+    <div className="header">
+      <div className="flex justify-center">
+        <div className="logo-container">
           <Image
-            className="rounded "
+            className="logo-img"
             alt="Mountains"
             src={logo}
             width={200}
-            height={36}
+            height={88}
           />
         </div>
-        <div className="hidden lg:block">
-          <SearchBox />
-        </div>
-        <div className="">
-          <FontAwesomeIcon
+      </div>
+      <div className="search-container absolute  bottom-10 right-10 md:hidden">
+        <SearchBox />
+      </div>
+      {/* <div className="">
+        <FontAwesomeIcon
             icon={faShoppingCart}
             style={{ fontSize: 32, color: "white" }}
           />
@@ -41,12 +37,8 @@ export default function Header() {
             icon={faUserCircle}
             style={{ fontSize: 32, color: "white" }}
           />
-        </div>
+      </div> */}
+    </div>
 
-      </div>
-      <div className="border-b-4  border-red-800 ">
-        <NavMenu navigationMenu={navigationMenu} />
-      </div>
-    </>
   );
 }

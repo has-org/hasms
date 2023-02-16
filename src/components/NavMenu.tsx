@@ -20,8 +20,8 @@ export const NavMenu: React.FC<NavMenuProps> = ({ navigationMenu }) => {
 
   return (
     <>
-      <ul className="sm:hidden lg:flex bg-gray-200 px-8 font-serif cursor-pointer h-[32px]">
-        <div className="flex mx-auto gap-x-5">
+      <ul className="sm:hidden lg:flex">
+        <div className="navigation-menu flex mx-auto gap-x-5">
           {navigationMenu.map((navItem: any, index: number) => {
             return (
               <MenuItems navItem={navItem} key={index} />

@@ -9,13 +9,13 @@ export type SubmenuDropdownProps = {
 
 export const SubmenuDropdown: React.FC<SubmenuDropdownProps> = ({ submenus, dropdown, setDropdown }) => {
     return (
-        <ul className={`dropdown ${dropdown ? "show" : ""} display-block p-1 bg-gray-100`} onMouseLeave={() => setDropdown(false)}>
+        <ul className={`dropdown ${dropdown ? "show" : ""} p-1`} onMouseLeave={() => setDropdown(false)}>
             <span className="">
                 {submenus.map((subMenuItem: any, index: number) => {
                     return (
                         <span
                             key={index}
-                            className="menu-items flex flex-col hover:text-blue-400"
+                            className="menu-items flex flex-col"
                         >
                             {subMenuItem.name}
                         </span>

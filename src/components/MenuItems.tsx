@@ -12,8 +12,8 @@ export const MenuItems: React.FC<MenuItemProps> = ({ navItem }) => {
     const [dropdown, setDropdown] = useState(false);
 
     return (
-        <li className="menu-items ">
-            <span className="">
+        <li className="navigation-menu-items-wrap">
+            <span className="navigation-menu-items">
                 {navItem.subMenu.length >= 1 ? (
                     <>
                         <button type="button" aria-haspopup="menu"
@@ -21,7 +21,7 @@ export const MenuItems: React.FC<MenuItemProps> = ({ navItem }) => {
                             onClick={() => setDropdown((prev) => !prev)}
                             onMouseEnter={() => setDropdown(true)}
                         >
-                            <span className="hover:text-blue-600">
+                            <span className="navigation-menu-item">
                                 {navItem.name}
                             </span>
                         </button>
@@ -29,7 +29,7 @@ export const MenuItems: React.FC<MenuItemProps> = ({ navItem }) => {
                     </>
                 ) : (
                     <Link href={navItem.url}>
-                        <span className="hover:text-blue-600">
+                        <span className="navigation-menu-item">
                             {navItem.name}
                         </span>
                     </Link>

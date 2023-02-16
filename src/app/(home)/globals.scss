@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  min-height: 100vh;
+}
+
+.header {
+  height: 88px;
+  .navigation-menu-container {
+    background-color: blue;
+  }
+
+  .logo-container {
+
+    .logo-img {
+      height: 88px;
+    }
+  }
+
+  .search-box-container {
+  }
+}
+
+.navigation-menu {
+  height: 64px;
+}
+
+footer {
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
+
+.dropdown {
+  display: none;
+  background-color: aqua;
+}
+
+.show {
+  display: block;
+}

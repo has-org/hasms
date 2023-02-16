@@ -1,4 +1,4 @@
-import "@/app/(home)/globals.css";
+import "@/app/(home)/globals.scss";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -27,7 +27,7 @@ export default function ShopLayout({
           <Header />
         </nav>
 
-        <div className="sidebar hidden lg:flex lg:absolute lg:left-20 w-40 justify-center h-full bg-gray-300 text-black hover:text-blue-400 font-serif">
+        <div className="sidebar hidden lg:flex lg:absolute lg:left-20 w-40 justify-center h-full">
 
           <ul>
             <h2>
