@@ -8,8 +8,6 @@ import {
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import SearchBox from "./SearchBox";
-import { NavMenu } from "@/components/NavMenu";
-import { navigationMenu } from "@/mockData/navigationMenu";
 
 export default function Header() {
   return (

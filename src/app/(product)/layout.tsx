@@ -1,4 +1,5 @@
-import Header from "@/components/Header"
+import '@/app/(home)/globals.scss'
+import Header from '@/components/Header'
 
 export default function RootLayout({
   children,
@@ -8,10 +9,12 @@ export default function RootLayout({
   return (
     <html>
       <head />
-      <nav>
+      <body>
+        <nav className=" sticky top-0 z-30">
           <Header />
         </nav>
-      <body>{children}</body>
+        {children}
+      </body>
     </html>
   )
 }

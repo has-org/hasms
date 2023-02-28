@@ -3,12 +3,12 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 // import Font Awesome CSS
-import "@fortawesome/fontawesome-svg-core/styles.css"; 
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
 // Tell Font Awesome to skip adding the CSS automatically 
 // since it's already imported above
-config.autoAddCss = false; 
+config.autoAddCss = false;
 
 export default function RootLayout({
   children,
@@ -24,13 +24,13 @@ export default function RootLayout({
       <head />
       <body>
         <nav className=' sticky top-0 z-30'>
-          <Header />
+        <Header />
         </nav>
-          {children}
+        {children}
 
-          <footer>
-            <Footer />
-          </footer>
+        <footer>
+          <Footer />
+        </footer>
       </body>
     </html>
   )

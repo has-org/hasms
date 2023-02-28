@@ -52,9 +52,9 @@ export const ProductCard: React.FC<ProductProp> = ({ product }) => {
         <div className="flex flex-col items-center justify-center mt-5 gap-y-2">
           <h2 className="text-black-400 text-center text-xl font-serif font-bold">{product.name}</h2>
           <ul className="">
-            {product.colors.map((color, index) => (
+            {/* {product.colors.map((color, index) => (
               <li key={index}>{color.name}</li>
-            ))}
+            ))} */}
           </ul>
           <span className="font-strong text-[#e30613]">
             {product.price} {product.currency}
