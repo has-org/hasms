@@ -10,16 +10,13 @@ import ixsHemlet from "../../public/ixs1100_2_4.jpg";
 import ixsHelmet100 from "../../public/ixs100_1_0.jpg";
 import hjci90 from "../../public/hjci90.jpg";
 
-type Variants = {
-  productColorVariants: Array<ProductColorVariants>;
-};
-
-type ProductColorVariants = {
+type Variant = {
   id: number;
   name: string;
   image: string | StaticImageData;
   color: Color;
 };
+
 
 type Color = {
   id: number;
@@ -49,7 +46,7 @@ type Product = {
   image: string | StaticImageData;
   manufacturer: string;
   category: Category;
-  variants?: Array<Variants>;
+  variants?: Array<Variant>;
 };
 
 export const PRODUCTS: Array<Product> = [
@@ -73,14 +70,10 @@ export const PRODUCTS: Array<Product> = [
     },
     variants: [
       {
-        productColorVariants: [
-          {
-            id: 0,
-            name: "",
-            image: "",
-            color: { id: 0, name: "Icon Blue" },
-          },
-        ],
+        id: 0,
+        name: "",
+        image: "",
+        color: { id: 0, name: "Icon Blue" },
       },
     ],
   },

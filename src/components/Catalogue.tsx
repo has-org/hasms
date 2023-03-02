@@ -7,6 +7,7 @@ type Catalogue = {
   id: number;
   name: string;
   image: string | StaticImageData;
+  type: string;
 };
 
 type CatalogueProp = {
@@ -19,7 +20,7 @@ const REGULAR_HEIGHT = "156px"
 
 export const Catalogue: React.FC<CatalogueProp> = ({ catalogue, primary }) => {
   return (
-    <Link href={"/"}>
+    <Link href={`/${catalogue.type}/${catalogue.id}`}>
       <div className="flex justify-center relative">
         <Image
           className="rounded object-fill"

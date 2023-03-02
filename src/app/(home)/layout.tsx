@@ -26,6 +26,7 @@ export default function RootLayout({
         <nav className=' sticky top-0 z-30'>
         <Header />
         </nav>
+        
         {children}
 
         <footer>

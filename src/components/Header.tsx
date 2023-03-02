@@ -8,20 +8,24 @@ import {
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import SearchBox from "./SearchBox";
+import Link from "next/link";
 
 export default function Header() {
   return (
     <div className="header">
       <div className="flex justify-center">
         <div className="logo-container">
-          <Image
-            className="logo-img"
-            alt="Mountains"
-            src={logo}
-            width={200}
-            height={88}
-          />
+          <Link href={`/`}>
+            <Image
+              className="logo-img"
+              alt="Mountains"
+              src={logo}
+              width={200}
+              height={88}
+            />
+          </Link>
         </div>
+
       </div>
       <div className="search-container absolute  bottom-10 right-10 md:hidden">
         <SearchBox />
