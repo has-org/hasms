@@ -21,40 +21,53 @@ type Category = {
 type Product = {
   id: number;
   name: string;
-  colors: Array<Color>;
+  colors: Color[];
   price: number;
   currency: string;
   image: string | StaticImageData;
   manufacturer: string;
   category: Category;
+  variants?: Array<Variant>;
 };
 
 type ProductProp = {
   product: Product;
 };
 
+type Variant = {
+  id: number;
+  name: string;
+  image: string | StaticImageData;
+  colors: Color[]
+}
+
 export const ProductCard: React.FC<ProductProp> = ({ product }) => {
   return (
     <Link href={`product/${product.id}`}>
-      <div className="product-card flex flex-col p-2">
-        <Image
-          className="rounded mx-auto"
-          alt="Mountains"
-          src={product.image}
-          width={200}
-          height={200}
-          style={{
-            width: "200px",
-            height: "200px",
-            objectFit: 'contain'
-          }}
-        />
+      <div className="product-card flex flex-col p-2 ">
+        <div className="product-card-img-container flex relative mx-auto">
+          <Image
+            className="product-card-img"
+            alt="Mountains"
+            src={product.image}
+            fill
+            style={{objectFit: 'contain'}}
+          />
+        </div>
+
         <div className="flex flex-col items-center justify-center mt-5 gap-y-2">
           <h2 className="text-black-400 text-center text-xl font-serif font-bold">{product.name}</h2>
           <ul className="">
-            {/* {product.colors.map((color, index) => (
-              <li key={index}>{color.name}</li>
-            ))} */}
+            {product.variants?.map((variant, index) => {
+              return variant.colors?.map((color, index) => {
+                return (
+                  <div key={index}>
+                    {color.name}
+                  </div>
+                )
+              })
+
+            })}
           </ul>
           <span className="font-strong text-[#e30613]">
             {product.price} {product.currency}

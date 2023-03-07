@@ -1,14 +1,14 @@
 import { StaticImageData } from "next/image";
 import hjci90 from "../../public/hjci90.jpg";
-import prva1 from "../../public/prva1.jpg";
+import yamahamt10sp from "../../public/yamahamt10sp.jpg";
 import rebelhorn from "../../public/rebelhorn.png";
 import modeka from "../../public/modeka.jpg";
 import fxcruiser from "../../public/fxcruiser.png";
-import mogogpyamaha2023 from "../../public/mogogpyamaha2023.jpg";
-import yamaha_xmax_300_2023 from "../../public/yamaha_xmax_300_2023.jpg";
-import ixs1100_2_4 from "../../public/outboard.jpg";
+import rebelhornblog from "../../public/rebelhornblog.jpg";
+import xmax from "../../public/2023xmax.jpg";
+import ixslogo from "../../public/ixslogo.png";
 import akrapovic from "../../public/akrapovic.png";
-import walp from "../../public/4445.jpg";
+import yamaha60 from "../../public/yamaha60.jpeg";
 
 export type CATALOGUE = {
     id: number,
@@ -20,13 +20,13 @@ export type CATALOGUE = {
 }
 
 export const CATALOGUES: Array<CATALOGUE> = [
-    { id: 0, name: 'asd', image: walp, primary: true, type: 'catalogue' },
+    { id: 0, name: 'asd', image: yamaha60, primary: true, type: 'catalogue' },
     { id: 1, name: 'asd', image: rebelhorn, type: 'catalogue' },
     { id: 2, name: 'asd', image: akrapovic, type: 'catalogue' },
-    { id: 3, name: 'asd', image: ixs1100_2_4, type: 'catalogue' },
-    { id: 4, name: 'asd', image: prva1, type: 'catalogue' },
-    { id: 6, name: 'asd', image: yamaha_xmax_300_2023, primary: true, type: 'catalogue' },
-    { id: 5, name: 'asd', image: mogogpyamaha2023, type: 'catalogue' },
+    { id: 3, name: 'asd', image: ixslogo, type: 'catalogue' },
+    { id: 4, name: 'asd', image: xmax, primary: true, type: 'catalogue' },
+    { id: 5, name: 'asd', image: yamahamt10sp, type: 'catalogue' },
+    { id: 6, name: 'asd', image: rebelhornblog, type: 'catalogue' },
     { id: 7, name: 'asd', image: modeka, type: 'catalogue' },
 ]
 

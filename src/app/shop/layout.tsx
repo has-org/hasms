@@ -23,7 +23,7 @@ export default function ShopLayout({
       */}
       <head />
       <body>
-        <nav className=" sticky top-0 z-30">
+        <nav className="sticky top-0 z-30">
           <Header />
         </nav>
 

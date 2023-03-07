@@ -10,25 +10,19 @@ type NavMenuProps = {
 }
 
 export const NavMenu: React.FC<NavMenuProps> = ({ navigationMenu }) => {
-  const toggleMenu = (item: any) => {
-    setNavitemExpanded(!navItemExpanded);
-    setSelectedNavItem(item)
-
-  };
-  const [navItemExpanded, setNavitemExpanded] = useState(false);
-  const [selectedNavItem, setSelectedNavItem] = useState({} as NavigationMenu)
 
   return (
     <>
-      <ul className="sm:hidden lg:flex">
-        <div className="navigation-menu flex mx-auto gap-x-5">
-          {navigationMenu.map((navItem: any, index: number) => {
-            return (
-              <MenuItems navItem={navItem} key={index} />
-            );
-          })}
-        </div>
-      </ul>
+
+        <ul className="sm:hidden lg:flex">
+          <div className="navigation-menu flex mx-auto gap-x-5 h-20">
+            {navigationMenu.map((navItem: any, index: number) => {
+              return (
+                <MenuItems navItem={navItem} key={index} />
+              );
+            })}
+          </div>
+        </ul>
     </>
   );
 }

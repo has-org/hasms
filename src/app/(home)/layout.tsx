@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
+import Link from 'next/link';
 // Tell Font Awesome to skip adding the CSS automatically 
 // since it's already imported above
 config.autoAddCss = false;
@@ -23,12 +24,12 @@ export default function RootLayout({
       */}
       <head />
       <body>
-        <nav className=' sticky top-0 z-30'>
-        <Header />
+        <nav className='sticky top-0 z-30'>
+          <Header />
         </nav>
-        
-        {children}
-
+        <main className="scroll-smooth">
+          {children}
+        </main>
         <footer>
           <Footer />
         </footer>

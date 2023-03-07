@@ -15,7 +15,7 @@ export default function Footer() {
             <li>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2831.8891209695134!2d17.190244415808795!3d44.7830657790988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475e0300fed7a243%3A0x45d7f41b6986df22!2sNjego%C5%A1eva%2034%2C%20Banja%20Luka%2078000!5e0!3m2!1sen!2sba!4v1675361811814!5m2!1sen!2sba"
-                width="450"
+                width="250"
                 height="450"
                 style={{ border: 0 }}
                 loading="lazy"
@@ -36,14 +36,14 @@ export default function Footer() {
             <li>Email: yamaha@motoshop7.ba</li>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2833.3779260384463!2d17.163718415807967!3d44.75270667909902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475e02d4ef6ed02b%3A0xebdf7ceaa2cf1fbf!2sJesenjinova%2014%2C%20Banja%20Luka%2078000!5e0!3m2!1sen!2sba!4v1675361911066!5m2!1sen!2sba"
-              width="450"
+              width="250"
               height="450"
               style={{ border: 0 }}
               loading="lazy"
             ></iframe>
           </ul>
         </div>
-        {/* <div className="flex flex-col gap-y-4">
+        <div className="flex flex-col gap-y-4">
           <h2>Kontaktirajte nas</h2>
           <select name="emails" id="emails" value={""}>
             <option value="">servis@motoshop7.ba</option>
@@ -56,7 +56,7 @@ export default function Footer() {
           <input type="text" id="fname" name="fname" />
           Blabnlablabla
           <input type="submit" value="Submit" />
-        </div> */}
+        </div>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ export const MenuItems: React.FC<MenuItemProps> = ({ navItem }) => {
 
     return (
         <li className="navigation-menu-items-wrap">
-            <span className="navigation-menu-items">
+            <span className="navigation-menu-items" onMouseLeave={() => setDropdown(false)}>
                 {navItem.subMenu.length >= 1 ? (
                     <>
                         <button type="button" aria-haspopup="menu"

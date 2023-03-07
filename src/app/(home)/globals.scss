@@ -2,7 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-$header-color: #ececec;
+//literal colors
+
+$color-gray100: #f7f7f7;
+$color-gray200: #eeeeee;
+$color-gray300: #e2e2e2;
+$color-gray400: #dadada;
+$color-gray500: #cfcfcf;
+
+
+//primary colors
+$color-primary: #{$color-gray100};
+$color-secondary: #ac3939;
+$color-tertiary: #{$color-gray200};
+
+//color variables 
+$header-bg: #{$color-primary};
+$dropdown-bg: #{$color-primary};
+$navigation-menu-bg: #{$color-gray500};
+
+//height variables
+$header-height: 66px;
+$logo-img-height: 66px;
+
+
 
 
 body {
@@ -10,22 +33,17 @@ body {
 }
 
 .header {
-  height: 88px;
-  background-color: $header-color;
+  height: #{$header-height};
+  background-color: $header-bg;
 
   .logo-container {
 
     .logo-img {
-      height: 88px;
+      height: #{$logo-img-height};
     }
   }
 
-  .search-box-container {
-  }
-}
-
-.navigation-menu {
-  height: 64px;
+  .search-box-container {}
 }
 
 footer {
@@ -34,11 +52,226 @@ footer {
   bottom: 0;
 }
 
+
+.navigation-menu-wrap {
+  background-color: #{$navigation-menu-bg};
+
+
+  .navigation-menu {
+    height: 64px;
+
+    .navigation-menu-items-wrap {
+      .navigation-menu-items {}
+    }
+  }
+}
+
 .dropdown {
   display: none;
-  background-color: aqua;
+  background-color: #{$dropdown-bg};
+  z-index: 10;
 }
 
 .show {
+  position: relative;
   display: block;
 }
+
+
+.catalogue-container {
+  border: #{$color-gray300} solid 2px;
+  border-radius: 12px;
+
+  .catalogue-img-container {
+    height: 200px;
+    width: 100%;
+    border-radius: 12px;
+
+    &.primary {
+      height: 500px;
+    }
+
+    .catalogue-img {
+      border-radius: 12px;
+
+    }
+  }
+}
+
+.product-card {
+  border: #{$color-gray300} solid 2px;
+  border-radius: 8px;
+  height: 300px;
+
+  .product-card-img-container {
+    height: 120px;
+    width: 120px;
+
+    .product-card-img {
+      border-radius: 8px;
+
+    }
+  }
+}
+
+.thumbnail-list-container {
+  .thumbnail-list-img-wrap {
+    height: 100px;
+    width: 100px;
+
+    .thumbnail-list-img {
+      border: #{$color-gray300} solid 2px;
+      border-radius: 8px;
+      object-fit: cover;
+
+    }
+  }
+}
+
+.gallery-preview-container {
+  .gallery-preview-img-wrap {
+    height: 250px;
+    width: 200px;
+
+    .gallery-preview-img {
+      height: 250px;
+      width: 200px;
+      object-fit: cover;
+    }
+  }
+}
+
+.cooperation-section {
+  height: 80px;
+  margin-top: 10px;
+  border-top: $color-gray300 solid 1px;
+
+
+  .cooperation-section-content {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+
+    .cooperator-wrap {
+      display: inline-block;
+      animation: move-logos 5s linear infinite;
+      padding: 10px;
+      width: 100px;
+      height: 60px;
+      .logo-img {
+      
+      }
+    }
+  }
+}
+
+.product-details {
+  flex: 1;
+
+  .product-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .product-brand {
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    .product-brand-value {
+      font-weight: 400;
+    }
+  }
+
+  .product-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    .product-price-value {
+      font-weight: 400;
+    }
+
+    .product-currency {
+      font-weight: 500;
+    }
+  }
+
+  .product-colors {
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    .product-colors-value {
+      font-weight: 400;
+    }
+  }
+
+}
+
+
+
+@keyframes move-logos {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+// @keyframes move-logos {
+//   0% {
+//     right: 0px;
+//     top: 0px;
+//   }
+
+//   10% {
+//     right: 40px;
+//     top: 0px;
+//   }
+
+//   20% {
+//     right: 80px;
+//     top: 0px;
+//   }
+
+//   30% {
+//     right: 120px;
+//     top: 0px;
+//   }
+
+//   40% {
+//     right: 160px;
+//     top: 0px;
+//   }
+
+//   50% {
+//     right: 200px;
+//     top: 0px;
+//   }
+
+//   60% {
+//     right: 240px;
+//     top: 0px;
+//   }
+
+//   70% {
+//     right: 260px;
+//     top: 0px;
+//   }
+
+//   80% {
+//     right: 300px;
+//     top: 0px;
+//   }
+
+//   90% {
+//     right: 340px;
+//     top: 0px;
+//   }
+
+//   100% {
+//     right: 380px;
+//     top: 0px;
+//   }
+// }
