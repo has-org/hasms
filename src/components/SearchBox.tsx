@@ -44,7 +44,7 @@ export default function SearchBox() {
     // We pass the event to the handleSubmit() function on submit.
     <form onSubmit={handleSubmit} className="search-box-container hidden lg:block">
       <label htmlFor="search"></label>
-      <input type="text" id="search" name="search" required />
+      {/* <input type="text" id="search" name="search" required /> */}
       <button type="submit">
         <FontAwesomeIcon
           icon={faMagnifyingGlass}

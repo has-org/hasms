@@ -25,7 +25,7 @@ export default function RootLayout({
       <head />
       <body>
         <nav className='sticky top-0 z-30'>
-          <Header />
+          <Header withNav={false}/>
         </nav>
         <main className="scroll-smooth">
           {children}

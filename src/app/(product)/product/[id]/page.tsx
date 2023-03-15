@@ -113,7 +113,7 @@ export default async function Product({ params: { id } }: any) {
               : null
           }
           <div className="product-size">
-            <label>
+            {/* <label>
 
               What do we eat?
 
@@ -127,7 +127,7 @@ export default async function Product({ params: { id } }: any) {
 
               </select>
 
-            </label>
+            </label> */}
             {product.size}</div>
           <div>Opis: {product.description}</div>
           <div>Napomena: {product.note}</div>

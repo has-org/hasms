@@ -9,17 +9,20 @@ export type SubmenuDropdownProps = {
 
 export const SubmenuDropdown: React.FC<SubmenuDropdownProps> = ({ submenus, dropdown, setDropdown }) => {
     return (
-        <ul className={`dropdown ${dropdown ? "show" : ""} p-1`} >
-                {submenus.map((subMenuItem: any, index: number) => {
-                    return (
+        <ul className={`dropdown ${dropdown ? "show" : ""} p-1 absolute`} >
+            {submenus.map((subMenuItem: any, index: number) => {
+                return (
+                    <Link href={subMenuItem.url ? subMenuItem.url : ''} key={index}>
                         <span
                             key={index}
-                            className="menu-items flex flex-col "
+                            className="menu-item flex flex-col "
                         >
                             {subMenuItem.name}
                         </span>
-                    )
-                })}
+                    </Link>
+
+                )
+            })}
         </ul>
     );
 }

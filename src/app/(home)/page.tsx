@@ -8,12 +8,11 @@ import "./base.css";
 import { Catalogue } from "@/components/Catalogue";
 import { FIRST_THREE_CATALOGUES, LAST_THREE_CATALOGUES, PRIMARY_CATALOGUES, SECONDARY_CATALOGUES } from "@/mockData/catalogues";
 import SearchBox from "@/components/SearchBox";
-import { NavMenu } from "@/components/NavMenu";
-import { navigationMenu } from "@/mockData/navigationMenu";
 import { Cooperators } from '@/mockData/cooperators';
 import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
-
+import { NavMenu } from "@/components/NavMenu";
+import { navigationMenu } from "@/mockData/navigationMenu";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -29,9 +28,10 @@ export default function Home() {
       <section className="sandbox__carousel">
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
 
-        {/* <SearchBox /> */}
       </section>
-      <NavMenu navigationMenu={navigationMenu}></NavMenu>
+      <div className="navigation-bar-container flex justify-center">
+        <NavMenu navigationMenu={navigationMenu} />
+      </div>
       <div className="px-2 lg:px-20">
 
         <div className="primary-container flex my-3">

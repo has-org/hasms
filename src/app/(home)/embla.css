@@ -1,7 +1,7 @@
 .embla {
     --slide-spacing: 1rem;
     --slide-size: 100%;
-    --slide-height: 70rem;
+    --slide-height: 50rem;
   }
   .embla__viewport {
     overflow: hidden;
@@ -58,6 +58,7 @@
   }
   .embla__dot,
   .embla__button {
+    appearance: none;
     -webkit-appearance: none;
     background-color: transparent;
     touch-action: manipulation;
