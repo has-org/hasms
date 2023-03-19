@@ -32,7 +32,7 @@ export default function Home() {
       <div className="navigation-bar-container flex justify-center">
         <NavMenu navigationMenu={navigationMenu} />
       </div>
-      <div className="px-2 lg:px-20">
+      <div className="px-2 lg:px-60">
 
         <div className="primary-container flex my-3">
           <div className="flex-1">

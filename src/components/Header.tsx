@@ -16,7 +16,7 @@ export default function Header({ withNav = true }) {
   return (
 
     <div className="header grid grid-cols-12 items-center">
-      <div className="logo-container">
+      <div className="logo-container col-start-">
         <Link href={`/`}>
         <Image
           className="logo-img"

@@ -193,12 +193,12 @@
   }
   html {
     background-color: var(--background-site);
-    font-size: 62.5%;
+    font-size: 1rem;
   }
   body {
     background-color: var(--background-site);
     color: var(--text-high-contrast);
-    font-size: 1.6rem;
+    font-size: 1rem;
     line-height: 1.65;
   }
   html {

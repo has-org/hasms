@@ -19,7 +19,7 @@ type CatalogueProp = {
 
 export const Catalogue: React.FC<CatalogueProp> = ({ catalogue, primary }) => {
   return (
-    <Link href={`/${catalogue.type}/${catalogue.id}`}>
+    <Link href={`/shop/${catalogue.type}/${catalogue.id}`}>
       <div className="catalogue-container flex justify-center relative">
         <div className={"catalogue-img-container " + (primary ? 'primary' : '') }>
           <Image
