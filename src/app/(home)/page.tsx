@@ -6,7 +6,7 @@ import { EmblaOptionsType } from "embla-carousel-react";
 import "./embla.css";
 import "./base.css";
 import { Catalogue } from "@/components/Catalogue";
-import { FIRST_THREE_CATALOGUES, LAST_THREE_CATALOGUES, PRIMARY_CATALOGUES, SECONDARY_CATALOGUES } from "@/mockData/catalogues";
+import { FIRST_THREE_CATALOGUES, LAST_THREE_CATALOGUES, PRIMARY_CATALOGUES } from "@/mockData/catalogues";
 import SearchBox from "@/components/SearchBox";
 import { Cooperators } from '@/mockData/cooperators';
 import Link from "next/link";
@@ -20,7 +20,6 @@ const inter = Inter({ subsets: ["latin"] });
 const OPTIONS: EmblaOptionsType = {};
 const SLIDE_COUNT = 2;
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
-const SECONDARY_CATALOGUE_VALUE = 3;
 
 export default function Home() {
   return (
@@ -66,23 +65,7 @@ export default function Home() {
       </div>
       <section className='cooperation-section'>
         <div className='cooperation-section-content'>
-          {Cooperators.map((cooperator, index) => {
-            // // Duplicate the first and last item for seamless looping
-            // if (index === 0 || index === Cooperators.length - 1) {
-            //   return (
-            //     <div key={index} className="cooperator-wrap relative">
-            //       <Link href={`/`}>
-            //         <Image
-            //           className="logo-img"
-            //           alt="Mountains"
-            //           src={cooperator.image}
-            //           fill
-            //           style={{ objectFit: 'contain' }}
-            //         />
-            //       </Link>
-            //     </div>
-            //   )
-            // }
+          {/* {Cooperators.map((cooperator, index) => {
             return (
               <div key={index} className="cooperator-wrap relative">
                 <Link href={`/`}>
@@ -96,26 +79,10 @@ export default function Home() {
                 </Link>
               </div>
             )
-          })}
+          })} */}
         </div>
       </section>
     </>
 
   );
 }
-
-
-            //   return (
-            //     <div key={index} className="cooperator-wrap relative">
-            //       <Link href={`/`}>
-            //         <Image
-            //           className="logo-img"
-            //           alt="Mountains"
-            //           src={cooperator.image}
-            //           fill
-            //           style={{ objectFit: 'contain' }}
-            //         />
-            //       </Link>
-            //     </div>
-            //   )
-          // })}

@@ -26,12 +26,11 @@ async function getData() {
     const res = await fetch('http://localhost:8000/products', {
       method: 'GET',
     });
-    if (!res.ok) {
+    if (res.status !== 200) {
       throw new Error('Failed to fetch data');
     }
     return res.json();
   } catch (e) {
-    console.log(e)
     return null
   }
 }

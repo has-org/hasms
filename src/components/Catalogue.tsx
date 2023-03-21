@@ -22,12 +22,12 @@ export const Catalogue: React.FC<CatalogueProp> = ({ catalogue, primary }) => {
     <Link href={`/shop/${catalogue.type}/${catalogue.id}`}>
       <div className="catalogue-container flex justify-center relative">
         <div className={"catalogue-img-container " + (primary ? 'primary' : '') }>
-          <Image
+          {/* <Image
             className={`catalogue-img  p-0.5`}
             alt="Mountains"
             src={catalogue?.image ? catalogue.image : ''}
             fill
-          />
+          /> */}
         </div>
 
         <div className="absolute bottom-0 left-0 w-80 p-2 bg-gradient-to-r from-gray-50	">
