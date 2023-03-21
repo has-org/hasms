@@ -6,13 +6,10 @@ import { EmblaOptionsType } from "embla-carousel-react";
 import "./embla.css";
 import "./base.css";
 import { Catalogue } from "@/components/Catalogue";
-import { FIRST_THREE_CATALOGUES, LAST_THREE_CATALOGUES, PRIMARY_CATALOGUES } from "@/mockData/catalogues";
 import SearchBox from "@/components/SearchBox";
-import { Cooperators } from '@/mockData/cooperators';
 import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
 import { NavMenu } from "@/components/NavMenu";
-import { navigationMenu } from "@/mockData/navigationMenu";
 
 
 const inter = Inter({ subsets: ["latin"] });
