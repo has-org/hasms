@@ -1,6 +1,7 @@
 import './globals.scss'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import StyledComponentsRegistry from './registry';
 
 // import Font Awesome CSS
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -25,10 +26,10 @@ export default function RootLayout({
       <head />
       <body>
         <nav className='sticky top-0 z-30'>
-          <Header withNav={false}/>
+          <Header withNav={false} />
         </nav>
         <main className="scroll-smooth">
-          {children}
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>;
         </main>
         <footer>
           <Footer />

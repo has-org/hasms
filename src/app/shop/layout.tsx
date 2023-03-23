@@ -10,11 +10,26 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 // since it's already imported above
 config.autoAddCss = false;
 
-export default function ShopLayout({
+async function getNavMenus() {
+  try {
+    const res = await fetch('http://localhost:8000/navigationMenus', {
+      method: 'GET',
+    });
+    if (res.status !== 200) {
+      throw new Error('Failed to fetch data');
+    }
+    return res.json();
+  } catch (e) {
+    return null
+  }
+}
+export default async function ShopLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+const navigationMenu = await getNavMenus()
+
   return (
     <html lang="en">
       {/*
@@ -24,7 +39,7 @@ export default function ShopLayout({
       <head />
       <body>
         <nav className="sticky top-0 z-30">
-          <Header />
+          <Header navigationMenu={navigationMenu} />
         </nav>
 
         <div className="sidebar hidden lg:flex lg:absolute lg:left-20 w-40 justify-center h-full">

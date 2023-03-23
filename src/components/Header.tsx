@@ -11,12 +11,11 @@ import {
 import SearchBox from "./SearchBox";
 import Link from "next/link";
 import { NavMenu } from "@/components/NavMenu";
-import { navigationMenu } from "@/mockData/navigationMenu";
-export default function Header({ withNav = true }) {
+export default function Header({ withNav = true, navigationMenu = [] }) {
   return (
 
     <div className="header grid grid-cols-12 items-center">
-      <div className="logo-container col-start-">
+      <div className="logo-container ">
         <Link href={`/`}>
         <Image
           className="logo-img"

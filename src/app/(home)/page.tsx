@@ -1,4 +1,3 @@
-"use client";
 
 import { Inter } from "@next/font/google";
 import EmblaCarousel from "@/components/EmblaCarousel";
@@ -18,7 +17,41 @@ const OPTIONS: EmblaOptionsType = {};
 const SLIDE_COUNT = 2;
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
-export default function Home() {
+
+async function getNavMenus() {
+  try {
+    const res = await fetch('http://localhost:8000/navigationMenus', {
+      method: 'GET',
+    });
+    if (res.status !== 200) {
+      throw new Error('Failed to fetch data');
+    }
+    return res.json();
+  } catch (e) {
+    return null
+  }
+}
+
+async function getCatalogues() {
+  try {
+    const res = await fetch('http://localhost:8000/catalogues', {
+      method: 'GET',
+    });
+    if (res.status !== 200) {
+      throw new Error('Failed to fetch data');
+    }
+    return res.json();
+  } catch (e) {
+    return null
+  }
+}
+
+export default async function Home() {
+  const navigationMenu = await getNavMenus()
+  const catalogues = await getCatalogues()
+  const PRIMARY_CATALOGUES = catalogues.filter((catalogue: any) => catalogue.primary)
+  const FIRST_THREE_CATALOGUES = catalogues
+  const LAST_THREE_CATALOGUES = catalogues
   return (
     <>
       <section className="sandbox__carousel">
