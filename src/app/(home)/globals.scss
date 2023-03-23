@@ -117,6 +117,9 @@ footer {
   display: block;
 }
 
+.hide {
+  display: none;
+}
 
 .catalogue-container {
   border: #{$color-gray300} solid 2px;
