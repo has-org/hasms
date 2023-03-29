@@ -1,4 +1,6 @@
 'use client'
+import { Form } from "@/components/Form";
+import { FormStyled } from "@/components/FormStyled";
 import { Popup } from "@/components/Popup";
 import { useEffect, useState } from "react";
 
@@ -22,11 +24,13 @@ export default function AdminCataloguesPage() {
   if (isLoading) return <p className="min-h-screen">Loading...</p>
   if (!catalogues) return <p>No data</p>
   return (
-    <main className="min-h-screen	flex flex-col font-serif">
+    <main className="min-h-screen	flex flex-col">
       <button onClick={() => setShow(true)}>Add new catalogue</button>
       {
         show ? (<Popup show={show} togglePopup={() => setShow(false)} >
-          <div className="div"></div>
+          <FormStyled>
+          <Form example={"asd"} exampleRequired={""}></Form>
+          </FormStyled>
         </Popup>) : null
       }
       {

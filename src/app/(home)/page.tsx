@@ -34,7 +34,7 @@ async function getNavMenus() {
 
 async function getCatalogues() {
   try {
-    const res = await fetch('http://localhost:8000/catalogues', {
+    const res = await fetch('http://localhost:8000/admin/catalogues', {
       method: 'GET',
     });
     if (res.status !== 200) {
@@ -50,8 +50,8 @@ export default async function Home() {
   const navigationMenu = await getNavMenus()
   const catalogues = await getCatalogues()
   const PRIMARY_CATALOGUES = catalogues.filter((catalogue: any) => catalogue.primary)
-  const FIRST_THREE_CATALOGUES = catalogues
-  const LAST_THREE_CATALOGUES = catalogues
+  const FIRST_THREE_CATALOGUES = catalogues.slice(0, 3)
+  const LAST_THREE_CATALOGUES = catalogues.slice(3, 6)
   return (
     <>
       <section className="sandbox__carousel">
@@ -65,12 +65,12 @@ export default async function Home() {
 
         <div className="primary-container flex my-3">
           <div className="flex-1">
-            <Catalogue catalogue={PRIMARY_CATALOGUES[0]} primary />
+            <Catalogue catalogue={PRIMARY_CATALOGUES[0]} primary={PRIMARY_CATALOGUES[0]?.primary} />
           </div>
         </div>
         <div className="grid grid-cols-3 gap-3">
           {
-            FIRST_THREE_CATALOGUES.map((catalogue, index) => {
+            FIRST_THREE_CATALOGUES.map((catalogue: Catalogue, index: number) => {
               return (<div className="div" key={index}>
                 <Catalogue catalogue={catalogue} />
               </div>)
@@ -79,7 +79,7 @@ export default async function Home() {
         </div>
         <div className="secondary-container my-3">
           <div className="flex-1">
-            <Catalogue catalogue={PRIMARY_CATALOGUES[1]} primary />
+            <Catalogue catalogue={PRIMARY_CATALOGUES[1]} primary={PRIMARY_CATALOGUES[1]?.primary} />
           </div>
         </div>
         <div className="grid grid-cols-3 gap-3">

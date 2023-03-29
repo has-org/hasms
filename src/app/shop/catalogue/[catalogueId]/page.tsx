@@ -38,7 +38,6 @@ async function getData() {
 export default async function ShopCatalogue({ params: { catalogueId } }: any) {
   const products = await getData();
   if (!products) return <div>Products not found</div>;
-  console.log(catalogueId)
   return (
     <main className="min-h-screen	 flex flex-col">
 

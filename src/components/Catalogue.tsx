@@ -24,7 +24,7 @@ export const Catalogue: React.FC<CatalogueProp> = ({ catalogue, primary }) => {
         <div className={"catalogue-img-container " + (primary ? 'primary' : '') }>
           <Image
             className={`catalogue-img  p-0.5`}
-            alt="Mountains"
+            alt="Catalogue Image"
             src={catalogue?.image ? catalogue.image : ''}
             fill
           />

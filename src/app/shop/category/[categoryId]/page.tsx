@@ -4,12 +4,8 @@ import { StaticImageData } from "next/image";
 type Product = {
   id: number;
   name: string;
-  colors: {
-    id: number;
-    name: string;
-    value: string;
-  }[];
-  price: number; currency: string; image: string | StaticImageData;
+  price: number; currency: string; 
+  image: string | StaticImageData;
   manufacturer: string;
   category: {
     id: number;
@@ -37,7 +33,6 @@ async function getData() {
 }
 export default async function ShopCategory({ params: { categoryId } }: any) {
   const products = await getData();
-  console.log('sss', categoryId)
   if (!products) return <div>Products not found</div>;
   return (
     <main className="min-h-screen	 flex flex-col">

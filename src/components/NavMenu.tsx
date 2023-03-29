@@ -1,9 +1,8 @@
 
-import { NavigationMenu } from "@/mockData/navigationMenu";
 import { MenuItems } from "./MenuItems";
 
 type NavMenuProps = {
-  navigationMenu: Array<NavigationMenu>
+  navigationMenu: any
 }
 
 export const NavMenu: React.FC<NavMenuProps> = ({ navigationMenu }) => {

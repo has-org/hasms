@@ -12,7 +12,7 @@ export const MenuItems: React.FC<MenuItemProps> = ({ navItem }) => {
     const [dropdown, setDropdown] = useState(false);
     return (
         <li className="navigation-menu-item mt-2" onMouseLeave={() => setDropdown(false)}>
-            {navItem.submenus.length >= 1 ? (
+            {navItem.submenus?.length >= 1 ? (
                 <>
                     <button type="button" aria-haspopup="menu"
                         aria-expanded={dropdown ? "true" : "false"}
