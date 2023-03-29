@@ -9,6 +9,7 @@ import SearchBox from "@/components/SearchBox";
 import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
 import { NavMenu } from "@/components/NavMenu";
+import { Catalogue as CatalogueType } from "@/types/Catalogue";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -48,10 +49,14 @@ async function getCatalogues() {
 
 export default async function Home() {
   const navigationMenu = await getNavMenus()
-  const catalogues = await getCatalogues()
+  const catalogues: CatalogueType[] = await getCatalogues()
   const PRIMARY_CATALOGUES = catalogues.filter((catalogue: any) => catalogue.primary)
   const FIRST_THREE_CATALOGUES = catalogues.slice(0, 3)
   const LAST_THREE_CATALOGUES = catalogues.slice(3, 6)
+  console.log('catalogues', catalogues)
+  console.log('PRIMARY_CATALOGUES', PRIMARY_CATALOGUES)
+  console.log('FIRST_THREE_CATALOGUES', FIRST_THREE_CATALOGUES)
+  console.log('LAST_THREE_CATALOGUES', LAST_THREE_CATALOGUES)
   return (
     <>
       <section className="sandbox__carousel">
@@ -70,10 +75,12 @@ export default async function Home() {
         </div>
         <div className="grid grid-cols-3 gap-3">
           {
-            FIRST_THREE_CATALOGUES.map((catalogue: Catalogue, index: number) => {
-              return (<div className="div" key={index}>
-                <Catalogue catalogue={catalogue} />
-              </div>)
+            FIRST_THREE_CATALOGUES.map((catalogue: CatalogueType, index: number) => {
+              return (
+                <div className="div" key={index}>
+                  <Catalogue catalogue={catalogue} />
+                </div>
+              )
             })
           }
         </div>

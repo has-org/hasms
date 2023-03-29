@@ -1,5 +1,7 @@
+import { Blog } from "./Blog";
 import { Category } from "./Category";
 import { Product } from "./Product";
+import { Tag } from "./Tag";
 
 export interface Catalogue {
     id: number;

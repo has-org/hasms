@@ -13,7 +13,7 @@ export default function AdminCataloguesPage() {
 
   useEffect(() => {
     setLoading(true)
-    fetch('/api/admin/catalogues')
+    fetch(`${process.env.API_HOST}/admin/catalogues`)
       .then((res) => res.json())
       .then((data) => {
         setCatalogues(data)

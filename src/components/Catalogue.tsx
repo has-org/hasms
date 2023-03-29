@@ -1,17 +1,11 @@
+import { Catalogue as CatalogueType } from "@/types/Catalogue";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import logo from "../../public/logo2.jpg";
 
 
-type Catalogue = {
-  id: number;
-  name: string;
-  image: string | StaticImageData;
-  type: string;
-};
-
 type CatalogueProp = {
-  catalogue: Catalogue;
+  catalogue: CatalogueType;
   primary?: boolean
 };
 
@@ -25,7 +19,7 @@ export const Catalogue: React.FC<CatalogueProp> = ({ catalogue, primary }) => {
           <Image
             className={`catalogue-img  p-0.5`}
             alt="Catalogue Image"
-            src={catalogue?.image ? catalogue.image : ''}
+            src={catalogue?.image ? `${process.env.API_IMG_HOST}${catalogue.image}` : ''}
             fill
           />
         </div>

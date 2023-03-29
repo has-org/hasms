@@ -20,7 +20,7 @@ export const Form: React.FC<Inputs> = ({ }) => {
         }
     });
     const onSubmit = (data: FieldValues) => {
-        postData('/api/admin/catalogue', data)
+        postData(`${process.env.API_HOST}/admin/catalogue`, data)
     };
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
