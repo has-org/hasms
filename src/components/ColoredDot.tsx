@@ -20,7 +20,7 @@ type ColorProp = {
 
 export const ColoredDot: React.FC<ColorProp> = ({ color }) => {
     return (
-        <Link href={`/`}>
+        // <Link href={`/`}>
             <span style={{
                 height: '20px',
                 width: '20px',
@@ -29,6 +29,6 @@ export const ColoredDot: React.FC<ColorProp> = ({ color }) => {
                 marginRight: '5px',
                 backgroundColor: color?.value ? color.value : ''
             }}></span>
-        </Link >
+        // </Link >
     );
 }

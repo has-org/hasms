@@ -5,12 +5,9 @@ import { EmblaOptionsType } from "embla-carousel-react";
 import "./embla.css";
 import "./base.css";
 import { Catalogue } from "@/components/Catalogue";
-import SearchBox from "@/components/SearchBox";
-import Link from "next/link";
-import Image, { StaticImageData } from "next/image";
+
 import { NavMenu } from "@/components/NavMenu";
 import { Catalogue as CatalogueType } from "@/types/Catalogue";
-
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,7 +32,7 @@ async function getNavMenus() {
 
 async function getCatalogues() {
   try {
-    const res = await fetch('http://localhost:8000/admin/catalogues', {
+    const res = await fetch('http://localhost:8000/catalogues', {
       method: 'GET',
     });
     if (res.status !== 200) {
@@ -47,16 +44,15 @@ async function getCatalogues() {
   }
 }
 
+
 export default async function Home() {
   const navigationMenu = await getNavMenus()
   const catalogues: CatalogueType[] = await getCatalogues()
+  const blogs = catalogues.filter((catalogue: any) => catalogue.type === 'blog')
   const PRIMARY_CATALOGUES = catalogues.filter((catalogue: any) => catalogue.primary)
   const FIRST_THREE_CATALOGUES = catalogues.slice(0, 3)
-  const LAST_THREE_CATALOGUES = catalogues.slice(3, 6)
-  console.log('catalogues', catalogues)
-  console.log('PRIMARY_CATALOGUES', PRIMARY_CATALOGUES)
-  console.log('FIRST_THREE_CATALOGUES', FIRST_THREE_CATALOGUES)
-  console.log('LAST_THREE_CATALOGUES', LAST_THREE_CATALOGUES)
+  const PRIMARY_BLOGS = blogs.filter((blog: any) => blog.primary)
+  const FIRST_THREE_BLOGS = blogs.slice(0, 3)
   return (
     <>
       <section className="sandbox__carousel">
@@ -86,12 +82,12 @@ export default async function Home() {
         </div>
         <div className="secondary-container my-3">
           <div className="flex-1">
-            <Catalogue catalogue={PRIMARY_CATALOGUES[1]} primary={PRIMARY_CATALOGUES[1]?.primary} />
+            <Catalogue catalogue={PRIMARY_BLOGS[1]} primary={PRIMARY_BLOGS[1]?.primary} />
           </div>
         </div>
         <div className="grid grid-cols-3 gap-3">
           {
-            LAST_THREE_CATALOGUES.map((catalogue, index) => {
+            FIRST_THREE_BLOGS.map((catalogue, index) => {
               return (
                 <Catalogue catalogue={catalogue} key={index} />
               )

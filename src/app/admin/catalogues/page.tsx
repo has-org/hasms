@@ -13,7 +13,7 @@ export default function AdminCataloguesPage() {
 
   useEffect(() => {
     setLoading(true)
-    fetch(`${process.env.API_HOST}/admin/catalogues`)
+    fetch(`${process.env.NEXT_PUBLIC_API_HOST}/admin/catalogues`)
       .then((res) => res.json())
       .then((data) => {
         setCatalogues(data)
@@ -27,11 +27,13 @@ export default function AdminCataloguesPage() {
     <main className="min-h-screen	flex flex-col">
       <button onClick={() => setShow(true)}>Add new catalogue</button>
       {
-        show ? (<Popup show={show} togglePopup={() => setShow(false)} >
-          <FormStyled>
-          <Form example={"asd"} exampleRequired={""}></Form>
-          </FormStyled>
-        </Popup>) : null
+        show ? (
+          <Popup show={show} togglePopup={() => setShow(false)} >
+            <FormStyled>
+              <Form></Form>
+            </FormStyled>
+          </Popup>
+        ) : null
       }
       {
         catalogues.map((catalogue: any) => {

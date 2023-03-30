@@ -1,58 +1,24 @@
+import { Product } from "@/types/Product";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
-type Color = {
-  id: number;
-  name: string;
-  value: string;
-};
-
-type Subcategory = {
-  id: number;
-  name: string;
-};
-
-type Category = {
-  id: number;
-  name: string;
-  subcategory: Subcategory;
-};
-
-type Product = {
-  id: number;
-  name: string;
-  colors: Color[];
-  price: number;
-  currency: string;
-  image: string | StaticImageData;
-  manufacturer: string;
-  category: Category;
-  variants?: Array<Variant>;
-};
-
-type ProductProp = {
+type ProductProps = {
   product: Product;
-};
-
-type Variant = {
-  id: number;
-  name: string;
-  image: string | StaticImageData;
-  colors: Color[]
 }
 
-export const ProductCard: React.FC<ProductProp> = ({ product }) => {
+
+export const ProductCard: React.FC<ProductProps> = ({ product }) => {
   return (
     <Link href={`product/${product.id}`}>
       <div className="product-card flex flex-col p-2 ">
         <div className="product-card-img-container flex relative mx-auto">
-          <Image
+          {product.image ? <Image
             className="product-card-img"
-            alt="Mountains"
+            alt="Product image"
             src={product.image}
             fill
-            style={{objectFit: 'contain'}}
-          />
+            style={{ objectFit: 'contain' }}
+          /> : 'no image'}
         </div>
 
         <div className="flex flex-col items-center justify-center mt-5 gap-y-2">

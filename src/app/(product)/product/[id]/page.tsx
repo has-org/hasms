@@ -1,21 +1,11 @@
 import { ColoredDot } from "@/components/ColoredDot";
+import { Product as ProductType } from "@/types/Product";
+import { Variant as VariantType } from "@/types/Variant";
 import Image, { StaticImageData } from "next/image";
 
-type Variant = {
-  id: number;
-  name: string;
-  image: string | StaticImageData;
-  colors: Color[];
-};
 
-type Color = {
-  id: number;
-  name: string;
-  value?: string;
-  image?: string | StaticImageData;
-};
 
-async function getData(id: number) {
+async function getProduct(id: number) {
   try {
 
     const res = await fetch(`http://localhost:8000/product/${id}`, {
@@ -33,29 +23,28 @@ async function getData(id: number) {
 }
 
 export default async function Product({ params: { id } }: any) {
-  const product = await getData(id);
+  const product = await getProduct(id);
+  console.log(product, id)
   if (!product) {
     return <div>Product not found</div>;
   }
   return (
     <main className="min-h-screen">
-      <div className="flex pt-4 w-full">
-        <span className="text-3xl">
-          Katalog KACIGE STA GOD
-        </span>
-      </div>
+
       {/* tags */}
       <div className="flex">
         <div className="thumbnail-list-container mr-2">
           <div className="thumbnail-list-img-wrap flex relative">
-            <Image className="thumbnail-list-img p-0.5" src={product.image} fill alt={'blabla'}></Image>
+            {
+              product?.image ? <Image className="thumbnail-list-img p-0.5" src={product.image} fill alt={'blabla'}></Image> : 'no image'
+            }
           </div>
 
         </div>
         <div className="gallery-preview-container mr-2">
           <div className="gallery-preview-img-wrap flex relative">
-            <Image className="gallery-preview-img" src={product.image} fill alt={'blabla'}></Image>
-          </div>
+            {product?.image ? <Image className="gallery-preview-img" src={product.image} fill alt={'blabla'}></Image> : 'no image'
+            }          </div>
 
         </div>
         <div className="flex flex-col product-details">
@@ -90,7 +79,7 @@ export default async function Product({ params: { id } }: any) {
             </span>
           </div>
           {
-            product.variants ? product.variants.map((variant: Variant, index: number) => {
+            product.variants ? product.variants.map((variant: VariantType, index: number) => {
               return (
                 <div key={index} className="product-colors flex flex-col">
 
@@ -128,14 +117,15 @@ export default async function Product({ params: { id } }: any) {
               </select>
 
             </label> */}
-            {product.size}</div>
+            {product.size}
+            </div>
           <div>Opis: {product.description}</div>
           <div>Napomena: {product.note}</div>
           <button className="bg-red-200" type="submit">Naruci </button>
 
 
           <div>Izdvajamo iz ponude:
-            {product.relatedProducts?.map((relatedProduct: Product, index: number) => {
+            {product.relatedProducts?.map((relatedProduct: ProductType, index: number) => {
               return (
                 <div key={index}>
                   <p>{relatedProduct.name}</p>
