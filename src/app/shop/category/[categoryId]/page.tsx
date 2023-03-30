@@ -1,25 +1,10 @@
 import { ProductCard } from "@/components/ProductCard";
 import { StaticImageData } from "next/image";
 
-type Product = {
-  id: number;
-  name: string;
-  price: number; currency: string; 
-  image: string | StaticImageData;
-  manufacturer: string;
-  category: {
-    id: number;
-    name: string;
-    subcategory: {
-      id: number;
-      name: string;
-    };
-  };
-}
 
 async function getData() {
   try {
-    const res = await fetch('http://localhost:8000/products', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/products`, {
       method: 'GET',
     });
     if (!res.ok) {

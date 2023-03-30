@@ -24,7 +24,6 @@ async function getProduct(id: number) {
 
 export default async function Product({ params: { id } }: any) {
   const product = await getProduct(id);
-  console.log(product, id)
   if (!product) {
     return <div>Product not found</div>;
   }

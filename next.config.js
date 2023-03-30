@@ -4,7 +4,11 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['localhost'],
+    domains: ['localhost','placehold.co'],
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+
     remotePatterns: [
       {
         protocol: 'http',
@@ -12,18 +16,15 @@ const nextConfig = {
         port: '9000',
         pathname: '/images/*',
       },
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+        port: '',
+        pathname: '/placehold.co/*',
+      },
     ],
   },
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: '/api/:path*',
-  //       destination: 'http://localhost:8000/:path*',
-  //       basePath: false,
 
-  //     },
-  //   ]
-  // },
 }
 
 module.exports = nextConfig

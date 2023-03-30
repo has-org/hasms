@@ -11,7 +11,7 @@ export const NavMenu: React.FC<NavMenuProps> = ({ navigationMenu }) => {
     <>
 
       <ul className="navigation-menu flex relative">
-        {navigationMenu.map((navItem: any, index: number) => {
+        {navigationMenu?.map((navItem: any, index: number) => {
           return (
             <MenuItems navItem={navItem} key={index} />
           );

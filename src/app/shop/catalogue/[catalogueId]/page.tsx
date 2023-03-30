@@ -5,7 +5,7 @@ import { StaticImageData } from "next/image";
 
 async function getData(catalogueId: number) {
   try {
-    const res = await fetch(`http://localhost:8000/catalogue/${catalogueId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/catalogue/${catalogueId}`, {
       method: 'GET',
       next: {
         revalidate: 10,

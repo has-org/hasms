@@ -12,14 +12,21 @@ type CatalogueProp = {
 
 
 export const Catalogue: React.FC<CatalogueProp> = ({ catalogue, primary }) => {
+  let urlString = ''
+  if ((catalogue?.type == 'category' || catalogue?.type == 'catalogue')) {
+    urlString = `/shop/${catalogue?.type}/${catalogue?.id}`
+  } else {
+    urlString = `/${catalogue?.type}/${catalogue?.id}`
+  }
   return (
-    <Link href={`/shop/${catalogue?.type}/${catalogue?.id}`}>
+
+    <Link href={urlString}>
       <div className="catalogue-container flex justify-center relative">
-        <div className={"catalogue-img-container " + (primary ? 'primary' : '') }>
+        <div className={"catalogue-img-container " + (primary ? 'primary' : '')}>
           <Image
             className={`catalogue-img  p-0.5`}
             alt="Catalogue Image"
-            src={catalogue?.image ? `${process.env.API_IMG_HOST}${catalogue.image}` : ''}
+            src={catalogue?.image ? `${process.env.API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
             fill
           />
         </div>

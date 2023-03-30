@@ -1,29 +1,12 @@
 import { ProductCard } from "@/components/ProductCard";
+import { Product as ProductType } from "@/types/Product";
 import { StaticImageData } from "next/image";
 
-type Product = {
-  id: number;
-  name: string;
-  colors: {
-    id: number;
-    name: string;
-    value: string;
-  }[];
-  price: number; currency: string; image: string | StaticImageData;
-  manufacturer: string;
-  category: {
-    id: number;
-    name: string;
-    subcategory: {
-      id: number;
-      name: string;
-    };
-  };
-}
+
 
 async function getData() {
   try {
-    const res = await fetch('http://localhost:8000/products', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/products`, {
       method: 'GET',
     });
     if (res.status !== 200) {
@@ -38,7 +21,7 @@ async function getData() {
 
 async function getNavMenus() {
   try {
-    const res = await fetch('http://localhost:8000/navigationMenus', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/navigationMenus`, {
       method: 'GET',
     });
     if (res.status !== 200) {
@@ -60,7 +43,7 @@ export default async function Shop() {
 
       <div className="flex pt-4">Katalog KACIGE INTEGRALNE</div>
       <div className="grid grid-cols-4 gap-4 mb-10">
-        {products.map((product: Product, index: number) => (
+        {products.map((product: ProductType, index: number) => (
           <ProductCard product={product} key={index} />
         ))}
       </div>
