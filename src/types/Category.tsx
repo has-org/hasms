@@ -1,3 +1,5 @@
+import { Catalogue } from "./Catalogue";
+import { NavigationMenu } from "./NavigationMenu";
 import { Product } from "./Product";
 import { Subcategory } from "./Subcategory";
 
