@@ -1,5 +1,6 @@
 import { ColoredDot } from "@/components/ColoredDot";
 import { Product as ProductType } from "@/types/Product";
+import { Size as SizeType } from "@/types/Size";
 import { Variant as VariantType } from "@/types/Variant";
 import Image, { StaticImageData } from "next/image";
 
@@ -8,7 +9,7 @@ import Image, { StaticImageData } from "next/image";
 async function getProduct(id: number) {
   try {
 
-    const res = await fetch(`http://localhost:8000/product/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/product/${id}`, {
       method: 'GET',
     });
     if (!res.ok) {
@@ -24,6 +25,8 @@ async function getProduct(id: number) {
 
 export default async function Product({ params: { id } }: any) {
   const product = await getProduct(id);
+  const productSizes: SizeType[] = product.variants[0].sizes
+  const productVariants: VariantType[] = product.variants
   if (!product) {
     return <div>Product not found</div>;
   }
@@ -48,7 +51,6 @@ export default async function Product({ params: { id } }: any) {
         </div>
         <div className="flex flex-col product-details">
           <h1 className="product-name">{product.name}</h1>
-          {/* <div>{product.tags}</div> TODO */}
           <div className="product-brand flex gap-x-2">
             <span className="product-brand-key">
               Brand
@@ -77,47 +79,35 @@ export default async function Product({ params: { id } }: any) {
               </span>
             </span>
           </div>
-          {
-            product.variants ? product.variants.map((variant: VariantType, index: number) => {
-              return (
-                <div key={index} className="product-colors flex flex-col">
 
-                  <span className="product-colors-key">Colors </span>
-
-                  <span className="product-colors-value">
-
-                    {variant.colors?.map((color, index) => {
-                      return (
-                        <div key={index} className="product-color-wrap">
-                          <ColoredDot color={color} />
-                        </div>
-                      )
-                    })}
+          <div className="variants-wrap">
+            <span className="variants-colors-title flex gap-x-2">Colors </span>
+            {
+              productVariants?.map((variant: VariantType, index: number) => {
+                return (
+                  <span key={index} className="variant-color-wrap">
+                    <ColoredDot color={variant.color} />
                   </span>
+                )
+              })
+            }
+          </div>
 
-                </div>
-              )
-            })
-              : null
-          }
-          <div className="product-size">
-            {/* <label>
+          <div className="product-size flex gap-x-2">
+            <span className="variants-colors-title flex gap-x-2">Sizes </span>
 
-              What do we eat?
-
-              <select >
-
-                <option value="fruit">Fruit</option>
-
-                <option value="vegetable">Vegetable</option>
-
-                <option value="meat">Meat</option>
-
-              </select>
-
-            </label> */}
-            {product.size}
-            </div>
+            {
+              productSizes?.map((size, index: number) => {
+                return (
+                  <span key={index} className="variant-sizes-wrap">
+                    <span>
+                      {size.name}
+                    </span>
+                  </span>
+                )
+              })
+            }
+          </div>
           <div>Opis: {product.description}</div>
           <div>Napomena: {product.note}</div>
           <button className="bg-red-200" type="submit">Naruci </button>

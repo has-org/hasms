@@ -27,7 +27,7 @@ export const ColoredDot: React.FC<ColorProp> = ({ color }) => {
                 borderRadius: '50%',
                 display: 'inline-block',
                 marginRight: '5px',
-                backgroundColor: color?.value ? color.value : ''
+                backgroundColor: color.value ? color.value : ''
             }}></span>
         // </Link >
     );

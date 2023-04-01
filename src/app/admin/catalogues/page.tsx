@@ -19,7 +19,7 @@ export default function AdminCataloguesPage() {
         setCatalogues(data)
         setLoading(false)
       })
-  }, [])
+  }, [catalogues])
 
   if (isLoading) return <p className="min-h-screen">Loading...</p>
   if (!catalogues) return <p>No data</p>

@@ -28,7 +28,7 @@ export default async function ShopLayout({
 }: {
   children: React.ReactNode;
 }) {
-const navigationMenu = await getNavMenus()
+  const navigationMenu = await getNavMenus()
 
   return (
     <html lang="en">
@@ -41,34 +41,6 @@ const navigationMenu = await getNavMenus()
         <nav className="sticky top-0 z-30">
           <Header navigationMenu={navigationMenu} />
         </nav>
-
-        <div className="sidebar hidden lg:flex lg:absolute lg:left-20 w-40 justify-center h-full">
-
-          <ul>
-            <h2>
-              Brendovi
-            </h2>
-            <li>...</li>
-            <li>...</li>
-            <li>...</li>
-            <p>Velicine</p>
-            <li>XL</li>
-            <li>XXL</li>
-            <li>L</li>
-            <li>M</li>
-            <li>X</li>
-            <p>Tagovi</p>
-            <li>M</li>
-            <li>X</li>
-            <li>M</li>
-            <li>X</li>
-            <li>M</li>
-            <li>X</li>
-            <p>Boje</p>
-            <li>Crvena</li>
-            <li>Crna</li>
-          </ul>
-        </div>
         <div className="mx-10 lg:ml-80 lg:mr-9">
           {children}
         </div>
@@ -79,3 +51,5 @@ const navigationMenu = await getNavMenus()
     </html>
   );
 }
+
+
