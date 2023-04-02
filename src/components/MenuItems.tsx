@@ -11,13 +11,13 @@ export type MenuItemProps = {
 export const MenuItems: React.FC<MenuItemProps> = ({ navItem }) => {
     const [dropdown, setDropdown] = useState(false);
     return (
-        <li className="navigation-menu-item mt-2" onMouseLeave={() => setDropdown(false)}>
+        <li className="navigation-menu-item mt-2"  onMouseEnter={() => setDropdown(true)} onMouseLeave={() => setDropdown(false)}>
             {navItem.categories?.length >= 1 ? (
                 <>
                     <button type="button" aria-haspopup="menu"
                         aria-expanded={dropdown ? "true" : "false"}
                         onClick={() => setDropdown((prev) => !prev)}
-                        onMouseEnter={() => setDropdown(true)}
+                       
                     >
                         {navItem.name}
                     </button>

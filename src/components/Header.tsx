@@ -10,7 +10,11 @@ import {
 import SearchBox from "./SearchBox";
 import Link from "next/link";
 import { NavMenu } from "@/components/NavMenu";
-export default function Header({ withNav = true, navigationMenu = [] }) {
+type HeaderProps = {
+  withNav?: boolean;
+  navigationMenu?: any;
+}
+export default function Header({ withNav, navigationMenu }: HeaderProps) {
   return (
 
     <div className="header grid grid-cols-12 items-center">

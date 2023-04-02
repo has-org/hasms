@@ -7,15 +7,15 @@ type ProductProps = {
 }
 
 
-export const ProductCard: React.FC<ProductProps> = ({ product }) => {
+export const ProductCard = ({ product }: ProductProps) => {
   return (
-    <Link href={`product/${product.id}`}>
+    <Link href={`shop/product/${product.id}`}>
       <div className="product-card flex flex-col p-2 ">
         <div className="product-card-img-container flex relative mx-auto">
-          {product.image ? <Image
+          {product?.variants[0].image ? <Image
             className="product-card-img"
             alt="Product image"
-            src={product.image}
+            src={product.variants[0].image}
             fill
             style={{ objectFit: 'contain' }}
           /> : 'no image'}

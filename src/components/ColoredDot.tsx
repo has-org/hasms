@@ -22,8 +22,8 @@ export const ColoredDot: React.FC<ColorProp> = ({ color }) => {
     return (
         // <Link href={`/`}>
             <span style={{
-                height: '20px',
-                width: '20px',
+                height: '15px',
+                width: '15px',
                 borderRadius: '50%',
                 display: 'inline-block',
                 marginRight: '5px',

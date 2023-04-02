@@ -1,4 +1,7 @@
+
+
 import { ColoredDot } from "@/components/ColoredDot";
+import { Color as ColorType } from "@/types/Color";
 import { Product as ProductType } from "@/types/Product";
 import { Size as SizeType } from "@/types/Size";
 import { Variant as VariantType } from "@/types/Variant";
@@ -25,32 +28,35 @@ async function getProduct(id: number) {
 
 export default async function Product({ params: { id } }: any) {
   const product = await getProduct(id);
-  const productSizes: SizeType[] = product.variants[0].sizes
-  const productVariants: VariantType[] = product.variants
+  const productSizes: SizeType[] = product?.variants[0]?.sizes
+  const productColors: ColorType[] = product?.variants[0]?.colors
+  const productVariants: VariantType[] = product?.variants
   if (!product) {
     return <div>Product not found</div>;
   }
   return (
     <main className="min-h-screen">
 
+
       {/* tags */}
       <div className="flex">
         <div className="thumbnail-list-container mr-2">
           <div className="thumbnail-list-img-wrap flex relative">
             {
-              product?.image ? <Image className="thumbnail-list-img p-0.5" src={product.image} fill alt={'blabla'}></Image> : 'no image'
+              product?.variants[0]?.image ? <Image className="thumbnail-list-img p-0.5" src={product.variants[0].image} fill alt={'blabla'}></Image> : 'no image'
             }
           </div>
 
         </div>
         <div className="gallery-preview-container mr-2">
           <div className="gallery-preview-img-wrap flex relative">
-            {product?.image ? <Image className="gallery-preview-img" src={product.image} fill alt={'blabla'}></Image> : 'no image'
+            {product?.variants[0]?.image ? <Image className="gallery-preview-img" src={product.variants[0].image} fill alt={'blabla'}></Image> : 'no image'
             }          </div>
 
         </div>
         <div className="flex flex-col product-details">
           <h1 className="product-name">{product.name}</h1>
+          <h2 className="product-code">{product.code}</h2>
           <div className="product-brand flex gap-x-2">
             <span className="product-brand-key">
               Brand
@@ -80,17 +86,16 @@ export default async function Product({ params: { id } }: any) {
             </span>
           </div>
 
-          <div className="variants-wrap">
+          <div className="variants-wrap flex items-center gap-x-2">
             <span className="variants-colors-title flex gap-x-2">Colors </span>
-            {
-              productVariants?.map((variant: VariantType, index: number) => {
-                return (
-                  <span key={index} className="variant-color-wrap">
-                    <ColoredDot color={variant.color} />
-                  </span>
-                )
-              })
-            }
+
+            {productColors.map((color: ColorType, index: number) => {
+              return (
+                <span key={index} className="variant-color">
+                  <ColoredDot color={color} />
+                </span>
+              )
+            })}
           </div>
 
           <div className="product-size flex gap-x-2">

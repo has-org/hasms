@@ -1,10 +1,12 @@
 'use client'
 
-import { Form, Input } from "@/components/Form";
+import { FileInput, Form, Input, Select } from "@/components/Form";
 import { FormStyled } from "@/components/FormStyled";
 import { Popup } from "@/components/Popup";
 import { useEffect, useState } from "react";
-import { Product as ProductType} from "@/types/Product";
+import { Product as ProductType } from "@/types/Product";
+import ReactSelect from "react-select";
+import { Controller, useForm } from "react-hook-form";
 
 
 
@@ -12,7 +14,12 @@ export default function AdminProductsPage() {
   const [products, setProducts] = useState<ProductType[] | null>(null)
   const [isLoading, setLoading] = useState(false)
   const [show, setShow] = useState(false)
-
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      firstName: '',
+      select: {}
+    }
+  });
   const productDefaultValues = {
     code: '',
     name: '',
@@ -31,6 +38,13 @@ export default function AdminProductsPage() {
       })
   }, [])
 
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
+
+
   const onSubmit = (data: any) => {
     console.log(data)
   }
@@ -47,32 +61,37 @@ export default function AdminProductsPage() {
               <Form defaultValues={productDefaultValues} onSubmit={onSubmit}>
                 <Input name="code" type="text" placeholder="Code" />
                 <Input name="name" type="text" placeholder="Name" />
+                <ReactSelect name="category" options={options} />
+                <FileInput name={"file-picker"} onChange={() => console.log('aasd')} />
+                <input type="submit" />
               </Form>
             </FormStyled>
           </Popup>
         ) : null
       }
-      {products ? products?.map((product) => {
-        return (
-          <div className="flex gap-x-2" key={product.id}>
-            <div>{product.id}</div>
-            <div>{product.code}</div>
-            <div>{product.name}</div>
-            <div>{product.price}</div>
-            <div>{product.currency}</div>
-            <div>{product.manufacturer}</div>
-            <div>{product.category?.name}</div>
-            <div className="flex gap-x-2">{product.tags?.map((tag, index) => {
-              return (
-                <div key={index}>
-                  {tag.name}
-                </div>
-              )
-            })}</div>
-            <div className="div">{product.variants?.length}</div>
-          </div>
-        )
-      }) : null}
-    </main>
+      {
+        products ? products?.map((product) => {
+          return (
+            <div className="flex gap-x-2" key={product.id}>
+              <div>{product.id}</div>
+              <div>{product.code}</div>
+              <div>{product.name}</div>
+              <div>{product.price}</div>
+              <div>{product.currency}</div>
+              <div>{product.manufacturer}</div>
+              <div>{product.category?.name}</div>
+              <div className="flex gap-x-2">{product.tags?.map((tag, index) => {
+                return (
+                  <div key={index}>
+                    {tag.name}
+                  </div>
+                )
+              })}</div>
+              <div className="div">{product.variants?.length}</div>
+            </div>
+          )
+        }) : null
+      }
+    </main >
   );
 }

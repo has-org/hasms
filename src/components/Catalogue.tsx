@@ -18,7 +18,6 @@ export const Catalogue: React.FC<CatalogueProp> = ({ catalogue, primary }) => {
   } else {
     urlString = `/${catalogue?.type}/${catalogue?.id}`
   }
-  console.log(`${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}`)
   return (
     <Link href={urlString}>
       <div className="catalogue-container flex justify-center relative">
