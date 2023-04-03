@@ -1,4 +1,3 @@
-'use client'
 
 /* IMPORT HOOKS AND PROPS TYPES */
 import {
@@ -12,7 +11,7 @@ import React, { useState } from "react";
 
 type FileInputProps = {
     name: string;
-    onChange: (e: any) => void
+    onChange: (e: any) => any
     ref?: any,
     isMultiple?: boolean,
     encType?: string
@@ -64,7 +63,7 @@ export const Input: React.FC<any> = ({ register, name, ...rest }) => {
 //     );
 // }
 
-export const Form: React.FC<FormInputs> = ({ defaultValues, children, onSubmit }) => {
+export const Form = ({ defaultValues, children, onSubmit }: FormInputs) => {
     const { handleSubmit, register } = useForm({ defaultValues });
 
 

@@ -17,7 +17,8 @@ export default function AdminCataloguesPage() {
     url: '',
     image: '',
     price: 0,
-    type: ''
+    type: '',
+    variants: []
   })
 
   const options = [
@@ -37,7 +38,7 @@ export default function AdminCataloguesPage() {
   }, [])
 
   const onSubmit = (data: any) => {
-    console.log(data)
+    console.log(data) 
   }
 
   if (isLoading) return <p className="min-h-screen">Loading...</p>
@@ -61,7 +62,7 @@ export default function AdminCataloguesPage() {
         ) : null
       }
       {
-        catalogues.map((catalogue: any) => {
+        catalogues?.map((catalogue: any) => {
           return (
             <div className="flex gap-x-2" key={catalogue.id}>
               <div>{catalogue.id}</div>

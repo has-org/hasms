@@ -3,8 +3,6 @@
 import { ColoredDot } from "@/components/ColoredDot";
 import { Color as ColorType } from "@/types/Color";
 import { Product as ProductType } from "@/types/Product";
-import { Size as SizeType } from "@/types/Size";
-import { Variant as VariantType } from "@/types/Variant";
 import Image, { StaticImageData } from "next/image";
 
 
@@ -27,10 +25,10 @@ async function getProduct(id: number) {
 }
 
 export default async function Product({ params: { id } }: any) {
-  const product = await getProduct(id);
-  const productSizes: SizeType[] = product?.variants[0]?.sizes
-  const productColors: ColorType[] = product?.variants[0]?.colors
-  const productVariants: VariantType[] = product?.variants
+  const product: ProductType = await getProduct(id);
+  const productSizes = product?.variants[0]?.sizes
+  const productColors = product?.variants[0]?.colors
+  const productVariants = product?.variants[0]
   if (!product) {
     return <div>Product not found</div>;
   }
@@ -43,15 +41,17 @@ export default async function Product({ params: { id } }: any) {
         <div className="thumbnail-list-container mr-2">
           <div className="thumbnail-list-img-wrap flex relative">
             {
-              product?.variants[0]?.image ? <Image className="thumbnail-list-img p-0.5" src={product.variants[0].image} fill alt={'blabla'}></Image> : 'no image'
+              productVariants?.images[0] ? <Image className="thumbnail-list-img p-0.5" src={`${process.env.NEXT_PUBLIC_API_IMG_HOST}${productVariants?.images[0]?.url}`} width={150} height={150} alt={'blabla'}></Image> : 'no image'
             }
           </div>
 
         </div>
         <div className="gallery-preview-container mr-2">
           <div className="gallery-preview-img-wrap flex relative">
-            {product?.variants[0]?.image ? <Image className="gallery-preview-img" src={product.variants[0].image} fill alt={'blabla'}></Image> : 'no image'
-            }          </div>
+            {
+              productVariants?.images[0] ? <Image className="gallery-preview-img" src={`${process.env.NEXT_PUBLIC_API_IMG_HOST}${productVariants?.images[0]?.url}`} width={150} height={150} alt={'blabla'}></Image> : 'no image'
+            }
+          </div>
 
         </div>
         <div className="flex flex-col product-details">
@@ -66,12 +66,7 @@ export default async function Product({ params: { id } }: any) {
             </span>
           </div>
           <div className="product-model">
-            <span className="product-model-key">
-              {product.model && 'Model'}
-            </span>
-            <span className="product-model-value">
-              {product.model}
-            </span>
+
           </div>
           <div className="product-price flex gap-x-2">
 
@@ -114,7 +109,6 @@ export default async function Product({ params: { id } }: any) {
             }
           </div>
           <div>Opis: {product.description}</div>
-          <div>Napomena: {product.note}</div>
           <button className="bg-red-200" type="submit">Naruci </button>
 
 
