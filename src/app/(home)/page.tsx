@@ -1,5 +1,5 @@
 
-import { Inter } from "@next/font/google";
+import { Inter } from "next/font/google";
 import EmblaCarousel from "@/components/EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel-react";
 import "./embla.css";
