@@ -7,7 +7,7 @@ export type SubmenuDropdownProps = {
     setDropdown: Dispatch<SetStateAction<boolean>>
 }
 
-export const SubmenuDropdown: React.FC<SubmenuDropdownProps> = ({ submenus, dropdown, setDropdown }) => {
+export const SubmenuDropdown = ({ submenus, dropdown, setDropdown }: SubmenuDropdownProps) => {
     return (
         <ul className={`dropdown ${dropdown ? "show" : ""} p-1 absolute`} >
             {submenus.map((subMenuItem: any, index: number) => {

@@ -8,7 +8,7 @@ export type MenuItemProps = {
     navItem: any
 }
 
-export const MenuItems: React.FC<MenuItemProps> = ({ navItem }) => {
+export const MenuItems = ({ navItem }: MenuItemProps) => {
     const [dropdown, setDropdown] = useState(false);
     return (
         <li className="navigation-menu-item mt-2"  onMouseEnter={() => setDropdown(true)} onMouseLeave={() => setDropdown(false)}>

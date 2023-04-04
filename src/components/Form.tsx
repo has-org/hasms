@@ -18,7 +18,7 @@ type FileInputProps = {
     register?: any
 };
 
-export const FileInput: React.FC<FileInputProps> = ({ name, onChange, isMultiple, register, ...rest }) => {
+export const FileInput = ({ name, onChange, isMultiple, register, ...rest }: FileInputProps) => {
     const [images, setImages] = useState([])
 
     const handleChange = (e: any) => {
@@ -31,12 +31,12 @@ export const FileInput: React.FC<FileInputProps> = ({ name, onChange, isMultiple
         }
 
     }
-    
+
 
     return (
         <>
-        {images ? images.map(image => image) : ''}
-        <input type="file" onChange={handleChange} multiple={isMultiple} accept="image/*"  {...register(name)} {...rest} />
+            {images ? images.map(image => image) : ''}
+            <input type="file" onChange={handleChange} multiple={isMultiple} accept="image/*"  {...register(name)} {...rest} />
         </>
     );
 };

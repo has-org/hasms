@@ -5,7 +5,7 @@ type TableProps = {
     headers: Array<any>
 }
 
-const Table: React.FC<TableProps> = ({ data, headers }) => {
+const Table = ({ data, headers }: TableProps) => {
     return (
         <table>
             <thead>

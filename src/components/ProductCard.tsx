@@ -8,17 +8,20 @@ type ProductProps = {
 
 
 export const ProductCard = ({ product }: ProductProps) => {
+  console.log(product.variants[0].images[0])
+
   return (
     <Link href={`shop/product/${product.id}`}>
       <div className="product-card flex flex-col p-2 ">
         <div className="product-card-img-container flex relative mx-auto">
-          {product?.variants[0].image ? <Image
-            className="product-card-img"
-            alt="Product image"
-            src={product.variants[0].image}
-            fill
-            style={{ objectFit: 'contain' }}
-          /> : 'no image'}
+          {product.variants[0].images.length > 0 ?
+            <Image
+              className="product-card-img"
+              alt="Product image"
+              src={`${process.env.NEXT_PUBLIC_API_IMG_HOST}${product.variants[0]?.images[0].url}`}
+              fill
+              style={{ objectFit: 'contain' }}
+            /> : 'no image'}
         </div>
 
         <div className="flex flex-col items-center justify-center mt-5 gap-y-2">

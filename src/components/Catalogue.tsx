@@ -11,7 +11,7 @@ type CatalogueProp = {
 
 
 
-export const Catalogue: React.FC<CatalogueProp> = ({ catalogue, primary }) => {
+export const Catalogue = ({ catalogue, primary }: CatalogueProp) => {
   let urlString = ''
   if ((catalogue?.type == 'category' || catalogue?.type == 'catalogue')) {
     urlString = `/shop/${catalogue?.type}/${catalogue?.id}`
@@ -31,7 +31,7 @@ export const Catalogue: React.FC<CatalogueProp> = ({ catalogue, primary }) => {
         </div>
 
         <div className="absolute bottom-0 left-0 w-80 p-2 bg-gradient-to-r from-gray-50	">
-        {catalogue?.note ? catalogue.note : catalogue?.name}
+          {catalogue?.note ? catalogue.note : catalogue?.name}
         </div>
       </div>
     </Link>

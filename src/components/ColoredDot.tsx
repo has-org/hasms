@@ -18,17 +18,17 @@ type ColorProp = {
 
 
 
-export const ColoredDot: React.FC<ColorProp> = ({ color }) => {
+export const ColoredDot = ({ color }: ColorProp) => {
     return (
         // <Link href={`/`}>
-            <span style={{
-                height: '15px',
-                width: '15px',
-                borderRadius: '50%',
-                display: 'inline-block',
-                marginRight: '5px',
-                backgroundColor: color.value ? color.value : ''
-            }}></span>
+        <span style={{
+            height: '15px',
+            width: '15px',
+            borderRadius: '50%',
+            display: 'inline-block',
+            marginRight: '5px',
+            backgroundColor: color.value ? color.value : ''
+        }}></span>
         // </Link >
     );
 }

@@ -29,19 +29,18 @@ export default async function Product({ params: { id } }: any) {
   const productSizes = product?.variants[0]?.sizes
   const productColors = product?.variants[0]?.colors
   const productVariants = product?.variants[0]
+  const defaultBlackImage = productVariants.images.find((image: any) => image.name.includes('CRNA')) || productVariants.images[0]
   if (!product) {
     return <div>Product not found</div>;
   }
   return (
     <main className="min-h-screen">
 
-
-      {/* tags */}
       <div className="flex">
         <div className="thumbnail-list-container mr-2">
           <div className="thumbnail-list-img-wrap flex relative">
             {
-              productVariants?.images[0] ? <Image className="thumbnail-list-img p-0.5" src={`${process.env.NEXT_PUBLIC_API_IMG_HOST}${productVariants?.images[0]?.url}`} width={150} height={150} alt={'blabla'}></Image> : 'no image'
+              productVariants?.images[0] ? <Image className="thumbnail-list-img p-0.5" src={`${process.env.NEXT_PUBLIC_API_IMG_HOST}${defaultBlackImage.url}`} width={150} height={150} alt={'blabla'}></Image> : 'no image'
             }
           </div>
 
@@ -49,7 +48,7 @@ export default async function Product({ params: { id } }: any) {
         <div className="gallery-preview-container mr-2">
           <div className="gallery-preview-img-wrap flex relative">
             {
-              productVariants?.images[0] ? <Image className="gallery-preview-img" src={`${process.env.NEXT_PUBLIC_API_IMG_HOST}${productVariants?.images[0]?.url}`} width={150} height={150} alt={'blabla'}></Image> : 'no image'
+              productVariants?.images[0] ? <Image className="gallery-preview-img" src={`${process.env.NEXT_PUBLIC_API_IMG_HOST}${defaultBlackImage.url}`} width={150} height={150} alt={'blabla'}></Image> : 'no image'
             }
           </div>
 

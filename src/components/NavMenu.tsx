@@ -5,7 +5,7 @@ type NavMenuProps = {
   navigationMenu: any
 }
 
-export const NavMenu: React.FC<NavMenuProps> = ({ navigationMenu }) => {
+export const NavMenu = ({ navigationMenu }: NavMenuProps) => {
 
   return (
     <>

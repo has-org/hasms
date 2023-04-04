@@ -38,7 +38,7 @@ export const PrevButton: React.FC<PrevNextButtonPropType> = (props) => {
   )
 }
 
-export const NextButton: React.FC<PrevNextButtonPropType> = (props) => {
+export const NextButton = (props: PrevNextButtonPropType) => {
   const { enabled, onClick } = props
 
   return (
