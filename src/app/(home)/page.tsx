@@ -1,8 +1,5 @@
 
 import { Inter } from "next/font/google";
-import EmblaCarousel from "@/components/EmblaCarousel";
-import { EmblaOptionsType } from "embla-carousel-react";
-import "./embla.css";
 import "./base.css";
 import { Catalogue } from "@/components/Catalogue";
 import { NavMenu } from "@/components/NavMenu";
@@ -10,11 +7,7 @@ import { Catalogue as CatalogueType } from "@/types/Catalogue";
 import { Cooperator as CooperatorType } from "@/types/Cooperator";
 import Link from "next/link";
 import Image from "next/image";
-
-const inter = Inter({ subsets: ["latin"] });
-const OPTIONS: EmblaOptionsType = {};
-const SLIDE_COUNT = 2;
-const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
+import { Carousel } from "@/components/UI/Carousel";
 
 
 async function getNavMenus() {
@@ -39,7 +32,6 @@ async function getCatalogues() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/catalogues`, {
       method: 'GET',
       next: {
-        revalidate: 10,
       }
     });
     if (res.status !== 200) {
@@ -55,7 +47,6 @@ async function getCooperators() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/cooperators`, {
       method: 'GET',
       next: {
-        revalidate: 10,
       }
     });
     if (!res.ok) {
@@ -79,47 +70,53 @@ export default async function Home() {
   const FIRST_THREE_BLOGS = blogs?.slice(0, 3)
   return (
     <>
-      <section className="sandbox__carousel">
-        <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+      <section className="carousel overflow-hidden">
+        <div className="div h-full w-full relative flex items-center justify-center">
 
-      </section>
-      <div className="navigation-bar-container flex justify-center">
-        <NavMenu navigationMenu={navigationMenu} />
-      </div>
-      <div className="px-2 lg:px-60">
-
-        <div className="primary-container flex my-3">
-          <div className="flex-1">
-            {PRIMARY_CATALOGUES && <Catalogue catalogue={PRIMARY_CATALOGUES[0]} primary />
-            }          </div>
+          <Carousel />
         </div>
-        <div className="grid grid-cols-3 gap-3">
+      </section>
+      <section className="relative">
+        <div className="navigation-bar-container flex justify-center">
+          {/* <NavMenu navigationMenu={navigationMenu} /> */}
+        </div>
+      </section>
+      <section className="main-section">
+        <div className="px-2 lg:px-60">
+          <div className="primary-container flex my-3">
+            <div className="flex-1">
+              {PRIMARY_CATALOGUES && <Catalogue catalogue={PRIMARY_CATALOGUES[0]} primary />}
+            </div>
+          </div>
+
           {FIRST_THREE_CATALOGUES &&
             FIRST_THREE_CATALOGUES.map((catalogue: CatalogueType, index: number) => {
               return (
-                <div className="div" key={index}>
+                <div className="catalogue-item" key={index}>
                   <Catalogue catalogue={catalogue} />
                 </div>
               )
             })
           }
-        </div>
-        <div className="secondary-container my-3">
-          <div className="flex-1">
-            {PRIMARY_BLOGS && <Catalogue catalogue={PRIMARY_BLOGS[0]} primary />
-            }          </div>
-        </div>
-        <div className="grid grid-cols-3 gap-3">
-          {FIRST_THREE_BLOGS &&
-            FIRST_THREE_BLOGS.map((catalogue, index) => {
-              return (
-                <Catalogue catalogue={catalogue} key={index} />
-              )
-            })
-          }
-        </div>
 
-      </div>
+          <div className="secondary-container my-3">
+            <div className="flex-1">
+              {PRIMARY_BLOGS && <Catalogue catalogue={PRIMARY_BLOGS[0]} primary />}
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-3">
+            {FIRST_THREE_BLOGS &&
+              FIRST_THREE_BLOGS.map((catalogue, index) => {
+                return (
+                  <Catalogue catalogue={catalogue} key={index} />
+                )
+              })
+            }
+          </div>
+
+        </div>
+      </section>
+
       <section className='cooperation-section'>
         <div className='cooperation-section-content'>
           {cooperators.length > 1 && cooperators.map((cooperator, index) => {

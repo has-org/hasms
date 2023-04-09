@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
+import { NavMenu } from "@/components/NavMenu";
 // Tell Font Awesome to skip adding the CSS automatically
 // since it's already imported above
 config.autoAddCss = false;
@@ -38,12 +39,15 @@ export default async function ShopLayout({
       */}
       <head />
       <body>
-        <nav className="sticky top-0 z-30">
-          <Header navigationMenu={navigationMenu} />
+        <nav className='sticky top-0 z-30'>
+          <Header>
+            <NavMenu navigationMenu={navigationMenu} />
+          </Header>
         </nav>
-        <div className="mx-10 lg:ml-80 lg:mr-9">
+        <main>
           {children}
-        </div>
+        </main>
+
         <footer>
           <Footer />
         </footer>

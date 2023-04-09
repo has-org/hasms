@@ -11,7 +11,7 @@ export type MenuItemProps = {
 export const MenuItems = ({ navItem }: MenuItemProps) => {
     const [dropdown, setDropdown] = useState(false);
     return (
-        <li className="navigation-menu-item mt-2"  onMouseEnter={() => setDropdown(true)} onMouseLeave={() => setDropdown(false)}>
+        <li className="navigation-menu-item flex items-center"  onMouseEnter={() => setDropdown(true)}  onMouseLeave={() => setDropdown(false)}>
             {navItem.categories?.length >= 1 ? (
                 <>
                     <button type="button" aria-haspopup="menu"

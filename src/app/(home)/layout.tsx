@@ -1,7 +1,6 @@
 import './globals.scss'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import StyledComponentsRegistry from './registry';
 
 // import Font Awesome CSS
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -19,17 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      <body>
-        <nav className='sticky top-0 z-30'>
-          <Header withNav={false} />
+      <body  className="scroll-smooth overflow-hidden">
+        <nav className='top-0 z-30'>
+          <Header />
         </nav>
-        <main className="scroll-smooth">
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>;
+        <main className="scroll-smooth ">
+          {children}
         </main>
         <footer>
           <Footer />

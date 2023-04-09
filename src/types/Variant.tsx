@@ -11,7 +11,7 @@ export interface Variant {
   product_id: number;
   images: Image[];
   is_available: boolean;
-  colors: Color;
+  colors: Color[];
   sizes: Size[];
   tags: Tag[];
 }

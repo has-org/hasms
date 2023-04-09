@@ -214,4 +214,6 @@
         'Segoe UI Emoji', 'Segoe UI Symbol';
     }
   }
-  
+  section{
+    position: relative;
+  }

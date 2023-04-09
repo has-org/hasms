@@ -8,13 +8,12 @@ type ProductProps = {
 
 
 export const ProductCard = ({ product }: ProductProps) => {
-  console.log(product.variants[0].images[0])
 
   return (
     <Link href={`shop/product/${product.id}`}>
       <div className="product-card flex flex-col p-2 ">
         <div className="product-card-img-container flex relative mx-auto">
-          {product.variants[0].images.length > 0 ?
+          {product.variants[0].images?.length > 0 ?
             <Image
               className="product-card-img"
               alt="Product image"

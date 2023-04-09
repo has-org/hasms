@@ -39,14 +39,13 @@ export default async function Shop() {
 
   if (!products) return <div>Products not found</div>;
   return (
-    <main className="min-h-screen	 flex flex-col font-serif">
-
+    <div className="mx-10 lg:ml-80 lg:mr-9 min-h-screen	 flex flex-col font-serif">
       <div className="flex pt-4">Katalog KACIGE INTEGRALNE</div>
       <div className="grid grid-cols-4 gap-4 mb-10">
         {products.map((product: ProductType, index: number) => (
           <ProductCard product={product} key={index} />
         ))}
       </div>
-    </main>
+    </div>
   );
 }

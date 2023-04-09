@@ -9,13 +9,13 @@ export type SubmenuDropdownProps = {
 
 export const SubmenuDropdown = ({ submenus, dropdown, setDropdown }: SubmenuDropdownProps) => {
     return (
-        <ul className={`dropdown ${dropdown ? "show" : ""} p-1 absolute`} >
+        <ul className={`dropdown ${dropdown ? "show" : "hide"}`} >
             {submenus.map((subMenuItem: any, index: number) => {
                 return (
                     <Link href={subMenuItem.url ? subMenuItem.url : ''} key={index}>
                         <span
                             key={index}
-                            className="menu-item flex flex-col "
+                            className="menu-item flex flex-col p-1"
                         >
                             {subMenuItem.name}
                         </span>

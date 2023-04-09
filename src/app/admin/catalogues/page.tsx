@@ -62,7 +62,7 @@ export default function AdminCataloguesPage() {
         ) : null
       }
       {
-        catalogues?.map((catalogue: any) => {
+        catalogues.map((catalogue: any) => {
           return (
             <div className="flex gap-x-2" key={catalogue.id}>
               <div>{catalogue.id}</div>
