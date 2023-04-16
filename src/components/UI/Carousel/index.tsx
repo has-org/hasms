@@ -3,22 +3,19 @@ import * as React from "react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { images } from "./imageData";
-
 import Box from "@/components/MUI/Box";
-
 function wrap(min: number, max: number, value: number) {
     const rangeSize = max - min;
-  
+
     const mod = (value - min) % rangeSize;
     const wrapped = mod < 0 ? mod + rangeSize : mod;
-    
-    return wrapped + min;
-  }
 
+    return wrapped + min;
+}
 const variants = {
     enter: (direction: number) => {
         return {
-            x: direction > 0 ? 100 : -1000,
+            x: direction > 0 ? 1000 : -1000,
             opacity: 0,
         };
     },
@@ -63,9 +60,10 @@ export const Carousel = () => {
 
     return (
         <>
-            <AnimatePresence initial={false} custom={direction} onExitComplete={() => null}>
-
+            <AnimatePresence initial={false} custom={direction} onExitComplete={() => { }}>
+                <Box sx={{ display: 'flex', width: '100%', height: '85dvh', justifyContent: 'center', position: 'relative' }}>
                     <motion.img
+                        className="w-screen"
                         key={page}
                         src={images[imageIndex]}
                         custom={direction}
@@ -74,7 +72,7 @@ export const Carousel = () => {
                         animate="center"
                         exit="exit"
                         transition={{
-                            x: { type: "spring", stiffness: 500, damping: 100 },
+                            x: { type: "spring", stiffness: 300, damping: 30 },
                             opacity: { duration: 0.2 }
                         }}
                         drag="x"
@@ -91,8 +89,14 @@ export const Carousel = () => {
                         }}
                     />
 
+                </Box>
             </AnimatePresence>
-
+            <div className="next absolute top-10 right-10" onClick={() => paginate(1)}>
+                {"‣"}
+            </div>
+            <div className="prev absolute top-10 left-10" onClick={() => paginate(-1)}>
+                {"‣"}
+            </div>
         </>
     );
 };

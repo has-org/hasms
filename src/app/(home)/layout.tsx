@@ -11,14 +11,15 @@ import Link from 'next/link';
 // since it's already imported above
 config.autoAddCss = false;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="en">
-      <body  className="scroll-smooth overflow-hidden">
+      <body className="scroll-smooth">
         <nav className='top-0 z-30'>
           <Header />
         </nav>

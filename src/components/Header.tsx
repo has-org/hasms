@@ -1,18 +1,22 @@
 
+import { NavigationMenu as NavigationMenuType } from "@/types/NavigationMenu";
 import SearchAppBar from "./MUI/SearchAppBar";
 
 
 type HeaderProps = {
   children?: React.ReactNode
+  sticky?: boolean
+  navigationMenu?: NavigationMenuType
 }
-const Header = ({ children }: HeaderProps) => {
+
+
+
+const Header =  ({ navigationMenu, children, sticky }: HeaderProps) => {
 
   return (
-
-    <div className="header">
-      <SearchAppBar />
+    <div className="header ">
+      <SearchAppBar navMenu={navigationMenu} sticky={sticky}/>
     </div>
-
   );
 }
 export default Header;

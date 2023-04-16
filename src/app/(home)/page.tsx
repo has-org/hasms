@@ -8,30 +8,15 @@ import { Cooperator as CooperatorType } from "@/types/Cooperator";
 import Link from "next/link";
 import Image from "next/image";
 import { Carousel } from "@/components/UI/Carousel";
+import GridCatalogueSection from "@/components/MUI/GridCatalogueSection";
 
-
-async function getNavMenus() {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/navigationMenus`, {
-      method: 'GET',
-      next: {
-        revalidate: 10,
-      }
-    });
-    if (res.status !== 200) {
-      throw new Error('Failed to fetch data');
-    }
-    return res.json();
-  } catch (e) {
-    return null
-  }
-}
 
 async function getCatalogues() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/catalogues`, {
       method: 'GET',
       next: {
+        revalidate: 1,
       }
     });
     if (res.status !== 200) {
@@ -58,68 +43,49 @@ async function getCooperators() {
   }
 }
 
+async function getNavMenus() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/navigationMenus`, {
+      method: 'GET',
+      next: {
+      }
+    });
+    if (res.status !== 200) {
+      throw new Error('Failed to fetch data');
+    }
+    return res.json();
+  } catch (e) {
+    return null
+  }
+}
 
 export default async function Home() {
-  const navigationMenu = await getNavMenus()
-  const catalogues: CatalogueType[] = await getCatalogues()
+  const data: CatalogueType[] = await getCatalogues()
   const cooperators: CooperatorType[] = await getCooperators()
-  const blogs = catalogues?.filter((catalogue: CatalogueType) => catalogue.type === 'blog')
-  const PRIMARY_CATALOGUES = catalogues?.filter((catalogue: CatalogueType) => catalogue.primary)
-  const FIRST_THREE_CATALOGUES = catalogues?.slice(0, 3)
-  const PRIMARY_BLOGS = blogs?.filter((blog: any) => blog.primary)
-  const FIRST_THREE_BLOGS = blogs?.slice(0, 3)
+  const catalogues = data?.filter((catalogue) => catalogue.type == 'catalogue')
+  const blogs = data?.filter((catalogue) => catalogue.type == 'blog')
+  const categories = data?.filter((catalogue) => catalogue.type == 'category')
+  const navigationMenu = await getNavMenus()
+
   return (
     <>
       <section className="carousel overflow-hidden">
-        <div className="div h-full w-full relative flex items-center justify-center">
-
-          <Carousel />
-        </div>
+        <Carousel />
       </section>
-      <section className="relative">
-        <div className="navigation-bar-container flex justify-center">
-          {/* <NavMenu navigationMenu={navigationMenu} /> */}
-        </div>
-      </section>
-      <section className="main-section">
-        <div className="px-2 lg:px-60">
-          <div className="primary-container flex my-3">
-            <div className="flex-1">
-              {PRIMARY_CATALOGUES && <Catalogue catalogue={PRIMARY_CATALOGUES[0]} primary />}
-            </div>
-          </div>
+      <div className="navigation-bar-container flex justify-center">
+        <NavMenu navigationMenu={navigationMenu} />
+      </div>
 
-          {FIRST_THREE_CATALOGUES &&
-            FIRST_THREE_CATALOGUES.map((catalogue: CatalogueType, index: number) => {
-              return (
-                <div className="catalogue-item" key={index}>
-                  <Catalogue catalogue={catalogue} />
-                </div>
-              )
-            })
-          }
-
-          <div className="secondary-container my-3">
-            <div className="flex-1">
-              {PRIMARY_BLOGS && <Catalogue catalogue={PRIMARY_BLOGS[0]} primary />}
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-3">
-            {FIRST_THREE_BLOGS &&
-              FIRST_THREE_BLOGS.map((catalogue, index) => {
-                return (
-                  <Catalogue catalogue={catalogue} key={index} />
-                )
-              })
-            }
-          </div>
-
-        </div>
+      <section className="relative xs:px-6 sm:px-6 md:px-4 lg:px-20 overflow-hidden">
+        <GridCatalogueSection catalogues={catalogues} title="Akcije" />
+        <GridCatalogueSection catalogues={blogs} title="Blogovi" />
+        <GridCatalogueSection catalogues={catalogues} title="Aktuelno" />
+        <GridCatalogueSection catalogues={categories} title="Kategorije" />
       </section>
 
       <section className='cooperation-section'>
         <div className='cooperation-section-content'>
-          {cooperators.length > 1 && cooperators.map((cooperator, index) => {
+          {cooperators?.length > 1 && cooperators.map((cooperator, index) => {
             return (
               <div key={index} className="cooperator-wrap relative">
                 <Link href={`/`}>
