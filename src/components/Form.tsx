@@ -5,8 +5,10 @@ import {
 } from 'react-hook-form';
 
 import { Product as ProductType } from "@/types/Product";
+import { Email as EmailType } from "@/types/Email";
 import { postData } from "utils/postData";
 import React, { useState } from "react";
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 
 
 type FileInputProps = {
@@ -43,12 +45,15 @@ export const FileInput = ({ name, onChange, isMultiple, register, ...rest }: Fil
 
 type FormInputs = {
     children: React.ReactNode
-    defaultValues: ProductType
+    defaultValues: ProductType | EmailType
     onSubmit: any
 };
 
-export const Input: React.FC<any> = ({ register, name, ...rest }) => {
+export const Input = ({ register, name, ...rest }: any) => {
     return <input {...register(name)} {...rest} />;
+}
+export const TextArea = ({ register, name, ...rest }: any) => {
+    return <textarea {...register(name)} {...rest} />;
 }
 
 // export const Select: React.FC<any> = ({ register, options, name, ...rest }) => {
@@ -82,7 +87,6 @@ export const Form = ({ defaultValues, children, onSubmit }: FormInputs) => {
                         : child;
                 })
                 : children}
-            <button type="submit">Submit</button>
         </form>
     );
 }

@@ -1,6 +1,5 @@
 import { Catalogue as CatalogueType } from "@/types/Catalogue";
 import { ProductCard } from "@/components/ProductCard";
-import { StaticImageData } from "next/image";
 
 
 async function getData(catalogueId: number) {
@@ -21,34 +20,12 @@ async function getData(catalogueId: number) {
   }
 }
 export default async function ShopCatalogue({ params: { catalogueId } }: any) {
+
   const [catalogue]: [catalogue: CatalogueType] = await getData(catalogueId);
   if (!catalogue) return <div>catalogue not found</div>;
   return (
     <main className="min-h-screen	 flex flex-col">
-      <div className="flex flex-col gap-2 pt-4">
-        <span>
-          ID: {catalogue.id}
-        </span>
-        <span>
-          Name: {catalogue.name}
-        </span>
-        <span>
-          Type: {catalogue.type}
-        </span>
-        <span>
-          Is primary: {JSON.stringify(catalogue.primary)}
-        </span>
-
-        {
-          catalogue?.products ? catalogue.products.map((product, i) => {
-            return <ProductCard product={product} key={i} />
-          }) : null
-
-        }
-
-
-      </div>
-
+      
     </main>
   );
 }

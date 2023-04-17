@@ -23,10 +23,10 @@ export default async function RootLayout({
         <nav className='top-0 z-30'>
           <Header />
         </nav>
-        <main className="scroll-smooth ">
+        <main className="scroll-smooth">
           {children}
         </main>
-        <footer>
+        <footer className='mt-20'>
           <Footer />
         </footer>
       </body>

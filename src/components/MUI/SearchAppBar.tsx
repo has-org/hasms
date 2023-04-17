@@ -62,7 +62,48 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const list = (handleClick: any, listOpen: boolean) => (
+  <Box
+    role="presentation"
 
+  >
+    <List
+      sx={{ width: '100%', bgcolor: 'background.paper' }}
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+    >
+      <ListItemButton>
+        <ListItemIcon>
+          <SendIcon />
+        </ListItemIcon>
+        <ListItemText primary="Sent mail" />
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemIcon>
+          <DraftsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Drafts" />
+      </ListItemButton>
+      <ListItemButton onClick={handleClick}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary="Inbox" />
+        {listOpen ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={listOpen} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <StarBorder />
+            </ListItemIcon>
+            <ListItemText primary="Starred" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+    </List>
+  </Box>
+);
 
 
 const SearchAppBar = ({ navMenu, sticky }: { navMenu: any, sticky?: boolean }) => {
@@ -84,50 +125,6 @@ const SearchAppBar = ({ navMenu, sticky }: { navMenu: any, sticky?: boolean }) =
   const handleClick = () => {
     toggleListOpen()
   }
-
-  const list = () => (
-    <Box
-      role="presentation"
-
-    >
-      <List
-        sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-        component="nav"
-        aria-labelledby="nested-list-subheader"
-      >
-        <ListItemButton>
-          <ListItemIcon>
-            <SendIcon />
-          </ListItemIcon>
-          <ListItemText primary="Sent mail" />
-        </ListItemButton>
-        <ListItemButton>
-          <ListItemIcon>
-            <DraftsIcon />
-          </ListItemIcon>
-          <ListItemText primary="Drafts" />
-        </ListItemButton>
-        <ListItemButton onClick={handleClick}>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Inbox" />
-          {listOpen ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
-        <Collapse in={listOpen} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <StarBorder />
-              </ListItemIcon>
-              <ListItemText primary="Starred" />
-            </ListItemButton>
-          </List>
-        </Collapse>
-      </List>
-    </Box>
-  );
-
 
 
   return (
@@ -154,7 +151,7 @@ const SearchAppBar = ({ navMenu, sticky }: { navMenu: any, sticky?: boolean }) =
           open={drawerOpen}
           onClose={toggleDrawer(false)}
         >
-          {list()}
+          {list(handleClick, listOpen)}
         </Drawer>
         <Search theme={theme}>
           <SearchIconWrapper>

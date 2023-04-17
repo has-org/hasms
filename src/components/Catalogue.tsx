@@ -28,24 +28,18 @@ export const Catalogue = ({ catalogue }: CatalogueProp) => {
     }}
     >
       <Link href={`${urlString}/${encodeURIComponent(catalogue.id)}`} >
-        {/* <Card elevation={0}  >
-          <CardMedia sx={{ position: 'relative' }}>
-            <Image
-              src={catalogue?.image ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
-              width={200}
-              height={catalogue?.primary ? 200 : 100}
-              alt="Catalogue image"
-            />
-          </CardMedia>
-        </Card > */}
-        
         <CardMedia sx={{ position: 'relative' }}>
           <Image
             src={catalogue?.image ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
-            width={catalogue.primary ? 550 : 250}
+            width={catalogue.primary ? 450 : 200}
             height={catalogue.primary ? 400 : 150}
+            style={{
+              width: catalogue.primary ? 450 : 200,
+              height: catalogue.primary ? 450 : 200,
+              objectFit: 'cover',
+              borderRadius: '10px',
+            }}
             alt="Catalogue image"
-            style={{ objectFit: 'cover' }}
           />
         </CardMedia>
       </Link>
@@ -53,51 +47,3 @@ export const Catalogue = ({ catalogue }: CatalogueProp) => {
     </Box >
   );
 }
-
-
-{/* <Box sx={{ position: 'relative', height: '100px', width: '150px', objectFit: 'cover' }}>
-          <Image
-            src={catalogue?.image ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
-            alt="green iguana"
-            fill
-          >
-
-          </Image>
-            </Box> */}
-{/* <CardMedia
-            component="img"
-            src={catalogue?.image ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
-            alt="green iguana"
-            sx={{
-              border: 'none',
-            }}
-          /> */}
-
-{/* <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Lizard
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over 6,000
-              species, ranging across all continents except Antarctica
-            </Typography>
-          </CardContent> */}
-
-      //     <CardMedia sx={{ position: 'relative', width: '768px', height: catalogue.primary ? '500px' : '250px' }}>
-      //     <Image
-      //       src={catalogue?.image ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
-      //       fill
-      //       alt="Catalogue image"
-      //       style={{ objectFit: 'cover' }}
-      //     />
-      // </CardMedia>
-
-    //   <CardMedia sx={{ position: 'relative' }}>
-    //   <Image
-    //     src={catalogue?.image ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
-    //     width={catalogue.primary ? 768 : 500}
-    //     height={catalogue.primary ? 400 : 250}
-    //     alt="Catalogue image"
-    //     style={{ objectFit: 'cover' }}
-    //   />
-    // </CardMedia>

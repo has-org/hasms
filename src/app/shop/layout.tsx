@@ -42,11 +42,11 @@ export default async function ShopLayout({
         <nav className='sticky top-0 z-30'>
           <Header sticky />
         </nav>
-        <main>
+        <main className="mt-20">
           {children}
         </main>
 
-        <footer>
+        <footer className="mt-20">
           <Footer />
         </footer>
       </body>
