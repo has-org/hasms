@@ -8,7 +8,7 @@ type ProductProps = {
 
 
 export const ProductCard = ({ product }: ProductProps) => {
-
+  if (!product) return <>No product</>
   return (
     <Link href={`shop/product/${product.id}`}>
       <div className="product-card flex flex-col p-2 ">
@@ -26,7 +26,7 @@ export const ProductCard = ({ product }: ProductProps) => {
         <div className="flex flex-col items-center justify-center mt-5 gap-y-2">
           <h2 className="text-black-400 text-center text-xl font-serif font-bold">{product.name}</h2>
           <ul className="">
-            {product.variants?.map((variant, index) => {
+            {product.variants?.map((variant) => {
               return variant.colors?.map((color, index) => {
                 return (
                   <div key={index}>

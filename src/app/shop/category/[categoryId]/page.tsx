@@ -2,10 +2,13 @@ import { ProductCard } from "@/components/ProductCard";
 import { StaticImageData } from "next/image";
 
 
-async function getData() {
+async function getData(categoryId: number) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/products`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/category/${categoryId}`, {
       method: 'GET',
+      next: {
+        revalidate: 10,
+      }
     });
     if (!res.ok) {
       throw new Error('Failed to fetch data');
@@ -17,13 +20,16 @@ async function getData() {
   }
 }
 export default async function ShopCategory({ params: { categoryId } }: any) {
-  const products = await getData();
-  if (!products) return <div>Products not found</div>;
+  const category = await getData(parseInt(categoryId));
+  if (!category) return <div>Category not found</div>;
   return (
-    <main className="min-h-screen	 flex flex-col">
+    <main className="min-h-screen	 flex">
+      {
+        category.products?.map((product: any, index: number) => (
+          <ProductCard product={product} key={index} />
+        ))
+      }
 
-      <div className="flex pt-4">aaa{categoryId}</div>
-    
     </main>
   );
 }
