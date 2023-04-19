@@ -48,6 +48,7 @@ async function getNavMenus() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/navigationMenus`, {
       method: 'GET',
       next: {
+        revalidate: 1,
       }
     });
     if (res.status !== 200) {
@@ -72,9 +73,10 @@ export default async function Home() {
       <section className="carousel overflow-hidden">
         <Carousel />
       </section>
-      <div className="navigation-bar-container flex justify-center">
+
+      <section className="navigation-bar-container">
         <NavMenu navigationMenu={navigationMenu} />
-      </div>
+      </section>
 
       <section className="relative xs:px-6 sm:px-6 md:px-4 lg:px-20 overflow-hidden">
         <GridCatalogueSection catalogues={catalogues} title="Akcije" />
@@ -88,7 +90,7 @@ export default async function Home() {
           {cooperators?.length > 1 && cooperators.map((cooperator, index) => {
             return (
               <div key={index} className="cooperator-wrap relative">
-                <Link href={`/`}>
+                {/* <Link href={`/`}> */}
                   <Image
                     className="logo-img"
                     alt="Cooperator Logo"
@@ -96,7 +98,7 @@ export default async function Home() {
                     fill
                     style={{ objectFit: 'contain' }}
                   />
-                </Link>
+                {/* </Link> */}
               </div>
             )
           })}

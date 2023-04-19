@@ -51,6 +51,7 @@ export default function Footer() {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2} sx={{
         backgroundColor: 'black', padding: '2em',
+        maxWidth: '100%',
         '@media (max-width:600px)': {
           padding: '0.7em',
         },

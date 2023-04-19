@@ -40,7 +40,7 @@ export default async function ShopLayout({
       <head />
       <body>
         <nav className='sticky top-0 z-30'>
-          <Header sticky />
+          <Header sticky navigationMenu={navigationMenu} />
         </nav>
         <main className="mt-20">
           {children}

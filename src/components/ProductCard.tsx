@@ -18,8 +18,9 @@ export const ProductCard = ({ product }: ProductProps) => {
               className="product-card-img"
               alt="Product image"
               src={`${process.env.NEXT_PUBLIC_API_IMG_HOST}${product.variants[0]?.images[0].url}`}
-              fill
-              style={{ objectFit: 'contain' }}
+              width={200}
+              height={200}
+              style={{ objectFit: 'cover' }}
             /> : 'no image'}
         </div>
 

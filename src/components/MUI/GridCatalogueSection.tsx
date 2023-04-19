@@ -39,11 +39,11 @@ const GridCatalogueSection = ({ catalogues, title, additionalRow }: { catalogues
     const testCatalog = secondaryCatalogues.slice(0, 2)
     const testCatalog1 = secondaryCatalogues.slice(2, 4)
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <Typography variant="h4" component="h2" className="text-left text-3xl font-bold text-gray-800 mt-10 mb-5">
+        <Box sx={{ flexGrow: 1, overflow: 'hidden' }}>
+            <Typography variant="h4" component="h2" className="" >
                 {title}
             </Typography>
-            <Grid container>
+            <Grid container >
                 <Grid item xs={12} sm={12} md={6} lg={6} >
                     <Item elevation={0}>
                         <Catalogue catalogue={primaryCatalogue} />
@@ -51,10 +51,10 @@ const GridCatalogueSection = ({ catalogues, title, additionalRow }: { catalogues
                 </Grid>
                 <Grid item xs={12} sm={12} md={6} lg={6}>
                     <Grid container style={{ gap: '2em', }}>
-                        <Grid container spacing={2}>
+                        <Grid container>
                             <FormRow secondaryCatalogues={testCatalog} />
                         </Grid>
-                        <Grid container spacing={2}>
+                        <Grid container>
                             <FormRow secondaryCatalogues={testCatalog1} />
                         </Grid>
                     </Grid>

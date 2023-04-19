@@ -6,7 +6,7 @@ import SearchAppBar from "./MUI/SearchAppBar";
 type HeaderProps = {
   children?: React.ReactNode
   sticky?: boolean
-  navigationMenu?: NavigationMenuType
+  navigationMenu?: NavigationMenuType[]
 }
 
 
@@ -15,7 +15,7 @@ const Header =  ({ navigationMenu, children, sticky }: HeaderProps) => {
 
   return (
     <div className="header ">
-      <SearchAppBar navMenu={navigationMenu} sticky={sticky}/>
+      <SearchAppBar navigationMenu={navigationMenu} sticky={sticky}/>
     </div>
   );
 }

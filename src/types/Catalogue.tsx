@@ -11,8 +11,8 @@ export interface Catalogue {
     primary?: boolean;
     url?: string;
     note?: string;
-    categories: Category[];
-    products: Product[];
-    tags: Tag[];
-    blogs: Blog[];
+    categories?: Category[];
+    products?: Product[];
+    tags?: Tag[];
+    blogs?: Blog[];
   }

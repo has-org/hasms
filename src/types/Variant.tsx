@@ -7,10 +7,12 @@ import { Tag } from "./Tag";
 export interface Variant {
   id: number;
   name: string;
-  product: Product;
+  product?: Product;
   product_id: number;
   images: Image[];
   is_available: boolean;
+  quantity: number;
+  remaining_quantity?: number;
   colors: Color[];
   sizes: Size[];
   tags: Tag[];

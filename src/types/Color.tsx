@@ -6,6 +6,6 @@ export interface Color {
     updated_at?: Date;
     name: string;
     value: string;
-    variant_id: number;
-    variant: Variant;
+    variant_id?: number;
+    variant?: Variant;
   }

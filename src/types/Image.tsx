@@ -5,6 +5,7 @@ export interface Image {
     id: number;
     code: string;
     name: string;
+    alt?: string;
     url: string;
     variant_id?: number;
     variant?: Variant;

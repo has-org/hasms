@@ -42,15 +42,16 @@ export const NavMenu = ({ navigationMenu }: NavMenuProps) => {
       <Box sx={{
         position: 'relative',
         width: '100%',
-        '& ul': { padding: 0}
+        '& ul': { padding: 0 }
       }}>
 
         <ul className={`navigation-menu flex relative justify-center ${windowWidth < 900 ? 'hidden' : ''}`}>
-          {navigationMenu?.map((navItem: any, index: number) => {
+          {navigationMenu[0]?.navigation_menu_items?.map((navItem: any, index: number) => {
             return (
               <MenuItem navItem={navItem} key={index} />
             );
           })}
+
         </ul>
       </Box>
     </>

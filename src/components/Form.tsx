@@ -45,7 +45,7 @@ export const FileInput = ({ name, onChange, isMultiple, register, ...rest }: Fil
 
 type FormInputs = {
     children: React.ReactNode
-    defaultValues: ProductType | EmailType
+    defaultValues?: ProductType | EmailType | any
     onSubmit: any
 };
 

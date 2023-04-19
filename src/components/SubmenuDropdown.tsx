@@ -12,14 +12,14 @@ export const SubmenuDropdown = ({ submenus, dropdown, setDropdown }: SubmenuDrop
         <ul className={`dropdown ${dropdown ? "show" : "hide"}`} >
             {submenus.map((subMenuItem: any, index: number) => {
                 return (
-                    <Link href={subMenuItem.url ? subMenuItem.url : ''} key={index}>
+                    // <Link href={subMenuItem.url ? subMenuItem.url : ''} key={index}>
                         <span
                             key={index}
                             className="menu-item flex flex-col p-1"
                         >
                             {subMenuItem.name}
                         </span>
-                    </Link>
+                    // </Link>
 
                 )
             })}

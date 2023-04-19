@@ -5,5 +5,5 @@ export interface Size {
     created_at?: Date;
     updated_at?: Date;
     name: string;
-    variants: Variant[];
+    variants?: Variant[];
   }

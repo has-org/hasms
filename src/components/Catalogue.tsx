@@ -18,6 +18,7 @@ export const Catalogue = ({ catalogue }: CatalogueProp) => {
   const windowSize = useRef([window.innerWidth, window.innerHeight]);
   const windowWidth = windowSize.current[0]
   const windowHeight = windowSize.current[1]
+  const isMobile = windowWidth < 900
   let urlString = catalogue?.type === 'blog' ? `/${catalogue?.type}` : `/shop/${catalogue?.type}`
 
   return (
@@ -28,11 +29,25 @@ export const Catalogue = ({ catalogue }: CatalogueProp) => {
     }}
     >
       <Link href={`${urlString}/${encodeURIComponent(catalogue.id)}`} >
-        <CardMedia sx={{ position: 'relative' }}>
-          <Image
-            src={catalogue?.image ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
+        {
+          isMobile && <Image
+            src={catalogue?.image?.length > 1 ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
+            width={500}
+            height={500}
+            style={{
+              width: 250,
+              height: 250,
+              objectFit: 'cover',
+              borderRadius: '10px',
+            }}
+            alt="Catalogue image"
+          />
+        }
+        {
+          !isMobile && <Image
+            src={catalogue?.image?.length > 1 ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
             width={catalogue.primary ? 450 : 200}
-            height={catalogue.primary ? 400 : 150}
+            height={catalogue.primary ? 450 : 150}
             style={{
               width: catalogue.primary ? 450 : 200,
               height: catalogue.primary ? 450 : 200,
@@ -41,7 +56,10 @@ export const Catalogue = ({ catalogue }: CatalogueProp) => {
             }}
             alt="Catalogue image"
           />
-        </CardMedia>
+        }
+
+
+
       </Link>
 
     </Box >

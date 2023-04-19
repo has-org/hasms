@@ -1,6 +1,5 @@
 'use client'
 import { FileInput, Form, Input } from "@/components/Form";
-import { Popup } from "@/components/Popup";
 import { useEffect, useState } from "react";
 import ReactSelect from "react-select";
 
@@ -47,14 +46,12 @@ export default function AdminCataloguesPage() {
       <button onClick={() => setShow(true)}>Add new catalogue</button>
       {
         show ? (
-          <Popup show={show} togglePopup={() => setShow(false)} >
             <Form defaultValues={edit} onSubmit={onSubmit}>
               <Input name="code" type="text" placeholder="Code" />
               <Input name="name" type="text" placeholder="Code" />
               <ReactSelect name="category" options={options} defaultValue={{ value: edit.type, label: edit.type }} />
               <FileInput name={"file-picker"} onChange={() => console.log('aasd')} />
             </Form>
-          </Popup>
         ) : null
       }
       {
