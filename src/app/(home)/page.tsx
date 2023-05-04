@@ -78,7 +78,7 @@ export default async function Home() {
         <NavMenu navigationMenu={navigationMenu} />
       </section>
 
-      <section className="relative xs:px-6 sm:px-6 md:px-4 lg:px-20 overflow-hidden">
+      <section className="relative xs:px-3 sm:px-3 md:px-4 lg:px-20 overflow-hidden">
         <GridCatalogueSection catalogues={catalogues} title="Akcije" />
         <GridCatalogueSection catalogues={blogs} title="Blogovi" />
         <GridCatalogueSection catalogues={catalogues} title="Aktuelno" />
@@ -86,16 +86,17 @@ export default async function Home() {
       </section>
 
       <section className='cooperation-section'>
-        <div className='cooperation-section-content'>
-          {cooperators?.length > 1 && cooperators.map((cooperator, index) => {
+        <div className='cooperation-section-content flex'>
+          {cooperators?.length >= 1 && cooperators.map((cooperator, index) => {
             return (
-              <div key={index} className="cooperator-wrap relative">
+              <div key={index} className="cooperator-wrap relative flex">
                 {/* <Link href={`/`}> */}
                   <Image
                     className="logo-img"
                     alt="Cooperator Logo"
                     src={cooperator?.image ? `${process.env.API_IMG_HOST}${cooperator.image}` : 'https://placehold.co/600x400'}
-                    fill
+                    width={200}
+                    height={200}
                     style={{ objectFit: 'contain' }}
                   />
                 {/* </Link> */}

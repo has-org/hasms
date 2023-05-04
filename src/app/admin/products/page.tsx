@@ -1,8 +1,6 @@
 'use client'
 
 import { FileInput, Form, Input, Select } from "@/components/Form";
-import { FormStyled } from "@/components/FormStyled";
-import { Popup } from "@/components/Popup";
 import { useEffect, useState } from "react";
 import { Product as ProductType } from "@/types/Product";
 import ReactSelect from "react-select";
@@ -56,8 +54,6 @@ export default function AdminProductsPage() {
       <button onClick={() => setShow(true)}>Add new product</button>
       {
         show ? (
-          <Popup show={show} togglePopup={() => setShow(false)} >
-            <FormStyled>
               <Form defaultValues={productDefaultValues} onSubmit={onSubmit}>
                 <Input name="code" type="text" placeholder="Code" />
                 <Input name="name" type="text" placeholder="Name" />
@@ -65,8 +61,6 @@ export default function AdminProductsPage() {
                 <FileInput name={"file-picker"} onChange={() => console.log('aasd')} />
                 <input type="submit" />
               </Form>
-            </FormStyled>
-          </Popup>
         ) : null
       }
       {

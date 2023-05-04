@@ -6,6 +6,7 @@ import { Catalogue } from '../Catalogue';
 import { Catalogue as CatalogueType } from '@/types/Catalogue';
 import Box from '@mui/material/Box';
 import { Typography } from "@mui/material";
+import Divider from '@mui/material/Divider';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -40,8 +41,12 @@ const GridCatalogueSection = ({ catalogues, title, additionalRow }: { catalogues
     const testCatalog1 = secondaryCatalogues.slice(2, 4)
     return (
         <Box sx={{ flexGrow: 1, overflow: 'hidden' }}>
-            <Typography variant="h4" component="h2" className="" >
+            <Typography variant="h3" component="h2" sx={{
+                marginTop: '20px',
+            }} >
                 {title}
+                <Divider />
+
             </Typography>
             <Grid container >
                 <Grid item xs={12} sm={12} md={6} lg={6} >

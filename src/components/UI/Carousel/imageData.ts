@@ -1,6 +1,30 @@
+// async function getCarouselImages() {
+//   try {
+//     const res = await fetch('http://localhost:8000/carousel-featured-images', {
+//       method: 'GET',
+//     });
+//     if (res.status !== 200) {
+//       throw new Error('Failed to fetch data');
+//     }
+//     return res.json();
+//   } catch (e) {
+//     return null
+//   }
+// }
+
+// const returnImageUrls = async () => {
+//   const images = await getCarouselImages();
+//   return images.map((image: any) => image.url);
+// }
+
+// console.log(returnImageUrls())
+
+// export const images = 
+
 export const images = [
-    "https://d33wubrfki0l68.cloudfront.net/dd23708ebc4053551bb33e18b7174e73b6e1710b/dea24/static/images/wallpapers/shared-colors@2x.png",
-    "https://d33wubrfki0l68.cloudfront.net/49de349d12db851952c5556f3c637ca772745316/cfc56/static/images/wallpapers/bridge-02@2x.png",
-    "https://d33wubrfki0l68.cloudfront.net/594de66469079c21fc54c14db0591305a1198dd6/3f4b1/static/images/wallpapers/bridge-01@2x.png"
+    "http://localhost:9000/images/1.jpg",
+    "http://localhost:9000/images/22.jpeg",
+    "http://localhost:9000/images/23.jpg",
+    "http://localhost:9000/images/5.jpg",
   ];
   

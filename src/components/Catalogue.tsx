@@ -35,10 +35,10 @@ export const Catalogue = ({ catalogue }: CatalogueProp) => {
             width={500}
             height={500}
             style={{
-              width: 250,
-              height: 250,
-              objectFit: 'cover',
-              borderRadius: '10px',
+              width: '300px',
+              height: '300px',
+              objectFit: 'contain',
+              borderRadius: '24px',
             }}
             alt="Catalogue image"
           />
@@ -46,13 +46,13 @@ export const Catalogue = ({ catalogue }: CatalogueProp) => {
         {
           !isMobile && <Image
             src={catalogue?.image?.length > 1 ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
-            width={catalogue.primary ? 450 : 200}
-            height={catalogue.primary ? 450 : 150}
+            width={catalogue.primary ? 600 : 300}
+            height={catalogue.primary ? 600 : 300}
             style={{
-              width: catalogue.primary ? 450 : 200,
-              height: catalogue.primary ? 450 : 200,
-              objectFit: 'cover',
-              borderRadius: '10px',
+              width: catalogue.primary ? '800px' : '300px',
+              height: catalogue.primary ? '550px' : '250px',
+              objectFit: 'contain',
+              borderRadius: '24px',
             }}
             alt="Catalogue image"
           />

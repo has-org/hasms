@@ -1,6 +1,9 @@
 
+'use client'
+
 import { NavigationMenu as NavigationMenuType } from "@/types/NavigationMenu";
 import SearchAppBar from "./MUI/SearchAppBar";
+import { CartProvider } from '@/hooks/CartContext/CartProvider';
 
 
 type HeaderProps = {
@@ -11,11 +14,14 @@ type HeaderProps = {
 
 
 
-const Header =  ({ navigationMenu, children, sticky }: HeaderProps) => {
+const Header = ({ navigationMenu, children, sticky }: HeaderProps) => {
 
   return (
     <div className="header ">
-      <SearchAppBar navigationMenu={navigationMenu} sticky={sticky}/>
+      <CartProvider>
+        <SearchAppBar navigationMenu={navigationMenu} sticky={sticky} />
+      </CartProvider>
+
     </div>
   );
 }

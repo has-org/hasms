@@ -9,29 +9,46 @@ export const roboto = Roboto({
   fallback: ['Helvetica', 'Arial', 'sans-serif'],
 });
 
-// Create a theme instance.
-const theme = createTheme({
+export const lightTheme = createTheme({
   palette: {
-    background: {
-      paper: '#fff',
+    mode: 'light'
+  }
+})
+
+export const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#90caf9',
     },
     text: {
-      primary: '#173A5E',
-      secondary: '#46505A',
-    },
-    action: {
-      active: '#001E3C',
-    },
-    error: {
-      main: red.A400,
-    },
-    success: {
-      main: '#009688',
-    },
-  },
-  typography: {
-    fontFamily: roboto.style.fontFamily,
-  },
-});
+      primary: '#0d0d0c',
+      secondary: '#1a1816',
+    }
+  }
+})
 
-export default theme;
+// // Create a theme instance.
+// const Theme = createTheme({
+//   palette: {
+//     background: {
+//       paper: '#fff',
+//     },
+//     text: {
+//       primary: '#173A5E',
+//       secondary: '#46505A',
+//     },
+//     action: {
+//       active: '#001E3C',
+//     },
+//     error: {
+//       main: red.A400,
+//     },
+//     success: {
+//       main: '#009688',
+//     },
+//   },
+//   typography: {
+//     fontFamily: roboto.style.fontFamily,
+//   },
+// });

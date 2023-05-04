@@ -6,9 +6,10 @@ import { ColoredDot } from "@/components/ColoredDot";
 import { Color as ColorType } from "@/types/Color";
 import { Box, Button, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Form } from "./Form";
 import ReactSelect from "react-select";
+import { CartContext } from "@/hooks/CartContext/CartContext";
 
 type ProductProps = {
     product: Product;
@@ -36,20 +37,20 @@ export const ProductDetails = ({ product }: ProductProps) => {
     const productSizes = product?.variants[0]?.sizes
     const productColors = product?.variants[0]?.colors
     const [selectedProductSize, setSelectedProductSize] = useState(productSizes[0])
-
-    const defaultSizePlaceholder = { value: 'x', label: 'X' }
+    const {items, addToCart} = useContext(CartContext)
+    const defaultSizePlaceholder = { value: 'X', label: 'X' }
 
 
     const onSubmit = (data: any) => {
-        console.log(data)
+       const productToAdd = {...product, size: {name: data.value}}
+       addToCart(productToAdd)
+       console.log('asd', productToAdd)
     }
 
     if (!product) return <>No product</>
     return (
-        <Box >
-            <Text variant="h2" className="product-name" sx={{
-
-            }}>
+        <Box>
+            <Text variant="h2" className="product-name" >
                 {product.name}
             </Text>
             <Box className="product-code flex gap-x-2">
@@ -114,7 +115,7 @@ export const ProductDetails = ({ product }: ProductProps) => {
                             }}
                             placeholder="Izaberite Veličinu"
                         />
-                        <Button className="" type="submit" >
+                        <Button className="" type="submit">
                             <Text className="product-description">
                                 Dodaj u korpu
                             </Text>
