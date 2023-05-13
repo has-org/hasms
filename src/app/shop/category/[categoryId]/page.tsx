@@ -1,4 +1,4 @@
-import { ProductCard } from "@/components/ProductCard";
+import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { StaticImageData } from "next/image";
 import { Category as CategoryType } from "@/types/Category";
 import Container from "@/components/UI/Container";

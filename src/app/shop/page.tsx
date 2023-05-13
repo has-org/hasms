@@ -1,4 +1,4 @@
-import { ProductCard } from "@/components/ProductCard";
+import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { Product as ProductType } from "@/types/Product";
 import { StaticImageData } from "next/image";
 

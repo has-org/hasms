@@ -1,5 +1,5 @@
 import { Catalogue as CatalogueType } from "@/types/Catalogue";
-import { ProductCard } from "@/components/ProductCard";
+import { ProductCard } from "@/components/ProductCard/ProductCard";
 import Container from "@/components/UI/Container";
 import Image from "next/image";
 import NavigationCategorySection from "@/components/MUI/NavigationCategorySection";

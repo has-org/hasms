@@ -1,7 +1,7 @@
 import { Color } from "./Color";
 import { Variant } from "./Variant";
 
-export interface Image {
+export interface VariantImage {
     id: number;
     code: string;
     name: string;

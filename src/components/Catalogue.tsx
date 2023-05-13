@@ -19,7 +19,7 @@ export const Catalogue = ({ catalogue }: CatalogueProp) => {
   const windowWidth = windowSize.current[0]
   const windowHeight = windowSize.current[1]
   const isMobile = windowWidth < 900
-  let urlString = catalogue?.type === 'blog' ? `/${catalogue?.type}` : `/shop/${catalogue?.type}`
+  let urlString = `/shop/${catalogue?.type}`
 
   return (
     <Box sx={{

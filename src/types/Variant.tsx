@@ -1,5 +1,5 @@
 import { Color } from "./Color";
-import { Image } from "./Image";
+import { VariantImage } from "./VariantImage";
 import { Product } from "./Product";
 import { Size } from "./Size";
 import { Tag } from "./Tag";
@@ -9,7 +9,7 @@ export interface Variant {
   name: string;
   product?: Product;
   product_id: number;
-  images: Image[];
+  images: VariantImage[];
   is_available: boolean;
   quantity: number;
   remaining_quantity?: number;

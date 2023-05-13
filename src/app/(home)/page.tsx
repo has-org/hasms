@@ -9,7 +9,25 @@ import Link from "next/link";
 import Image from "next/image";
 import { Carousel } from "@/components/UI/Carousel";
 import GridCatalogueSection from "@/components/MUI/GridCatalogueSection";
+import GridBlogSection from "@/components/MUI/GridBlogSection";
 
+
+async function getBlogs() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/blogs`, {
+      method: 'GET',
+      next: {
+        revalidate: 1,
+      }
+    });
+    if (res.status !== 200) {
+      throw new Error('Failed to fetch data');
+    }
+    return res.json();
+  } catch (e) {
+    return null
+  }
+}
 
 async function getCatalogues() {
   try {
@@ -64,10 +82,9 @@ export default async function Home() {
   const data: CatalogueType[] = await getCatalogues()
   const cooperators: CooperatorType[] = await getCooperators()
   const catalogues = data?.filter((catalogue) => catalogue.type == 'catalogue')
-  const blogs = data?.filter((catalogue) => catalogue.type == 'blog')
   const categories = data?.filter((catalogue) => catalogue.type == 'category')
   const navigationMenu = await getNavMenus()
-
+  const blogs = await getBlogs()
   return (
     <>
       <section className="carousel overflow-hidden">
@@ -80,7 +97,7 @@ export default async function Home() {
 
       <section className="relative xs:px-3 sm:px-3 md:px-4 lg:px-20 overflow-hidden">
         <GridCatalogueSection catalogues={catalogues} title="Akcije" />
-        <GridCatalogueSection catalogues={blogs} title="Blogovi" />
+        <GridBlogSection blogs={blogs} title="Blogovi" />
         <GridCatalogueSection catalogues={catalogues} title="Aktuelno" />
         <GridCatalogueSection catalogues={categories} title="Kategorije" />
       </section>

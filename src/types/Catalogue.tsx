@@ -14,5 +14,4 @@ export interface Catalogue {
     categories?: Category[];
     products?: Product[];
     tags?: Tag[];
-    blogs?: Blog[];
   }

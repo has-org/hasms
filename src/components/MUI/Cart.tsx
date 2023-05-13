@@ -1,10 +1,11 @@
 'use client'
 import { Box, Typography } from "@mui/material"
 import { CartContext } from '@/hooks/CartContext/CartContext';
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 
 export const Cart = () => {
     const { items } = useContext(CartContext)
+
     return (
         <Box
             sx={{

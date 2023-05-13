@@ -8,7 +8,6 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     });
 
     const addToCart = (item: any) => {
-        console.log('cald', item)
         const updatedItems = [...state.items, item];
 
         dispatch({
@@ -17,6 +16,8 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
                 items: updatedItems,
             },
         });
+
+        return updatedItems;
     };
 
     const removeFromCart = (id: number) => {
