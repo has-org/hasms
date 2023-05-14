@@ -5,7 +5,6 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { Product as ProductType } from '@/types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { CartProvider } from '@/hooks/CartContext/CartProvider';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -22,7 +21,6 @@ const ProductGrid = ({ products }: { products: ProductType[], }) => {
     return (
         <Box sx={{ flexGrow: 1, overflow: 'hidden' }}>
             <Grid container >
-                <CartProvider>
 
                     {products.map((product, index: number) => {
                         return (
@@ -33,7 +31,6 @@ const ProductGrid = ({ products }: { products: ProductType[], }) => {
                             </Grid>)
                     })
                     }
-                </CartProvider>
 
             </Grid>
         </Box>

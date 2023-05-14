@@ -12,7 +12,7 @@ export const Cart = () => {
                 padding: '1em'
             }}>
             <Typography variant={"h2"}>Korpa</Typography>
-
+            {items.length}
             <Box>
                 {items.map((item: any) => { 
                     return (

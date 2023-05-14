@@ -17,9 +17,9 @@ export const ProductCardActions = ({ product }: ProductProps) => {
 
     return (
         <Box className="product-card-actions flex">
-                {items.length}
+              
             <Stack>
-                <Box onClick={() => addToCart({product})}>
+                <Box onClick={() => addToCart(product)}>
                     <AddShoppingCartIcon />
                 </Box>
             </Stack>

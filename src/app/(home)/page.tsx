@@ -10,6 +10,7 @@ import Image from "next/image";
 import { Carousel } from "@/components/UI/Carousel";
 import GridCatalogueSection from "@/components/MUI/GridCatalogueSection";
 import GridBlogSection from "@/components/MUI/GridBlogSection";
+import Iconifiy from "@/components/UI/iconifiy";
 
 
 async function getBlogs() {
@@ -87,12 +88,41 @@ export default async function Home() {
   const blogs = await getBlogs()
   return (
     <>
-      <section className="carousel overflow-hidden">
+      <div className="home-front">
+        <div className="h-[100vh] w-full flex justify-center items-center">
+          <Image
+            className="cover-img"
+            alt="Cooperator Logo"
+            src={'/cover_front.jpg'}
+            width={2400}
+            height={2400}
+            style={{ objectFit: 'cover', position: 'absolute', top: 0, left: 0, zIndex: -1 }}
+          />
+          <div className="flex flex-col gap-10 bg-teal-200	bg-opacity-50">
+
+            <div className="flex gap-10">
+              <Iconifiy icon="ph:motorcycle" color="white" width={52} height={52} />
+              <Iconifiy icon="tabler:helmet" color="white" width={52} height={52} />
+              <Iconifiy icon="mingcute:coat-line" color="white" width={52} height={52} />
+            </div>
+            <div className="flex gap-10">
+              <Iconifiy icon="bi:person-gear" color="white" width={52} height={52} />
+              <Iconifiy icon="tabler:speedboat" color="white" width={52} height={52} />
+              <Iconifiy icon="heroicons:wrench-screwdriver" color="white" width={52} height={52} />
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+
+      {/* <section className="carousel overflow-hidden">
         <Carousel />
-      </section>
+      </section> */}
 
       <section className="navigation-bar-container">
-        <NavMenu navigationMenu={navigationMenu} />
+        {/* <NavMenu navigationMenu={navigationMenu} /> */}
       </section>
 
       <section className="relative xs:px-3 sm:px-3 md:px-4 lg:px-20 overflow-hidden">
@@ -108,14 +138,14 @@ export default async function Home() {
             return (
               <div key={index} className="cooperator-wrap relative flex">
                 {/* <Link href={`/`}> */}
-                  <Image
-                    className="logo-img"
-                    alt="Cooperator Logo"
-                    src={cooperator?.image ? `${process.env.API_IMG_HOST}${cooperator.image}` : 'https://placehold.co/600x400'}
-                    width={200}
-                    height={200}
-                    style={{ objectFit: 'contain' }}
-                  />
+                <Image
+                  className="logo-img"
+                  alt="Cooperator Logo"
+                  src={cooperator?.image ? `${process.env.API_IMG_HOST}${cooperator.image}` : 'https://placehold.co/600x400'}
+                  width={200}
+                  height={200}
+                  style={{ objectFit: 'contain' }}
+                />
                 {/* </Link> */}
               </div>
             )
