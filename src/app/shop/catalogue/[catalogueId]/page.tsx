@@ -40,7 +40,7 @@ export default async function ShopCatalogue({ params: { catalogueId } }: any) {
       <Container firstSection={<NavigationCategorySection />}>
         <MainContainer containerItem={catalogue} />
 
-        <ProductGrid products={catalogue.products} />
+        <ProductGrid products={catalogue.products!!} />
         {/* {category.products.map((product, index) => {
           return (
             <ProductCard product={product} key={index} />

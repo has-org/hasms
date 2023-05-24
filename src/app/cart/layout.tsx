@@ -26,7 +26,7 @@ async function getNavMenus() {
   }
 }
 
-export default async function ShopLayout({
+export default async function CartLayout({
   children,
 }: {
   children: React.ReactNode;

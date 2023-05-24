@@ -18,10 +18,7 @@ const Header = ({ navigationMenu, children, sticky }: HeaderProps) => {
 
   return (
     <div className="header ">
-      <CartProvider>
         <SearchAppBar navigationMenu={navigationMenu} sticky={sticky} />
-      </CartProvider>
-
     </div>
   );
 }

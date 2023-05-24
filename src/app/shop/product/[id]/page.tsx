@@ -1,9 +1,11 @@
 
 
+import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import { ProductDetails } from "@/components/ProductDetails";
 import { ProductThumbnailsList } from "@/components/ProductThumbnailsList";
 import Container from "@/components/UI/Container";
 import { Product as ProductType } from "@/types/Product";
+import Image from "next/image";
 
 
 async function getProduct(id: number) {
@@ -35,8 +37,28 @@ export default async function Product({ params: { id } }: any) {
   }
   return (
     <main className="min-h-screen overflow-hidden">
+        <Breadcrumbs
+          items={[
+            {
+              label: "Home",
+              path: "/",
+            },
+            {
+              label: "Shop",
+              path: "/shop",
+            },
+            {
+              label: "Category",
+              path: "/shop/category",
+            },
+            {
+              label: "Product name",
+              path: "/shop/product/slug",
+            },
+          ]}
+        />
       <Container firstSection={<ProductThumbnailsList variants={productVariants} />}>
-
+      
         {product && <ProductDetails product={product} />}
         {/* {product.relatedProducts?.map((relatedProduct: ProductType, index: number) => {
           return (

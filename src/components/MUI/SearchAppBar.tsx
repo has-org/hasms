@@ -20,7 +20,7 @@ import Link from 'next/link';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Cart } from './Cart';
+import { CartSidebar } from './CartSidebar';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -141,7 +141,7 @@ const SearchAppBar = ({ sticky, navigationMenu }: { navigationMenu: any, sticky?
   const windowSize = useRef([window.innerWidth, window.innerHeight]);
   const windowWidth = windowSize.current[0]
   const isMobile = windowWidth < 600
-  let navMenu = isMobile ? navigationMenu[0].navigation_menu_items : desktopNavMenu
+  let navMenu = isMobile ? navigationMenu[0]?.navigation_menu_items : desktopNavMenu
 
   const handleClick = (index: any) => {
     setSubListOpen((prevState: any) => ({
@@ -227,7 +227,7 @@ const SearchAppBar = ({ sticky, navigationMenu }: { navigationMenu: any, sticky?
           sx: { width: "50%" },
         }}
       >
-        <Cart />
+        <CartSidebar />
       </Drawer>
     </>
   );

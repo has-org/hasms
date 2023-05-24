@@ -79,7 +79,7 @@ async function getNavMenus() {
   }
 }
 
-export default async function Home() {
+export default async function HomePage() {
   const data: CatalogueType[] = await getCatalogues()
   const cooperators: CooperatorType[] = await getCooperators()
   const catalogues = data?.filter((catalogue) => catalogue.type == 'catalogue')
@@ -122,7 +122,7 @@ export default async function Home() {
       </section> */}
 
       <section className="navigation-bar-container">
-        {/* <NavMenu navigationMenu={navigationMenu} /> */}
+        {/* <NavMenu navigationMenu={navigationMenu} />  */}
       </section>
 
       <section className="relative xs:px-3 sm:px-3 md:px-4 lg:px-20 overflow-hidden">

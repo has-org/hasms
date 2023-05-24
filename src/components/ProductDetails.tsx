@@ -38,13 +38,12 @@ export const ProductDetails = ({ product }: ProductProps) => {
     const productColors = product?.variants[0]?.colors
     const [selectedProductSize, setSelectedProductSize] = useState(productSizes[0])
     const {items, addToCart} = useContext(CartContext)
-    const defaultSizePlaceholder = { value: 'X', label: 'X' }
+    const defaultSizePlaceholder = { value: 'XS', label: 'XS' }
 
 
     const onSubmit = (data: any) => {
        const productToAdd = {...product, size: {name: data.value}}
        addToCart(productToAdd)
-       console.log('asd', productToAdd)
     }
 
     if (!product) return <>No product</>

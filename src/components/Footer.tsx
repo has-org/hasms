@@ -42,8 +42,8 @@ const FooterListItems = [
 ]
 const FooterListItems1 = [
   { id: 1, primary: 'Jesenjinova 14', secondary: '78000 Banja Luka', icon: <PlaceIcon /> },
-  { id: 2, primary: 'Kontakt', secondary: '+387 51 305 077', icon: <LocalPhoneIcon /> },
-  { id: 3, primary: 'Kontakt', secondary: '+387 66 173 700', icon: <LocalPhoneIcon /> },
+  { id: 2, primary: 'Kontakt', secondary: '+387 65 514 807', icon: <LocalPhoneIcon /> },
+  { id: 2, primary: 'Kontakt', secondary: '+387 66 173 700', icon: <LocalPhoneIcon /> },
   { id: 4, primary: 'Email', secondary: 'motoshop7bl@gmail.com', icon: <EmailIcon /> },
 ]
 

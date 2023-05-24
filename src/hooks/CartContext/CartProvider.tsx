@@ -1,3 +1,5 @@
+'use client'
+import { Product } from "@/types/Product";
 import { createContext, useReducer } from "react";
 import { CartContext } from "./CartContext";
 import { cartReducer } from "./CartReducer";
@@ -8,8 +10,20 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     });
 
     const addToCart = (item: any) => {
-        const updatedItems = [...state.items, item];
-
+        let updatedItems;
+        const isItemInCart = state.items.find((currentProduct: { id: number; }) => currentProduct.id === item.id)
+        if (isItemInCart) {
+            updatedItems = state.items.map((currentProduct: { id: number; quantity: number; variants: any }) => {
+                if (currentProduct.id === item.id) {
+                    currentProduct.variants.map((variant: { quantity: number; }) => {
+                        variant.quantity += 1;
+                    })
+                }
+                return currentProduct;
+            });
+        } else {
+            updatedItems = [...state.items, item]
+        }
         dispatch({
             type: "ADD",
             payload: {
@@ -20,10 +34,45 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         return updatedItems;
     };
 
+    const updateCartItemQuantity = (cartItem: any, action: string) => {
+        switch (action) {
+            case 'increase':
+                dispatch({
+                    type: "INCREASE_CART_ITEM_QUANTITY",
+                    payload: {
+                        cartItem: cartItem,
+                    },
+                });
+                return;
+            case 'decrease':
+                dispatch({
+                    type: "DECREASE_CART_ITEM_QUANTITY",
+                    payload: {
+                        cartItem: cartItem,
+                    },
+                });
+                return;
+        }
+        return
+    }
+
+
     const removeFromCart = (id: number) => {
-        const updatedCart = state.items.filter(
-            (currentProduct: { id: number; }) => currentProduct.id !== id
-        );
+        let updatedCart
+
+        const itemExists = state.items.find((prod: Product) => prod.id === id);
+        const itemHasQuantity = itemExists.variants[0].quantity > 1;
+
+        if (itemExists) {
+            if (itemHasQuantity) {
+
+            } else {
+                state.items.filter(
+                    (currentProduct: { id: number; }) => currentProduct.id !== id
+                );
+            }
+        }
+
 
         dispatch({
             type: "REMOVE",
@@ -37,6 +86,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         items: state.items,
         addToCart,
         removeFromCart,
+        updateCartItemQuantity
     };
 
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

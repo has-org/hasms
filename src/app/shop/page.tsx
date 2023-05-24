@@ -35,7 +35,6 @@ async function getNavMenus() {
 
 export default async function Shop() {
   const products = await getData();
-  const navigationMenu = await getNavMenus()
 
   if (!products) return <div>Products not found</div>;
   return (

@@ -12,8 +12,8 @@ export interface Variant {
   images: VariantImage[];
   is_available: boolean;
   quantity: number;
-  remaining_quantity?: number;
   colors: Color[];
   sizes: Size[];
   tags: Tag[];
+  variantPrice: string;
 }
