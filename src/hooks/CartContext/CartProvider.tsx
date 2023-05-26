@@ -1,46 +1,59 @@
 'use client'
 import { Product } from "@/types/Product";
+import { Size } from "@/types/Size";
+import { Variant } from "@/types/Variant";
+import { Color } from "@/types/Color";
 import { createContext, useReducer } from "react";
 import { CartContext } from "./CartContext";
 import { cartReducer } from "./CartReducer";
-
+import { v4 as uuidv4 } from 'uuid';
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     const [state, dispatch] = useReducer(cartReducer, {
         items: [],
     });
 
     const addToCart = (item: any) => {
-        let updatedItems;
-        const isItemInCart = state.items.find((currentProduct: { id: number; }) => currentProduct.id === item.id)
-        if (isItemInCart) {
-            updatedItems = state.items.map((currentProduct: { id: number; quantity: number; variants: any }) => {
-                if (currentProduct.id === item.id) {
-                    currentProduct.variants.map((variant: { quantity: number; }) => {
-                        variant.quantity += 1;
-                    })
-                }
-                return currentProduct;
-            });
-        } else {
-            updatedItems = [...state.items, item]
+        const preparedProductToAdd = {
+            product_cart_id: uuidv4(),
+            product_id: item.id,
+            product_code: item.code,
+            product_name: item.name,
+            product_price: item.price,
+            product_image: item.variants[0].images[0].url,
+            variant_id: item.variants[0].id,
+            color: item.color,
+            size: item.size,
+            quantity: 1
         }
-        dispatch({
+        const itemExists = state.items.find((cartItem: { product_id: number; color: Color; size: Size }) => {
+            if (cartItem.product_id === item.id && cartItem.color.id === item.color.id && cartItem.size.id === item.size.id) { return cartItem }
+            return undefined
+        })
+        if (itemExists) {
+            console.log(itemExists)
+            return dispatch({
+                type: "INCREASE_CART_ITEM_QUANTITY",
+                payload: {
+                    item: itemExists,
+                },
+            });
+        }
+
+        return dispatch({
             type: "ADD",
             payload: {
-                items: updatedItems,
+                items: [...state.items, preparedProductToAdd],
             },
         });
-
-        return updatedItems;
     };
 
-    const updateCartItemQuantity = (cartItem: any, action: string) => {
+    const updateCartItemQuantity = (payload: any, action: string) => {
         switch (action) {
             case 'increase':
                 dispatch({
                     type: "INCREASE_CART_ITEM_QUANTITY",
                     payload: {
-                        cartItem: cartItem,
+                        item: payload,
                     },
                 });
                 return;
@@ -48,7 +61,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
                 dispatch({
                     type: "DECREASE_CART_ITEM_QUANTITY",
                     payload: {
-                        cartItem: cartItem,
+                        item: payload,
                     },
                 });
                 return;

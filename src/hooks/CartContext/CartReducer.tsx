@@ -18,21 +18,26 @@ export const cartReducer = (state: any, action: any) => {
             return {
                 ...state,
                 items: state.items.map((item: any) => {
-                    if(item.id === payload.cartItem.id) {
-                        item.variants[0].quantity += 1
+                    console.log(payload)
+                    console.log(item)
+                    if (item.product_cart_id === payload.item.product_cart_id) {
+                        item.quantity += 1
+                        return item
                     }
                     return item
-                }),
+                })
             };
         case "DECREASE_CART_ITEM_QUANTITY":
             return {
                 ...state,
                 items: state.items.map((item: any) => {
-                    if(item.id === payload.cartItem.id) {
-                        item.variants[0].quantity -= 1
+                    if (item.id === payload.id) {
+                        item.quantity -= 1
+                        return item
                     }
                     return item
-                }),            };
+                })
+            };
 
         default:
             throw new Error("No case for that type");

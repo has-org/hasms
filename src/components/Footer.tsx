@@ -5,9 +5,10 @@ import Box from "./MUI/Box";
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import PlaceIcon from '@mui/icons-material/Place';
 import EmailIcon from '@mui/icons-material/Email';
-import { Form, Input, TextArea } from "./Form";
 import { useState } from "react";
 import { darkTheme, lightTheme } from "./MUI/Theme";
+import { Input, TextArea } from '@/app/cart/delivery-form/Delivery';
+import { FormProvider, useForm } from 'react-hook-form';
 
 let mode = 'light';
 const theme = mode == 'dark' ? darkTheme : lightTheme
@@ -31,9 +32,6 @@ const TextBox = styled(TextArea)(({ theme }) => ({
   padding: '0.3em',
   color: theme.mode === 'dark' ? theme.palette.text.primary : theme.palette.text.secondary,
 }))
-const StyledForm = styled(Form)(({ theme }) => ({
-
-}))
 
 const FooterListItems = [
   { id: 1, primary: 'Njegoševa 34a', secondary: '78000 Banja Luka', icon: <PlaceIcon /> },
@@ -48,6 +46,7 @@ const FooterListItems1 = [
 ]
 
 export default function Footer() {
+  const methods = useForm();
 
 
   const [emailInfo, setEmailInfo] = useState({
@@ -147,24 +146,28 @@ export default function Footer() {
           </List>
         </Grid>
         <Grid item xs={12} sm={12} md={4} lg={4}>
-          <List sx={{ width: '100%', }}>
-            <Typography variant="h4" component="h2" sx={{
-              paddingBottom: '0.5em',
-            }}>
-              Kontakt
-            </Typography>
-            <ListItem sx={{ paddingX: 0, paddingY: '0.3em' }}>
-              <StyledForm defaultValues={emailInfo} onSubmit={onSubmit} >
+          <FormProvider {...methods} >
+            <Box component="form" >
+
+            <List sx={{ width: '100%', }}>
+              <Typography variant="h4" component="h2" sx={{
+                paddingBottom: '0.5em',
+              }}>
+                Kontakt
+              </Typography>
+              <ListItem sx={{ paddingX: 0, paddingY: '0.3em' }}>
                 <TextInput name="name" type="text" placeholder="Ime" />
                 <TextInput name="phoneNumber" type="text" placeholder="Broj telefona" />
                 <TextInput name="email" type="text" placeholder="Email *" />
                 <TextBox name="message" type="text" placeholder="Poruka" />
                 <Button type="submit">Posalji</Button>
-              </StyledForm>
-            </ListItem>
-          </List>
-        </Grid>
+              </ListItem>
+            </List>
+          </Box>
+        </FormProvider>
+
       </Grid>
+    </Grid>
     </Box >
   );
 }

@@ -2,6 +2,7 @@
 import './globals.scss'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { CartProvider } from "@/hooks/CartContext/CartProvider";
 
 // import Font Awesome CSS
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -36,15 +37,17 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="scroll-smooth">
-        <nav className='top-0 z-30'>
-          <Header navigationMenu={navigationMenus} />
-        </nav>
-        <main className="scroll-smooth">
-          {children}
-        </main>
-        <footer className='mt-20'>
-          <Footer />
-        </footer>
+        <CartProvider>
+          <nav className='top-0 z-30'>
+            <Header navigationMenu={navigationMenus} />
+          </nav>
+          <main className="scroll-smooth">
+            {children}
+          </main>
+          <footer className='mt-20'>
+            <Footer />
+          </footer>
+        </CartProvider>
       </body>
     </html>
   )

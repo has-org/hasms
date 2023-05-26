@@ -3,7 +3,6 @@
 
 import { NavigationMenu as NavigationMenuType } from "@/types/NavigationMenu";
 import SearchAppBar from "./MUI/SearchAppBar";
-import { CartProvider } from '@/hooks/CartContext/CartProvider';
 
 
 type HeaderProps = {

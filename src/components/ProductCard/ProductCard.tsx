@@ -1,6 +1,7 @@
 
 'use client'
 import { Color as ColorType } from "@/types/Color";
+import { Size as SizeType } from "@/types/Size";
 import { Product } from "@/types/Product";
 import { Box } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
@@ -15,9 +16,11 @@ type ProductProps = {
 
 
 export const ProductCard = ({ product }: ProductProps) => {
-  const defaultVariant = product.variants.find(variant => { if (variant.colors.find(color => color.name === 'CRNA')) return variant })
-  const defaultColor = defaultVariant?.colors.find(color => color.name === 'CRNA')
-  const [selectedColor, setSelectedColor] = useState<ColorType | undefined>(defaultColor)
+  const defaultVariant = product.variants[0]
+  const defaultColor = defaultVariant?.colors?.find(color => color.name === 'CRNA') || defaultVariant?.colors[0]
+  const defaultSize = defaultVariant?.sizes?.find(size => size.name === 'S') || defaultVariant?.sizes[0]
+  const [selectedColor, setSelectedColor] = useState<ColorType>(defaultColor)
+  const [selectedSize, setSelectedSize] = useState<SizeType>(defaultSize)
 
   if (!product) return <>No product</>
   return (
@@ -42,7 +45,7 @@ export const ProductCard = ({ product }: ProductProps) => {
         //ICON SECTION
       }
       <div className="">
-        <ProductCardActions product={product} />
+        <ProductCardActions product={product} selectedColor={selectedColor} selectedSize={selectedSize} />
       </div>
       <div className="flex flex-col items-center justify-center mt-5 gap-y-2">
         <h2 className="text-black-400 text-center text-xl font-serif font-bold">{product.name}</h2>

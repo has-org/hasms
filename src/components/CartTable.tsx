@@ -1,12 +1,10 @@
 'use client'
-import { Box, Button, Typography } from "@mui/material"
-import { CartContext } from '@/hooks/CartContext/CartContext';
 import { useContext, useEffect, useMemo } from 'react'
-import { ReactTable } from "../UI/react-table/ReactTable";
-import Iconify from "../UI/iconify";
-import Link from "next/link";
-
-export const CartSidebar = () => {
+import { CartContext } from '@/hooks/CartContext/CartContext';
+import Box from '@/components/MUI/Box';
+import { ReactTable } from "@/components/UI/react-table/ReactTable";
+import Iconify from "@/components/UI/iconify";
+const CartTable = () => {
     const { items, updateCartItemQuantity } = useContext(CartContext)
     const columns = useMemo(
         () => [
@@ -70,24 +68,11 @@ export const CartSidebar = () => {
         [items]
     )
 
-
     return (
-        <Box
-            sx={{
-                padding: '1em'
-            }}>
-            <Typography variant={"h2"}>Korpa</Typography>
-
-            <Box sx={{ display: 'flex', flexGrow: '1', flexDirection: 'row', }}>
-
-                <ReactTable columns={columns} data={data} />
-            </Box>
-
-            <Button >
-                <Link href="/cart">
-                    Go to cart
-                </Link>
-            </Button>
-        </Box>
-    )
+        <>
+            <ReactTable columns={columns} data={data} />
+        </>
+    );
 }
+
+export default CartTable;

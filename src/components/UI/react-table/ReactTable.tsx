@@ -1,6 +1,6 @@
 'use client'
 import { Column, useTable } from 'react-table'
-import Iconify from "../UI/iconifiy";
+import Iconify from "../iconify";
 import { Box, Button } from "@mui/material"
 
 
@@ -53,12 +53,6 @@ export const ReactTable = ({ columns, data }: { columns: any, data: any }) => {
                     }}
                     key={index}
                   >
-                      <Box onClick={() => updateCartItemQuantity(item, 'decrease')}>
-                                <Iconify icon="iconamoon:sign-minus-circle" />
-                            </Box>
-                            <Box onClick={() => updateCartItemQuantity(item, 'increase')}>
-                                <Iconify icon="iconamoon:sign-plus-circle" />
-                            </Box>
                     {cell.render('Cell')}
                   </td>
                 )
@@ -69,7 +63,7 @@ export const ReactTable = ({ columns, data }: { columns: any, data: any }) => {
         <tr style={{ width: '100%' }}>
           <td style={{position: 'relative', right: 0}}>
             Total
-            {'asd'}
+            {data.reduce((acc: any, curr: any) => acc + curr.subtotal, 0)}
           </td>
         </tr>
       </tbody>

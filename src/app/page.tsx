@@ -10,7 +10,7 @@ import Image from "next/image";
 import { Carousel } from "@/components/UI/Carousel";
 import GridCatalogueSection from "@/components/MUI/GridCatalogueSection";
 import GridBlogSection from "@/components/MUI/GridBlogSection";
-import Iconifiy from "@/components/UI/iconifiy";
+import Iconify from "@/components/UI/iconify";
 
 
 async function getBlogs() {
@@ -101,14 +101,14 @@ export default async function HomePage() {
           <div className="flex flex-col gap-10 bg-teal-200	bg-opacity-50">
 
             <div className="flex gap-10">
-              <Iconifiy icon="ph:motorcycle" color="white" width={52} height={52} />
-              <Iconifiy icon="tabler:helmet" color="white" width={52} height={52} />
-              <Iconifiy icon="mingcute:coat-line" color="white" width={52} height={52} />
+              <Iconify icon="ph:motorcycle" color="white" width={52} height={52} />
+              <Iconify icon="tabler:helmet" color="white" width={52} height={52} />
+              <Iconify icon="mingcute:coat-line" color="white" width={52} height={52} />
             </div>
             <div className="flex gap-10">
-              <Iconifiy icon="bi:person-gear" color="white" width={52} height={52} />
-              <Iconifiy icon="tabler:speedboat" color="white" width={52} height={52} />
-              <Iconifiy icon="heroicons:wrench-screwdriver" color="white" width={52} height={52} />
+              <Iconify icon="bi:person-gear" color="white" width={52} height={52} />
+              <Iconify icon="tabler:speedboat" color="white" width={52} height={52} />
+              <Iconify icon="heroicons:wrench-screwdriver" color="white" width={52} height={52} />
             </div>
 
           </div>

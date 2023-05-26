@@ -1,4 +1,4 @@
-import "@/app/(home)/globals.scss";
+import "@/app/globals.scss";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -7,7 +7,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { NavMenu } from "@/components/NavMenu";
-import { CartProvider } from "@/hooks/CartContext/CartProvider";
 // Tell Font Awesome to skip adding the CSS automatically
 // since it's already imported above
 config.autoAddCss = false;
@@ -41,14 +40,12 @@ export default async function CheckoutLayout({
       */}
       <head />
       <body>
-        <CartProvider>
           <nav className='sticky top-0 z-30'>
             <Header sticky navigationMenu={navigationMenu} />
           </nav>
           <main className="mt-20">
             {children}
           </main>
-        </CartProvider>
 
         <footer className="mt-20">
           <Footer />

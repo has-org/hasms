@@ -6,4 +6,5 @@ export interface Size {
     updated_at?: Date;
     name: string;
     variants?: Variant[];
+    is_available: Boolean;
   }

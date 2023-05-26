@@ -1,7 +1,9 @@
 import { Catalogue } from "./Catalogue";
 import { Category } from "./Category";
+import { Color } from "./Color";
 import { ProductInventory } from "./ProductInventory";
 import { RelatedProduct } from "./RelatedProduct";
+import { Size } from "./Size";
 import { Subcategory } from "./Subcategory";
 import { Tag } from "./Tag";
 import { Variant } from "./Variant";
@@ -24,5 +26,6 @@ export interface Product {
     ProductInventory?: ProductInventory[];
     tags?: Tag[];
     catalogues?: Catalogue[];
+    product_cart_id: string
   }
   

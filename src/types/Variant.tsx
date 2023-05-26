@@ -10,8 +10,6 @@ export interface Variant {
   product?: Product;
   product_id: number;
   images: VariantImage[];
-  is_available: boolean;
-  quantity: number;
   colors: Color[];
   sizes: Size[];
   tags: Tag[];

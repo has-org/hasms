@@ -10,6 +10,7 @@ import { useContext, useState } from "react";
 import { Form } from "./Form";
 import ReactSelect from "react-select";
 import { CartContext } from "@/hooks/CartContext/CartContext";
+import { Controller, SubmitHandler, useForm, useFormContext } from "react-hook-form";
 
 type ProductProps = {
     product: Product;
@@ -37,14 +38,18 @@ export const ProductDetails = ({ product }: ProductProps) => {
     const productSizes = product?.variants[0]?.sizes
     const productColors = product?.variants[0]?.colors
     const [selectedProductSize, setSelectedProductSize] = useState(productSizes[0])
-    const {items, addToCart} = useContext(CartContext)
+    const { items, addToCart } = useContext(CartContext)
     const defaultSizePlaceholder = { value: 'XS', label: 'XS' }
+    const { handleSubmit, control } = useForm<any>();
 
-
-    const onSubmit = (data: any) => {
-       const productToAdd = {...product, size: {name: data.value}}
-       addToCart(productToAdd)
-    }
+    const onSubmitHandler: SubmitHandler<any> = (values: any, e?: React.BaseSyntheticEvent
+    ) => {
+        console.log(values)
+        const color = productColors.find((color: ColorType) => color.id === values.color.id) || productColors[0]
+        console.log(color)
+        const size = productSizes.find((size: any) => size.id === values.size.id) || productSizes[0]
+        addToCart({ ...product, color, size })
+    };
 
     if (!product) return <>No product</>
     return (
@@ -99,29 +104,44 @@ export const ProductDetails = ({ product }: ProductProps) => {
                 <Text className="product-size-title">
                     Veličina:
                 </Text>
-                <Form onSubmit={onSubmit} defaultValues={defaultSizePlaceholder}>
-                    <Box className="flex">
+                <Box
+                    component='form'
+                    onSubmit={handleSubmit(onSubmitHandler)}
+                >
+                    <Controller
+                        name="size"
+                        control={control}
+                        rules={{ required: 'Size is required' }}
+                        render={({ field }) => (
+                            <ReactSelect
+                                isClearable
+                                {...field}
+                                placeholder="Select size"
+                                options={productSizes.map(item => { return { id: item.id, label: item.name, value: item.name } })}
+                            />
+                        )}
+                    />
 
-                        <ReactSelect
-                            name="size"
-                            options={productSizes.map(size => { return { label: size.name, value: size.name } })}
-                            styles={{
-                                control: (baseStyles, state) => ({
-                                    ...baseStyles,
-                                    width: '200px',
-                                    height: '24px',
-                                }),
-                            }}
-                            placeholder="Izaberite Veličinu"
-                        />
-                        <Button className="" type="submit">
-                            <Text className="product-description">
-                                Dodaj u korpu
-                            </Text>
-                        </Button>
-                    </Box>
-                </Form>
+                    <Controller
+                        name="color"
+                        control={control}
+                        rules={{ required: 'Color is required' }}
+                        render={({ field }) => (
+                            <ReactSelect
+                                isClearable
+                                {...field}
+                                placeholder="Select color"
+                                options={productColors.map(item => { return { id: item.id, label: item.name, value: item.name } })}
+                            />
+                        )}
+                    />
 
+                    <Button className="" type="submit">
+                        <Text className="product-description">
+                            Dodaj u korpu
+                        </Text>
+                    </Button>
+                </Box>
             </Box>
             <Box className="product-price flex gap-x-2">
                 <Text className="product-description">

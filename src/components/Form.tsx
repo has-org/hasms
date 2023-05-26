@@ -1,14 +1,13 @@
 
 /* IMPORT HOOKS AND PROPS TYPES */
 import {
-    useForm
+    useForm, useFormContext
 } from 'react-hook-form';
 
 import { Product as ProductType } from "@/types/Product";
 import { Email as EmailType } from "@/types/Email";
 import { postData } from "utils/postData";
 import React, { useState } from "react";
-import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 
 
 type FileInputProps = {
@@ -49,12 +48,7 @@ type FormInputs = {
     onSubmit: any
 };
 
-export const Input = ({ register, name, ...rest }: any) => {
-    return <input {...register(name)} {...rest} />;
-}
-export const TextArea = ({ register, name, ...rest }: any) => {
-    return <textarea {...register(name)} {...rest} />;
-}
+
 
 // export const Select: React.FC<any> = ({ register, options, name, ...rest }) => {
 //     return (
@@ -76,7 +70,7 @@ export const Form = ({ defaultValues, children, onSubmit }: FormInputs) => {
         <form onSubmit={handleSubmit(onSubmit)}>
             {Array.isArray(children)
                 ? React.Children.map(children, child => {
-                    return child.props.name
+                    return child?.props?.name
                         ? React.createElement(child.type, {
                             ...{
                                 ...child.props,
