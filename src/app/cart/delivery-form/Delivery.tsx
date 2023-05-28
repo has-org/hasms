@@ -3,7 +3,7 @@ import { darkTheme, lightTheme } from "@/components/MUI/Theme";
 import { Box, Button, Checkbox, FormControlLabel } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import { useState } from "react";
-import { useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 
 let mode = 'light';
 const theme = mode == 'dark' ? darkTheme : lightTheme
@@ -32,52 +32,77 @@ const TextInput = styled(Input)(({ theme }) => ({
 
 
 
-const DeliveryForm = ({ onSubmit }: any) => {
+const DeliveryForm = ({ onSubmit, control, }: any) => {
     const [companyDetails, setCompanyDetails] = useState(false)
     const [deliveryAddress, setDeliveryAddress] = useState(false)
 
-    const handleAddCompanyDetails = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setCompanyDetails(!companyDetails);
-    };
-
-    const handleAddDeliveryAddress = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setDeliveryAddress(!deliveryAddress);
-    };
     return (
         <>
             <Box component="form" onSubmit={onSubmit}>
                 <TextInput name="firstName" type="text" placeholder="Ime" label="asd" />
-                <TextInput name="lastName" type="text" placeholder="Poruka" />
+                <TextInput name="lastName" type="text" placeholder="Prezime" />
                 <TextInput name="address" type="text" placeholder="Adresa" />
-                <TextInput name="zip" type="text" placeholder="Poštanski broj" />
+                <TextInput name="postalCode" type="text" placeholder="Poštanski broj" />
                 <TextInput name="city" type="text" placeholder="Grad" />
-                <TextInput name="state" type="text" placeholder="Država" />
+                <TextInput name="country" type="text" placeholder="Država" />
                 <TextInput name="phoneNumber" type="text" placeholder="Broj telefona" />
                 <TextInput name="email" type="text" placeholder="Email *" />
 
                 {/* <FormControlLabel control={<Checkbox />} label="Podaci o firmi" />
                 <FormControlLabel control={<Checkbox />} label="Adresa za isporuku" /> */}
-                <FormControlLabel
-                    label="Podaci o firmi"
-                    control={<Checkbox checked={companyDetails} onChange={handleAddCompanyDetails} />}
+                <Controller
+                    control={control}
+                    name='withCompanyDetails'
+                    defaultValue={false}
+
+                    render={({ field: { onChange, value } }) => (
+                        <FormControlLabel
+                            label="Podaci o firmi"
+                            control={
+                                <Checkbox checked={value} onChange={(e) => {
+                                    onChange(e)
+                                    setCompanyDetails(e.target.checked)
+                                }}
+                                />
+                            }
+                        />
+                    )}
                 />
-                {companyDetails && <TextInput name="companyName" type="text" placeholder="Naziv firme" />
-                }
+
+                <Controller
+                    control={control}
+                    name='withDeliveryAddress'
+                    defaultValue={false}
+
+                    render={({ field: { onChange, value } }) => (
+                        <FormControlLabel
+                            label="Adresa za isporuku"
+                            control={
+                                <Checkbox checked={value} onChange={(e) => {
+                                    onChange(e)
+                                    setDeliveryAddress(e.target.checked)
+                                }}
+                                />
+                            }
+                        />
+                    )}
+                />
+                {companyDetails && <TextInput name="companyName" type="text" placeholder="Naziv firme" />}
                 {companyDetails && <TextInput name="companyRegistrationNumber" type="text" placeholder="JIB" />}
+                {companyDetails && <TextInput name="companyTaxNumber" type="text" placeholder="PDV" />}
 
 
 
-                <FormControlLabel
-                    label="Adresa za isporuku"
-                    control={<Checkbox checked={deliveryAddress} onChange={handleAddDeliveryAddress} />}
-                />
+
+
                 {deliveryAddress && <TextInput name="deliveryFirstName" type="text" placeholder="Ime" />}
                 {deliveryAddress && <TextInput name="deliveryLastName" type="text" placeholder="Prezime" />}
                 {deliveryAddress && <TextInput name="deliveryAddress" type="text" placeholder="Adresa" />}
-                {deliveryAddress && <TextInput name="deliveryZip" type="text" placeholder="Poštanski broj" />}
+                {deliveryAddress && <TextInput name="deliveryPostalCode" type="text" placeholder="Poštanski broj" />}
                 {deliveryAddress && <TextInput name="deliveryCity" type="text" placeholder="Grad" />}
                 {deliveryAddress && <TextInput name="deliveryState" type="text" placeholder="Država" />}
                 {deliveryAddress && <TextInput name="deliveryPhoneNumber" type="text" placeholder="Broj telefona" />}
+                {deliveryAddress && <TextInput name="deliveryEmail" type="text" placeholder="Email" />}
                 <Button type="submit" >Nastavi</Button>
             </Box>
         </>

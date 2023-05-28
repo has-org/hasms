@@ -1,53 +1,69 @@
 'use client'
-import { ProductCard } from "@/components/ProductCard/ProductCard";
-import { CartContext } from "@/hooks/CartContext/CartContext";
-import { Product as ProductType } from "@/types/Product";
+
 import { Button } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DeliveryForm from "./delivery-form/Delivery";
-import Tabs from "./Tabs";
-import CartTab from "./Tabs/CartTab"
-import OrderTab from "./Tabs/OrderTab"
+
 import { useForm, FormProvider } from "react-hook-form";
+import { TABS } from "./Tabs";
+import CartTab from "./Tabs/CartTab";
+import OrderTab from "./Tabs/OrderTab";
+import PaymentTab from "./Tabs/PaymentTab";
 
-const TABS = [
-  {
-    id: 1,
-    name: 'Korpa',
-    component: <CartTab />
-
-  },
-  {
-    id: 2,
-    name: 'Dostava',
-    component: <OrderTab />
-
-  }
-]
 
 export default function CartPage() {
   const [activeTab, setActiveTab] = useState(TABS[0])
-  const [isDeliveryInfo, setIsDeliveryInfo] = useState(false)
-  const methods = useForm();
-  const {handleSubmit} = methods
-  
+  const [showDeliveryModal, setShowDeliveryModal] = useState(false)
+  const [orderDetails, setOrderDetails] = useState<any>({
+    firstName: '',
+    lastName: '',
+    address: '',
+    city: '',
+    country: '',
+    postalCode: '',
+    phoneNumber: '',
+    email: '',
+    withCompanyDetails: false,
+    withDeliveryAddress: false,
+    companyName: '',
+    companyRegistrationNumber: '',
+    companyTaxNumber: '',
+    deliveryFirstName: '',
+    deliveryLastName: '',
+    deliveryAddress: '',
+    deliveryCity: '',
+    deliveryCountry: '',
+    deliveryPostalCode: '',
+    deliveryPhoneNumber: '',
+    deliveryEmail: '',
+  })
 
-const onSubmit = (data: any) => {
-  // setDeliveryInfo(data)
-  setIsDeliveryInfo(false)
-  setActiveTab(TABS[1])  
-}
+
+  const methods = useForm();
+  const { handleSubmit, control } = methods
+
+  useEffect(() => {
+    setActiveTab(TABS[0])
+  }, [])
+
+  const onSubmit = (data: any) => {
+    setOrderDetails(data)
+    setShowDeliveryModal(false)
+    setActiveTab(TABS[1])
+  }
 
   return (
-    <FormProvider {...methods} > 
-    <div className=" min-h-screen	 flex flex-col">
-      {isDeliveryInfo ? <DeliveryForm onSubmit={handleSubmit(onSubmit)}  />
-        : <Tabs tab={activeTab} />
-      }
-      <div className="div">
-       {!isDeliveryInfo && <Button onClick={() => setIsDeliveryInfo(true)}>Nastavi</Button>}
+    <FormProvider {...methods} >
+      <div className=" min-h-screen	 flex flex-col">
+        {showDeliveryModal ? (<DeliveryForm onSubmit={handleSubmit(onSubmit)} />) : <>
+          {activeTab.name === 'Korpa' && <CartTab />}
+          {activeTab.name === 'Dostava' && <OrderTab orderDetails={orderDetails} control={control} setActiveTab={setActiveTab}/>}
+          {activeTab.name === 'Placanje' && <PaymentTab  control={control}/>}
+        </>}
+        <div className="div">
+          {!showDeliveryModal && <Button onClick={() => setShowDeliveryModal(true)}>Nastavi</Button>}
+        </div>
       </div>
-    </div>
     </FormProvider>
   );
 }
