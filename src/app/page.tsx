@@ -11,6 +11,7 @@ import { Carousel } from "@/components/UI/Carousel";
 import GridCatalogueSection from "@/components/MUI/GridCatalogueSection";
 import GridBlogSection from "@/components/MUI/GridBlogSection";
 import Iconify from "@/components/UI/iconify";
+import HomeNavigation from "@/components/sections/home-navigation";
 
 
 async function getBlogs() {
@@ -79,44 +80,18 @@ async function getNavMenus() {
   }
 }
 
+
+
 export default async function HomePage() {
-  const data: CatalogueType[] = await getCatalogues()
+  const catalogues: CatalogueType[] = await getCatalogues()
+  const categories = catalogues.filter(catalogue => catalogue.categories?.length! >= 1)
   const cooperators: CooperatorType[] = await getCooperators()
-  const catalogues = data?.filter((catalogue) => catalogue.type == 'catalogue')
-  const categories = data?.filter((catalogue) => catalogue.type == 'category')
   const navigationMenu = await getNavMenus()
   const blogs = await getBlogs()
   return (
     <>
-      <div className="home-front">
-        <div className="h-[100vh] w-full flex justify-center items-center">
-          <Image
-            className="cover-img"
-            alt="Cooperator Logo"
-            src={'/cover_front.jpg'}
-            width={2400}
-            height={2400}
-            style={{ objectFit: 'cover', position: 'absolute', top: 0, left: 0, zIndex: -1 }}
-          />
-          <div className="flex flex-col gap-10 bg-teal-200	bg-opacity-50">
 
-            <div className="flex gap-10">
-              <Iconify icon="ph:motorcycle" color="white" width={52} height={52} />
-              <Iconify icon="tabler:helmet" color="white" width={52} height={52} />
-              <Iconify icon="mingcute:coat-line" color="white" width={52} height={52} />
-            </div>
-            <div className="flex gap-10">
-              <Iconify icon="bi:person-gear" color="white" width={52} height={52} />
-              <Iconify icon="tabler:speedboat" color="white" width={52} height={52} />
-              <Iconify icon="heroicons:wrench-screwdriver" color="white" width={52} height={52} />
-            </div>
-
-          </div>
-
-
-        </div>
-      </div>
-
+    <HomeNavigation></HomeNavigation>
       {/* <section className="carousel overflow-hidden">
         <Carousel />
       </section> */}

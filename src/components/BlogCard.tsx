@@ -18,7 +18,7 @@ export const BlogCard = ({ blog }: BlogProps) => {
   const windowWidth = windowSize.current[0]
   const windowHeight = windowSize.current[1]
   const isMobile = windowWidth < 900
-
+  const blogUrl = blog.url ? blog.url : ''
   return (
     <Box sx={{
       width: '100%',
@@ -26,7 +26,7 @@ export const BlogCard = ({ blog }: BlogProps) => {
       justifyContent: 'center',
     }}
     >
-      <Link href={`${encodeURIComponent(blog.id)}`} >
+      <Link href={`${encodeURIComponent(blogUrl)}`} >
         <Card>
           {
             isMobile && <Image
@@ -50,7 +50,7 @@ export const BlogCard = ({ blog }: BlogProps) => {
               style={{
                 width: '400px',
                 height: '400px',
-                objectFit: 'cover',
+                objectFit: 'contain',
                 borderRadius: '24px',
               }}
               alt="Catalogue image"

@@ -18,8 +18,6 @@ export const cartReducer = (state: any, action: any) => {
             return {
                 ...state,
                 items: state.items.map((item: any) => {
-                    console.log(payload)
-                    console.log(item)
                     if (item.product_cart_id === payload.item.product_cart_id) {
                         item.quantity += 1
                         return item

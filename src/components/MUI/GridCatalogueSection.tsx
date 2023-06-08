@@ -35,8 +35,7 @@ function FormRow({ secondaryCatalogues }: { secondaryCatalogues: CatalogueType[]
 const GridCatalogueSection = ({ catalogues, title, additionalRow }: { catalogues: CatalogueType[], title: string, additionalRow?: boolean }) => {
     if (!catalogues) return <>Missing catalogues</>
     const primaryCatalogue = catalogues.find((catalogue: CatalogueType) => catalogue.primary);
-    const secondaryCatalogues = catalogues.filter((catalogue: CatalogueType) => !catalogue.primary).slice(catalogues.length - 5)
-    const secondaryCatalogues1 = catalogues.filter((catalogue: CatalogueType) => !catalogue.primary).slice(catalogues.length - 4)
+    const secondaryCatalogues = catalogues.filter((catalogue: CatalogueType) => !catalogue.primary)
     const testCatalog = secondaryCatalogues.slice(0, 2)
     const testCatalog1 = secondaryCatalogues.slice(2, 4)
     return (
@@ -51,7 +50,7 @@ const GridCatalogueSection = ({ catalogues, title, additionalRow }: { catalogues
             <Grid container >
                 <Grid item xs={12} sm={12} md={6} lg={6} >
                     <Item elevation={0}>
-                        <Catalogue catalogue={primaryCatalogue} />
+                        <Catalogue catalogue={primaryCatalogue!} />
                     </Item>
                 </Grid>
                 <Grid item xs={12} sm={12} md={6} lg={6}>

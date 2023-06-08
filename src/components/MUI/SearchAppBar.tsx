@@ -20,7 +20,7 @@ import Link from 'next/link';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { CartSidebar } from './CartSidebar';
+import { CartSidebar } from '../cart/sidebar/CartSidebar';
 
 
 const Search = styled('div')(({ theme }) => ({

@@ -30,7 +30,6 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
             return undefined
         })
         if (itemExists) {
-            console.log(itemExists)
             return dispatch({
                 type: "INCREASE_CART_ITEM_QUANTITY",
                 payload: {

@@ -57,11 +57,11 @@ export default function CartPage() {
       <div className=" min-h-screen	 flex flex-col">
         {showDeliveryModal ? (<DeliveryForm onSubmit={handleSubmit(onSubmit)} />) : <>
           {activeTab.name === 'Korpa' && <CartTab />}
-          {activeTab.name === 'Dostava' && <OrderTab orderDetails={orderDetails} control={control} setActiveTab={setActiveTab}/>}
-          {activeTab.name === 'Placanje' && <PaymentTab  control={control}/>}
+          {activeTab.name === 'Dostava' && <OrderTab orderDetails={orderDetails} control={control} setActiveTab={setActiveTab} />}
+          {activeTab.name === 'Placanje' && <PaymentTab control={control} />}
         </>}
         <div className="div">
-          {!showDeliveryModal && <Button onClick={() => setShowDeliveryModal(true)}>Nastavi</Button>}
+          {!showDeliveryModal && activeTab.name === 'Korpa' && <Button onClick={() => setShowDeliveryModal(true)}>Nastavi</Button>}
         </div>
       </div>
     </FormProvider>

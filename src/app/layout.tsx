@@ -39,7 +39,7 @@ export default async function RootLayout({
       <body className="scroll-smooth">
         <CartProvider>
           <nav className='top-0 z-30'>
-            <Header navigationMenu={navigationMenus} />
+            <Header navigationMenu={navigationMenus} sticky />
           </nav>
           <main className="scroll-smooth">
             {children}

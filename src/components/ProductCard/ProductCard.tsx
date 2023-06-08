@@ -16,19 +16,19 @@ type ProductProps = {
 
 
 export const ProductCard = ({ product }: ProductProps) => {
-  const defaultVariant = product.variants[0]
+
+  const defaultVariant = product.variants[0] || ""
   const defaultColor = defaultVariant?.colors?.find(color => color.name === 'CRNA') || defaultVariant?.colors[0]
   const defaultSize = defaultVariant?.sizes?.find(size => size.name === 'S') || defaultVariant?.sizes[0]
   const [selectedColor, setSelectedColor] = useState<ColorType>(defaultColor)
   const [selectedSize, setSelectedSize] = useState<SizeType>(defaultSize)
 
-  if (!product) return <>No product</>
   return (
 
 
     <div className="product-card flex flex-col p-2 ">
       <div className="product-card-img-container flex relative mx-auto">
-        <Link href={`shop/product/${product.id}`}>
+        <Link href={`shop/product/${product.name}`}>
           {product.variants[0].images?.length > 0 ?
             <Image
               className="product-card-img"

@@ -8,10 +8,10 @@ import { Product as ProductType } from "@/types/Product";
 import Image from "next/image";
 
 
-async function getProduct(id: number) {
+async function getProduct(productName: string) {
   try {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/product/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/product/${productName}`, {
       method: 'GET',
       next: {
         revalidate: 1,
@@ -28,8 +28,8 @@ async function getProduct(id: number) {
   }
 }
 
-export default async function Product({ params: { id } }: any) {
-  const product: ProductType = await getProduct(id);
+export default async function Product({ params: { productName } }: any) {
+  const product: ProductType = await getProduct(productName);
 
   const productVariants = product?.variants
   if (!product) {

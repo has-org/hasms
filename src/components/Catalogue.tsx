@@ -19,8 +19,6 @@ export const Catalogue = ({ catalogue }: CatalogueProp) => {
   const windowWidth = windowSize.current[0]
   const windowHeight = windowSize.current[1]
   const isMobile = windowWidth < 900
-  let urlString = `/shop/${catalogue?.type}`
-
   return (
     <Box sx={{
       width: '100%',
@@ -28,7 +26,7 @@ export const Catalogue = ({ catalogue }: CatalogueProp) => {
       justifyContent: 'center',
     }}
     >
-      <Link href={`${urlString}/${encodeURIComponent(catalogue.id)}`} >
+      <Link href={`shop/catalogue/${encodeURIComponent(catalogue.name)}`} >
         {
           isMobile && <Image
             src={catalogue?.image?.length > 1 ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}

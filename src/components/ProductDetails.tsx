@@ -44,9 +44,7 @@ export const ProductDetails = ({ product }: ProductProps) => {
 
     const onSubmitHandler: SubmitHandler<any> = (values: any, e?: React.BaseSyntheticEvent
     ) => {
-        console.log(values)
         const color = productColors.find((color: ColorType) => color.id === values.color.id) || productColors[0]
-        console.log(color)
         const size = productSizes.find((size: any) => size.id === values.size.id) || productSizes[0]
         addToCart({ ...product, color, size })
     };

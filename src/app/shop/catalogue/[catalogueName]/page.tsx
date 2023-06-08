@@ -8,9 +8,9 @@ import { MainContainer } from "@/components/MUI/MainContainer";
 import ProductGrid from "@/components/MUI/ProductGrid";
 
 
-async function getData(catalogueId: number) {
+async function getData(catalogueName: number) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/catalogue/${catalogueId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/catalogue/${catalogueName}`, {
       method: 'GET',
       next: {
         revalidate: 10,
@@ -30,9 +30,9 @@ async function getData(catalogueId: number) {
 const NavigationBreadcrumbs = () => { }
 const Filters = () => { }
 const CategorySection = () => { }
-export default async function ShopCatalogue({ params: { catalogueId } }: any) {
+export default async function ShopCatalogue({ params: { catalogueName } }: any) {
 
-  const [catalogue]: [catalogue: CatalogueType] = await getData(catalogueId);
+  const [catalogue]: [catalogue: CatalogueType] = await getData(catalogueName);
   if (!catalogue) return <div>catalogue not found</div>;
   return (
     <main className="min-h-screen">
@@ -40,7 +40,7 @@ export default async function ShopCatalogue({ params: { catalogueId } }: any) {
       <Container firstSection={<NavigationCategorySection />}>
         <MainContainer containerItem={catalogue} />
 
-        <ProductGrid products={catalogue.products!!} />
+        <ProductGrid products={catalogue.categories[0]?.products!!} />
         {/* {category.products.map((product, index) => {
           return (
             <ProductCard product={product} key={index} />

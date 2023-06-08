@@ -16,8 +16,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-const ProductGrid = ({ products }: { products: ProductType[], }) => {
-
+const ProductGrid = ({ products }: { products?: ProductType[], }) => {
+    if (!products) return <>Missing products</>
     return (
         <Box sx={{ flexGrow: 1, overflow: 'hidden' }}>
             <Grid container >

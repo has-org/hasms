@@ -42,7 +42,7 @@ const CartTable = () => {
 
     const data = useMemo(
         () =>
-            items?.map((item: any) => {
+            items?.map((item: any,) => {
                 return {
                     name: `${item.product_name} (${item.product_code})`,
                     code: item.product_code,

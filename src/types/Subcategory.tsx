@@ -6,5 +6,5 @@ export interface Subcategory {
     name?: string;
     category_id: number;
     category: Category;
-    product: Product[];
+    products: Product[];
   }
