@@ -1,33 +1,65 @@
+'use client'
+import { useRef } from 'react';
+import { Catalogue as CatalogueType } from "@/types/Catalogue";
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import logo from "../../public/logo2.jpg";
+import Box from "./MUI/Box";
 
-
-type Catalogue = {
-  id: number;
-  name: string;
-  image: string | StaticImageData;
-};
 
 type CatalogueProp = {
-  catalogue: Catalogue;
+  catalogue: CatalogueType;
   primary?: boolean
 };
 
-export const Catalogue: React.FC<CatalogueProp> = ({ catalogue, primary }) => {
+
+
+export const Catalogue = ({ catalogue }: CatalogueProp) => {
+  const windowSize = useRef([window.innerWidth, window.innerHeight]);
+  const windowWidth = windowSize.current[0]
+  const windowHeight = windowSize.current[1]
+  const isMobile = windowWidth < 900
   return (
-    <Link href={"/"}>
-      <div className="border rounded-md border-slate-200 flex justify-center relative">
-        <Image
-          className="rounded object-fill"
-          alt="Mountains"
-          src={catalogue?.image ? catalogue.image : ''}
-          style={{
-            width: "100%",
-            height: primary ? "168px" : "108px",
-          }}
-        />
-      </div>
-    </Link>
+    <Box sx={{
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+    }}
+    >
+      <Link href={`shop/catalogue/${encodeURIComponent(catalogue.name)}`} >
+        {
+          isMobile && <Image
+            src={catalogue?.image?.length > 1 ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
+            width={500}
+            height={500}
+            style={{
+              width: '300px',
+              height: '300px',
+              objectFit: 'contain',
+              borderRadius: '24px',
+            }}
+            alt="Catalogue image"
+          />
+        }
+        {
+          !isMobile && <Image
+            src={catalogue?.image?.length > 1 ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
+            width={catalogue.primary ? 600 : 300}
+            height={catalogue.primary ? 600 : 300}
+            style={{
+              width: catalogue.primary ? '800px' : '300px',
+              height: catalogue.primary ? '550px' : '250px',
+              objectFit: 'contain',
+              borderRadius: '24px',
+            }}
+            alt="Catalogue image"
+          />
+        }
+
+
+
+      </Link>
+
+    </Box >
   );
 }

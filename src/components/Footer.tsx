@@ -1,76 +1,171 @@
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+'use client'
+import { styled } from '@mui/material/styles';
+import { Avatar, Grid, List, ListItemAvatar, ListItem, ListItemText, Typography, Button } from "@mui/material";
+import Box from "./MUI/Box";
+import { useState } from "react";
+import { darkTheme, lightTheme } from "./MUI/Theme";
+import { Input, TextArea } from '@/app/cart/delivery-form/Delivery';
+import { FormProvider, useForm } from 'react-hook-form';
+import Iconify from './iconify';
+
+let mode = 'light';
+const theme = mode == 'dark' ? darkTheme : lightTheme
+
+const TextInput = styled(Input)(({ theme }) => ({
+  width: '100%',
+  height: '4em',
+  border: '1px solid #ccc',
+  borderRadius: '8px',
+  padding: '0.3em',
+  marginTop: '1em',
+  color: theme.mode === 'dark' ? theme.palette.text.primary : theme.palette.text.secondary,
+  backgroundColor: theme.mode === 'dark' ? 'background.dark' : 'background.dark',
+}))
+const TextBox = styled(TextArea)(({ theme }) => ({
+  width: '100%',
+  height: '4em',
+  marginTop: '1em',
+  border: '1px solid #ccc',
+  borderRadius: '8px',
+  padding: '0.3em',
+  color: theme.mode === 'dark' ? theme.palette.text.primary : theme.palette.text.secondary,
+}))
+
+const FooterListItems = [
+  { id: 1, primary: 'Njegoševa 34a', secondary: '78000 Banja Luka', icon: 'fluent:location-48-filled' },
+  { id: 2, primary: 'Kontakt', secondary: '+387 51 305 077', icon: '' },
+  { id: 3, primary: 'Email', secondary: 'motoshop7bl@gmail.com', icon: '' },
+]
+const FooterListItems1 = [
+  { id: 1, primary: 'Jesenjinova 14', secondary: '78000 Banja Luka', icon: '' },
+  { id: 2, primary: 'Kontakt', secondary: '+387 65 514 807', icon: '' },
+  { id: 2, primary: 'Kontakt', secondary: '+387 66 173 700', icon: '' },
+  { id: 4, primary: 'Email', secondary: 'motoshop7bl@gmail.com', icon: '' },
+]
 
 export default function Footer() {
-  return (
-    <div className="bg-[#000]  flex flex-col text-white font-serif">
-      <div className="flex justify-between px-20 mt-10 text-white">
-        <div className="flex flex-col">
-          <h2>Maloprodaja</h2>
-          <ul className="">
-            <li>Njegoševa 34a,</li>
-            <li>78000 Banja Luka</li>
-            <li>Kontakt: +387 51 305 077</li>
-            <li>Email: motoshop7bl@gmail.com</li>
-            <li>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2831.8891209695134!2d17.190244415808795!3d44.7830657790988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475e0300fed7a243%3A0x45d7f41b6986df22!2sNjego%C5%A1eva%2034%2C%20Banja%20Luka%2078000!5e0!3m2!1sen!2sba!4v1675361811814!5m2!1sen!2sba"
-                width="450"
-                height="450"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </li>
-          </ul>
-        </div>
-        <div className="flex flex-col ">
-          <h2>Servis i veleprodaja</h2>
-          <ul className="">
-            <li>Jesenjinova 14</li>
-            <li>78000 Banja Luka</li>
-            <li>Kontakt: +387 65 514 807</li>
-            <li>Kontakt: +387 66 173 700</li>
-            <li>Email: servis@motoshop7.ba</li>
-            <li>Email: info@motoshop7.ba</li>
-            <li>Email: yamaha@motoshop7.ba</li>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2833.3779260384463!2d17.163718415807967!3d44.75270667909902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475e02d4ef6ed02b%3A0xebdf7ceaa2cf1fbf!2sJesenjinova%2014%2C%20Banja%20Luka%2078000!5e0!3m2!1sen!2sba!4v1675361911066!5m2!1sen!2sba"
-              width="450"
-              height="450"
-              style={{ border: 0 }}
-              loading="lazy"
-            ></iframe>
-          </ul>
-        </div>
-        {/* <div className="flex flex-col gap-y-4">
-          <h2>Kontaktirajte nas</h2>
-          <select name="emails" id="emails" value={""}>
-            <option value="">servis@motoshop7.ba</option>
-            <option value="">info@motoshop7.ba</option>
-            <option value="">yamaha@motoshop7.ba</option>
-          </select>
-          <input type="text" id="fname" name="fname" />
-          <input type="text" id="fname" name="fname" />
-          <input type="text" id="fname" name="fname" />
-          <input type="text" id="fname" name="fname" />
-          Blabnlablabla
-          <input type="submit" value="Submit" />
-        </div> */}
-      </div>
-    </div>
-  );
-}
+  const methods = useForm();
 
-{
-  /* <ul className="">
-<li>Pocetna</li>
-<li>O nama</li>
-<li>Novosti</li>
-<li>Homologacije</li>
-<li>Kontakt</li>
-<li>Zastita privatnosti</li>
-<li>Opsti uslovi</li>
-<li>Uslovi poslovanja</li>
-</ul> */
+
+  const [emailInfo, setEmailInfo] = useState({
+    name: '',
+    phoneNumber: '',
+    email: '',
+    message: ''
+  })
+
+  const onSubmit = (data: any) => {
+    setEmailInfo(data)
+  }
+
+
+  return (
+    <Box sx={{ flexGrow: 1, minWidth: '100%', }}>
+      <Grid container spacing={2} sx={{
+        backgroundColor: 'gray',
+        paddingX: '4em',
+        paddingY: '2em',
+
+        '@media (max-width:600px)': {
+          padding: '0.7em',
+        },
+      }}>
+        <Grid item xs={12} sm={12} md={4} lg={4}>
+          <List sx={{ width: '100%', maxWidth: 360, }}>
+            <Typography variant="h2" component="h2" sx={{
+              paddingBottom: '0.5em',
+            }}>
+              Maloprodaja
+            </Typography>
+            {FooterListItems.map((item, index) => {
+              return (
+                <ListItem key={index} sx={{ paddingX: 0, paddingY: '0.3em' }}>
+                  <ListItemAvatar >
+                    <Avatar sx={{
+                      '&:hover': {
+                        backgroundColor: theme.palette.primary.main,
+                      },
+                    }} >
+                      {item.icon}
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText primary={item.primary} secondary={item.secondary}
+                    primaryTypographyProps={{
+                      color: theme.palette.text.primary,
+                      fontSize: '2.5em',
+                      fontWeight: '500',
+                    }}
+                    secondaryTypographyProps={{
+                      color: theme.palette.text.secondary,
+                      fontSize: '1.8em',
+                      fontWeight: '500',
+                    }}
+                  />
+                </ListItem>
+              )
+            })}
+          </List>
+
+
+        </Grid>
+        <Grid item xs={12} sm={12} md={4} lg={4}>
+          <List sx={{ width: '100%', maxWidth: 360, }}>
+            <Typography variant="h2" component="h2" sx={{
+              paddingBottom: '0.5em',
+              whiteSpace: 'nowrap',
+            }}>
+              Servis i veleprodaja
+            </Typography>
+            {FooterListItems1.map((item, index) => {
+              return (
+                <ListItem key={index} sx={{ paddingX: 0, paddingY: '0.3em' }}>
+                  <Iconify icon={item.icon} width={72} sx={{
+                    mx: 0.5, color: 'white', 
+                    '&:hover': {
+                      backgroundColor: theme.palette.primary.main,
+                    },
+                  }} />
+                  <ListItemText primary={item.primary} secondary={item.secondary}
+                    primaryTypographyProps={{
+                      color: theme.palette.text.primary,
+                      fontSize: '2.5em',
+                      fontWeight: '500',
+                    }}
+                    secondaryTypographyProps={{
+                      color: theme.palette.text.secondary,
+                      fontSize: '1.8em',
+                      fontWeight: '500',
+
+                    }}
+                  />
+                </ListItem>
+              )
+            })}
+          </List>
+        </Grid>
+        <Grid item xs={12} sm={12} md={4} lg={4}>
+          <FormProvider {...methods} >
+            <Box component="form" >
+
+              <List sx={{ width: '100%', }}>
+                <Typography variant="h4" component="h2" sx={{
+                  paddingBottom: '0.5em',
+                }}>
+                  Kontakt
+                </Typography>
+                <ListItem sx={{ paddingX: 0, paddingY: '0.3em' }}>
+                  <TextInput name="name" type="text" placeholder="Ime" />
+                  <TextInput name="phoneNumber" type="text" placeholder="Broj telefona" />
+                  <TextInput name="email" type="text" placeholder="Email *" />
+                  <TextBox name="message" type="text" placeholder="Poruka" />
+                  <Button type="submit">Posalji</Button>
+                </ListItem>
+              </List>
+            </Box>
+          </FormProvider>
+
+        </Grid>
+      </Grid>
+    </Box >
+  );
 }

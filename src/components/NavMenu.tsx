@@ -1,55 +1,34 @@
-import Image from "next/image";
-import logo from "../../public/logo2.jpg";
-import { useState } from "react";
-import Link from "next/link";
-import { NavigationMenu } from "@/mockData/navigationMenu";
+'use client'
+import { useRef } from 'react';
+import { MenuItem } from "./MenuItem";
+import { Box } from "@mui/material";
 
 type NavMenuProps = {
-    navigationMenu: Array<NavigationMenu>
+  navigationMenu: any
 }
 
-export const NavMenu: React.FC<NavMenuProps> = ({navigationMenu}) => {
-  const toggleMenu = () => {
-    setNavitemExpanded(!navItemExpanded);
-  };
-  const [navItemExpanded, setNavitemExpanded] = useState(false);
+export const NavMenu = ({ navigationMenu }: NavMenuProps) => {
+  const windowSize = useRef([window.innerWidth, window.innerHeight]);
+  const windowWidth = windowSize.current[0]
+  const windowHeight = windowSize.current[1]
 
   return (
-    <ul className="sm:hidden lg:flex bg-gray-200 px-8 font-serif cursor-pointer">
-      <div className="flex mx-auto gap-x-5">
+    <>
+      <Box sx={{
+        position: 'relative',
+        width: '100%',
+        '& ul': { padding: 0 }
+      }}>
 
-      {navigationMenu.map((navItem: any, index: number) => {
-        return (
-          <li key={index} className="flex text-black ">
-            <div className="flex flex-col">
-              {navItem.subMenu.length < 1 ? (
-                <Link href={navItem.href ? navItem.href : ""}>
-                  <span className="nav-item-name hover:text-blue-400">{navItem.name}</span>
-                </Link>
-              ) : (
-                <div className="flex flex-col">
-                  <span className="nav-item-name hover:text-blue-400" onClick={toggleMenu}>
-                    {navItem.name}
-                  </span>
-                </div>
-              )}
-              {navItemExpanded && navItem.subMenu.length > 1
-                ? navItem.subMenu.map((subMenuItem: any, index: number) => {
-                    return (
-                      <div className="flex flex-col hover:text-blue-400" key={index}>
-                        <Link href={subMenuItem.href ? subMenuItem.href : '/'}>
-                        {subMenuItem.name}
-                        </Link>
-                      </div>
-                    );
-                  })
-                : null}
-            </div>
-          </li>
-        );
-      })}
-      </div>
+        <ul className={`navigation-menu flex relative justify-center ${windowWidth < 900 ? 'hidden' : ''}`}>
+          {navigationMenu[0]?.navigation_menu_items?.map((navItem: any, index: number) => {
+          return (
+              <MenuItem navItem={navItem} key={index} />
+            );
+          })}
 
-    </ul>
+        </ul>
+      </Box>
+    </>
   );
 }

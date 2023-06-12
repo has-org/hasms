@@ -18,7 +18,7 @@ export default function SearchBox() {
     const JSONdata = JSON.stringify(data);
 
     // API endpoint where we send form data.
-    const endpoint = "/api/form";
+    const endpoint = `${process.env.NEXT_PUBLIC_API_HOST}/form`;
 
     // Form the request for sending data to the server.
     const options = {
@@ -42,9 +42,9 @@ export default function SearchBox() {
   };
   return (
     // We pass the event to the handleSubmit() function on submit.
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="search-box-container hidden lg:block">
       <label htmlFor="search"></label>
-      <input type="text" id="search" name="search" required />
+      {/* <input type="text" id="search" name="search" required /> */}
       <button type="submit">
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
