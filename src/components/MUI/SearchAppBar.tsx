@@ -138,7 +138,7 @@ const SearchAppBar = ({ sticky, navigationMenu }: { navigationMenu: any, sticky?
   const [cartDrawerOpen, togglecartDrawerOpen] = useCycle(false, true);
   const [subListOpen, setSubListOpen] = useState({})
 
-  let navMenu = navigationMenu[0]?.navigation_menu_items
+  let navMenu = navigationMenu?.navigation_menu_items
 
   const handleClick = (index: any) => {
     setSubListOpen((prevState: any) => ({
