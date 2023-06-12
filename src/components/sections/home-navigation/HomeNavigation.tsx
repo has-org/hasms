@@ -10,7 +10,7 @@ const navigationItems = [
     { icon: 'mingcute:coat-line', title: 'Odjeća i obuća', link: '/shop/category/ODJEĆA-I-OBUĆA' },
     { icon: 'bi:person-gear', title: 'Dijelovi', link: '/shop/category/DIJELOVI-I-OPREMA' },
     { icon: 'tabler:speedboat', title: 'Čamci', link: '/shop/category/MARINA' },
-    { icon: 'heroicons:wrench-screwdriver', title: 'Servis', link: '/shop/category/ERVIS-I-ODRŽAVANJE' },
+    { icon: 'heroicons:wrench-screwdriver', title: 'Servis', link: '/shop/category/SERVIS-I-ODRŽAVANJE' },
 
 ]
 
