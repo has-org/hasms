@@ -14,10 +14,7 @@ type BlogProps = {
 
 
 export const BlogCard = ({ blog }: BlogProps) => {
-  const windowSize = useRef([window.innerWidth, window.innerHeight]);
-  const windowWidth = windowSize.current[0]
-  const windowHeight = windowSize.current[1]
-  const isMobile = windowWidth < 900
+
   const blogUrl = blog.url ? blog.url : ''
   return (
     <Box sx={{
@@ -29,7 +26,7 @@ export const BlogCard = ({ blog }: BlogProps) => {
       <Link href={`${encodeURIComponent(blogUrl)}`} >
         <Card>
           {
-            isMobile && <Image
+           <Image
               src={blog?.image ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${blog.image}` : 'https://placehold.co/600x400'}
               width={600}
               height={600}
@@ -42,7 +39,7 @@ export const BlogCard = ({ blog }: BlogProps) => {
               alt="Catalogue image"
             />
           }
-          {
+          {/* {
             !isMobile && <Image
               src={blog?.image ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${blog.image}` : 'https://placehold.co/600x400'}
               width={600}
@@ -55,7 +52,7 @@ export const BlogCard = ({ blog }: BlogProps) => {
               }}
               alt="Catalogue image"
             />
-          }
+          } */}
 
           <CardContent>
             <Typography sx={{ fontSize: '24px', fontFamily: 'sans-serif' }} color="text.primary" gutterBottom>

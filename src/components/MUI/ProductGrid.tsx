@@ -16,21 +16,21 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-const ProductGrid = ({ products }: { products?: ProductType[], }) => {
+const ProductGrid = ({products}:{products?: ProductType[]}) => {
     if (!products) return <>Missing products</>
     return (
         <Box sx={{ flexGrow: 1, overflow: 'hidden' }}>
             <Grid container >
 
-                    {products.map((product, index: number) => {
-                        return (
-                            <Grid item xs={6} sm={6} md={3} lg={3} key={index}>
-                                <Item elevation={0}>
-                                    <ProductCard product={product} key={index} />
-                                </Item>
-                            </Grid>)
-                    })
-                    }
+                {products.map((product, index: number) => {
+                    return (
+                        <Grid item xs={6} sm={6} md={3} lg={3} key={index}>
+                            <Item elevation={0}>
+                                <ProductCard product={product} key={index} />
+                            </Item>
+                        </Grid>)
+                })
+                }
 
             </Grid>
         </Box>

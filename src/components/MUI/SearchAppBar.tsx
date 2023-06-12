@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 
-import { darkTheme, lightTheme } from './Theme';
+import { darkTheme, lightTheme } from './theme';
 import { motion, useCycle } from 'framer-motion';
 import { useRef, useState, useContext, useEffect } from 'react';
 import { Collapse, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
@@ -132,16 +132,13 @@ const list = (handleClick: any, subListOpen: any, listItems: any) => (
 
 
 
-const desktopNavMenu: NavigationMenuItem[] = [{ id: 1, name: 'Home', url: '/' }]
 
 const SearchAppBar = ({ sticky, navigationMenu }: { navigationMenu: any, sticky?: boolean }) => {
   const [navigationDrawerOpen, toggleNavigationDrawerOpen] = useCycle(false, true);
   const [cartDrawerOpen, togglecartDrawerOpen] = useCycle(false, true);
   const [subListOpen, setSubListOpen] = useState({})
-  const windowSize = useRef([window.innerWidth, window.innerHeight]);
-  const windowWidth = windowSize.current[0]
-  const isMobile = windowWidth < 600
-  let navMenu = isMobile ? navigationMenu[0]?.navigation_menu_items : desktopNavMenu
+
+  let navMenu = navigationMenu[0]?.navigation_menu_items
 
   const handleClick = (index: any) => {
     setSubListOpen((prevState: any) => ({

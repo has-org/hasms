@@ -1,5 +1,5 @@
 'use client'
-import { darkTheme, lightTheme } from "@/components/MUI/Theme";
+import { darkTheme, lightTheme } from "@/components/MUI/theme";
 import { Box, Button, Checkbox, FormControlLabel } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import { useState } from "react";

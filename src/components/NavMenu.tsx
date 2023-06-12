@@ -8,9 +8,7 @@ type NavMenuProps = {
 }
 
 export const NavMenu = ({ navigationMenu }: NavMenuProps) => {
-  const windowSize = useRef([window.innerWidth, window.innerHeight]);
-  const windowWidth = windowSize.current[0]
-  const windowHeight = windowSize.current[1]
+
 
   return (
     <>
@@ -20,7 +18,7 @@ export const NavMenu = ({ navigationMenu }: NavMenuProps) => {
         '& ul': { padding: 0 }
       }}>
 
-        <ul className={`navigation-menu flex relative justify-center ${windowWidth < 900 ? 'hidden' : ''}`}>
+        <ul className={`navigation-menu flex relative justify-center`}>
           {navigationMenu[0]?.navigation_menu_items?.map((navItem: any, index: number) => {
           return (
               <MenuItem navItem={navItem} key={index} />

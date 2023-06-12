@@ -15,10 +15,7 @@ type CatalogueProp = {
 
 
 export const Catalogue = ({ catalogue }: CatalogueProp) => {
-  const windowSize = useRef([window.innerWidth, window.innerHeight]);
-  const windowWidth = windowSize.current[0]
-  const windowHeight = windowSize.current[1]
-  const isMobile = windowWidth < 900
+
   return (
     <Box sx={{
       width: '100%',
@@ -28,7 +25,7 @@ export const Catalogue = ({ catalogue }: CatalogueProp) => {
     >
       <Link href={`shop/catalogue/${encodeURIComponent(catalogue.name)}`} >
         {
-          isMobile && <Image
+          <Image
             src={catalogue?.image?.length > 1 ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
             width={500}
             height={500}
@@ -41,7 +38,7 @@ export const Catalogue = ({ catalogue }: CatalogueProp) => {
             alt="Catalogue image"
           />
         }
-        {
+        {/* {
           !isMobile && <Image
             src={catalogue?.image?.length > 1 ? `${process.env.NEXT_PUBLIC_API_IMG_HOST}${catalogue.image}` : 'https://placehold.co/600x400'}
             width={catalogue.primary ? 600 : 300}
@@ -54,7 +51,7 @@ export const Catalogue = ({ catalogue }: CatalogueProp) => {
             }}
             alt="Catalogue image"
           />
-        }
+        } */}
 
 
 

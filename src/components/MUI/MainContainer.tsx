@@ -19,9 +19,7 @@ type ContainerProps = {
 
 
 export const MainContainer = ({ containerItem }: ContainerProps) => {
-    const windowSize = useRef([window.innerWidth, window.innerHeight]);
-    const windowWidth = windowSize.current[0]
-    const windowHeight = windowSize.current[1]
+
     // let urlString = item?.type === 'blog' ? `/${item?.type}` : `/shop/${item?.type}`
 
     return (
@@ -30,7 +28,7 @@ export const MainContainer = ({ containerItem }: ContainerProps) => {
         }}
         >
             <Typography variant="h3" component="h3" sx={{ mb: 2 }}>
-                {containerItem.name}
+                {/* {containerItem.name} */}
             </Typography>
 
         </Box >

@@ -37,7 +37,7 @@ export const ProductThumbnailsList = ({ variants }: { variants: VariantType[] })
                                 <Thumbnail key={index} onClick={() => setSelectedImage(image)}>
                                     <Image
                                         src={`${process.env.NEXT_PUBLIC_API_IMG_HOST}${image.url}`}
-                                        alt={image.alt}
+                                        alt={image?.alt ? image.alt : 'Product image'}
                                         width={150}
                                         height={150}
                                     />

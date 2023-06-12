@@ -1,8 +1,8 @@
 'use client'
-import Link from "@/components/MUI/Link"
 import Iconify from "@/components/UI/iconify"
 import useResponsive from "@/hooks/useResponsive"
 import Image from "next/image"
+import Link from "next/link"
 
 const navigationItems = [
     { icon: 'ph:motorcycle', title: 'Motori', link: '/shop/category/MOTORI' },

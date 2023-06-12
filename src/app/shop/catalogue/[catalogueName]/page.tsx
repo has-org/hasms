@@ -6,11 +6,12 @@ import NavigationCategorySection from "@/components/MUI/NavigationCategorySectio
 import { Typography } from "@mui/material";
 import { MainContainer } from "@/components/MUI/MainContainer";
 import ProductGrid from "@/components/MUI/ProductGrid";
+import { Product, Product as ProductType} from "@/types/Product";
 
 
 async function getData(catalogueName: number) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/catalogue/${catalogueName}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/catalogue/${catalogueName}/products`, {
       method: 'GET',
       next: {
         revalidate: 10,
@@ -32,15 +33,15 @@ const Filters = () => { }
 const CategorySection = () => { }
 export default async function ShopCatalogue({ params: { catalogueName } }: any) {
 
-  const [catalogue]: [catalogue: CatalogueType] = await getData(catalogueName);
-  if (!catalogue) return <div>catalogue not found</div>;
+  const catalogueProducts = await getData(catalogueName);
+  if (!catalogueProducts) return <div>catalogue products not found</div>;
   return (
     <main className="min-h-screen">
       {/* <NavigationBreadcrumbs /> */}
       <Container firstSection={<NavigationCategorySection />}>
-        <MainContainer containerItem={catalogue} />
+        {/* <MainContainer containerItem={catalogue} /> */}
 
-        <ProductGrid products={catalogue.categories[0]?.products!!} />
+        <ProductGrid products={catalogueProducts} />
         {/* {category.products.map((product, index) => {
           return (
             <ProductCard product={product} key={index} />

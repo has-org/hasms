@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import { Avatar, Grid, List, ListItemAvatar, ListItem, ListItemText, Typography, Button } from "@mui/material";
 import Box from "./MUI/Box";
 import { useState } from "react";
-import { darkTheme, lightTheme } from "./MUI/Theme";
+import { darkTheme, lightTheme } from "./MUI/theme";
 import { Input, TextArea } from '@/app/cart/delivery-form/Delivery';
 import { FormProvider, useForm } from 'react-hook-form';
 import Iconify from './iconify';
