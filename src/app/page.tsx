@@ -84,7 +84,7 @@ async function getNavMenus() {
 
 export default async function HomePage() {
   const catalogues: CatalogueType[] = await getCatalogues()
-  const categories = catalogues.filter(catalogue => catalogue.categories?.length! >= 1)
+  const categories = catalogues?.filter(catalogue => catalogue.categories?.length! >= 1)
   const cooperators: CooperatorType[] = await getCooperators()
   const navigationMenu = await getNavMenus()
   const blogs = await getBlogs()
@@ -92,13 +92,7 @@ export default async function HomePage() {
     <>
 
     <HomeNavigation></HomeNavigation>
-      {/* <section className="carousel overflow-hidden">
-        <Carousel />
-      </section> */}
 
-      <section className="navigation-bar-container">
-        {/* <NavMenu navigationMenu={navigationMenu} />  */}
-      </section>
 
       <section className="relative xs:px-3 sm:px-3 md:px-4 lg:px-20 overflow-hidden">
         <GridCatalogueSection catalogues={catalogues} title="Akcije" />
