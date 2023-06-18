@@ -5,7 +5,7 @@ services:
       context: ./
       target: runner
     ports:
-      - "0.0.0.0:3050:3050"
+      - "0.0.0.0:3050:3000"
     environment:
       NODE_ENV: production
     networks:
