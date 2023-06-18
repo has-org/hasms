@@ -89,11 +89,9 @@ export default async function HomePage() {
   const navigationMenu = await getNavMenus()
   const blogs = await getBlogs()
 
-  console.log('a', process.env.NEXT_PUBLIC_API_HOST)
-  
   return (
     <>
-
+    {JSON.stringify(process.env.NEXT_PUBLIC_API_HOST)}
     <HomeNavigation></HomeNavigation>
 
 
