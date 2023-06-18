@@ -88,6 +88,9 @@ export default async function HomePage() {
   const cooperators: CooperatorType[] = await getCooperators()
   const navigationMenu = await getNavMenus()
   const blogs = await getBlogs()
+
+  console.log('a', process.env.NEXT_PUBLIC_API_HOST)
+  
   return (
     <>
 
