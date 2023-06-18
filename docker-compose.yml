@@ -10,5 +10,4 @@ services:
       NODE_ENV: production
     networks:
       webnet:
-        name: webnet
 
