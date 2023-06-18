@@ -8,3 +8,5 @@ services:
       - "0.0.0.0:3050:3000"
     environment:
       NODE_ENV: production
+    networks:
+      - webnet
