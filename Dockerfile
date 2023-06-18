@@ -32,4 +32,4 @@ USER nextjs
 EXPOSE 3050
 ENV PORT 3050
 
-CMD ["npm", "start"]
+CMD ["npm", "start", "-p", "3050"]
