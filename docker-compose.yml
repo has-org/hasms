@@ -9,6 +9,6 @@ services:
     environment:
       NODE_ENV: production
     networks:
-      name: webnet
-      external: true
+      webnet:
+        name: webnet
 
