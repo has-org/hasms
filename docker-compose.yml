@@ -12,3 +12,4 @@ services:
       - webnet
 networks:
   webnet:
+    external: true
