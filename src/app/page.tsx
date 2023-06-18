@@ -16,7 +16,7 @@ import HomeNavigation from "@/components/sections/home-navigation";
 
 async function getBlogs() {
   try {
-    const res = await fetch(`http://localhost:3000/blogs`, {
+    const res = await fetch(`http://127.0.0.1:3000/blogs`, {
       method: 'GET',
       next: {
         revalidate: 1,
@@ -33,7 +33,7 @@ async function getBlogs() {
 
 async function getCatalogues() {
   try {
-    const res = await fetch(`http://localhost:3000/catalogues`, {
+    const res = await fetch(`http://127.0.0.1:3000/catalogues`, {
       method: 'GET',
       next: {
         revalidate: 1,
@@ -49,7 +49,7 @@ async function getCatalogues() {
 }
 async function getCooperators() {
   try {
-    const res = await fetch(`http://localhost:3000/cooperators`, {
+    const res = await fetch(`http://127.0.0.1:3000/cooperators`, {
       method: 'GET',
       next: {
       }
@@ -65,7 +65,7 @@ async function getCooperators() {
 
 async function getNavMenus() {
   try {
-    const res = await fetch(`http://localhost:3000/navigationMenus`, {
+    const res = await fetch(`http://127.0.0.1:3000/navigationMenus`, {
       method: 'GET',
       next: {
         revalidate: 1,
