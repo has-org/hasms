@@ -13,7 +13,7 @@ config.autoAddCss = false;
 
 async function getNavMenus() {
   try {
-    const res = await fetch('http://localhost:8000/navigationMenus', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/navigationMenus`, {
       method: 'GET',
     });
     if (res.status !== 200) {

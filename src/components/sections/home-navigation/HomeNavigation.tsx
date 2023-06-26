@@ -21,7 +21,7 @@ const HomeNavigation = () => {
 
     return (
         <div className="home-front">
-            <div className="h-[100vh] w-full flex justify-center items-center">
+            <div className="relative h-[100vh] w-full flex justify-center items-center">
                 <Image
                     className="cover-img"
                     alt="Cooperator Logo"
@@ -37,7 +37,7 @@ const HomeNavigation = () => {
                             return (
                                 <Link key={index} href={item.link}>
                                     <div className="flex flex-col items-center justify-center cursor-pointer">
-                                        <Iconify icon={item.icon} color="white" width={302}  sx={{fontSize: '12px'}} />
+                                        <Iconify icon={item.icon} color="white" width={432}  sx={{fontSize: '16px'}} />
                                         <p className="text-white text-5xl">{item.title}</p>
                                     </div>
                                 </Link>
@@ -57,8 +57,6 @@ const HomeNavigation = () => {
 
 
                 </div>
-
-
             </div>
         </div>
     )
