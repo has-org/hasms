@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['161.35.66.214','placehold.co', 'localhost', 'minio'],
+    domains: ['161.35.66.214','placehold.co', 'localhost'],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -19,12 +19,6 @@ const nextConfig = {
       {
         protocol: 'http',
         hostname: 'localhost',
-        port: '9000',
-        pathname: '/*',
-      },
-      {
-        protocol: 'http',
-        hostname: 'minio',
         port: '9000',
         pathname: '/*',
       },
