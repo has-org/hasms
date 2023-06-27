@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
 const nextConfig = {
   experimental: {
     appDir: true,
@@ -24,7 +28,8 @@ const nextConfig = {
       },
     ],
   },
-  output: 'standalone'
+  output: 'standalone',
+  
 }
 
-module.exports = nextConfig
+module.exports = withBundleAnalyzer(nextConfig)

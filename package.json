@@ -14,13 +14,19 @@
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@iconify/react": "^4.1.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.11.16",
+    "@next/bundle-analyzer": "^13.4.7",
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
+    "@types/react-table": "^7.7.14",
+    "@types/uuid": "^9.0.1",
+    "autoprefixer": "^10.4.14",
     "eslint": "8.32.0",
     "eslint-config-next": "^13.3.0",
+    "eslint-config-prettier": "^8.6.0",
     "framer-motion": "^10.11.2",
     "next": "^13.4.1",
     "react": "^18.2.0",
@@ -29,11 +35,6 @@
     "react-select": "^5.7.2",
     "react-table": "^7.8.0",
     "typescript": "4.9.4",
-    "uuid": "^9.0.0",
-    "@iconify/react": "^4.1.0",
-    "@types/react-table": "^7.7.14",
-    "@types/uuid": "^9.0.1",
-    "autoprefixer": "^10.4.14",
-    "eslint-config-prettier": "^8.6.0"
+    "uuid": "^9.0.0"
   }
 }
