@@ -31,11 +31,14 @@ const nextConfig = {
   output: 'standalone',
   transpilePackages: ["@mui/system", "@mui/material", "@mui/icons-material"],
   modularizeImports: {
-    "@mui/material/?(((\\w*)?/?)*)": {
-      transform: "@mui/material/{{ matches.[1] }}/{{member}}",
+    "@mui/material": {
+      transform: "@mui/material/{{member}}",
     },
-    "@mui/icons-material/?(((\\w*)?/?)*)": {
-      transform: "@mui/icons-material/{{ matches.[1] }}/{{member}}",
+    "@mui/icons-material": {
+      transform: "@mui/icons-material/{{member}}",
+    },
+    "@mui/material/styles/": {
+      transform: "@mui/material/styles/{{member}}",
     },
   },
 }

@@ -1,8 +1,5 @@
 "use client";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-
 export default function SearchBox() {
   // Handles the submit event on form submit.
   const handleSubmit = async (event: any) => {
@@ -46,11 +43,7 @@ export default function SearchBox() {
       <label htmlFor="search"></label>
       {/* <input type="text" id="search" name="search" required /> */}
       <button type="submit">
-        <FontAwesomeIcon
-          icon={faMagnifyingGlass}
-          style={{ fontSize: 32 }}
-          className="text-gray-900"
-        />
+
       </button>
     </form>
   );
