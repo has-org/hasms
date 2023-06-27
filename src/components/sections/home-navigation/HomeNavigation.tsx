@@ -25,7 +25,7 @@ const HomeNavigation = () => {
                 <Image
                     className="cover-img"
                     alt="Cooperator Logo"
-                    src={'/cover_front.jpg'}
+                    src={'/public/cover_front.jpg'}
                     fill
 
                     style={{ objectFit: 'cover', position: 'absolute', top: 0, left: 0, zIndex: -1 }}
