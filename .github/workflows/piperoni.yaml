@@ -2,7 +2,7 @@ name: arsas-front-piperoni
 on:
   push:
     branches:
-      - master
+      - main
 
 env:
   SERVICE: hasms
