@@ -1,0 +1,35 @@
+name: arsas-front-piperoni
+on:
+  push:
+    branches:
+      - main
+
+env:
+  SERVICE: hasms
+  PROJECT: ""
+  VM_PATH: /root
+  SSH_KEY: ${{ secrets.DEPLOY_KEY }}
+  SSH_HOST: ${{ secrets.MOTOSHOP_SERVER }}
+  SSH_USER: ${{ secrets.MOTOSHOP_USER }}
+  EXECUTE: ${{ secrets.START_COMPOSE }}
+
+jobs:
+  deploy-hasms-front:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2 
+        with:
+          key: ${{ env.SSH_KEY }}
+          known_hosts: 'placeholder'
+      - name: Add Server to Known Hosts
+        run: |
+          ssh-keyscan -H ${{ env.SSH_HOST }} >> ~/.ssh/known_hosts       
+      - name: Deploy with rsync
+        run: rsync -q -avuz . ${{ env.SSH_USER }}@${{ env.SSH_HOST }}:${{ env.VM_PATH }}/${{ env.SERVICE }} --delete-before --exclude=/logs
+      - name: Docker Execute
+        run: ssh ${{ env.SSH_USER }}@${{ env.SSH_HOST }} " cd ${{ env.VM_PATH }}/${{ env.SERVICE }} && ${{ env.EXECUTE }}"
+
+ 
