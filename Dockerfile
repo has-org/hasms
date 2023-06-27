@@ -23,7 +23,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=BUILD /app/package-json.lock ./
+COPY --from=BUILD /app/package-lock.json ./
 COPY --from=BUILD /app/public ./public
 COPY --from=BUILD /app/next.config.js ./
 
