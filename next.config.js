@@ -12,13 +12,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: '161.35.66.214',
-        port: '9000',
-        pathname: '/*',
-      },
-      {
-        protocol: 'http',
-        hostname: 'localhost',
+        hostname: 'minio',
         port: '9000',
         pathname: '/*',
       },

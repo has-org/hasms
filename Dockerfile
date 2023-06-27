@@ -31,7 +31,8 @@ COPY --from=BUILD /app/next.config.js ./
 COPY --from=BUILD /app/.next/standalone ./
 COPY --from=BUILD /app/.next/static ./.next/static
 USER nextjs
-
+RUN chown -R nextjs:nodejs /app/
+RUN chown -R nextjs:nodejs ./
 EXPOSE 3000
 ENV PORT 3000
 
