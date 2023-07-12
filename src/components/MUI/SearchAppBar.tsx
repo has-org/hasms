@@ -7,7 +7,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 
-import { darkTheme, lightTheme } from './theme';
 import { motion, useCycle } from 'framer-motion';
 import { useRef, useState, useContext, useEffect } from 'react';
 import { Collapse, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
@@ -21,6 +20,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { CartSidebar } from '../cart/sidebar/CartSidebar';
+import { useTheme } from '@mui/material/styles';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -65,8 +65,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-let mode = 'light';
-const theme = mode == 'dark' ? darkTheme : lightTheme
+
 
 
 const list = (handleClick: any, subListOpen: any, listItems: any) => (
@@ -137,6 +136,7 @@ const SearchAppBar = ({ sticky, navigationMenu }: { navigationMenu: any, sticky?
   const [navigationDrawerOpen, toggleNavigationDrawerOpen] = useCycle(false, true);
   const [cartDrawerOpen, togglecartDrawerOpen] = useCycle(false, true);
   const [subListOpen, setSubListOpen] = useState({})
+  const theme = useTheme();
 
   let navMenu = navigationMenu?.navigation_menu_items
 

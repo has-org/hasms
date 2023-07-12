@@ -1,12 +1,9 @@
 'use client'
-import { darkTheme, lightTheme } from "@/components/MUI/theme";
 import { Box, Button, Checkbox, FormControlLabel } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import { useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
-let mode = 'light';
-const theme = mode == 'dark' ? darkTheme : lightTheme
 
 export const Input = ({ name, label, ...rest }: any) => {
     const { register } = useFormContext(); // retrieve all hook methods

@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion';
-import Backdrop from '@/components/UI/Backdrop';
+import Backdrop from '@/components/Backdrop';
 import Box from '@/components/MUI/Box';
 import { Button, Typography } from '@mui/material';
 

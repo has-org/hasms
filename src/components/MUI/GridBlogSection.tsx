@@ -19,7 +19,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 const GridBlogSection = ({ blogs, title, itemsToRender = 4 }: { blogs: BlogType[], title: string, itemsToRender?: number }) => {
-    if (!blogs) return <>Missing blogs</>
+    if (blogs && blogs.length > 0) return <>Missing blogs</>
 
 
     return (
@@ -32,7 +32,7 @@ const GridBlogSection = ({ blogs, title, itemsToRender = 4 }: { blogs: BlogType[
 
             </Typography>
             <Grid container >
-                {blogs.slice(0, itemsToRender).map((blog, index) => {
+                {blogs?.slice(0, itemsToRender).map((blog, index) => {
                     return <Grid item xs={12} sm={12} md={3} lg={3} key={index}>
                         <Item elevation={0} >
                             <BlogCard blog={blog} />

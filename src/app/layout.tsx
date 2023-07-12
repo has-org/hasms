@@ -1,9 +1,8 @@
 
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import { CartProvider } from "@/hooks/CartContext/CartProvider";
 
 import Link from 'next/link';
+import MainLayout from '@/components/layouts/main/MainLayout';
 
 
 async function getNavMenus() {
@@ -29,17 +28,13 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className="scroll-smooth">
+      <body className="">
         <CartProvider>
-          <nav className='top-0 z-30'>
-            <Header navigationMenu={navigationMenus} sticky />
-          </nav>
-          <main className="scroll-smooth">
+
+          <MainLayout >
             {children}
-          </main>
-          <footer className='mt-20'>
-            <Footer />
-          </footer>
+          </MainLayout>
+
         </CartProvider>
       </body>
     </html>

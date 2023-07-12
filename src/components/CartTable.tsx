@@ -2,8 +2,8 @@
 import { useContext, useEffect, useMemo } from 'react'
 import { CartContext } from '@/hooks/CartContext/CartContext';
 import Box from '@/components/MUI/Box';
-import { ReactTable } from "@/components/UI/react-table/ReactTable";
-import Iconify from "@/components/UI/iconify";
+import { ReactTable } from "@/components/react-table/ReactTable";
+import Iconify from "@/components/iconify";
 const CartTable = () => {
     const { items, updateCartItemQuantity } = useContext(CartContext)
     const columns = useMemo(

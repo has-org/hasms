@@ -3,7 +3,7 @@
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import { ProductDetails } from "@/components/ProductDetails";
 import { ProductThumbnailsList } from "@/components/ProductThumbnailsList";
-import Container from "@/components/UI/Container";
+import Container from "@/components/Container";
 import { Product as ProductType } from "@/types/Product";
 import Image from "next/image";
 

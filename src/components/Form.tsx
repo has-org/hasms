@@ -6,7 +6,7 @@ import {
 
 import { Product as ProductType } from "@/types/Product";
 import { Email as EmailType } from "@/types/Email";
-import { postData } from "utils/postData";
+import { postData } from "@/utils/postData";
 import React, { useState } from "react";
 
 

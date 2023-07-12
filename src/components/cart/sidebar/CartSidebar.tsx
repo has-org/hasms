@@ -2,8 +2,8 @@
 import { Box, Button, Typography } from "@mui/material"
 import { CartContext } from '@/hooks/CartContext/CartContext';
 import { useContext, useEffect, useMemo } from 'react'
-import { ReactTable } from "../../UI/react-table/ReactTable";
-import Iconify from "../../UI/iconify";
+import { ReactTable } from "../../react-table/ReactTable";
+import Iconify from "../../iconify";
 import Link from "next/link";
 
 export const CartSidebar = () => {
