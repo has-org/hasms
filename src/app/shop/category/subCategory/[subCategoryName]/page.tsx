@@ -1,7 +1,7 @@
 import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { StaticImageData } from "next/image";
 import { Category as CategoryType } from "@/types/Category";
-import Container from "@/components/UI/Container";
+import Container from "@/components/Container";
 import Image from "next/image";
 import NavigationCategorySection from "@/components/MUI/NavigationCategorySection";
 import { Typography } from "@mui/material";
