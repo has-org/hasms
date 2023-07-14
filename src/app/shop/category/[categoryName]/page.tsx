@@ -2,12 +2,7 @@ import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { StaticImageData } from "next/image";
 import { Category as CategoryType } from "@/types/Category";
 import { Product as ProductType } from '@/types/Product'
-import Container from "@/components/Container";
-import Image from "next/image";
-import NavigationCategorySection from "@/components/MUI/NavigationCategorySection";
-import { Typography } from "@mui/material";
-import { MainContainer } from "@/components/MUI/MainContainer";
-import ProductGrid from "@/components/MUI/ProductGrid";
+
 
 
 async function getCategory(categoryName: string) {
@@ -56,19 +51,7 @@ export default async function ShopCategory({ params: { categoryName } }: any) {
   const products: ProductType[] = await getCategoryProducts(categoryName)
   if (!category) return <div>catalogue not found</div>;
   return (
-    <main className="min-h-screen">
-      {/* <NavigationBreadcrumbs /> */}
-      <Container firstSection={<NavigationCategorySection />}>
-        <MainContainer containerItem={category} />
-
-        {products ? <ProductGrid products={products} /> : 'no products'}
-        {/* {category.products.map((product, index) => {
-          return (
-            <ProductCard product={product} key={index} />
-          )
-        })
-        } */}
-      </Container>
-    </main>
+    <>
+    </>
   );
 }

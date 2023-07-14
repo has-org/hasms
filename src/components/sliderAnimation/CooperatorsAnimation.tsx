@@ -4,7 +4,7 @@ import { Cooperator } from "@/types/Cooperator";
 import Image from "next/image";
 import { useMemo, useRef, useState, useEffect, Ref } from "react";
 
-const CooperatorsAnimation = ({ cooperators }: { cooperators: Cooperator[] }) => {
+export const CooperatorsAnimation = ({ cooperators }: { cooperators: Cooperator[] }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const [containerWidth, setContainerWidth] = useState(0);
     const [itemWidth, setItemWidth] = useState(0);
@@ -62,4 +62,3 @@ const CooperatorsAnimation = ({ cooperators }: { cooperators: Cooperator[] }) =>
     )
 }
 
-export default CooperatorsAnimation

@@ -36,19 +36,7 @@ export default async function ShopSubCategory({ params: { subCategoryName } }: a
   if (!category) return <div>catalogue not found</div>;
   const products = category.sub_categories[0].products
   return (
-    <main className="min-h-screen">
-      {/* <NavigationBreadcrumbs /> */}
-      <Container firstSection={<NavigationCategorySection />}>
-        <MainContainer containerItem={category} />
-
-      {products ?  <ProductGrid products={products} /> : 'no products'}
-        {/* {category.products.map((product, index) => {
-          return (
-            <ProductCard product={product} key={index} />
-          )
-        })
-        } */}
-      </Container>
-    </main>
+    <>
+    </>
   );
 }

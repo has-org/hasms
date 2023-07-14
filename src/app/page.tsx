@@ -11,7 +11,7 @@ import GridCatalogueSection from "@/components/MUI/GridCatalogueSection";
 import GridBlogSection from "@/components/MUI/GridBlogSection";
 import Iconify from "@/components/iconify";
 import HomeNavigation from "@/components/sections/home-navigation";
-import CooperatorsAnimation from "./CooperatorsAnimation";
+import { CooperatorsAnimation } from "../components/sliderAnimation/CooperatorsAnimation";
 
 
 async function getBlogs() {
@@ -103,8 +103,8 @@ export default async function HomePage() {
       <section className='cooperation-section'>
 
 
-        <CooperatorsAnimation cooperators={cooperators} />
-      </section>
+        {cooperators && <CooperatorsAnimation cooperators={cooperators} />
+        }      </section>
     </>
 
   );
