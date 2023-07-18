@@ -6,7 +6,6 @@ import { useState } from "react";
 import Box from "@/components/MUI/Box";
 
 
-
 export default function ContactForm() {
     const methods = useForm();
     const theme = useTheme();
@@ -31,7 +30,7 @@ export default function ContactForm() {
                     <Typography component="div" variant="overline">
                         Kontakt
                     </Typography>
-
+             
                     <Button type="submit">Posalji</Button>
                 </Box>
             </FormProvider>

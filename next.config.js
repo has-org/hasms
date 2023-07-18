@@ -6,7 +6,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ["161.35.66.214", "placehold.co", "localhost"],
+    domains: ["minio.villa-seaview.online", "placehold.co", "localhost"],
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -16,6 +16,11 @@ const nextConfig = {
         protocol: "http",
         hostname: "minio",
         port: "9000",
+        pathname: "/*",
+      },
+      {
+        protocol: "http",
+        hostname: "minio.villa-seaview.online",
         pathname: "/*",
       },
       {
