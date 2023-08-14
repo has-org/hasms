@@ -3,7 +3,6 @@
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import { ProductDetails } from "@/components/ProductDetails";
 import { ProductThumbnailsList } from "@/components/ProductThumbnailsList";
-import Container from "@/components/Container";
 import { Product as ProductType } from "@/types/Product";
 import Image from "next/image";
 
@@ -57,7 +56,6 @@ export default async function Product({ params: { productName } }: any) {
             },
           ]}
         />
-      <Container firstSection={<ProductThumbnailsList variants={productVariants} />}>
       
         {product && <ProductDetails product={product} />}
         {/* {product.relatedProducts?.map((relatedProduct: ProductType, index: number) => {
@@ -68,7 +66,6 @@ export default async function Product({ params: { productName } }: any) {
           )
         }) */}
 
-      </Container>
 
     </main>
   );

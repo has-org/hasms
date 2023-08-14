@@ -6,7 +6,7 @@ import { Box, Stack } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useContext } from "react";
-import { CartContext } from "@/hooks/CartContext/CartContext";
+import { CartContext } from "@/context/CartContext/CartContext";
 import { Color } from "@/types/Color";
 import { Size } from "@/types/Size";
 

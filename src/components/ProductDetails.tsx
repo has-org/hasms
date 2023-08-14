@@ -9,7 +9,7 @@ import { styled } from "@mui/material/styles";
 import { useContext, useState } from "react";
 import { Form } from "./Form";
 import ReactSelect from "react-select";
-import { CartContext } from "@/hooks/CartContext/CartContext";
+import { CartContext } from "@/context/CartContext/CartContext";
 import { Controller, SubmitHandler, useForm, useFormContext } from "react-hook-form";
 
 type ProductProps = {

@@ -12,74 +12,7 @@ import GridBlogSection from "@/components/MUI/GridBlogSection";
 import Iconify from "@/components/iconify";
 import HomeNavigation from "@/components/sections/home-navigation";
 import { CooperatorsAnimation } from "../components/sliderAnimation/CooperatorsAnimation";
-
-
-async function getBlogs() {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/blogs`, {
-      method: 'GET',
-      next: {
-        revalidate: 1,
-      }
-    });
-    if (res.status !== 200) {
-      throw new Error('Failed to fetch data');
-    }
-    return res.json();
-  } catch (e) {
-    return null
-  }
-}
-
-async function getCatalogues() {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/catalogues`, {
-      method: 'GET',
-      next: {
-        revalidate: 1,
-      }
-    });
-    if (res.status !== 200) {
-      throw new Error('Failed to fetch data');
-    }
-    return res.json();
-  } catch (e) {
-    return null
-  }
-}
-async function getCooperators() {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/cooperators`, {
-      method: 'GET',
-      next: {
-      }
-    });
-    if (!res.ok) {
-      throw new Error('Failed to fetch data');
-    }
-    return res.json();
-  } catch (e) {
-    return null
-  }
-}
-
-async function getNavMenus() {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/navigationMenus`, {
-      method: 'GET',
-      next: {
-        revalidate: 1,
-      }
-    });
-    if (res.status !== 200) {
-      throw new Error('Failed to fetch data');
-    }
-    return res.json();
-  } catch (e) {
-    return null
-  }
-}
-
+import { getBlogs, getCatalogues, getCooperators, getNavMenus } from "@/services/apiService";
 
 
 export default async function HomePage() {

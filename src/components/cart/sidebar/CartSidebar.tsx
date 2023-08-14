@@ -1,6 +1,6 @@
 'use client'
 import { Box, Button, Typography } from "@mui/material"
-import { CartContext } from '@/hooks/CartContext/CartContext';
+import { CartContext } from '@/context/CartContext/CartContext';
 import { useContext, useEffect, useMemo } from 'react'
 import { ReactTable } from "../../react-table/ReactTable";
 import Iconify from "../../iconify";

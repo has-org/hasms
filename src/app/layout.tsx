@@ -1,5 +1,5 @@
 
-import { CartProvider } from "@/hooks/CartContext/CartProvider";
+import { CartProvider } from "@/context/CartContext/CartProvider";
 
 import Link from 'next/link';
 import MainLayout from '@/components/layouts/main/MainLayout';

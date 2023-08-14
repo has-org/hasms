@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 // @mui
 import { Stack, Fade, Portal } from '@mui/material';
 // hooks
-import useActiveLink from '../../../../hooks/useActiveLink';
+import useActiveLink from '@/hooks/useActiveLink';
+
 //
 import { NavItemProps } from '../types';
 import { NavItem, NavItemDashboard } from './NavItem';
@@ -17,7 +17,6 @@ type NavListProps = {
 };
 
 export default function NavList({ item, isOffset }: NavListProps) {
-  const { pathname } = useLocation();
 
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -30,7 +29,7 @@ export default function NavList({ item, isOffset }: NavListProps) {
       handleCloseMenu();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+  }, []);
 
   const handleOpenMenu = () => {
     if (children) {

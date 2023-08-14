@@ -1,6 +1,6 @@
 'use client'
 import { useContext, useEffect, useMemo } from 'react'
-import { CartContext } from '@/hooks/CartContext/CartContext';
+import { CartContext } from '@/context/CartContext/CartContext';
 import Box from '@/components/MUI/Box';
 import { ReactTable } from "@/components/react-table/ReactTable";
 import Iconify from "@/components/iconify";

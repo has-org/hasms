@@ -2,6 +2,7 @@ import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { StaticImageData } from "next/image";
 import { Category as CategoryType } from "@/types/Category";
 import { Product as ProductType } from '@/types/Product'
+import ProductGrid from "@/components/MUI/ProductGrid";
 
 
 
@@ -37,14 +38,11 @@ async function getCategoryProducts(categoryName: string) {
     return res.json();
   } catch (e) {
     console.log(e)
-    return null
+    return null 
   }
 }
 
 
-const NavigationBreadcrumbs = () => { }
-const Filters = () => { }
-const CategorySection = () => { }
 export default async function ShopCategory({ params: { categoryName } }: any) {
 
   const category: CategoryType = await getCategory(categoryName);
@@ -52,6 +50,7 @@ export default async function ShopCategory({ params: { categoryName } }: any) {
   if (!category) return <div>catalogue not found</div>;
   return (
     <>
+      <ProductGrid products={products} />
     </>
   );
 }
