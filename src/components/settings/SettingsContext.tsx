@@ -1,8 +1,8 @@
 import { createContext, useEffect, useContext, useMemo, useCallback } from 'react';
 // hooks
 import useLocalStorage from '../../hooks/useLocalStorage';
-// utils
-import localStorageAvailable from '../../utils/localStorageAvailable';
+// util
+import  localStorageAvailable  from '../../utils/localStorageAvailable';
 //
 import { defaultSettings } from './config-setting';
 import { SettingsContextProps } from './types';

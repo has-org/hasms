@@ -1,15 +1,9 @@
 
-import { Inter } from "next/font/google";
 import "./base.css";
-import { Catalogue } from "@/components/Catalogue";
-import { NavMenu } from "@/components/NavMenu";
 import { Catalogue as CatalogueType } from "@/types/Catalogue";
 import { Cooperator as CooperatorType } from "@/types/Cooperator";
-import Link from "next/link";
-import { Carousel } from "@/components/Carousel";
 import GridCatalogueSection from "@/components/MUI/GridCatalogueSection";
 import GridBlogSection from "@/components/MUI/GridBlogSection";
-import Iconify from "@/components/iconify";
 import HomeNavigation from "@/components/sections/home-navigation";
 import { CooperatorsAnimation } from "../components/sliderAnimation/CooperatorsAnimation";
 import { getBlogs, getCatalogues, getCooperators, getNavMenus } from "@/services/apiService";

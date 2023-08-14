@@ -111,13 +111,17 @@ const COMMON = {
 export default function palette(themeMode: 'light' | 'dark') {
   const light = {
     ...COMMON,
-    mode: 'light',
+    mode: "light",
     text: {
       primary: GREY[800],
       secondary: GREY[600],
       disabled: GREY[500],
     },
-    background: { paper: '#FFFFFF', default: '#FFFFFF', neutral: GREY[200] },
+    background: {
+      paper: "#FFFFFF",
+      default: "#FFFFFF",
+      neutral: alpha(GREY[300], 0.16),
+    },
     action: {
       ...COMMON.action,
       active: GREY[600],
@@ -135,7 +139,7 @@ export default function palette(themeMode: 'light' | 'dark') {
     background: {
       paper: GREY[800],
       default: GREY[900],
-      neutral: alpha(GREY[500], 0.16),
+      neutral: alpha(GREY[300], 0.06),
     },
     action: {
       ...COMMON.action,

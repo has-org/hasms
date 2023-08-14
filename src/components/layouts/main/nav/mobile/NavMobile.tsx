@@ -11,12 +11,11 @@ import Scrollbar from '@/components/scrollbar';
 //
 import { NavProps } from '../types';
 import NavList from './NavList';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 // ----------------------------------------------------------------------
 
 export default function NavMobile({ isOffset, data }: NavProps) {
-  const router = useRouter();
 
   const [open, setOpen] = useState(false);
 
@@ -25,7 +24,7 @@ export default function NavMobile({ isOffset, data }: NavProps) {
       handleClose();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.pathname]);
+  }, []);
 
   const handleOpen = () => {
     setOpen(true);
@@ -60,7 +59,7 @@ export default function NavMobile({ isOffset, data }: NavProps) {
         }}
       >
         <Scrollbar>
-          <Logo sx={{ mx: 2.5, my: 3 }} />
+          {/* <Logo sx={{ mx: 2.5, my: 3 }} /> */}
 
           {/* <List component="nav" disablePadding>
             {data.map((link) => (
