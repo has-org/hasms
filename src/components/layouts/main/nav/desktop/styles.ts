@@ -2,7 +2,7 @@
 import { styled, alpha } from '@mui/material/styles';
 import { Paper, ListSubheader, ListItemButton } from '@mui/material';
 // utils
-import { bgBlur } from '../../../../utils/cssStyles';
+import { bgBlur } from '@/utils/cssStyles';
 //
 import { NavItemDesktopProps } from '../types';
 
@@ -75,18 +75,18 @@ export const StyledMenu = styled(Paper)(({ theme }) => ({
     opacity: 0.94,
     color: theme.palette.background.default,
   }),
+  backgroundColor: theme.palette.primary.lighter,
   top: 72,
   left: 0,
   right: 0,
   margin: 'auto',
-  display: 'grid',
   position: 'fixed',
   alignItems: 'flex-start',
   zIndex: theme.zIndex.modal,
   padding: theme.spacing(5, 1, 1, 3),
   boxShadow: theme.customShadows.dialog,
-  maxWidth: theme.breakpoints.values.lg,
-  gridTemplateColumns: 'repeat(12, 1fr)',
+  maxWidth: theme.breakpoints.values.xl,
+  minHeight: '528px',
   borderRadius: Number(theme.shape.borderRadius) * 2,
   border: `solid 1px ${alpha(theme.palette.grey[500], 0.16)}`,
 }));
@@ -97,5 +97,5 @@ export const StyledSubheader = styled(ListSubheader)(({ theme }) => ({
   ...theme.typography.overline,
   padding: 0,
   fontSize: 11,
-  color: theme.palette.text.primary,
+  color: theme.palette.text.secondary,
 }));

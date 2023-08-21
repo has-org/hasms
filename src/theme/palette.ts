@@ -34,12 +34,12 @@ const GREY = {
 };
 
 const PRIMARY = {
-  lighter: '#C8FACD',
-  light: '#5BE584',
-  main: '#00AB55',
-  dark: '#007B55',
-  darker: '#005249',
-  contrastText: '#FFFFFF',
+  lighter: "#8A8E99", // Lighter shade of #424758
+  light: "#BABCC4",
+  main: "#424758",
+  dark: "#373A44",
+  darker: "#2D2F38", // Darker shade of #424758
+  contrastText: "#FFFFFF",
 };
 
 const SECONDARY = {
@@ -113,19 +113,22 @@ export default function palette(themeMode: 'light' | 'dark') {
     ...COMMON,
     mode: "light",
     text: {
-      primary: GREY[800],
+      primary: COMMON.common.white,
       secondary: GREY[600],
       disabled: GREY[500],
     },
     background: {
+      primary: PRIMARY.main,
       paper: "#FFFFFF",
       default: "#FFFFFF",
       neutral: alpha(GREY[300], 0.16),
+      neutralDark: alpha(GREY[500], 0.58),
     },
     action: {
       ...COMMON.action,
       active: GREY[600],
     },
+    
   } as const;
 
   const dark = {

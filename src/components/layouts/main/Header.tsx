@@ -30,7 +30,10 @@ export default function Header() {
   const isOffset = useOffSetTop(HEADER.H_MAIN_DESKTOP);
 
   return (
-    <AppBar ref={carouselRef} color="transparent" sx={{ boxShadow: 0 }}>
+    <AppBar
+      ref={carouselRef}
+      sx={{ boxShadow: 0, }}
+    >
       <Toolbar
         disableGutters
         sx={{
@@ -38,7 +41,7 @@ export default function Header() {
             xs: HEADER.H_MOBILE,
             md: HEADER.H_MAIN_DESKTOP,
           },
-          transition: theme.transitions.create(['height', 'background-color'], {
+          transition: theme.transitions.create(["height", "background-color"], {
             easing: theme.transitions.easing.easeInOut,
             duration: theme.transitions.duration.shorter,
           }),
@@ -50,18 +53,13 @@ export default function Header() {
           }),
         }}
       >
-        <Container sx={{ height: 1, display: 'flex', alignItems: 'center' }}>
+        <Container sx={{ height: 1, display: "flex", alignItems: "center" }}>
           {/* <Logo /> */}
-
-
           <Box sx={{ flexGrow: 1 }} />
-
           {isDesktop && <NavDesktop isOffset={isOffset} data={navConfig} />}
-
           {!isDesktop && <NavMobile isOffset={isOffset} data={navConfig} />}
         </Container>
       </Toolbar>
-
       {isOffset && <Shadow />}
     </AppBar>
   );

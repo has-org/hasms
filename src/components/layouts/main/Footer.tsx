@@ -79,7 +79,7 @@ export default function Footer() {
       component="footer"
       sx={{
         position: 'relative',
-        bgcolor: 'background.default',
+        bgcolor: 'background.primary',
       }}
     >
       <Divider />
@@ -115,8 +115,8 @@ export default function Footer() {
               }}
             >
               {_socials.map((social) => (
-                <IconButton key={social.name}>
-                  <Iconify icon={social.icon} />
+                <IconButton key={social.name} sx={{color: 'text.primary'}}>
+                  <Iconify icon={social.icon}/>
                 </IconButton>
               ))}
             </Stack>
@@ -167,7 +167,7 @@ export default function Footer() {
             textAlign: { xs: 'center', md: 'left' },
           }}
         >
-          © 2021. All rights reserved
+          © 2023. HAS  All rights reserved
         </Typography>
       </Container>
     </Box>

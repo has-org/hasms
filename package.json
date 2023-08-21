@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.10.6",
     "@iconify/react": "^4.1.0",
     "@mui/icons-material": "^5.11.16",
+    "@mui/lab": "^5.0.0-alpha.140",
     "@mui/material": "^5.11.16",
     "@next/bundle-analyzer": "^13.4.7",
     "@types/node": "18.11.18",
