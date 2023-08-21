@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 // @mui
-import { Fade, Portal, Box, Grid, Typography, Stack } from "@mui/material";
+import { Fade, Portal, Grid, Typography, Stack } from "@mui/material";
 // hooks
 
 //
@@ -9,6 +9,7 @@ import { NavItem } from "./NavItem";
 import { StyledSubheader, StyledMenu } from "./styles";
 import Image from "next/image";
 import Iconify from "@/components/iconify";
+import Box from "@/components/MUI/Box";
 
 // ----------------------------------------------------------------------
 
@@ -17,9 +18,9 @@ type NavListProps = {
   isOffset: boolean;
 };
 
-const gridRow3 = [8, 4, 4, 8, 8, 4];
-const gridRow3FiveItems = [12, 4, 8, 8, 4];
-const gridRow2 = [ 6, 6];
+const ITEMS_VARIANT_6 = [8, 4, 4, 8, 8, 4];
+const ITEMS_VARIANT_5 = [12, 4, 8, 8, 4];
+const ITEMS_VARIANT_3 = [6, 6, 12];
 
 export default function NavList({ item, isOffset }: NavListProps) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -55,7 +56,7 @@ export default function NavList({ item, isOffset }: NavListProps) {
         return (
           <Grid
             item
-            xs={gridRow3[index]}
+            xs={ITEMS_VARIANT_6[index]}
             key={index}
             sx={{ minHeight: "200px" }}
           >
@@ -74,7 +75,7 @@ export default function NavList({ item, isOffset }: NavListProps) {
         return (
           <Grid
             item
-            xs={gridRow3FiveItems[index]}
+            xs={ITEMS_VARIANT_5[index]}
             key={index}
             sx={{ minHeight: index === 0 ? "220px" : "200px" }}
           >
@@ -92,7 +93,7 @@ export default function NavList({ item, isOffset }: NavListProps) {
       return (
         <Grid
           item
-          xs={gridRow2[index]}
+          xs={ITEMS_VARIANT_3[index]}
           key={index}
           sx={{ minHeight: "250px"}}
         >
@@ -175,6 +176,24 @@ function NavSubListChildren({ item, onClose }: NavSubListChildrenProps) {
         position: "relative",
         border: "1px solid grey",
         minHeight: "inherit",
+      }}
+      whileHover={{
+        position: "relative",
+        zIndex: 1,
+        scale: 1.05,
+        transition: {
+          duration: 0.2,
+        },
+        border: "1px solid red",
+      }}
+      whileFocus={{
+        position: "relative",
+        zIndex: 1,
+        scale: 1.05,
+        transition: {
+          duration: 0.2,
+        },
+        border: "1px solid red",
       }}
     >
       <Image
