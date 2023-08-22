@@ -1,11 +1,10 @@
-import { Link as RouterLink } from 'react-router-dom';
 // @mui
-import { Link, ListItemText, ListItemIcon } from '@mui/material';
+import { Link, ListItemText, ListItemIcon } from "@mui/material";
 // components
-import Iconify from '../../../../components/iconify';
+import Iconify from "@/components/iconify";
 //
-import { NavItemMobileProps } from '../types';
-import { ListItem } from './styles';
+import { NavItemMobileProps } from "../types";
+import { ListItem } from "./styles";
 
 // ----------------------------------------------------------------------
 
@@ -16,18 +15,18 @@ export default function NavItem({
   isExternalLink,
   ...other
 }: NavItemMobileProps) {
-  const { title, path, icon, children } = item;
+  const { title, path, children } = item;
 
   const renderContent = (
     <ListItem active={active} {...other}>
-      <ListItemIcon> {icon} </ListItemIcon>
-
       <ListItemText disableTypography primary={title} />
 
       {!!children && (
         <Iconify
           width={16}
-          icon={open ? 'eva:arrow-ios-downward-fill' : 'eva:arrow-ios-forward-fill'}
+          icon={
+            open ? "eva:arrow-ios-downward-fill" : "eva:arrow-ios-forward-fill"
+          }
           sx={{ ml: 1 }}
         />
       )}
@@ -50,8 +49,7 @@ export default function NavItem({
 
   // Default
   return (
-    <Link component={RouterLink} to={path} underline="none">
-      {renderContent}
-    </Link>
+    // <Link component={RouterLink} to={path} underline="none">
+    renderContent // </Link>
   );
 }

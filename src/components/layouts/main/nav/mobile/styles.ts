@@ -2,7 +2,7 @@
 import { styled, alpha } from '@mui/material/styles';
 import { ListItemButton } from '@mui/material';
 // config
-import { NAV } from '../../../../config-global';
+import { NAV } from '@/config-global';
 //
 import { NavItemMobileProps } from '../types';
 

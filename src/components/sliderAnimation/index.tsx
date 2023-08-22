@@ -1,1 +1,1 @@
-export {default} from './SliderAnimation'
+export {default} from './CooperatorsAnimation'

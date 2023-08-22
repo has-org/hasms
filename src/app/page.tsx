@@ -3,7 +3,7 @@ import { Cooperator as CooperatorType } from "@/types/Cooperator";
 import GridCatalogueSection from "@/components/MUI/GridCatalogueSection";
 import GridBlogSection from "@/components/MUI/GridBlogSection";
 import HomeNavigation from "@/components/sections/home-navigation";
-import { CooperatorsAnimation } from "../components/sliderAnimation/CooperatorsAnimation";
+import CooperatorsAnimation  from "../components/sliderAnimation/CooperatorsAnimation";
 import {
   getBlogs,
   getCatalogues,
