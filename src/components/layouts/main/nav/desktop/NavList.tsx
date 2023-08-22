@@ -10,7 +10,7 @@ import { StyledSubheader, StyledMenu } from "./styles";
 import Image from "next/image";
 import Iconify from "@/components/iconify";
 import Box from "@/components/MUI/Box";
-
+import Link from "next/link";
 // ----------------------------------------------------------------------
 
 type NavListProps = {
@@ -95,7 +95,7 @@ export default function NavList({ item, isOffset }: NavListProps) {
           item
           xs={ITEMS_VARIANT_3[index]}
           key={index}
-          sx={{ minHeight: "250px"}}
+          sx={{ minHeight: "250px" }}
         >
           <NavSubListChildren
             key={index}
@@ -130,6 +130,7 @@ export default function NavList({ item, isOffset }: NavListProps) {
                     <NavSubList
                       key={list.title}
                       item={list}
+                      selected={selected}
                       setSelected={setSelected}
                       onClose={handleCloseMenu}
                     />
@@ -153,77 +154,102 @@ type NavSubListProps = {
   item: NavItemChild;
   onClose: VoidFunction;
   setSelected: React.Dispatch<React.SetStateAction<NavItemChild | null>>;
+  selected: NavItemChild | null;
 };
 type NavSubListChildrenProps = {
   item: NavItemChildItems;
   onClose: VoidFunction;
 };
 
-function NavSubList({ item, onClose, setSelected }: NavSubListProps) {
+function NavSubList({ item, onClose, setSelected, selected }: NavSubListProps) {
   return (
     <Stack direction="row" alignItems={"center"} key={item.title}>
-      <Typography sx={{ fontSize: "24px" }} onClick={() => setSelected(item)}>
+      <Typography
+        sx={{
+          fontSize: { lg: "24px" },
+          textDecoration: selected?.id === item.id ? "underline" : "none",
+          textDecorationColor: (theme) => theme.palette.secondary.main,
+          textDecorationThickness: "2px",
+          textUnderlineOffset: "8px",
+        }}
+        onClick={() => setSelected(item)}
+      >
         {item.title}
       </Typography>
-      <Iconify width={24} icon="eva:arrow-ios-forward-fill" sx={{ ml: 1 }} />
+      <Iconify
+        width={24}
+        icon="eva:arrow-ios-forward-fill"
+        sx={{
+          ml: 1,
+          color: (theme) =>
+            selected?.id === item.id ? theme.palette.secondary.main : "",
+        }}
+      />
     </Stack>
   );
 }
 function NavSubListChildren({ item, onClose }: NavSubListChildrenProps) {
   return (
-    <Box
-      sx={{
-        position: "relative",
-        border: "1px solid grey",
+    <Link
+      href={item.path}
+      style={{
         minHeight: "inherit",
       }}
-      whileHover={{
-        position: "relative",
-        zIndex: 1,
-        scale: 1.05,
-        transition: {
-          duration: 0.2,
-        },
-        border: "1px solid red",
-      }}
-      whileFocus={{
-        position: "relative",
-        zIndex: 1,
-        scale: 1.05,
-        transition: {
-          duration: 0.2,
-        },
-        border: "1px solid red",
-      }}
     >
-      <Image
-        key={item.title}
-        src={item.image!}
-        alt={item.title}
-        fill
-        style={{ objectFit: "cover" }}
-      />
       <Box
         sx={{
-          position: "absolute",
-          bottom: 10,
-          left: 5,
-          display: "inline",
-          zIndex: 10,
-          bgcolor: "background.neutralDark",
-          px: 1,
-          borderRadius: "8px",
+          position: "relative",
+          border: "1px solid grey",
+          minHeight: "inherit",
+        }}
+        whileHover={{
+          position: "relative",
+          zIndex: 1,
+          scale: 1.05,
+          transition: {
+            duration: 0.2,
+          },
+          border: "1px solid red",
+        }}
+        whileFocus={{
+          position: "relative",
+          zIndex: 1,
+          scale: 1.05,
+          transition: {
+            duration: 0.2,
+          },
+          border: "1px solid red",
         }}
       >
-        <Typography
+        <Image
+          key={item.title}
+          src={item.image!}
+          alt={item.title}
+          fill
+          style={{ objectFit: "cover" }}
+        />
+        <Box
           sx={{
-            color: "text.primary",
-            fontSize: "1.6rem",
+            position: "absolute",
+            bottom: 10,
+            left: 5,
+            display: "inline",
+            zIndex: 10,
+            bgcolor: "background.neutralDark",
+            px: 1,
+            borderRadius: "8px",
           }}
         >
-          {item.title}
-        </Typography>
+          <Typography
+            sx={{
+              color: "text.primary",
+              fontSize: "1.6rem",
+            }}
+          >
+            {item.title}
+          </Typography>
+        </Box>
       </Box>
-    </Box>
+    </Link>
   );
 }

@@ -1,7 +1,6 @@
-import { m } from 'framer-motion';
 import { forwardRef } from 'react';
 // @mui
-import { Link, LinkProps, CardActionArea } from '@mui/material';
+import {Typography } from '@mui/material';
 // components
 import Iconify from '../../../../../components/iconify';
 // 
@@ -28,7 +27,9 @@ export const NavItem = forwardRef<HTMLDivElement, NavItemDesktopProps>(
         {...other}
       >
 
-        {title}
+     <Typography sx={{fontSize: {lg: '24px', fontWeight: '500'}}}>
+         {title}
+      </Typography>
 
         {!!children && (
           <Iconify

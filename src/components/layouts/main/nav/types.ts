@@ -1,4 +1,4 @@
-import { ListItemButtonProps } from '@mui/material';
+import { ListItemButtonProps } from "@mui/material";
 
 // ----------------------------------------------------------------------
 
@@ -10,10 +10,11 @@ export type NavItemChildItems = {
 };
 
 export type NavItemChild = {
-    title: string;
-    path: string;
-    items: NavItemChildItems[];
-  };
+  id: string;
+  title: string;
+  path: string;
+  items: NavItemChildItems[];
+};
 
 export type NavItemProps = {
   title: string;
