@@ -96,6 +96,5 @@ export const StyledMenu = styled(Paper)(({ theme }) => ({
 export const StyledSubheader = styled(ListSubheader)(({ theme }) => ({
   ...theme.typography.overline,
   padding: 0,
-  fontSize: 11,
   color: theme.palette.text.secondary,
 }));
