@@ -1,5 +1,6 @@
 'use client'
 import useResponsive from "@/hooks/useResponsive"
+import { Box } from "@mui/material";
 
 
 const AboutUsSection = () => {
@@ -8,6 +9,11 @@ const AboutUsSection = () => {
 
     return (
     <>
+    <Box sx={{backgroundColor: 'red'}}>
+        <>
+        
+        </>
+    </Box>
     </>
     );
 }

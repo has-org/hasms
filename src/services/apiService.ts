@@ -31,6 +31,23 @@ export async function getCatalogues() {
     return null;
   }
 }
+export async function getCatalogue(catalogueID: number) {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/catalogue/${catalogueID}`, {
+      method: "GET",
+      next: {
+        revalidate: 1,
+      },
+    });
+    if (res.status !== 200) {
+      throw new Error("Failed to fetch data");
+    }
+    return res.json();
+  } catch (e) {
+    return null;
+  }
+}
+
 export async function getCooperators() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/cooperators`, {
@@ -66,10 +83,10 @@ export async function getNavMenus() {
   }
 }
 
-export async function getCatalogueProducts(catalogueName: number) {
+export async function getCatalogueProducts(catalogueId: number) {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_HOST}/catalogue/${catalogueName}/products`,
+      `${process.env.NEXT_PUBLIC_API_HOST}/catalogue/${catalogueId}/products`,
       {
         method: "GET",
         next: {

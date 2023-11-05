@@ -9,7 +9,7 @@ import Main from './Main';
 // ----------------------------------------------------------------------
 
 
-export default function MainLayout({children}: {children: React.ReactNode}) {
+export default function ShopLayout({children}: {children: React.ReactNode}) {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', height: 1 }}>
