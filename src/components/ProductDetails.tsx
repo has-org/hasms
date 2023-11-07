@@ -7,7 +7,6 @@ import { Color as ColorType } from "@/types/Color";
 import { Box, Button, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useContext, useState } from "react";
-import { Form } from "./Form";
 import ReactSelect from "react-select";
 import { CartContext } from "@/context/CartContext/CartContext";
 import { Controller, SubmitHandler, useForm, useFormContext } from "react-hook-form";
