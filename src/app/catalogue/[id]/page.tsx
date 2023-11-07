@@ -1,9 +1,9 @@
 
 import { getCatalogue } from "@/services/apiService";
 
-export default async function CataloguePage({ params: { catalogueID } }: any) {
+export default async function CataloguePage({ params: { id } }: any) {
 
-  const catalogue = getCatalogue(catalogueID);
+  const catalogue = getCatalogue(id);
   
   return (
     <>

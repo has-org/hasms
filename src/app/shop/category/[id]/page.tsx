@@ -5,9 +5,9 @@ import { Product as ProductType } from '@/types/Product'
 
 
 
-async function getCategory(categoryName: string) {
+async function getCategory(id: number) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/category/${categoryName}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/category/${id}`, {
       method: 'GET',
       next: {
         revalidate: 1,
@@ -23,9 +23,9 @@ async function getCategory(categoryName: string) {
   }
 }
 
-async function getCategoryProducts(categoryName: string) {
+async function getCategoryProducts(id: number) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/category/${categoryName}/products`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/category/${id}/products`, {
       method: 'GET',
       next: {
         revalidate: 1,
@@ -42,10 +42,10 @@ async function getCategoryProducts(categoryName: string) {
 }
 
 
-export default async function ShopCategory({ params: { categoryID } }: any) {
+export default async function ShopCategory({ params: { id } }: any) {
 
-  const category: CategoryType = await getCategory(categoryID);
-  const products: ProductType[] = await getCategoryProducts(categoryID)
+  const category: CategoryType = await getCategory(id);
+  const products: ProductType[] = await getCategoryProducts(id)
   if (!category) return <div>catalogue not found</div>;
   return (
     <>
