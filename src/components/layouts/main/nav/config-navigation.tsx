@@ -114,7 +114,7 @@ const navConfig = [
         ],
       },
       {
-        id: "3,"
+        id: "3",
         title: "Snow",
         path: "/catalogues/3",
         items: [
