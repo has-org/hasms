@@ -15,47 +15,47 @@ const navConfig = [
     path: "/catalogues/0",
     children: [
       {
-        id: 0,
+        id: "0",
         title: "Motorcycles",
         path: "/catalogues/0",
         items: [
           {
-            id: 1,
+            id: "1",
             title: "SuperSport",
             description: "",
             path: "/catalogue/1",
             image: "http://minio.villa-seaview.online/images/super_sport.jpg",
           },
           {
-            id: 2,
+            id: "2",
             title: "Hyper Naked",
             description: "",
             path: "/catalogue/2",
             image: "http://minio.villa-seaview.online/images/hypernaked.jpeg",
           },
           {
-            id: 3,
+            id: "3",
             title: "Sport Heritage",
             description: "",
             path: " /catalogue/3",
             image: "http://minio.villa-seaview.online/images/heritage.jpeg",
           },
           {
-            id: 4,
+            id: "4",
             title: "Sport Touring",
             description: "",
             path: "/catalogue/4",
             image: "http://minio.villa-seaview.online/images/touring.jpeg",
           },
           {
-            id: 5,
+            id: "5",
             title: "Adventure",
             description: "",
             path: "/catalogue/5",
             image: "http://minio.villa-seaview.online/images/a-dventure.jpeg",
           },
           {
-            id: 6,
+            id: "6",
             title: "Competition",
             description: "",
             path: "/catalogue/6",
@@ -64,12 +64,12 @@ const navConfig = [
         ],
       },
       {
-        id: 1,
+        id: "1",
         title: "Scooters",
         path: "/catalogues/1",
         items: [
           {
-            id: 7,
+            id: "7",
             title: "Sport Scooters",
             path: "/catalogue/7",
             description: "",
@@ -77,7 +77,7 @@ const navConfig = [
               "http://minio.villa-seaview.online/images/skuteri-sport.jpeg",
           },
           {
-            id: 8,
+            id: "8",
             title: "Urban Mobility",
             path: "/catalogue/8",
             description: "",
@@ -86,7 +86,7 @@ const navConfig = [
         ],
       },
       {
-        id: 2,
+        id: "2",
         title: "ATV & Side by Side",
         path: "/catalogues/2",
         items: [
@@ -98,14 +98,14 @@ const navConfig = [
             image: "http://minio.villa-seaview.online/images/util.jpeg",
           },
           {
-            id: 10,
+            id: "10",
             title: "Leisure",
             path: "/catalogue/10",
             description: "",
             image: "http://minio.villa-seaview.online/images/leis.jpeg",
           },
           {
-            id: 11,
+            id: "11",
             title: "Sport",
             path: "/catalogue/11",
             description: "",
@@ -114,40 +114,40 @@ const navConfig = [
         ],
       },
       {
-        id: 3,
+        id: "3,"
         title: "Snow",
         path: "/catalogues/3",
         items: [
           {
-            id: 12,
+            id: "12",
             title: "Crossover",
             path: "/catalogue/12",
             description: "",
             image: "http://minio.villa-seaview.online/images/cross.jpeg",
           },
           {
-            id: 13,
+            id: "13",
             title: "Youth",
             path: "/catalogue/13",
             description: "",
             image: "http://minio.villa-seaview.online/images/yout.jpeg",
           },
           {
-            id: 14,
+            id: "14",
             title: "Utility",
             path: "/catalogue/14",
             description: "",
             image: "http://minio.villa-seaview.online/images/snow_utility.jpeg",
           },
           {
-            id: 15,
+            id: "15",
             title: "Mountain",
             path: "/catalogue/15",
             description: "",
             image: "http://minio.villa-seaview.online/images/mount.jpeg",
           },
           {
-            id: 16,
+            id: "16",
             title: "Trail",
             path: "/catalogue/16",
             description: "",
@@ -163,35 +163,35 @@ const navConfig = [
     path: "/catalogues/4",
     children: [
       {
-        id: 4,
+        id: "4",
         title: "Marine engines",
         path: "/catalogue/4",
         image: "",
         description: "",
         items: [
           {
-            id: 17,
+            id: "17",
             title: "Premium (425hp - 225hp)",
             path: "/catalogue/17",
             image: "http://minio.villa-seaview.online/images/nau_premium.jpg",
             description: "",
           },
           {
-            id: 18,
+            id: "18",
             title: "High Power (200hp - 90hp)",
             path: "/catalogue/18",
             image: "http://minio.villa-seaview.online/images/nau_hipower.jpeg",
             description: "",
           },
           {
-            id: 19,
+            id: "19",
             title: "Mid Power (80hp - 30hp)",
             path: "/catalogue/19",
             image: "http://minio.villa-seaview.online/images/nau_midpower.jpeg",
             description: "",
           },
           {
-            id: 20,
+            id: "20",
             title: "Verstile (25hp - 8hp)",
             path: "/catalogue/20",
             image:
@@ -199,14 +199,14 @@ const navConfig = [
             description: "",
           },
           {
-            id: 21,
+            id: "21",
             title: "Portable (6hp - 2.5hp)",
             path: "/catalogue/21",
             image: "http://minio.villa-seaview.online/images/nau_portable.jpeg",
             description: "",
           },
           {
-            id: 22,
+            id: "22",
             title: "Electric Drive",
             path: "/catalogue/22",
             image: "http://minio.villa-seaview.online/images/nau_electric.jpeg",
@@ -215,21 +215,21 @@ const navConfig = [
         ],
       },
       {
-        id: 5,
+        id: "5",
         title: "WaveRunners",
         path: "/catalogues/5",
         image: "",
         description: "",
         items: [
           {
-            id: 23,
+            id: "23",
             title: "Sport",
             path: "/catalogue/23",
             image: "http://minio.villa-seaview.online/images/nau_sport.jpeg",
             description: "",
           },
           {
-            id: 24,
+            id: "24",
             title: "Recreation",
             path: "/catalogue/24",
             image:
@@ -237,7 +237,7 @@ const navConfig = [
             description: "",
           },
           {
-            id: 25,
+            id: "25",
             title: "Cruising",
             path: "/catalogue/25",
             image: "http://minio.villa-seaview.online/images/nau_cruising.jpeg",
@@ -246,7 +246,7 @@ const navConfig = [
         ],
       },
       {
-        id: 6,
+        id: "6",
         title: "YAM",
         path: "/catalogues/6",
         image: "",
