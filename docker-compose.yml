@@ -11,7 +11,7 @@ services:
     networks:
       - hasms-front
 networks:
-  webnet:
+  hasms-front:
     name: hasms-front
     external: true 
 
