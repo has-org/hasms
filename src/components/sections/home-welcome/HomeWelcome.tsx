@@ -29,20 +29,20 @@ const HomeWelcome = () => {
                 Motoshop #7
               </Typography>
               <Typography color={"text.secondary"}>
-               { `Dobrodošli u "Moto Shop 7" - vašu destinaciju za strast prema
+                {`Dobrodošli u "Moto Shop 7" - vašu destinaciju za strast prema
                 motorima još od 2010.`}
               </Typography>
               <Typography color={"text.secondary"}>
-                Nalazimo se na dve lokacije u Banjoj Luci i ponosno smo
-                ovlašteni Yamaha serviser i distributer.
+                {`                Nalazimo se na dve lokacije u Banjoj Luci i ponosno smo
+                ovlašteni Yamaha serviser i distributer.`}
               </Typography>
               <Typography color={"text.secondary"}>
-                Naša strast prema motociklima odražava se u našem odabiru
-                vrhunske opreme i dijelova.
+                {`                Naša strast prema motociklima odražava se u našem odabiru
+                vrhunske opreme i dijelova.`}
               </Typography>
               <Typography color={"text.secondary"}>
-                Pridružite se "Moto Shop 7" zajednici i ostvarite svoje moto
-                snove!
+                {` Pridružite se "Moto Shop 7" zajednici i ostvarite svoje moto
+                snove!`}
               </Typography>
 
               <Button
