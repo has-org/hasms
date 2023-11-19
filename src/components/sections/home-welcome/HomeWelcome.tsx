@@ -29,8 +29,8 @@ const HomeWelcome = () => {
                 Motoshop #7
               </Typography>
               <Typography color={"text.secondary"}>
-                Dobrodošli u "Moto Shop 7" - vašu destinaciju za strast prema
-                motorima još od 2010.
+               { `Dobrodošli u "Moto Shop 7" - vašu destinaciju za strast prema
+                motorima još od 2010.`}
               </Typography>
               <Typography color={"text.secondary"}>
                 Nalazimo se na dve lokacije u Banjoj Luci i ponosno smo
