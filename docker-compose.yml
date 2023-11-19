@@ -9,8 +9,9 @@ services:
     environment:
       NODE_ENV: production
     networks:
-      - webnet
+      - hasms-front
 networks:
-  webnet:
-    name: webnet
+  hasms-front:
+    name: hasms-front
     external: true 
+
