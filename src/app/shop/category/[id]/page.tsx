@@ -46,9 +46,10 @@ export default async function ShopCategory({ params: { id } }: any) {
 
   const category: CategoryType = await getCategory(id);
   const products: ProductType[] = await getCategoryProducts(id)
-  if (!category) return <div>catalogue not found</div>;
+  // if (!category) return <div>catalogue not found</div>;
   return (
     <>
+    {JSON.stringify(products)}
     </>
   );
 }

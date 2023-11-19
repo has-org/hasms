@@ -78,8 +78,8 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        position: 'relative',
-        bgcolor: 'background.primary',
+        position: "relative",
+        bgcolor: "background.default",
       }}
     >
       <Divider />
@@ -88,35 +88,37 @@ export default function Footer() {
         <Grid
           container
           justifyContent={{
-            xs: 'center',
-            md: 'flex-start',
+            xs: "center",
+            md: "flex-start",
           }}
           sx={{
             textAlign: {
-              xs: 'center',
-              md: 'left',
+              xs: "center",
+              md: "left",
             },
           }}
         >
-
-
           <Grid item xs={8} md={3}>
-            <Typography variant="body2" sx={{ pr: { md: 5 } }}>
+            <Typography
+              variant="body2"
+              sx={{ pr: { md: 5 } }}
+              color="text.secondary"
+            >
               Motoshop 7 Banja Luka
             </Typography>
 
             <Stack
               spacing={1}
               direction="row"
-              justifyContent={{ xs: 'center', md: 'flex-start' }}
+              justifyContent={{ xs: "center", md: "flex-start" }}
               sx={{
                 mt: 5,
                 mb: { xs: 5, md: 0 },
               }}
             >
               {_socials.map((social) => (
-                <IconButton key={social.name} sx={{color: 'text.primary'}}>
-                  <Iconify icon={social.icon}/>
+                <IconButton key={social.name} sx={{ color: "text.secondary" }}>
+                  <Iconify icon={social.icon} />
                 </IconButton>
               ))}
             </Stack>
@@ -126,15 +128,19 @@ export default function Footer() {
             <Stack
               spacing={5}
               justifyContent="space-between"
-              direction={{ xs: 'column', md: 'row' }}
+              direction={{ xs: "column", md: "row" }}
             >
               {LINKS.map((list) => (
                 <Stack
                   key={list.headline}
                   spacing={2}
-                  alignItems={{ xs: 'center', md: 'flex-start' }}
+                  alignItems={{ xs: "center", md: "flex-start" }}
                 >
-                  <Typography component="div" variant="overline">
+                  <Typography
+                    component="div"
+                    variant="overline"
+                    color="text.secondary"
+                  >
                     {list.headline}
                   </Typography>
 
@@ -143,17 +149,15 @@ export default function Footer() {
                       component="a"
                       key={link.name}
                       href={link.href}
-                      color="inherit"
+                      color="text.secondary"
                       variant="body2"
                     >
                       {link.name}
                     </Link>
                   ))}
-
                 </Stack>
               ))}
-                  <ContactForm />
-
+              <ContactForm />
             </Stack>
           </Grid>
         </Grid>
@@ -161,13 +165,14 @@ export default function Footer() {
         <Typography
           variant="caption"
           component="div"
+          color="text.secondary"
           sx={{
             mt: 10,
             pb: 5,
-            textAlign: { xs: 'center', md: 'left' },
+            textAlign: { xs: "center", md: "left" },
           }}
         >
-          © 2023. HAS  All rights reserved
+          © 2023. HAS All rights reserved
         </Typography>
       </Container>
     </Box>

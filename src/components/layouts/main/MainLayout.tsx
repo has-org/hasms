@@ -19,7 +19,7 @@ export default function MainLayout({children}: {children: React.ReactNode}) {
         component="main"
         sx={{
           flexGrow: 1,
-          paddingX: { xs: 0, sm: 2, md: 3 },
+          paddingX: { xs: 0, sm: 0, md: 0 },
         }}
       >
         <Main>

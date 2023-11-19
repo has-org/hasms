@@ -6,30 +6,26 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ["minio.villa-seaview.online", "placehold.co", "localhost"],
-    dangerouslyAllowSVG: true,
+    domains: ["s3.villa-seaview.online", "localhost"],
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
 
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "minio",
-        port: "9000",
-        pathname: "/*",
-      },
-      {
-        protocol: "http",
-        hostname: "minio.villa-seaview.online",
+        protocol: "https",
+        hostname: "s3",
         pathname: "/*",
       },
       {
         protocol: "https",
-        hostname: "placehold.co",
-        port: "",
-        pathname: "/placehold.co/*",
+        hostname: "s3.villa-seaview.online",
+        pathname: "/*",
       },
+
     ],
+
+    loader: 'custom',
+    loaderFile: '/loader.js',
   },
   output: "standalone",
   transpilePackages: ["@mui/system", "@mui/material", "@mui/icons-material"],

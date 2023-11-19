@@ -8,7 +8,7 @@ import { HEADER, NAV } from "@/config-global";
 
 // ----------------------------------------------------------------------
 
-const SPACING = 8;
+const SPACING = 0;
 
 export default function Main({ children, sx, ...other }: BoxProps) {
 

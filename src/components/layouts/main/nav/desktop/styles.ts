@@ -75,7 +75,7 @@ export const StyledMenu = styled(Paper)(({ theme }) => ({
     opacity: 0.94,
     color: theme.palette.background.default,
   }),
-  backgroundColor: theme.palette.primary.lighter,
+  backgroundColor:  theme.palette.background.default,
   top: 72,
   left: 0,
   right: 0,

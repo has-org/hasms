@@ -3,6 +3,8 @@ import { Cooperator as CooperatorType } from "@/types/Cooperator";
 
 import CooperatorsAnimation from "../../components/sliderAnimation/CooperatorsAnimation";
 import { getBlogs, getCatalogues, getCooperators } from "@/services/apiService";
+import HomeWelcome from "@/components/sections/home-welcome";
+import HomeTrending from "@/components/sections/home-trending";
 
 export default async function HomePage() {
   const catalogues: CatalogueType[] = await getCatalogues();
@@ -15,11 +17,14 @@ export default async function HomePage() {
   return (
     <>
       <section>
-
+        <HomeWelcome />
+      </section>
+      <section>
+        <HomeTrending />
       </section>
 
       <section className="cooperation-section">
-        {cooperators && <CooperatorsAnimation cooperators={cooperators} />}
+        {/* {cooperators && <CooperatorsAnimation cooperators={cooperators} />} */}
       </section>
     </>
   );

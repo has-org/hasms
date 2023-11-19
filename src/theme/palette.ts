@@ -36,10 +36,10 @@ const GREY = {
 const PRIMARY = {
   lighter: "#8A8E99", // Lighter shade of #424758
   light: "#BABCC4",
-  main: "#424758",
-  dark: "#373A44",
-  darker: "#2D2F38", // Darker shade of #424758
-  contrastText: "#FFFFFF",
+  main: "#54F2F2",
+  dark: "#1F2833",
+  darker: "#1F1F1F",
+  contrastText: "#161925",
 };
 
 const SECONDARY = {
@@ -47,7 +47,7 @@ const SECONDARY = {
   light: "#84A9FF",
   main: "#0017E6",
   dark: "#1939B7",
-  darker: "#091A7A",
+  darker: "#1F1F1F",
   contrastText: "#FFFFFF",
 };
 
@@ -88,7 +88,7 @@ const ERROR = {
 };
 
 const COMMON = {
-  common: { black: '#000000', white: '#FFFFFF' },
+  common: { black: "#000000", white: "#FFFFFF", fluo: "#54F2F2" },
   primary: PRIMARY,
   secondary: SECONDARY,
   info: INFO,
@@ -113,14 +113,14 @@ export default function palette(themeMode: 'light' | 'dark') {
     ...COMMON,
     mode: "light",
     text: {
-      primary: COMMON.common.white,
-      secondary: GREY[600],
+      primary: COMMON.common.fluo,
+      secondary: COMMON.common.white,
       disabled: GREY[500],
     },
     background: {
       primary: PRIMARY.main,
-      paper: "#FFFFFF",
-      default: "#FFFFFF",
+      paper:  PRIMARY.light,
+      default: PRIMARY.dark,
       neutral: alpha(GREY[300], 0.16),
       neutralDark: alpha(GREY[500], 0.58),
     },
@@ -128,7 +128,6 @@ export default function palette(themeMode: 'light' | 'dark') {
       ...COMMON.action,
       active: GREY[600],
     },
-    
   } as const;
 
   const dark = {

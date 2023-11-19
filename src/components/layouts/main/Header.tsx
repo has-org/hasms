@@ -32,7 +32,7 @@ export default function Header() {
   return (
     <AppBar
       ref={carouselRef}
-      sx={{ boxShadow: 0, }}
+      sx={{ boxShadow: 0, backgroundColor: (theme) => theme.palette.background.default}}
     >
       <Toolbar
         disableGutters
@@ -46,7 +46,7 @@ export default function Header() {
             duration: theme.transitions.duration.shorter,
           }),
           ...(isOffset && {
-            ...bgBlur({ color: theme.palette.background.default }),
+            ...bgBlur({ color: theme.palette.background.paper }),
             height: {
               md: HEADER.H_MAIN_DESKTOP - 16,
             },
