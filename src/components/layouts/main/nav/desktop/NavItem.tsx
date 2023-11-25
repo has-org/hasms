@@ -28,10 +28,7 @@ export const NavItem = forwardRef<HTMLDivElement, NavItemDesktopProps>(
      
       >
         <Typography
-          sx={{
-            fontSize: { lg: "24px", fontWeight: "500" },
-
-          }}
+          variant="body1"
         >
           {title}
         </Typography>

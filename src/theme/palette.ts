@@ -34,11 +34,11 @@ const GREY = {
 };
 
 const PRIMARY = {
-  lighter: "#8A8E99", // Lighter shade of #424758
-  light: "#BABCC4",
-  main: "#54F2F2",
-  dark: "#1F2833",
-  darker: "#1F1F1F",
+  lighter: "#8A8E99", //#00D0FD
+  light: "#8A8E99",
+  main: "#00D0FD",
+  dark: "#1E1E1E",
+  darker: "#8A8E99",
   contrastText: "#161925",
 };
 
@@ -113,13 +113,13 @@ export default function palette(themeMode: 'light' | 'dark') {
     ...COMMON,
     mode: "light",
     text: {
-      primary: COMMON.common.fluo,
+      primary: COMMON.common.white,
       secondary: COMMON.common.white,
       disabled: GREY[500],
     },
     background: {
       primary: PRIMARY.main,
-      paper:  PRIMARY.light,
+      paper: alpha(GREY[700], 0.1),
       default: PRIMARY.dark,
       neutral: alpha(GREY[300], 0.16),
       neutralDark: alpha(GREY[500], 0.58),

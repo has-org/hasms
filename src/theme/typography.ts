@@ -1,4 +1,5 @@
 // ----------------------------------------------------------------------
+import "@fontsource/poppins"; // Defaults to weight 400
 
 export function remToPx(value: string) {
   return Math.round(parseFloat(value) * 16);
@@ -24,7 +25,7 @@ export function responsiveFontSizes({ sm, md, lg }: { sm: number; md: number; lg
 
 // ----------------------------------------------------------------------
 
-const FONT_PRIMARY = 'Inter,Sans,sans-serif'; // Google Font
+const FONT_PRIMARY = 'poppins,Sans,sans-serif'; // Google Font
 // const FONT_SECONDARY = 'CircularStd, sans-serif'; // Local Font
 
 const typography = {

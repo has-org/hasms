@@ -39,6 +39,7 @@ const TrendingCard = ({
           }}
         >
           <Button
+            color="info"
             variant="contained"
             sx={{
               position: "absolute",
@@ -46,15 +47,9 @@ const TrendingCard = ({
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              backgroundColor: (theme: any) =>
-                alpha(theme.palette.common.fluo, 0.72),
-              "&:hover": {
-                backgroundColor: (theme: any) =>
-                  alpha(theme.palette.common.fluo, 0.87),
-              },
             }}
           >
-            <Typography variant="h6">{label}</Typography>
+            <Typography variant="h6" color="common.white">{label}</Typography>
           </Button>
           <Image
             src={image}

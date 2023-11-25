@@ -11,7 +11,7 @@ import { bgBlur } from '@/utils/cssStyles';
 import { HEADER } from '@/config-global';
 // routes
 // components
-// import Logo from '../../components/logo';
+import Logo from '../../logo';
 // import Label from '../../components/label';
 //
 import navConfig from './nav/config-navigation';
@@ -54,7 +54,7 @@ export default function Header() {
         }}
       >
         <Container sx={{ height: 1, display: "flex", alignItems: "center" }}>
-          {/* <Logo /> */}
+          <Logo />
           <Box sx={{ flexGrow: 1 }} />
           {isDesktop && <NavDesktop isOffset={isOffset} data={navConfig} />}
           {!isDesktop && <NavMobile isOffset={isOffset} data={navConfig} />}

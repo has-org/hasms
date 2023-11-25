@@ -1,76 +1,74 @@
 "use client";
 import Iconify from "@/components/iconify";
 import useResponsive from "@/hooks/useResponsive";
-import { Box, Grid, Stack, Button } from "@mui/material";
+import { Box, Grid, Stack, Button, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import Link from "next/link";
 import { alpha } from "@mui/material/styles";
+
 
 const HomeWelcome = () => {
   const isDesktop = useResponsive("up", "lg");
 
   return (
     <>
-      <Stack direction="row">
+      <Box
+        sx={{
+          width: "100%",
+          height: "75vh",
+          backgroundImage:
+            "url(https://s3.villa-seaview.online/images/bg_frame.png)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          zIndex: "-1",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Stack>
+          <Box sx={{ width: "460px" }}>
+            <Stack>
+              <Typography variant="h4">Provjereno najbolja</Typography>
+              <Typography variant="h2" component="span">
+                {"MOTO OPREMA &"}
+                <Typography variant="h2" component="span" color="primary.main" ml={3}>
+                  {"DIJELOVI"}
+                </Typography>
+              </Typography>
+            </Stack>
+          </Box>
+          <Stack direction={"row"} spacing={3}>
+            <Button variant="contained" color="info">
+              <Typography color={"common.white"}>{"PONUDA"}</Typography>
+            </Button>
+            <Button variant="outlined">
+              <Typography>SHOP</Typography>
+            </Button>
+          </Stack>
+        </Stack>
         <Box
           sx={{
-            width: "50%",
-            backgroundColor: (theme) => theme.palette.primary.darker,
-            padding: 2,
+            width: "600px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <Box width={"400px"}>
-            <Stack spacing={3} justifyContent="center">
-              <Typography variant="h2" color={"text.secondary"}>
-                Motoshop #7
-              </Typography>
-              <Typography color={"text.secondary"}>
-                {`Dobrodošli u "Moto Shop 7" - vašu destinaciju za strast prema
-                motorima još od 2010.`}
-              </Typography>
-              <Typography color={"text.secondary"}>
-                {`                Nalazimo se na dve lokacije u Banjoj Luci i ponosno smo
-                ovlašteni Yamaha serviser i distributer.`}
-              </Typography>
-              <Typography color={"text.secondary"}>
-                {`                Naša strast prema motociklima odražava se u našem odabiru
-                vrhunske opreme i dijelova.`}
-              </Typography>
-              <Typography color={"text.secondary"}>
-                {` Pridružite se "Moto Shop 7" zajednici i ostvarite svoje moto
-                snove!`}
-              </Typography>
-
-              <Button
-                variant="contained"
-                sx={{
-                  mt: 5,
-                  backgroundColor: (theme: any) =>
-                    alpha(theme.palette.common.fluo, 0.72),
-                  "&:hover": {
-                    backgroundColor: (theme: any) =>
-                      alpha(theme.palette.common.fluo, 0.87),
-                  },
-                }}
-              >
-                O nama
-              </Button>
-            </Stack>
-          </Box>
+          <Image
+            src="/images/bike.png"
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{
+              width: "100%",
+              height: "auto",
+            }} // optional
+            alt="Motoshop 7"
+          />
         </Box>
-        <Image
-          src="/images/motoshop7blog.webp"
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ width: "50%", height: "auto" }} // optional
-          alt="Motoshop 7"
-        />
-      </Stack>
+      </Box>
     </>
   );
 };

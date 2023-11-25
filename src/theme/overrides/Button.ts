@@ -34,10 +34,10 @@ export default function Button(theme: Theme) {
       ...(inheritColor && {
         // CONTAINED
         ...(containedVariant && {
-          color: theme.palette.grey[800],
+          color: theme.palette.common.white,
           '&:hover': {
             boxShadow: theme.customShadows.z8,
-            backgroundColor: theme.palette.grey[400],
+            backgroundColor: theme.palette.primary.main,
           },
         }),
         // OUTLINED
