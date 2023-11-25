@@ -1,7 +1,7 @@
 "use client";
 import Iconify from "@/components/iconify";
 import useResponsive from "@/hooks/useResponsive";
-import { Box, Grid, Stack, Button, Paper } from "@mui/material";
+import { Box, Grid, Stack, Button, Paper, Container } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +12,7 @@ const HomeWelcome = () => {
   const isDesktop = useResponsive("up", "lg");
 
   return (
-    <>
+    <Container>
       <Box
         sx={{
           width: "100%",
@@ -33,7 +33,12 @@ const HomeWelcome = () => {
               <Typography variant="h4">Provjereno najbolja</Typography>
               <Typography variant="h2" component="span">
                 {"MOTO OPREMA &"}
-                <Typography variant="h2" component="span" color="primary.main" ml={3}>
+                <Typography
+                  variant="h2"
+                  component="span"
+                  color="primary.main"
+                  ml={3}
+                >
                   {"DIJELOVI"}
                 </Typography>
               </Typography>
@@ -69,7 +74,7 @@ const HomeWelcome = () => {
           />
         </Box>
       </Box>
-    </>
+    </Container>
   );
 };
 

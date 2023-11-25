@@ -78,8 +78,13 @@ const HomeTrending = ({ deviceType }: any) => {
   const isDesktop = useResponsive("up", "lg");
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 3000, min: 2560 },
       items: 4,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+    laptop: {
+      breakpoint: { max: 2560, min: 1024 },
+      items: 3,
       slidesToSlide: 1, // optional, default to 1.
     },
     tablet: {
