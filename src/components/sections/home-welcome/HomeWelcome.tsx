@@ -26,7 +26,7 @@ const HomeWelcome = () => {
       }}
     >
       <Container maxWidth="xl">
-        <Grid container >
+        <Grid container spacing={3}>
           <Grid xs={12} md={6} sx={{}}>
             <Image
               src="/images/bikee.png"
@@ -42,7 +42,7 @@ const HomeWelcome = () => {
           </Grid>
           <Grid xs={12} md={6} sx={{ display: "flex", alignItems: "center" }}>
             <Stack spacing={1}>
-              <Typography variant="h4">Provjereno najbolja</Typography>
+              <Typography variant="h4" fontWeight={400}>Provjereno najbolja</Typography>
               <Typography variant="h1" component="span" lineHeight={1}>
                 {"MOTO OPREMA &"}
                 <Typography

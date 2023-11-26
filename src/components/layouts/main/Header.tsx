@@ -9,7 +9,7 @@ import {
   Container,
   Link,
   BoxProps,
-  Stack
+  Stack,
 } from "@mui/material";
 // hooks
 import useOffSetTop from "@/hooks/useOffSetTop";
@@ -42,6 +42,7 @@ export default function Header() {
   return (
     <AppBar
       ref={carouselRef}
+      
       sx={{
         boxShadow: 0,
         backgroundColor: (theme) => theme.palette.background.default,
@@ -75,26 +76,16 @@ export default function Header() {
             flexGrow={1}
             direction="row"
             alignItems="center"
-            justifyContent="center"
+            justifyContent={{xs: "end", lg:"center"}}
             spacing={{ xs: 0.5, sm: 1.5 }}
           >
             {isDesktop && <NavDesktop isOffset={isOffset} data={navConfig} />}
             {!isDesktop && <NavMobile isOffset={isOffset} data={navConfig} />}
           </Stack>
-          <Stack>
+          <Stack sx={{ sm: { display: "none" } }}>
             <Stack direction={"row"} justifyContent="end" spacing={5}>
-              <Iconify
-                icon="mdi:account"
-                height={"45px"}
-                width="45px"
-                color="common.white"
-              />
-              <Iconify
-                icon="mdi:cart"
-                height={"45px"}
-                width="45px"
-                color="common.white"
-              />
+              
+           
             </Stack>
           </Stack>
         </Container>
