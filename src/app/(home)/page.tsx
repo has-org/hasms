@@ -35,6 +35,14 @@ async function getUserAgent() {
   }
 }
 
+export async function generateMetadata({ params, searchParams }: { params: any, searchParams: any }) {
+  return {
+    title: "Pocetna",
+    description: "My description",
+    
+  };
+}
+
 export default async function HomePage() {
   const userAgent = await getUserAgent();
   const catalogues: CatalogueType[] = await getCatalogues();

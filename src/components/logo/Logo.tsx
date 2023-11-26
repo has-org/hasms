@@ -38,9 +38,7 @@ const Logo = forwardRef<HTMLDivElement, LogoProps>(
         ref={ref}
         component="div"
         sx={{
-          width: 200,
           height: 40,
-          backgroundColor: 'primary.light',
           ...sx,
           display: 'flex',
           justifyContent: 'center',
@@ -49,7 +47,7 @@ const Logo = forwardRef<HTMLDivElement, LogoProps>(
         {...other}
       >
         <Image
-          src={'/images/logom.png'}
+          src={'/images/logomw.png'}
           width={0}
           height={0}
           sizes="100vw"

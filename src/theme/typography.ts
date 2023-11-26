@@ -1,5 +1,13 @@
 // ----------------------------------------------------------------------
-import "@fontsource/poppins"; // Defaults to weight 400
+import "@fontsource/poppins/100-italic.css";
+import "@fontsource/poppins/200-italic.css";
+import "@fontsource/poppins/300-italic.css";
+import "@fontsource/poppins/400-italic.css";
+import "@fontsource/poppins/500-italic.css";
+import "@fontsource/poppins/600-italic.css";
+import "@fontsource/poppins/700-italic.css";
+import "@fontsource/poppins/800-italic.css";
+import "@fontsource/poppins/900-italic.css";
 
 export function remToPx(value: string) {
   return Math.round(parseFloat(value) * 16);
@@ -25,7 +33,7 @@ export function responsiveFontSizes({ sm, md, lg }: { sm: number; md: number; lg
 
 // ----------------------------------------------------------------------
 
-const FONT_PRIMARY = 'poppins,Sans,sans-serif'; // Google Font
+const FONT_PRIMARY = 'Poppins,Sans,sans-serif'; // Google Font
 // const FONT_SECONDARY = 'CircularStd, sans-serif'; // Local Font
 
 const typography = {

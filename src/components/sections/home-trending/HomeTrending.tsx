@@ -1,4 +1,5 @@
 "use client";
+import "./style.css"
 import Iconify from "@/components/iconify";
 import TrendingCard from "@/components/trending-card";
 import useResponsive from "@/hooks/useResponsive";
@@ -36,55 +37,42 @@ const items = [
   },
 ];
 
-const CustomLeftArrow = ({ onClick }: {onClick: any}) => (
-  <i onClick={() => onClick()} className="custom-left-arrow" />
-);
-const CustomRightArrow = ({ onClick }: {onClick: any}) => {
-  return <i className="custom-right-arrow" onClick={() => onClick()} />;
-};
-
-const CustomButtonGroup = ({ next, previous, goToSlide, carouselState }: {next: any, previous: any, goToSlide: any, carouselState: any}) => {
-  const { totalItems, currentSlide } = carouselState;
+const CustomButtonGroupAsArrows = ({
+  next,
+  previous,
+}: {
+  next?: any;
+  previous?: any;
+}) => {
   return (
-    <div className="custom-button-group">
-      <div>Current slide is {currentSlide}</div>
-      <button onClick={() => previous()}>Previous slide</button>
-      <button onClick={() => next()}>Next slide</button>
-      <button
-        onClick={() => goToSlide(Math.floor(Math.random() * totalItems + 1))}
-      >
-        Go to a random slide
-      </button>
-    </div>
+    <Box className="test" sx={{display: 'inline'}}>
+      <Box sx={{ textAlign: "left" }}>
+        <Iconify
+          icon="eva:arrow-ios-back-fill"
+          width={32}
+          height={32}
+          onClick={previous}
+        />
+      </Box>
+
+      <Box sx={{ textAlign: "right " }}>
+        <Iconify
+          icon="eva:arrow-ios-back-fill"
+          width={32}
+          height={32}
+          onClick={next}
+        />
+      </Box>
+    </Box>
   );
 };
-
-const CustomButtonGroupAsArrows = ({ next, previous }: {next: any, previous: any}) => {
-  return (
-    <div
-      style={{
-        textAlign: "center",
-      }}
-    >
-      <h4>These buttons can be positioned anywhere you want on the screen</h4>
-      <button onClick={previous}>Prev</button>
-      <button onClick={next}>Next</button>
-    </div>
-  );
-};
-
 
 const HomeTrending = ({ deviceType }: any) => {
   const isDesktop = useResponsive("up", "lg");
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 2560 },
+      breakpoint: { max: 3000, min: 1024 },
       items: 4,
-      slidesToSlide: 1, // optional, default to 1.
-    },
-    laptop: {
-      breakpoint: { max: 2560, min: 1024 },
-      items: 3,
       slidesToSlide: 1, // optional, default to 1.
     },
     tablet: {
@@ -99,7 +87,9 @@ const HomeTrending = ({ deviceType }: any) => {
     },
   };
   return (
-    <Container maxWidth="xl">
+    <Box sx={{
+      position: 'relative'
+    }}>
       <Carousel
         showDots={true}
         responsive={responsive}
@@ -114,7 +104,11 @@ const HomeTrending = ({ deviceType }: any) => {
         removeArrowOnDeviceType={["tablet", "mobile"]}
         deviceType={deviceType}
         dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-20-px"
+        itemClass="carousel-item-padding-80-px"
+        arrows={false}
+        customButtonGroup={<CustomButtonGroupAsArrows />}
+        renderButtonGroupOutside={true}
+        renderDotsOutside={true}
       >
         {items.map((item, index) => (
           <Card
@@ -166,7 +160,7 @@ const HomeTrending = ({ deviceType }: any) => {
           </Card>
         ))}
       </Carousel>
-    </Container>
+    </Box>
   );
 };
 

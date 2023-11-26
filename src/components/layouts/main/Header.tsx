@@ -1,22 +1,32 @@
-import { useRef } from 'react';
+import { useRef } from "react";
 // @mui
-import { useTheme } from '@mui/material/styles';
-import { Box, Button, AppBar, Toolbar, Container, Link, BoxProps } from '@mui/material';
+import { useTheme } from "@mui/material/styles";
+import {
+  Box,
+  Button,
+  AppBar,
+  Toolbar,
+  Container,
+  Link,
+  BoxProps,
+  Stack
+} from "@mui/material";
 // hooks
-import useOffSetTop from '@/hooks/useOffSetTop';
-import useResponsive from '@/hooks/useResponsive';
+import useOffSetTop from "@/hooks/useOffSetTop";
+import useResponsive from "@/hooks/useResponsive";
 // utils
-import { bgBlur } from '@/utils/cssStyles';
+import { bgBlur } from "@/utils/cssStyles";
 // config
-import { HEADER } from '@/config-global';
+import { HEADER } from "@/config-global";
 // routes
 // components
-import Logo from '../../logo';
+import Logo from "../../logo";
 // import Label from '../../components/label';
 //
-import navConfig from './nav/config-navigation';
-import NavMobile from './nav/mobile';
-import NavDesktop from './nav/desktop';
+import navConfig from "./nav/config-navigation";
+import NavMobile from "./nav/mobile";
+import NavDesktop from "./nav/desktop";
+import Iconify from "@/components/iconify";
 
 // ----------------------------------------------------------------------
 
@@ -25,14 +35,17 @@ export default function Header() {
 
   const theme = useTheme();
 
-  const isDesktop = useResponsive('up', 'md');
+  const isDesktop = useResponsive("up", "md");
 
   const isOffset = useOffSetTop(HEADER.H_MAIN_DESKTOP);
 
   return (
     <AppBar
       ref={carouselRef}
-      sx={{ boxShadow: 0, backgroundColor: (theme) => theme.palette.background.default}}
+      sx={{
+        boxShadow: 0,
+        backgroundColor: (theme) => theme.palette.background.default,
+      }}
     >
       <Toolbar
         disableGutters
@@ -53,11 +66,37 @@ export default function Header() {
           }),
         }}
       >
-        <Container sx={{ height: 1, display: "flex", alignItems: "center" }}>
+        <Container
+          sx={{ height: 1, display: "flex", alignItems: "center" }}
+          maxWidth="xl"
+        >
           <Logo />
-          <Box sx={{ flexGrow: 1 }} />
-          {isDesktop && <NavDesktop isOffset={isOffset} data={navConfig} />}
-          {!isDesktop && <NavMobile isOffset={isOffset} data={navConfig} />}
+          <Stack
+            flexGrow={1}
+            direction="row"
+            alignItems="center"
+            justifyContent="center"
+            spacing={{ xs: 0.5, sm: 1.5 }}
+          >
+            {isDesktop && <NavDesktop isOffset={isOffset} data={navConfig} />}
+            {!isDesktop && <NavMobile isOffset={isOffset} data={navConfig} />}
+          </Stack>
+          <Stack>
+            <Stack direction={"row"} justifyContent="end" spacing={5}>
+              <Iconify
+                icon="mdi:account"
+                height={"45px"}
+                width="45px"
+                color="common.white"
+              />
+              <Iconify
+                icon="mdi:cart"
+                height={"45px"}
+                width="45px"
+                color="common.white"
+              />
+            </Stack>
+          </Stack>
         </Container>
       </Toolbar>
       {isOffset && <Shadow />}
@@ -76,9 +115,9 @@ function Shadow({ sx, ...other }: BoxProps) {
         bottom: 0,
         height: 24,
         zIndex: -1,
-        m: 'auto',
-        borderRadius: '50%',
-        position: 'absolute',
+        m: "auto",
+        borderRadius: "50%",
+        position: "absolute",
         width: `calc(100% - 48px)`,
         boxShadow: (theme) => theme.customShadows?.z8,
         ...sx,
