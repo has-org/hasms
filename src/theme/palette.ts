@@ -38,8 +38,8 @@ const PRIMARY = {
   light: "#8A8E99",
   main: "#00D0FD",
   dark: "#1E1E1E",
-  darker: "#8A8E99",
-  contrastText: "#161925",
+  darker: "#000000",
+  contrastText: "#FFFFFF",
 };
 
 const SECONDARY = {
@@ -52,12 +52,12 @@ const SECONDARY = {
 };
 
 const INFO = {
-  lighter: '#CAFDF5',
-  light: '#61F3F3',
-  main: '#00B8D9',
-  dark: '#006C9C',
-  darker: '#003768',
-  contrastText: '#FFFFFF',
+  lighter: "#CAFDF5",
+  light: "#61F3F3",
+  main: "#00B8D9",
+  dark: "#006C9C",
+  darker: "#1F1F1F",
+  contrastText: "#FFFFFF",
 };
 
 const SUCCESS = {
@@ -119,8 +119,8 @@ export default function palette(themeMode: 'light' | 'dark') {
     },
     background: {
       primary: PRIMARY.main,
-      paper: alpha(GREY[700], 0.1),
-      default: PRIMARY.dark,
+      paper: alpha(PRIMARY.dark, 0.38),
+      default: alpha(PRIMARY.darker, 0.85),
       neutral: alpha(GREY[300], 0.16),
       neutralDark: alpha(GREY[500], 0.58),
     },

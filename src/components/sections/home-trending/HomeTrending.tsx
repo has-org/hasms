@@ -12,11 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import {
-  ButtonGroupProps,
-  ArrowProps,
-  DotProps,
-} from "react-multi-carousel/lib/types";
+
 
 const items = [
   {
@@ -45,19 +41,35 @@ const CustomButtonGroupAsArrows = ({
   previous?: any;
 }) => {
   return (
-    <Box className="test" sx={{display: 'inline'}}>
-      <Box sx={{ textAlign: "left" }}>
+    <Box sx={{width: '100%',}}>
+      <Box
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: 'calc(4% + 1px)',
+          transform: "translate(-50%)",
+        }}
+        component="span"
+      >
         <Iconify
-          icon="eva:arrow-ios-back-fill"
+          icon="formkit:arrowleft"
           width={32}
           height={32}
           onClick={previous}
         />
       </Box>
 
-      <Box sx={{ textAlign: "right " }}>
+      <Box
+        sx={{
+          position: "absolute",
+          top: "50%",
+          right: 'calc(4% + 1px)',
+          transform: "translate(-50%)",
+        }}
+        component="span"
+      >
         <Iconify
-          icon="eva:arrow-ios-back-fill"
+          icon="formkit:arrowright"
           width={32}
           height={32}
           onClick={next}
@@ -87,79 +99,82 @@ const HomeTrending = ({ deviceType }: any) => {
     },
   };
   return (
-    <Box sx={{
-      position: 'relative'
-    }}>
-      <Carousel
-        showDots={true}
-        responsive={responsive}
-        ssr={true} // means to render carousel on server-side.
-        infinite={true}
-        autoPlay={false}
-        autoPlaySpeed={1000}
-        keyBoardControl={true}
-        customTransition="all .5"
-        transitionDuration={500}
-        containerClass="carousel-container"
-        removeArrowOnDeviceType={["tablet", "mobile"]}
-        deviceType={deviceType}
-        dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-80-px"
-        arrows={false}
-        customButtonGroup={<CustomButtonGroupAsArrows />}
-        renderButtonGroupOutside={true}
-        renderDotsOutside={true}
-      >
-        {items.map((item, index) => (
-          <Card
-            key={index}
-            sx={{ mx: 5, minHeight: "500px", maxWidth: "400px" }}
-          >
-            <CardContent sx={{ display: "flex", justifyContent: "center" }}>
-              <Stack>
-                <Typography variant="h3" textAlign={"center"}>
-                  {item.title}
-                </Typography>
-                <Button variant="contained" color="info">
-                  PREGLEDAJ
-                </Button>
-              </Stack>
-            </CardContent>
-            <CardMedia>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
+    <Box
+      sx={{
+        className: "gd-carousel-wrapper",
+        position: "relative",
+        paddingTop: 10,
+      }}
+    >
+      <Container maxWidth="xl">
+        <Carousel
+          showDots={true}
+          responsive={responsive}
+          ssr={true} // means to render carousel on server-side.
+          infinite={true}
+          autoPlay={false}
+          autoPlaySpeed={1000}
+          keyBoardControl={true}
+          customTransition="all .5"
+          transitionDuration={500}
+          containerClass="gd-carousel"
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+          deviceType={deviceType}
+          arrows={false}
+          customButtonGroup={<CustomButtonGroupAsArrows />}
+          renderButtonGroupOutside={true}
+        >
+          {items.map((item, index) => (
+            <Card
+              key={index}
+              sx={{ mx: 5, minHeight: "500px", maxWidth: "400px" }}
+            >
+              <CardContent sx={{ display: "flex", justifyContent: "center" }}>
+                <Stack>
+                  <Typography variant="h3" textAlign={"center"}>
+                    {item.title}
+                  </Typography>
+                  <Button variant="contained" color="info">
+                    PREGLEDAJ
+                  </Button>
+                </Stack>
+              </CardContent>
+              <CardMedia>
                 <Box
                   sx={{
-                    width: "250px",
-                    height: "300px",
-                    position: "relative",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    height: "100%",
                   }}
                 >
-                  <Image
-                    src={item.image}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "contain",
+                  <Box
+                    sx={{
+                      width: "250px",
+                      height: "300px",
+                      position: "relative",
                     }}
-                    alt="Motoshop 7"
-                  />
+                  >
+                    <Image
+                      src={item.image}
+                      width={0}
+                      height={0}
+                      sizes="100vw, 30vw"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                      }}
+                      alt="Motoshop 7"
+                    />
+                  </Box>
                 </Box>
-              </Box>
-            </CardMedia>
-          </Card>
-        ))}
-      </Carousel>
+              </CardMedia>
+            </Card>
+          ))}
+        </Carousel>
+      </Container>
     </Box>
   );
 };

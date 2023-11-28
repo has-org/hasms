@@ -10,6 +10,7 @@ import {
   Link,
   BoxProps,
   Stack,
+  Typography,
 } from "@mui/material";
 // hooks
 import useOffSetTop from "@/hooks/useOffSetTop";
@@ -42,10 +43,9 @@ export default function Header() {
   return (
     <AppBar
       ref={carouselRef}
-      
       sx={{
         boxShadow: 0,
-        backgroundColor: (theme) => theme.palette.background.default,
+        backgroundColor: "background.default",
       }}
     >
       <Toolbar
@@ -71,21 +71,37 @@ export default function Header() {
           sx={{ height: 1, display: "flex", alignItems: "center" }}
           maxWidth="xl"
         >
-          <Logo />
+          {isDesktop && <Logo />}
           <Stack
             flexGrow={1}
             direction="row"
             alignItems="center"
-            justifyContent={{xs: "end", lg:"center"}}
+            justifyContent={{ xs: "space-between", lg: "center" }}
             spacing={{ xs: 0.5, sm: 1.5 }}
           >
             {isDesktop && <NavDesktop isOffset={isOffset} data={navConfig} />}
             {!isDesktop && <NavMobile isOffset={isOffset} data={navConfig} />}
           </Stack>
-          <Stack sx={{ sm: { display: "none" } }}>
-            <Stack direction={"row"} justifyContent="end" spacing={5}>
-              
-           
+          <Stack>
+            <Stack direction={"row"} justifyContent="end" spacing={1}>
+              <Button variant="contained" color="info">
+                <Stack direction={"row"} spacing={0.5} alignItems="center">
+                  <Iconify icon="tdesign:cart" color="text.primary" />
+                  {isDesktop && (
+                    <Typography variant="body1" fontWeight={500}>
+                      KORPA
+                    </Typography>
+                  )}
+                </Stack>
+              </Button>
+              <Button variant="outlined">
+                <Stack direction={"row"} spacing={0.5} alignItems="center">
+                  <Iconify
+                    icon="iconamoon:profile-circle"
+                    color="primary.main"
+                  />
+                </Stack>
+              </Button>
             </Stack>
           </Stack>
         </Container>
@@ -110,7 +126,7 @@ function Shadow({ sx, ...other }: BoxProps) {
         borderRadius: "50%",
         position: "absolute",
         width: `calc(100% - 48px)`,
-        boxShadow: (theme) => theme.customShadows?.z8,
+        boxShadow: (theme) => theme.customShadows?.z1,
         ...sx,
       }}
       {...other}

@@ -69,16 +69,26 @@ export default function Button(theme: Theme) {
       ...(ownerState.color === color && {
         // CONTAINED
         ...(containedVariant && {
-          '&:hover': {
+          "&:hover": {
             boxShadow: theme.customShadows[color],
           },
         }),
         // SOFT
         ...(softVariant && {
-          color: theme.palette[color][isLight ? 'dark' : 'light'],
+          color: theme.palette[color][isLight ? "dark" : "light"],
           backgroundColor: alpha(theme.palette[color].main, 0.16),
-          '&:hover': {
+          "&:hover": {
             backgroundColor: alpha(theme.palette[color].main, 0.32),
+          },
+        }),
+        // OUTLINED
+        ...(outlinedVariant && {
+          color: theme.palette[color][isLight ? "contrastText" : "main"],
+          backgroundColor: alpha(theme.palette[color].dark, 0.16),
+
+          border: `1px solid ${theme.palette[color].contrastText}`,
+          "&:hover": {
+            backgroundColor: alpha(theme.palette[color].darker, 0.82),
           },
         }),
       }),

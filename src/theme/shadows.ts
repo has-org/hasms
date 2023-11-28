@@ -7,7 +7,7 @@ import palette from './palette';
 
 const themeColor = palette('light');
 
-const LIGHT_MODE = themeColor.grey[500];
+const LIGHT_MODE = themeColor.background.default;
 
 const DARK_MODE = themeColor.common.black;
 

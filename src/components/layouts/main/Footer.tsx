@@ -79,10 +79,9 @@ export default function Footer() {
       component="footer"
       sx={{
         position: "relative",
-        bgcolor: "background.default",
+        backgroundColor: 'background.default',
       }}
     >
-      <Divider />
 
       <Container sx={{ pt: 10 }}>
         <Grid

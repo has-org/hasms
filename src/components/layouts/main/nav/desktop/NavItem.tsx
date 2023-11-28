@@ -15,7 +15,7 @@ export const NavItem = forwardRef<HTMLDivElement, NavItemDesktopProps>(
     ref
   ) => {
     const { title, path, children } = item;
-    
+
     const renderContent = (
       <ListItem
         ref={ref}
@@ -25,13 +25,12 @@ export const NavItem = forwardRef<HTMLDivElement, NavItemDesktopProps>(
         active={active}
         open={open}
         {...other}
-     
       >
-        <Typography
-          variant="body1"
-        >
-          {title}
-        </Typography>
+        {title === "Promocije" && (
+          <Iconify width={24} icon="mdi:fire" color="primary.main" />
+        )}
+
+        <Typography variant="body1">{title}</Typography>
 
         {!!children && (
           <Iconify
