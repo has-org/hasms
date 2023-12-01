@@ -40,6 +40,7 @@ const PRIMARY = {
   dark: "#1E1E1E",
   darker: "#171717",
   contrastText: "#FFFFFF",
+  neutral: "#1E1E1E",
 };
 
 const SECONDARY = {
@@ -119,10 +120,12 @@ export default function palette(themeMode: 'light' | 'dark') {
     },
     background: {
       primary: PRIMARY.dark,
-      paper: alpha(PRIMARY.dark, 1),
+      // paper: alpha(PRIMARY.dark, 0.8),
+      paper: PRIMARY.neutral,
+      // default: alpha(PRIMARY.darker, 0.94),
       default: PRIMARY.darker,
-      neutral: alpha(GREY[300], 0.16),
-      neutralDark: alpha(GREY[500], 0.58),
+      neutral: 'red',
+      neutralDark: 'violet',
     },
     action: {
       ...COMMON.action,

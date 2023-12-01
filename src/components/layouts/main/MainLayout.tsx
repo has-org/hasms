@@ -12,7 +12,7 @@ import Main from './Main';
 export default function MainLayout({children}: {children: React.ReactNode}) {
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', height: 1 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: 1, backgroundColor: 'background.default' }}>
       <Header />
 
       <Box

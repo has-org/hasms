@@ -46,6 +46,34 @@ const LINKS = [
       },
     ],
   },
+
+  {
+    headline: "Brzi linkovi",
+    children: [
+      {
+        name: "Moj Nalog",
+        href: "#",
+        icon: "",
+      },
+
+      { name: "Moja korpa", href: "#", icon: "" },
+      { name: "Tvoja stara", href: "#", icon: "" },
+      { name: "Narudzbine", href: "#", icon: "" },
+      { name: "Adrese", href: "#", icon: "" },
+      { name: "Blog", href: "#", icon: "" },
+    ],
+  },
+  {
+    headline: "Brzi linkovi",
+    children: [
+      { name: "Reklamacije", href: "#", icon: "" },
+      { name: "Uslovi kupovine", href: "#", icon: "" },
+      { name: "Politika privatnosti", href: "#", icon: "" },
+      { name: "Obrazac za reklamaciju", href: "#", icon: "" },
+      { name: "Zaposlenje", href: "#", icon: "" },
+      { name: "O nama", href: "#", icon: "" },
+    ],
+  },
   {
     headline: "Veleprodaja",
     children: [
@@ -74,33 +102,6 @@ const LINKS = [
       },
     ],
   },
-  {
-    headline: "Brzi linkovi",
-    children: [
-      {
-        name: "Moj Nalog",
-        href: "#",
-        icon: "",
-      },
-
-      { name: "Moja korpa", href: "#", icon: "" },
-      { name: "Tvoja stara", href: "#", icon: "" },
-      { name: "Narudzbine", href: "#", icon: "" },
-      { name: "Adrese", href: "#", icon: "" },
-      { name: "Blog", href: "#", icon: "" },
-    ],
-  },
-  {
-    headline: "Brzi linkovi",
-    children: [
-      { name: "Reklamacije", href: "#", icon: "" },
-      { name: "Uslovi kupovine", href: "#", icon: "" },
-      { name: "Politika privatnosti", href: "#", icon: "" },
-      { name: "Obrazac za reklamaciju", href: "#", icon: "" },
-      { name: "Zaposlenje", href: "#", icon: "" },
-      { name: "O nama", href: "#", icon: "" },
-    ],
-  },
 ];
 
 // ----------------------------------------------------------------------
@@ -112,43 +113,48 @@ export default function Footer() {
 
   return (
     <>
-      <Container maxWidth="xl">
-        <Grid container>
-          {LINKS.map((list, index) => (
-            <Grid xs={6} md={3} key={index}>
-              <Stack spacing={3} sx={{ my: 5 }}>
-                <Typography variant="h6" sx={{ color: "text.primary" }}>
-                  {list.headline}
-                </Typography>
-                {list.children.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    variant="body2"
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      color: "text.secondary",
-                    }}
-                  >
-                    <Box
-                      component={Iconify}
-                      icon={link.icon}
+      <Box sx={{ backgroundColor: "background.paper", width: "100%" }}>
+        <Container maxWidth="xl">
+          <Grid container>
+            {LINKS.map((list, index) => (
+              <Grid xs={12} md={3} key={index}>
+                <Stack spacing={3} sx={{ my: 5 }}>
+                  <Typography variant="h6" sx={{ color: "text.primary" }}>
+                    {list.headline}
+                  </Typography>
+                  {list.children.map((link) => (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      variant="body2"
                       sx={{
-                        width: 20,
-                        height: 20,
-                        mr: 1,
-                        color: "primary.main",
+                        display: "flex",
+                        alignItems: "center",
+                        color: "text.secondary",
                       }}
-                    />
-                    {link.name}
-                  </Link>
-                ))}
-              </Stack>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
+                    >
+                      <Box
+                        component={Iconify}
+                        icon={link.icon}
+                        sx={{
+                          width: 20,
+                          height: 20,
+                          mr: 1,
+                          color: "primary.main",
+                        }}
+                      />
+                      {link.name}
+                    </Link>
+                  ))}
+                </Stack>
+              </Grid>
+            ))}
+          </Grid>
+          <Stack>
+            <Typography>MOTOSHOP 7 BANJA LUKA</Typography>
+          </Stack>
+        </Container>
+      </Box>
     </>
   );
 }

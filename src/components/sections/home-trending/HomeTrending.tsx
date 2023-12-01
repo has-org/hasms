@@ -41,12 +41,13 @@ const CustomButtonGroupAsArrows = ({
   previous?: any;
 }) => {
   return (
-    <Box sx={{width: '100%',}}>
+    <Box sx={{width: '100%'}}>
       <Box
         sx={{
           position: "absolute",
           top: "50%",
-          left: 'calc(4% + 1px)',
+          left: 'calc(5% + 1px)',
+          pl: 1,
           transform: "translate(-50%)",
         }}
         component="span"
@@ -63,7 +64,8 @@ const CustomButtonGroupAsArrows = ({
         sx={{
           position: "absolute",
           top: "50%",
-          right: 'calc(4% + 1px)',
+          right: 'calc(-4% + 1px)',
+          pr: 1,
           transform: "translate(-50%)",
         }}
         component="span"
@@ -102,10 +104,10 @@ const HomeOffer = ({ deviceType }: any) => {
     <Box
       sx={{
         position: "relative",
+        overflow: "hidden",
         pt: 2,
       }}
     >
-      <Typography textAlign={'center'} variant="h2">Izdvojeno za Vas</Typography>
       <Container maxWidth="xl" sx={{pt: 2}}>
         <Carousel
           showDots={true}

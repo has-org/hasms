@@ -17,7 +17,7 @@ const HomeDiscount = ({ discount }: any) => {
     >
       <Container maxWidth="xl" sx={{ pt: 2 }}>
         <Grid container>
-          <Grid xs={6} display="flex">
+          <Grid xs={12} md={6} display="flex">
             <Image
               src={discount.image}
               width={0}
@@ -32,10 +32,11 @@ const HomeDiscount = ({ discount }: any) => {
             />
           </Grid>
           <Grid
-            xs={6}
+            xs={12}
+            md={6}
             display="flex"
             alignItems="center"
-            sx={{ backgroundColor: "background.primary", px: 3 }}
+            sx={{ backgroundColor: "background.paper", px: 3 }}
           >
             <Stack>
               <Typography variant="h2">{discount.title}</Typography>
