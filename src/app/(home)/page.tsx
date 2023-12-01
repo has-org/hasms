@@ -5,6 +5,8 @@ import CooperatorsAnimation from "../../components/sliderAnimation/CooperatorsAn
 import { getBlogs, getCatalogues, getCooperators } from "@/services/apiService";
 import HomeWelcome from "@/components/sections/home-welcome";
 import HomeTrending from "@/components/sections/home-trending";
+import HomeBlog from "@/components/sections/home-blog/";
+import HomeDiscount from "@/components/sections/home-discount/";
 import UAParser from "ua-parser-js";
 import { headers } from "next/dist/client/components/headers";
 
@@ -52,13 +54,30 @@ export default async function HomePage() {
   const cooperators: CooperatorType[] = await getCooperators();
   const blogs = await getBlogs();
 
+  const discount = {
+    name: "kacige 20%",
+    title: "20% Popusta Na Nove Modele Kaciga",
+    image: "/images/discount1.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+  };
+
   return (
     <>
+    
+
       <section>
         <HomeWelcome />
       </section>
       <section>
         <HomeTrending />
+      </section>
+      <section>
+        <HomeBlog />
+      </section>
+
+      <section>
+        <HomeDiscount discount={discount}/>
       </section>
 
       <section className="cooperation-section">

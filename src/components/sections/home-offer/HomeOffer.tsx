@@ -79,7 +79,7 @@ const CustomButtonGroupAsArrows = ({
   );
 };
 
-const HomeOffer = ({ deviceType }: any) => {
+const HomeTrending = ({ deviceType }: any) => {
   const isDesktop = useResponsive("up", "lg");
   const responsive = {
     desktop: {
@@ -103,9 +103,10 @@ const HomeOffer = ({ deviceType }: any) => {
       sx={{
         position: "relative",
         pt: 2,
+        bgcolor: "background.primary",
       }}
     >
-      <Typography textAlign={'center'} variant="h2">Izdvojeno za Vas</Typography>
+      <Typography textAlign={'center'} variant="h2">Izdvojamo iz Ponude</Typography>
       <Container maxWidth="xl" sx={{pt: 2}}>
         <Carousel
           showDots={true}
@@ -180,4 +181,4 @@ const HomeOffer = ({ deviceType }: any) => {
   );
 };
 
-export default HomeOffer;
+export default HomeTrending;

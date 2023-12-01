@@ -1,96 +1,60 @@
 "use client";
-import "./style.css"
 import Iconify from "@/components/iconify";
 import TrendingCard from "@/components/trending-card";
 import useResponsive from "@/hooks/useResponsive";
-import { Box, Grid, Stack, Button, Card, Container } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Stack,
+  Button,
+  Card,
+  Container,
+  Typography,
+  Chip,
+} from "@mui/material";
 import CardContent from "@mui/material/CardContent/CardContent";
 import CardMedia from "@mui/material/CardMedia/CardMedia";
 import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import Link from "next/link";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-
 const items = [
   {
-    title: "Moto Shop",
-    image: "/images/kaciga.png",
+    title: "Nova Yamaha R5J - Da li vrijedi kupiti?",
+    image: "/images/yamahablog1.png",
+    created_at: "12.12.2021",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    tags: [{ name: "MOTORI" }],
   },
   {
-    title: "ATV",
-    image: "/images/atv.png",
+    title: "Yamaha ponovila revoluciju u svetu nautike",
+    image: "/images/yamahablog2.png",
+    created_at: "12.12.2021",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    tags: [{ name: "MOTORI" }],
   },
   {
-    title: "Marina",
-    image: "/images/boat.png",
-  },
-  {
-    title: "Motori",
-    image: "/images/bike_1.png",
+    title: "Sve što treba da znate o MotoGP-u",
+    image: "/images/yamahablog3.png",
+    created_at: "12.12.2021",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
 ];
 
-const CustomButtonGroupAsArrows = ({
-  next,
-  previous,
-}: {
-  next?: any;
-  previous?: any;
-}) => {
-  return (
-    <Box sx={{width: '100%',}}>
-      <Box
-        sx={{
-          position: "absolute",
-          top: "50%",
-          left: 'calc(4% + 1px)',
-          transform: "translate(-50%)",
-        }}
-        component="span"
-      >
-        <Iconify
-          icon="formkit:arrowleft"
-          width={32}
-          height={32}
-          onClick={previous}
-        />
-      </Box>
-
-      <Box
-        sx={{
-          position: "absolute",
-          top: "50%",
-          right: 'calc(4% + 1px)',
-          transform: "translate(-50%)",
-        }}
-        component="span"
-      >
-        <Iconify
-          icon="formkit:arrowright"
-          width={32}
-          height={32}
-          onClick={next}
-        />
-      </Box>
-    </Box>
-  );
-};
-
-const HomeOffer = ({ deviceType }: any) => {
+const HomeBlog = ({ deviceType }: any) => {
   const isDesktop = useResponsive("up", "lg");
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 2,
+      items: 3,
       slidesToSlide: 1, // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
       items: 2,
-      slidesToSlide: 2, // optional, default to 1.
+      slidesToSlide: 1, // optional, default to 1.
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
@@ -105,8 +69,10 @@ const HomeOffer = ({ deviceType }: any) => {
         pt: 2,
       }}
     >
-      <Typography textAlign={'center'} variant="h2">Izdvojeno za Vas</Typography>
-      <Container maxWidth="xl" sx={{pt: 2}}>
+      <Typography textAlign={"center"} variant="h2">
+        Najnovije sa bloga
+      </Typography>
+      <Container maxWidth="xl" sx={{ pt: 2 }}>
         <Carousel
           showDots={true}
           responsive={responsive}
@@ -121,25 +87,13 @@ const HomeOffer = ({ deviceType }: any) => {
           removeArrowOnDeviceType={["tablet", "mobile"]}
           deviceType={deviceType}
           arrows={false}
-          customButtonGroup={<CustomButtonGroupAsArrows />}
           renderButtonGroupOutside={true}
         >
           {items.map((item, index) => (
             <Card
               key={index}
-              sx={{ mx: 5, minHeight: "500px", maxWidth: "400px",}}
-              
+              sx={{ mx: 5, minHeight: "500px", maxWidth: "400px" }}
             >
-              <CardContent sx={{ display: "flex", justifyContent: "center" }}>
-                <Stack>
-                  <Typography variant="h3" textAlign={"center"}>
-                    {item.title}
-                  </Typography>
-                  <Button variant="contained" color="info">
-                    PREGLEDAJ
-                  </Button>
-                </Stack>
-              </CardContent>
               <CardMedia>
                 <Box
                   sx={{
@@ -150,13 +104,7 @@ const HomeOffer = ({ deviceType }: any) => {
                     height: "100%",
                   }}
                 >
-                  <Box
-                    sx={{
-                      width: "250px",
-                      height: "300px",
-                      position: "relative",
-                    }}
-                  >
+
                     <Image
                       src={item.image}
                       width={0}
@@ -169,9 +117,22 @@ const HomeOffer = ({ deviceType }: any) => {
                       }}
                       alt="Motoshop 7"
                     />
-                  </Box>
                 </Box>
               </CardMedia>
+              <CardContent sx={{ display: "flex" }}>
+                <Stack>
+                  <Typography variant="body2">{item.created_at}</Typography>
+                  <Typography variant="h4">{item.title}</Typography>
+                  <Typography variant="body2">{item.description}</Typography>
+
+                  <Stack direction="row">
+                    {item?.tags?.map((tag: any, index: number) => (
+                      <Chip key={index} label={tag.name} color="info"/>
+                    ))}
+                
+                  </Stack>
+                </Stack>
+              </CardContent>
             </Card>
           ))}
         </Carousel>
@@ -180,4 +141,4 @@ const HomeOffer = ({ deviceType }: any) => {
   );
 };
 
-export default HomeOffer;
+export default HomeBlog;
