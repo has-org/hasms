@@ -64,7 +64,7 @@ const CustomButtonGroupAsArrows = ({
         sx={{
           position: "absolute",
           top: "50%",
-          right: 'calc(-4% + 1px)',
+          right: 'calc(3% + 1px)',
           pr: 1,
           transform: "translate(-50%)",
         }}
@@ -86,7 +86,7 @@ const HomeOffer = ({ deviceType }: any) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 2,
+      items: 4,
       slidesToSlide: 1, // optional, default to 1.
     },
     tablet: {
@@ -115,6 +115,7 @@ const HomeOffer = ({ deviceType }: any) => {
           ssr={true} // means to render carousel on server-side.
           infinite={true}
           autoPlay={false}
+          swipeable={true}
           autoPlaySpeed={1000}
           keyBoardControl={true}
           customTransition="all .5"

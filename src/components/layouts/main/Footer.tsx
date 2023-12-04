@@ -19,6 +19,37 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
 // ----------------------------------------------------------------------
 
+const _socials = [
+  {
+    value: "facebook",
+    name: "FaceBook",
+    icon: "eva:facebook-fill",
+    color: "#1877F2",
+    path: "https://www.facebook.com/MotoShop7bl/",
+  },
+  {
+    value: "instagram",
+    name: "Instagram",
+    icon: "ant-design:instagram-filled",
+    color: "#E02D69",
+    path: "https://www.instagram.com/caitlyn.kerluke",
+  },
+  {
+    value: "linkedin",
+    name: "Linkedin",
+    icon: "eva:linkedin-fill",
+    color: "#007EBB",
+    path: "https://www.linkedin.com/caitlyn.kerluke",
+  },
+  {
+    value: "twitter",
+    name: "Twitter",
+    icon: "eva:twitter-fill",
+    color: "#00AAEC",
+    path: "https://www.twitter.com/caitlyn.kerluke",
+  },
+];
+
 const LINKS = [
   {
     headline: "Maloprodaja",
@@ -34,15 +65,67 @@ const LINKS = [
         href: "#",
         icon: "material-symbols:mail-outline",
       },
+
       {
-        name: "PON-SUB: 09:00 - 17:00h",
+        name: "PON-PET: 09:00 - 17:00h",
         href: "#",
         icon: "mingcute:time-line",
       },
       {
-        name: "NED: 09:00 - 15:00h",
+        name: "SUB: 09:00 - 15:00h",
         href: "#",
         icon: "mingcute:time-line",
+      },
+    ],
+  },
+  {
+    headline: "Veleprodaja",
+    children: [
+      {
+        name: "Jesenjinova 14, 78000 Banja Luka",
+        href: "#",
+        icon: "vaadin:office",
+      },
+
+      { name: "+387 65 514 807", href: "#", icon: "ic:baseline-phone" },
+      { name: "+387 66 173 700", href: "#", icon: "ic:baseline-phone" },
+
+      {
+        name: "PON-PET: 09:00 - 17:00h",
+        href: "#",
+        icon: "mingcute:time-line",
+      },
+      {
+        name: "SUB: 09:00 - 15:00h",
+        href: "#",
+        icon: "mingcute:time-line",
+      },
+    ],
+  },
+  {
+    headline: "Servis",
+    children: [
+      { name: "+387 66 173 700", href: "#", icon: "ic:baseline-phone" },
+      {
+        name: "servis@motoshop7.com",
+        href: "#",
+        icon: "material-symbols:mail-outline",
+      },
+    ],
+  },
+  {
+    headline: "Prodaja dijelova i opreme",
+    children: [
+      { name: "+387 66 173 700", href: "#", icon: "ic:baseline-phone" },
+      {
+        name: "yamaha@motoshop7.ba",
+        href: "#",
+        icon: "material-symbols:mail-outline",
+      },
+      {
+        name: "info@motoshop7.ba",
+        href: "#",
+        icon: "material-symbols:mail-outline",
       },
     ],
   },
@@ -72,34 +155,6 @@ const LINKS = [
       { name: "Obrazac za reklamaciju", href: "#", icon: "" },
       { name: "Zaposlenje", href: "#", icon: "" },
       { name: "O nama", href: "#", icon: "" },
-    ],
-  },
-  {
-    headline: "Veleprodaja",
-    children: [
-      {
-        name: "Jesenjinova 14, 78000 Banja Luka",
-        href: "#",
-        icon: "vaadin:office",
-      },
-
-      { name: "+387 65 514 807", href: "#", icon: "ic:baseline-phone" },
-      { name: "+387 66 173 700", href: "#", icon: "ic:baseline-phone" },
-      {
-        name: "motoshop7bl@gmail.com",
-        href: "#",
-        icon: "material-symbols:mail-outline",
-      },
-      {
-        name: "PON-SUB: 09:00 - 17:00h",
-        href: "#",
-        icon: "mingcute:time-line",
-      },
-      {
-        name: "NED: 09:00 - 15:00h",
-        href: "#",
-        icon: "mingcute:time-line",
-      },
     ],
   },
 ];
@@ -149,6 +204,24 @@ export default function Footer() {
                 </Stack>
               </Grid>
             ))}
+            <Grid xs={12} md={3}>
+              <Stack spacing={1} sx={{ my: 5 }}>
+                <Typography variant="h6" sx={{ color: "text.primary" }}>
+                  {"Drustvene mreze"}
+                </Typography>
+                <Stack spacing={1} sx={{ my: 5 }} direction="row">
+                  {_socials.map((social) => (
+                    <IconButton
+                      key={social.name}
+                      sx={{ backgroundColor: "primary.main" }}
+                      size="large"
+                    >
+                      <Iconify icon={social.icon} color="white"/>
+                    </IconButton>
+                  ))}
+                </Stack>
+              </Stack>
+            </Grid>
           </Grid>
           <Stack>
             <Typography>MOTOSHOP 7 BANJA LUKA</Typography>
