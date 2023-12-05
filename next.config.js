@@ -2,9 +2,7 @@
 
 
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
+
   images: {
     domains: ["s3.villa-seaview.online", "localhost"],
     contentDispositionType: "attachment",

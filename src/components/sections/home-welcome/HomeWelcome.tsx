@@ -7,8 +7,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { alpha } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
+import { useRouter } from "next/navigation";
+
 const HomeWelcome = () => {
   const isDesktop = useResponsive("up", "lg");
+  const router = useRouter();
 
   return (
     <Box
@@ -56,7 +59,7 @@ const HomeWelcome = () => {
               </Typography>
 
               <Stack direction={"row"} spacing={1} pt={1}>
-                <Button variant="contained" color="info" size="large" fullWidth>
+                <Button variant="contained" color="info" size="large" fullWidth onClick={() => router.push('/catalogues')}>
                   <Typography color={"common.white"}>{"PONUDA"}</Typography>
                 </Button>
                 <Button variant="outlined" size="large" fullWidth>

@@ -1,4 +1,5 @@
 // @mui
+"use client";
 import {
   Box,
   Link,
@@ -12,7 +13,7 @@ import {
 // _mock
 // components
 import Iconify from "@/components/iconify";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import ContactForm from "./ContactForm";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
@@ -32,21 +33,7 @@ const _socials = [
     name: "Instagram",
     icon: "ant-design:instagram-filled",
     color: "#E02D69",
-    path: "https://www.instagram.com/caitlyn.kerluke",
-  },
-  {
-    value: "linkedin",
-    name: "Linkedin",
-    icon: "eva:linkedin-fill",
-    color: "#007EBB",
-    path: "https://www.linkedin.com/caitlyn.kerluke",
-  },
-  {
-    value: "twitter",
-    name: "Twitter",
-    icon: "eva:twitter-fill",
-    color: "#00AAEC",
-    path: "https://www.twitter.com/caitlyn.kerluke",
+    path: "https://www.instagram.com/motoshop7bl",
   },
 ];
 
@@ -157,13 +144,21 @@ const LINKS = [
       { name: "O nama", href: "#", icon: "" },
     ],
   },
+  {
+    headline: "Podaci o firmi",
+    children: [
+      { name: "Adresa: ", href: "#", icon: "" },
+      { name: "JIB: ", href: "#", icon: "" },
+      { name: "Naziv: 'Motoshop7' ", href: "#", icon: "" },
+    ],
+  },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function Footer() {
   const pathname = usePathname();
-
+  const router = useRouter();
   const isHome = pathname === "/";
 
   return (
@@ -172,7 +167,7 @@ export default function Footer() {
         <Container maxWidth="xl">
           <Grid container>
             {LINKS.map((list, index) => (
-              <Grid xs={12} md={3} key={index}>
+              <Grid xs={12} md={4} lg={3} key={index}>
                 <Stack spacing={3} sx={{ my: 5 }}>
                   <Typography variant="h6" sx={{ color: "text.primary" }}>
                     {list.headline}
@@ -181,7 +176,7 @@ export default function Footer() {
                     <Link
                       key={link.name}
                       href={link.href}
-                      variant="body2"
+                      variant="body1"
                       sx={{
                         display: "flex",
                         alignItems: "center",
@@ -192,8 +187,6 @@ export default function Footer() {
                         component={Iconify}
                         icon={link.icon}
                         sx={{
-                          width: 20,
-                          height: 20,
                           mr: 1,
                           color: "primary.main",
                         }}
@@ -204,7 +197,7 @@ export default function Footer() {
                 </Stack>
               </Grid>
             ))}
-            <Grid xs={12} md={3}>
+            <Grid xs={12} md={4} lg={3}>
               <Stack spacing={1} sx={{ my: 5 }}>
                 <Typography variant="h6" sx={{ color: "text.primary" }}>
                   {"Drustvene mreze"}
@@ -215,17 +208,15 @@ export default function Footer() {
                       key={social.name}
                       sx={{ backgroundColor: "primary.main" }}
                       size="large"
+                      onClick={() => router.push(social.path)}
                     >
-                      <Iconify icon={social.icon} color="white"/>
+                      <Iconify icon={social.icon} color="white" />
                     </IconButton>
                   ))}
                 </Stack>
               </Stack>
             </Grid>
           </Grid>
-          <Stack>
-            <Typography>MOTOSHOP 7 BANJA LUKA</Typography>
-          </Stack>
         </Container>
       </Box>
     </>
