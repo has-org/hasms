@@ -63,10 +63,16 @@ export default async function ShopCategory({ params: { id } }: any) {
 
   return (
     <div className={styles.wrapper}>
-      <Banner />
-      <div className={styles.pageContent}>
-        <Toolbar brands={brandNames} />
-        <ItemList />
+      <div>
+        <Banner />
+      </div>
+      <div className={styles.flexContainer}>
+        <div className={styles.ToolbarWrapper}>
+          <Toolbar brands={brandNames} />
+        </div>
+        <div className={styles.ItemListWrapper}>
+          <ItemList />
+        </div>
       </div>
     </div>
   );
