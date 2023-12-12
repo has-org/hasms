@@ -22,34 +22,34 @@ interface Item {
 
 const sizes = ["S", "M", "L", "XL"];
 
-const items = [
-  {
-    title: "Item 1",
-    subtitle: "Subtitle 1",
-    price: "10",
-    originalPrice: "20",
-  },
-  {
-    title: "Item 2",
-    subtitle: "Subtitle 2",
-    price: "20",
-    originalPrice: "30",
-  },
-  {
-    title: "Item 2",
-    subtitle: "Subtitle 2",
-    price: "20",
-    originalPrice: "30",
-  },
-  {
-    title: "Item 2",
-    subtitle: "Subtitle 2",
-    price: "20",
-    originalPrice: "30",
-  },
-];
+// const items = [
+//   {
+//     title: "Item 1",
+//     subtitle: "Subtitle 1",
+//     price: "10",
+//     originalPrice: "20",
+//   },
+//   {
+//     title: "Item 2",
+//     subtitle: "Subtitle 2",
+//     price: "20",
+//     originalPrice: "30",
+//   },
+//   {
+//     title: "Item 2",
+//     subtitle: "Subtitle 2",
+//     price: "20",
+//     originalPrice: "30",
+//   },
+//   {
+//     title: "Item 2",
+//     subtitle: "Subtitle 2",
+//     price: "20",
+//     originalPrice: "30",
+//   },
+// ];
 
-const ItemList = () => {
+const ItemList = ({ items }: { items: Item[] }) => {
   return (
     <Grid container spacing={4}>
       {items.map((item, index) => (
@@ -86,25 +86,6 @@ const RenderItem = ({ item }: { item: Item }) => {
         />
       )}
       <Container sx={{ padding: "20px" }}>
-        {/* <Typography variant="h6" component="div">
-          {item.title}
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          color="text.secondary"
-          sx={{
-            fontSize: "13px",
-            fontWeight: 400,
-            color: "rgba(255, 255, 255, 0.51)",
-          }}
-        >
-          {item.subtitle}
-        </Typography> */}
-        {/* {sizes.map((size) => (
-          <Button variant="outlined" size="small" key={size}>
-            {size}
-          </Button>
-        ))} */}
         <Typography variant="h5" component="div" sx={{ margin: "10px 0" }}>
           {item.title}
         </Typography>

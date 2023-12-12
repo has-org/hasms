@@ -11,10 +11,8 @@
   .ToolbarWrapper {
     flex: 1;
     flex-direction: column;
-    background-color: 'red';
   }
   
   .ItemListWrapper {
     flex: 3;
-    background-color: 'blue';
   }
