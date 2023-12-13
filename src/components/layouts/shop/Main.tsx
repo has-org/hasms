@@ -8,7 +8,7 @@ import { HEADER, NAV } from "@/config-global";
 
 // ----------------------------------------------------------------------
 
-const SPACING = 8;
+const SPACING = 0;
 
 export default function Main({ children, sx, ...other }: BoxProps) {
 
@@ -18,6 +18,7 @@ export default function Main({ children, sx, ...other }: BoxProps) {
     <Box
       component="main"
       sx={{
+        backgroundColor: (theme) => theme.palette.background.default,
         flexGrow: 1,
         py: `${HEADER.H_MOBILE + SPACING}px`,
         ...(isDesktop && {

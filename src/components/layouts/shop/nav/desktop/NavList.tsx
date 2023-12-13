@@ -168,10 +168,10 @@ function NavSubList({ item, onClose, setSelected, selected }: NavSubListProps) {
         sx={{
           fontSize: { lg: "24px" },
           textDecoration: selected?.id === item.id ? "underline" : "none",
-          textDecorationColor: (theme) => theme.palette.secondary.main,
           textDecorationThickness: "2px",
           textUnderlineOffset: "8px",
         }}
+        color={selected?.id === item.id ? "text.secondary" : "text.primary"}
         onClick={() => setSelected(item)}
       >
         {item.title}
@@ -242,7 +242,7 @@ function NavSubListChildren({ item, onClose }: NavSubListChildrenProps) {
         >
           <Typography
             sx={{
-              color: "text.primary",
+              color: "text.secondary",
               fontSize: "1.6rem",
             }}
           >

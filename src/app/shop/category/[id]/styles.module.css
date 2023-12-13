@@ -1,0 +1,18 @@
+.wrapper {
+    /* display: flex; */
+    /* flex-direction: column; */
+    padding-top: 20px;
+  }
+
+  .flexContainer {
+    display: flex;
+  }
+  
+  .ToolbarWrapper {
+    flex: 1;
+    flex-direction: column;
+  }
+  
+  .ItemListWrapper {
+    flex: 3;
+  }

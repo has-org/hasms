@@ -12,6 +12,7 @@ import Scrollbar from '@/components/scrollbar';
 import { NavProps } from '../types';
 import NavList from './NavList';
 import { useRouter } from 'next/navigation'
+import Logo from '@/components/logo/Logo';
 
 // ----------------------------------------------------------------------
 
@@ -45,7 +46,7 @@ export default function NavMobile({ isOffset, data }: NavProps) {
           }),
         }}
       >
-        <Iconify icon="eva:menu-2-fill" />
+        <Iconify icon="eva:menu-2-fill" color="primary.main" fontWeight={600}/>
       </IconButton>
 
       <Drawer
@@ -59,13 +60,13 @@ export default function NavMobile({ isOffset, data }: NavProps) {
         }}
       >
         <Scrollbar>
-          {/* <Logo sx={{ mx: 2.5, my: 3 }} /> */}
+          <Logo sx={{ mx: 2.5, my: 3 }} />
 
-          {/* <List component="nav" disablePadding>
+          <List component="nav" disablePadding>
             {data.map((link) => (
               <NavList key={link.title} item={link} />
             ))}
-          </List> */}
+          </List>
         </Scrollbar>
       </Drawer>
     </>
