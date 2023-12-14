@@ -1,11 +1,8 @@
 "use client";
-import Iconify from "@/components/iconify";
 import useResponsive from "@/hooks/useResponsive";
-import { Box, Stack, Button, Paper, Container } from "@mui/material";
+import { Box, Stack, Button, Container } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import Link from "next/link";
-import { alpha } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useRouter } from "next/navigation";
 

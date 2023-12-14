@@ -3,12 +3,13 @@ import { Cooperator as CooperatorType } from "@/types/Cooperator";
 
 import CooperatorsAnimation from "../../components/sliderAnimation/CooperatorsAnimation";
 import { getBlogs, getCatalogues, getCooperators } from "@/services/apiService";
-import HomeWelcome from "@/components/sections/home-welcome";
-import HomeTrending from "@/components/sections/home-trending";
-import HomeBlog from "@/components/sections/home-blog/";
-import HomeDiscount from "@/components/sections/home-discount/";
+import HomeWelcome from "@/components/sections/home/home-welcome";
+import HomeTrending from "@/components/sections/home/home-trending";
+import HomeBlog from "@/components/sections/home/home-blog";
+import HomeDiscount from "@/components/sections/home/home-discount";
 import UAParser from "ua-parser-js";
 import { headers } from "next/dist/client/components/headers";
+import HomeCooperators from "@/components/sections/home/home-cooperators/HomeCooperators";
 
 async function getUserAgent() {
   let userAgent;
@@ -79,9 +80,10 @@ export default async function HomePage() {
       <section>
         <HomeDiscount discount={discount}/>
       </section>
+      
 
       <section className="cooperation-section">
-        {/* {cooperators && <CooperatorsAnimation cooperators={cooperators} />} */}
+        <HomeCooperators cooperators={cooperators} />
       </section>
     </>
   );

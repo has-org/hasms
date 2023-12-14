@@ -3,13 +3,11 @@ import "./style.css"
 import Iconify from "@/components/iconify";
 import TrendingCard from "@/components/trending-card";
 import useResponsive from "@/hooks/useResponsive";
-import { Box, Grid, Stack, Button, Card, Container } from "@mui/material";
+import { Box,  Stack, Button, Card, Container } from "@mui/material";
 import CardContent from "@mui/material/CardContent/CardContent";
 import CardMedia from "@mui/material/CardMedia/CardMedia";
-import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import Link from "next/link";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -41,13 +39,12 @@ const CustomButtonGroupAsArrows = ({
   previous?: any;
 }) => {
   return (
-    <Box sx={{width: '100%'}}>
+    <Box sx={{width: '100%',}}>
       <Box
         sx={{
           position: "absolute",
           top: "50%",
-          left: 'calc(5% + 1px)',
-          pl: 1,
+          left: 'calc(4% + 1px)',
           transform: "translate(-50%)",
         }}
         component="span"
@@ -64,8 +61,7 @@ const CustomButtonGroupAsArrows = ({
         sx={{
           position: "absolute",
           top: "50%",
-          right: 'calc(3% + 1px)',
-          pr: 1,
+          right: 'calc(4% + 1px)',
           transform: "translate(-50%)",
         }}
         component="span"
@@ -81,12 +77,12 @@ const CustomButtonGroupAsArrows = ({
   );
 };
 
-const HomeOffer = ({ deviceType }: any) => {
+const HomeTrending = ({ deviceType }: any) => {
   const isDesktop = useResponsive("up", "lg");
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 4,
+      items: 2,
       slidesToSlide: 1, // optional, default to 1.
     },
     tablet: {
@@ -104,10 +100,11 @@ const HomeOffer = ({ deviceType }: any) => {
     <Box
       sx={{
         position: "relative",
-        overflow: "hidden",
         pt: 2,
+        bgcolor: "background.primary",
       }}
     >
+      <Typography textAlign={'center'} variant="h2">Izdvojamo iz Ponude</Typography>
       <Container maxWidth="xl" sx={{pt: 2}}>
         <Carousel
           showDots={true}
@@ -115,7 +112,6 @@ const HomeOffer = ({ deviceType }: any) => {
           ssr={true} // means to render carousel on server-side.
           infinite={true}
           autoPlay={false}
-          swipeable={true}
           autoPlaySpeed={1000}
           keyBoardControl={true}
           customTransition="all .5"
@@ -183,4 +179,4 @@ const HomeOffer = ({ deviceType }: any) => {
   );
 };
 
-export default HomeOffer;
+export default HomeTrending;
