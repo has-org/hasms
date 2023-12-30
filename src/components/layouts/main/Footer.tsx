@@ -164,10 +164,10 @@ export default function Footer() {
   return (
     <>
       <Box sx={{ backgroundColor: "background.paper", width: "100%" }}>
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{display: 'flex', justifyItems: 'center', alignContent: 'center'}}>
           <Grid container>
             {LINKS.map((list, index) => (
-              <Grid xs={12} md={4} lg={3} key={index}>
+              <Grid xs={12} md={4}  key={index}>
                 <Stack spacing={3} sx={{ my: 5 }}>
                   <Typography variant="h6" sx={{ color: "text.primary" }}>
                     {list.headline}
@@ -176,7 +176,7 @@ export default function Footer() {
                     <Link
                       key={link.name}
                       href={link.href}
-                      variant="body1"
+                      variant="body2"
                       sx={{
                         display: "flex",
                         alignItems: "center",
@@ -197,7 +197,7 @@ export default function Footer() {
                 </Stack>
               </Grid>
             ))}
-            <Grid xs={12} md={4} lg={3}>
+            <Grid xs={12} md={4} >
               <Stack spacing={1} sx={{ my: 5 }}>
                 <Typography variant="h6" sx={{ color: "text.primary" }}>
                   {"Drustvene mreze"}

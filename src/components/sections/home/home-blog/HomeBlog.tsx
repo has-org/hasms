@@ -101,7 +101,7 @@ const HomeBlog = ({ deviceType }: any) => {
               key={index}
               sx={{ mx: 5, minHeight: "500px", maxWidth: "400px" }}
             >
-              <CardMedia >
+              <CardMedia>
                 <Box
                   sx={{
                     display: "flex",
@@ -113,14 +113,9 @@ const HomeBlog = ({ deviceType }: any) => {
                 >
                   <Image
                     src={item.image}
-                    width={0}
-                    height={0}
+                    width={768}
+                    height={260}
                     sizes="100vw, 30vw"
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      objectFit: "contain",
-                    }}
                     alt="Motoshop 7"
                   />
                 </Box>
@@ -135,7 +130,7 @@ const HomeBlog = ({ deviceType }: any) => {
                     {item?.tags?.slice(0, 2)?.map((tag: any, index: number) => (
                       <Chip key={index} label={tag.name} color="info" />
                     ))}
-                    <Box sx={{ position: "absolute", right: '2rem' }}>
+                    <Box sx={{ position: "absolute", right: "2rem" }}>
                       <Typography
                         color="primary.main"
                         sx={{ textDecorationColor: "primary.main" }}

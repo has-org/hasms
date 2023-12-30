@@ -158,14 +158,9 @@ const HomeTrending = ({ deviceType }: any) => {
                   >
                     <Image
                       src={item.image}
-                      width={0}
-                      height={0}
+                      width={1024}
+                      height={1024}
                       sizes="100vw, 30vw"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "contain",
-                      }}
                       alt="Motoshop 7"
                     />
                   </Box>

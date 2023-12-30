@@ -1,6 +1,6 @@
 "use client";
-import Iconify from "@/components/iconify";
-import TrendingCard from "@/components/trending-card";
+import "./style.css";
+
 import useResponsive from "@/hooks/useResponsive";
 import { Cooperator } from "@/types/Cooperator";
 import { Box, Card, Container } from "@mui/material";
@@ -73,20 +73,19 @@ const HomeCooperators = ({
                   justifyContent: "center",
                   mx: 5,
                   backgroundColor: "common.white",
+
+                  ":hover": {
+                    transform: "scale(1.2)",
+                  },
                 }}
               >
-                <CardMedia
-                  sx={{}}
-                  onClick={() => {
-                    router.push(item.url);
-                  }}
-                >
+                <CardMedia>
                   <Image
                     src={item.image}
                     alt=""
-                    width={200}
-                    height={150}
-                    style={{ objectFit: "contain" }}
+                    width={1000}
+                    height={120}
+                    quality={100}
                   />
                 </CardMedia>
               </Card>

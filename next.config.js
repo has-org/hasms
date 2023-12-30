@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-
 const nextConfig = {
-
   images: {
     domains: ["s3.villa-seaview.online", "localhost"],
     contentDispositionType: "attachment",
@@ -19,14 +17,18 @@ const nextConfig = {
         hostname: "s3.villa-seaview.online",
         pathname: "/*",
       },
-
     ],
 
-    loader: 'custom',
-    loaderFile: '/loader.js',
+    loader: "custom",
+    loaderFile: "/loader.js",
   },
   output: "standalone",
-  transpilePackages: ["@mui/system", "@mui/material", "@mui/icons-material"],
+  transpilePackages: [
+    "@mui/system",
+    "@mui/material",
+    "@mui/icons-material",
+    "three",
+  ],
   modularizeImports: {
     "@mui/material": {
       transform: "@mui/material/{{member}}",
