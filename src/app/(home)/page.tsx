@@ -18,7 +18,7 @@ async function getUserAgent() {
   if (userAgentHeader) {
     userAgent = userAgentHeader;
   } else {
-    userAgent = window.navigator.userAgent;
+    userAgent = window?.navigator?.userAgent;
   }
   const parser = new UAParser();
 

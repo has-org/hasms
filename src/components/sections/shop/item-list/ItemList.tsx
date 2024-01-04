@@ -22,32 +22,7 @@ interface Item {
 
 const sizes = ["S", "M", "L", "XL"];
 
-// const items = [
-//   {
-//     title: "Item 1",
-//     subtitle: "Subtitle 1",
-//     price: "10",
-//     originalPrice: "20",
-//   },
-//   {
-//     title: "Item 2",
-//     subtitle: "Subtitle 2",
-//     price: "20",
-//     originalPrice: "30",
-//   },
-//   {
-//     title: "Item 2",
-//     subtitle: "Subtitle 2",
-//     price: "20",
-//     originalPrice: "30",
-//   },
-//   {
-//     title: "Item 2",
-//     subtitle: "Subtitle 2",
-//     price: "20",
-//     originalPrice: "30",
-//   },
-// ];
+
 
 const ItemList = ({ items }: { items: Item[] }) => {
   return (

@@ -12,7 +12,7 @@ const navConfig = [
   },
   {
     title: "Shop",
-    path: "/",
+    path: "/shop",
   },
   // {
   //   title: "Moto katalog",

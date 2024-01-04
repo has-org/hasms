@@ -1,93 +1,62 @@
-'use client'
-import { Box, Button, Typography } from "@mui/material"
-import { CartContext } from '@/context/CartContext/CartContext';
-import { useContext, useEffect, useMemo } from 'react'
+"use client";
+import { Box, Button, Typography, Stack } from "@mui/material";
+import { CartContext } from "@/context/CartContext/CartContext";
+import { useContext, useEffect, useMemo } from "react";
 import { ReactTable } from "../../react-table/ReactTable";
 import Iconify from "../../iconify";
 import Link from "next/link";
-
+import Scrollbar from "@/components/scrollbar/Scrollbar";
+import Image from "next/image";
 export const CartSidebar = () => {
-    const { items, updateCartItemQuantity } = useContext(CartContext)
-    const columns = useMemo(
-        () => [
-            {
-                Header: 'Naziv',
-                accessor: 'name', // accessor is the "key" in the data
-            },
-            {
-                Header: 'Sifra',
-                accessor: 'code',
-            },
-            {
-                Header: 'Velicina',
-                accessor: 'size',
-            },
-            {
-                Header: 'Boja',
-                accessor: 'color',
-            },
-            {
-                Header: 'Cijena',
-                accessor: 'price',
-            },
-            {
-                Header: 'Kom.',
-                accessor: 'quantity',
-            },
-            {
-                Header: 'Total',
-                accessor: 'subtotal',
-            },
-        ],
-        []
-    )
+  const { items, updateCartItemQuantity } = useContext(CartContext);
 
-    const data = useMemo(
-        () =>
-            items?.map((item: any) => {
-                return {
-                    name: `${item.product_name} (${item.product_code})`,
-                    code: item.product_code,
-                    price: item.product_price,
-                    size: item.size?.name,
-                    color: item.color?.name,
-                    quantity: <>
-                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '4px' }}>
-                            <Box onClick={() => updateCartItemQuantity(item, 'decrease')}>
-                                <Iconify icon="iconamoon:sign-minus-circle" />
-                            </Box>
-                            {item.quantity}
-                            <Box onClick={() => updateCartItemQuantity(item, 'increase')}>
-                                <Iconify icon="iconamoon:sign-plus-circle" />
-                            </Box>
-                        </Box>
-                    </>,
-                    subtotal: item.product_price * item.quantity
-                }
-            }),
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        [items]
-    )
+  return (
+    <Box
+      sx={{
+        padding: "1em",
+      }}
+    >
+      <Stack direction="row" justifyContent="space-between" alignItems="center">
+        <Typography variant={"h6"} color="primary.darker">
+          Korpa
+        </Typography>
+        <Button variant="outlined">
+          <Stack direction="row" spacing={1}>
+            <Iconify icon="gg:profile" width={24} height={24} />
+            <Typography variant={"body1"}>Nalog</Typography>
+          </Stack>
+        </Button>
+      </Stack>
 
 
-    return (
-        <Box
-            sx={{
-                padding: '1em'
-            }}>
-            <Typography variant={"h2"}>Korpa</Typography>
+      <Box
+        sx={{
+          display: "flex",
+          flexGrow: "1",
+          flexDirection: "row",
+        }}
+      >
+        <Typography sx={{whiteSpace: 'nowrap'}} color="primary.dark">Total items: {items.length}</Typography>
+        <Scrollbar>
+          <Stack>
+            {items?.map((item: any) => {
+              return (
+                <>
+                  <Stack direction="row">
+                    <Image src={item.image} width={50} height={50} alt="asd" />
 
-            <Box sx={{ display: 'flex', flexGrow: '1', flexDirection: 'row', }}>
+                    <Stack>{item.name}</Stack>
+                  </Stack>
+                </>
+              );
+            })}
+          </Stack>
+        </Scrollbar>
+      </Box>
 
-                <ReactTable columns={columns} data={data} />
-            </Box>
-
-            <Button >
-                <Link href="/cart">
-                    Go to cart
-                </Link>
-            </Button>
-        </Box>
-    )
-}
+      <Button>
+        <Link href="/cart">Go to cart</Link>
+      </Button>
+    </Box>
+  );
+};

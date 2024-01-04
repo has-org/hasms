@@ -1,50 +1,25 @@
-import { ProductCard } from "@/components/ProductCard/ProductCard";
+import CategoryList from "@/components/sections/category/CategoryList";
 import { Product as ProductType } from "@/types/Product";
 import { StaticImageData } from "next/image";
 
-
-
-async function getData() {
+async function getCategories() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/products`, {
-      method: 'GET',
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/categories`, {
+      method: "GET",
     });
     if (res.status !== 200) {
-      throw new Error('Failed to fetch data');
+      throw new Error("Failed to fetch data");
     }
     return res.json();
   } catch (e) {
-    return null
-  }
-}
-
-
-async function getNavMenus() {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/navigationMenus`, {
-      method: 'GET',
-    });
-    if (res.status !== 200) {
-      throw new Error('Failed to fetch data');
-    }
-    return res.json();
-  } catch (e) {
-    return null
+    return null;
   }
 }
 
 export default async function Shop() {
-  const products = await getData();
-
-  if (!products) return <div>Products not found</div>;
-  return (
-    <div className="mx-10 lg:ml-80 lg:mr-9 min-h-screen	 flex flex-col font-serif">
-      <div className="flex pt-4">Katalog KACIGE INTEGRALNE</div>
-      <div className="grid grid-cols-4 gap-4 mb-10">
-        {products.map((product: ProductType, index: number) => (
-          <ProductCard product={product} key={index} />
-        ))}
-      </div>
-    </div>
-  );
+  const categories = await getCategories();
+  if (!categories) return <div>Categories not found</div>;
+  return <>
+    <CategoryList categories={categories} />
+  </>;
 }

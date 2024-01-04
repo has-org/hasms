@@ -1,4 +1,5 @@
 "use client";
+import "./image-gallery.css";
 import Iconify from "@/components/iconify/Iconify";
 import {
   Card,
@@ -13,7 +14,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Unstable_Grid2";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ImageGallery, { ReactImageGalleryItem } from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ProductViewer2D from "../../../productViewer2D";
@@ -43,31 +44,53 @@ const images360 = [
 
 const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [images, setImages] = useState<ReactImageGalleryItem[]>([]);
 
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
 
-  const images = catalogue.images.map((image) => {
-    const imageUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online${image}&w=1024&q=100`;
-    const thumbnailUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online${image}&w=400&q=100`;
-    return {original: imageUrl, thumbnail: imageUrl}
-  })
-  
+  useEffect(() => {
+    setImages(
+      catalogue.images?.map((image) => {
+        const imageUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online${image}&w=1024&q=100`;
+        const thumbnailUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online${image}&w=400&q=100`;
+        return { original: imageUrl, thumbnail: imageUrl };
+      })
+    );
+  }, []);
+
+  if (!catalogue) return <>{"no catalogue"}</>;
+
   return (
     <>
       <Container maxWidth="xl">
         <Grid container spacing={5}>
-          <Grid xs={12} md={4}>
+          <Grid
+            xs={12}
+            md={4}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             {/* <ProductViewer2D images={images360} /> */}
 
-            <ImageGallery items={images} autoPlay={false} showPlayButton={false} showFullscreenButton={false} showNav={false}/>
+            <ImageGallery
+              items={images}
+              autoPlay={false}
+              showPlayButton={false}
+              showFullscreenButton={false}
+              showNav={false}
+              additionalClass="image-gallery-overwrite"
+            />
             {/* <Image src={catalogue.image} width={300} height={300} alt="ad" /> */}
           </Grid>
           <Grid xs={12} md={4}>
             <Stack>
               <Typography variant="h3" textAlign={"center"}>
-                {catalogue.name}
+                {catalogue?.name}
               </Typography>
               {/* <Typography variant="h5" textAlign={'center'} color="primary.light">{catalogue.shortcode}</Typography> */}
               <Typography
@@ -75,7 +98,7 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
                 textAlign={"center"}
                 color="primary.light"
               >
-                {catalogue.model}
+                {catalogue?.model}
               </Typography>
               <Stack direction="row" spacing={5}>
                 <Stack direction={"row"}>
@@ -85,7 +108,9 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
                     color="primary.main"
                   />
                   <Stack>
-                    <Typography variant="h6">Top Speed</Typography>
+                    <Typography variant="h6" sx={{ whiteSpace: "nowrap" }}>
+                      Top Speed
+                    </Typography>
                     <Typography variant="h6" color="primary.main">
                       110 km/h
                     </Typography>
@@ -131,11 +156,15 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
                 </Grid>
                 <Grid xs={12} md={6}>
                   <Divider />
-                  <Typography variant="body2">{catalogue.manufacturer}</Typography>
+                  <Typography variant="body2">
+                    {catalogue.manufacturer}
+                  </Typography>
                   <Divider />
                   <Typography variant="body2">{catalogue.model}</Typography>
                   <Divider />
-                  <Typography variant="body2">{catalogue.serial_number}</Typography>
+                  <Typography variant="body2">
+                    {catalogue.serial_number}
+                  </Typography>
                   <Divider />
                   <Typography variant="body2">{catalogue.color}</Typography>
                   <Divider />
@@ -148,7 +177,6 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
             md={4}
             sx={{
               display: "flex",
-              alignItems: "center",
               justifyContent: "center",
             }}
           >
@@ -157,7 +185,6 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
                 sx={{
                   borderRadius: "24px",
                   border: "1px white",
-
                 }}
               >
                 <Stack>

@@ -202,7 +202,6 @@ const SearchAppBar = ({ sticky, navigationMenu }: { navigationMenu: any, sticky?
             <AccountCircleIcon />
             <Box onClick={() => { togglecartDrawerOpen() }}
             >
-
               <ShoppingCartIcon />
             </Box>
           </Box>

@@ -6,6 +6,7 @@ import Iconify from "../../../../../components/iconify";
 //
 import { NavItemDesktopProps, NavItemProps } from "../types";
 import { ListItem } from "./styles";
+import Link from "next/link";
 
 // ----------------------------------------------------------------------
 // eslint-disable-next-line react/display-name
@@ -17,30 +18,32 @@ export const NavItem = forwardRef<HTMLDivElement, NavItemDesktopProps>(
     const { title, path, children } = item;
 
     const renderContent = (
-      <ListItem
-        ref={ref}
-        disableRipple
-        isOffset={isOffset}
-        subItem={subItem}
-        active={active}
-        open={open}
-        {...other}
-      >
-        {title === "Promocije" && (
-          <Iconify width={24} icon="mdi:fire" color="primary.main" />
-        )}
+      <Link href={item.path}  style={{textDecoration: 'none'}}>
+        <ListItem
+          ref={ref}
+          disableRipple
+          isOffset={isOffset}
+          subItem={subItem}
+          active={active}
+          open={open}
+          {...other}
+        >
+          {title === "Promocije" && (
+            <Iconify width={24} icon="mdi:fire" color="primary.main" />
+          )}
 
-        <Typography variant="body1">{title}</Typography>
+          <Typography variant="body1">{title}</Typography>
 
-        {!!children && (
-          <Iconify
-            width={16}
-            icon="eva:arrow-ios-downward-fill"
-            sx={{ ml: 1 }}
-            color="text.primary"
-          />
-        )}
-      </ListItem>
+          {!!children && (
+            <Iconify
+              width={16}
+              icon="eva:arrow-ios-downward-fill"
+              sx={{ ml: 1 }}
+              color="text.primary"
+            />
+          )}
+        </ListItem>
+      </Link>
     );
 
     // Default

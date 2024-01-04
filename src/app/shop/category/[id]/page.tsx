@@ -1,4 +1,3 @@
-import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { StaticImageData } from "next/image";
 import { Category as CategoryType } from "@/types/Category";
 import { Product as ProductType } from "@/types/Product";
@@ -55,37 +54,8 @@ export default async function ShopCategory({ params: { id } }: any) {
   const products: ProductType[] = await getCategoryProducts(id);
   if (!category) return <div>catalogue not found</div>;
 
-  console.log(category);
-
   const brandNames = ["brand1", "brand2", "brand3", "brand4", "brand5"];
-  const items = [
-    {
-      title: "Item 1",
-      subtitle: "Subtitle 1",
-      price: "10",
-      originalPrice: "20",
-    },
-    {
-      title: "Item 2",
-      subtitle: "Subtitle 2",
-      price: "20",
-      originalPrice: "30",
-    },
-    {
-      title: "Item 3",
-      subtitle: "Subtitle 3",
-      price: "30",
-      originalPrice: "40",
-    },
-    {
-      title: "Item 4",
-      subtitle: "Subtitle 4",
-      price: "40",
-      originalPrice: "50",
-    },
-  ];
 
-  // return <>{JSON.stringify(products)}</>;
 
   return (
     <div className={styles.wrapper}>
@@ -97,7 +67,8 @@ export default async function ShopCategory({ params: { id } }: any) {
           <Toolbar brands={brandNames} />
         </div>
         <div className={styles.ItemListWrapper}>
-          <ItemList items={items} />
+          {/* <ItemList items={products} /> */}
+          {JSON.stringify(products)}
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 // @mui
 import { useTheme } from "@mui/material/styles";
 import {
@@ -11,6 +11,8 @@ import {
   BoxProps,
   Stack,
   Typography,
+  Drawer,
+  alpha,
 } from "@mui/material";
 // hooks
 import useOffSetTop from "@/hooks/useOffSetTop";
@@ -28,10 +30,13 @@ import navConfig from "./nav/config-navigation";
 import NavMobile from "./nav/mobile";
 import NavDesktop from "./nav/desktop";
 import Iconify from "@/components/iconify";
+import { CartSidebar } from "@/components/cart/sidebar/CartSidebar";
 
 // ----------------------------------------------------------------------
 
 export default function Header() {
+  const [cartDrawerOpen, togglecartDrawerOpen] = useState(false);
+
   const carouselRef = useRef(null);
 
   const theme = useTheme();
@@ -39,6 +44,18 @@ export default function Header() {
   const isDesktop = useResponsive("up", "md");
 
   const isOffset = useOffSetTop(HEADER.H_MAIN_DESKTOP);
+
+  const toggleCartDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
+      ) {
+        return;
+      }
+      togglecartDrawerOpen(!cartDrawerOpen);
+    };
 
   return (
     <AppBar
@@ -84,7 +101,11 @@ export default function Header() {
           </Stack>
           <Stack>
             <Stack direction={"row"} justifyContent="end" spacing={1}>
-              <Button variant="contained" color="info">
+              <Button
+                variant="contained"
+                color="info"
+                onClick={() => togglecartDrawerOpen(!cartDrawerOpen)}
+              >
                 <Stack direction={"row"} spacing={0.5} alignItems="center">
                   <Iconify icon="tdesign:cart" color="text.primary" />
                   {isDesktop && (
@@ -107,6 +128,20 @@ export default function Header() {
         </Container>
       </Toolbar>
       {isOffset && <Shadow />}
+      <Drawer
+        open={cartDrawerOpen}
+        onClose={toggleCartDrawer(false)}
+        anchor="right"
+        PaperProps={{
+          sx: {
+            width: "30%",
+            backgroundColor: alpha("#FFFFFF", 0.47),
+            backdropFilter: "blur(50px)",
+          },
+        }}
+      >
+        <CartSidebar />
+      </Drawer>
     </AppBar>
   );
 }

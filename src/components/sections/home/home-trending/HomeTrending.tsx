@@ -115,9 +115,9 @@ const HomeOffer = ({ deviceType }: any) => {
           responsive={responsive}
           ssr={true} // means to render carousel on server-side.
           infinite={true}
-          autoPlay={false}
+          autoPlay={true}
           swipeable={true}
-          autoPlaySpeed={1000}
+          autoPlaySpeed={3000}
           keyBoardControl={true}
           customTransition="all .5"
           transitionDuration={500}
@@ -131,7 +131,7 @@ const HomeOffer = ({ deviceType }: any) => {
           {items.map((item, index) => (
             <Card
               key={index}
-              sx={{ mx: 5, minHeight: "500px", maxWidth: "400px" }}
+              sx={{ mx: 5, minHeight: "200px", maxWidth: "400px" }}
             >
               <CardContent sx={{ display: "flex", justifyContent: "center" }}>
                 <Stack>
@@ -156,13 +156,13 @@ const HomeOffer = ({ deviceType }: any) => {
                   <Box
                     sx={{
                       width: "250px",
-                      height: "300px",
+                      height: "220px",
                       position: "relative",
                     }}
                   >
                     <Image
                       src={item.image}
-                      width={768}
+                      width={1024}
                       height={200}
                       sizes="100vw, 30vw"
                       alt="Motoshop 7"
