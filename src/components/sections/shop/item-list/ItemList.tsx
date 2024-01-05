@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Card,
   CardMedia,
@@ -11,23 +11,16 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from "@mui/material";
-
-interface Item {
-  title: string;
-  subtitle: string;
-  price: string;
-  originalPrice: string;
-  image?: string;
-}
+import { Product } from "@/types/Product";
+import { CartContext } from "@/context/CartContext/CartContext";
+import { useRouter } from "next/navigation";
 
 const sizes = ["S", "M", "L", "XL"];
 
-
-
-const ItemList = ({ items }: { items: Item[] }) => {
+const ItemList = ({ items }: { items: Product[] }) => {
   return (
     <Grid container spacing={4}>
-      {items.map((item, index) => (
+      {items?.map((item, index) => (
         <Grid item xs={12} sm={6} md={3} key={index}>
           <RenderItem item={item} />
         </Grid>
@@ -36,9 +29,10 @@ const ItemList = ({ items }: { items: Item[] }) => {
   );
 };
 
-const RenderItem = ({ item }: { item: Item }) => {
+const RenderItem = ({ item }: { item: Product }) => {
   const [selectedSize, setSelectedSize] = useState(null);
-
+  const { items, addToCart } = useContext(CartContext);
+  const router = useRouter();
   return (
     <Card>
       {item.image ? (
@@ -62,10 +56,10 @@ const RenderItem = ({ item }: { item: Item }) => {
       )}
       <Container sx={{ padding: "20px" }}>
         <Typography variant="h5" component="div" sx={{ margin: "10px 0" }}>
-          {item.title}
+          {item.name}
         </Typography>
         <Typography variant="body2" component="div" sx={{ margin: "10px 0" }}>
-          {item.subtitle}
+          {item.description}
         </Typography>
         <ToggleButtonGroup
           value={selectedSize}
@@ -106,10 +100,10 @@ const RenderItem = ({ item }: { item: Item }) => {
               lineHeight: "146.75%",
             }}
           >
-            {item.originalPrice} RSD
+            {/* {item.originalPrice} RSD */}
           </Typography>
           <Typography variant="h4" component="div" color="primary">
-            {item.price} RSD
+            {item.price} KM
           </Typography>
         </Box>
       </Container>
@@ -123,8 +117,26 @@ const RenderItem = ({ item }: { item: Item }) => {
           borderTopLeftRadius: 0,
           borderTopRightRadius: 0,
         }}
+        onClick={() => {
+          // addToCart({...item, size: selectedSize, color: 'black'});
+        }}
       >
-        Buy
+        Kupi
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        sx={{
+          width: "100%",
+          color: "#000",
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
+        }}
+        onClick={() => {
+          router.push(`/shop/product/${item.id}`);
+        }}
+      >
+        Pogledaj proizvod
       </Button>
     </Card>
   );

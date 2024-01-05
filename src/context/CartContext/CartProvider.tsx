@@ -13,14 +13,15 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     });
 
     const addToCart = (item: any) => {
+        console.log(item)
         const preparedProductToAdd = {
             product_cart_id: uuidv4(),
             product_id: item.id,
             product_code: item.code,
             product_name: item.name,
             product_price: item.price,
-            product_image: item.variants[0].images[0].url,
-            variant_id: item.variants[0].id,
+            product_image: item.variants[0]?.images[0]?.url,
+            variant_id: item.variants[0]?.id,
             color: item.color,
             size: item.size,
             quantity: 1
@@ -73,7 +74,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         let updatedCart
 
         const itemExists = state.items.find((prod: Product) => prod.id === id);
-        const itemHasQuantity = itemExists.variants[0].quantity > 1;
+        const itemHasQuantity = itemExists.variants[0]?.quantity > 1;
 
         if (itemExists) {
             if (itemHasQuantity) {

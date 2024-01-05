@@ -51,8 +51,10 @@ async function getCategoryProducts(id: number) {
 
 export default async function ShopCategory({ params: { id } }: any) {
   const category: CategoryType = await getCategory(id);
-  const products: ProductType[] = await getCategoryProducts(id);
+  const products: CategoryType = await getCategoryProducts(id);
   if (!category) return <div>catalogue not found</div>;
+
+
 
   const brandNames = ["brand1", "brand2", "brand3", "brand4", "brand5"];
 
@@ -67,8 +69,7 @@ export default async function ShopCategory({ params: { id } }: any) {
           <Toolbar brands={brandNames} />
         </div>
         <div className={styles.ItemListWrapper}>
-          {/* <ItemList items={products} /> */}
-          {JSON.stringify(products)}
+          <ItemList items={products.products} />
         </div>
       </div>
     </div>
