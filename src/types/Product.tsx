@@ -15,5 +15,5 @@ export type Product = {
   workspace_id: number;
   image: string;
   variants: Variant[];
-
+  currency: string;
 };
