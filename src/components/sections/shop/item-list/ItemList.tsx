@@ -14,7 +14,7 @@ import {
 import { Product } from "@/types/Product";
 import { CartContext } from "@/context/CartContext/CartContext";
 import { useRouter } from "next/navigation";
-
+import Image from "next/image";
 const sizes = ["S", "M", "L", "XL"];
 
 const ItemList = ({ items }: { items: Product[] }) => {
@@ -36,15 +36,7 @@ const RenderItem = ({ item }: { item: Product }) => {
   return (
     <Card>
       {item.image ? (
-        <CardMedia
-          component="img"
-          image={item.image}
-          alt="item"
-          sx={{
-            height: 0,
-            paddingTop: "100%",
-          }}
-        />
+        <Image src={item.image} width={250} height={250} alt="asd" />
       ) : (
         <div
           style={{

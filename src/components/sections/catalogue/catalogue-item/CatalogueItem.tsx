@@ -58,7 +58,7 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
         return { original: imageUrl, thumbnail: imageUrl };
       })
     );
-  }, []);
+  }, [catalogue.images]);
 
   if (!catalogue) return <>{"no catalogue"}</>;
 
