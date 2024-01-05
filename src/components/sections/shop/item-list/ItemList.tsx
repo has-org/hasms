@@ -36,7 +36,15 @@ const RenderItem = ({ item }: { item: Product }) => {
   return (
     <Card>
       {item.image ? (
-        <Image src={item.image} width={250} height={250} alt="asd" />
+        <CardMedia
+          component="div"
+          sx={{
+            position: "relative",
+            height: "330px",
+          }}
+        >
+          <Image src={item.image} fill alt="asd" />
+        </CardMedia>
       ) : (
         <div
           style={{
