@@ -40,7 +40,7 @@ const HomeWelcome = () => {
                 Provjereno najbolja
               </Typography>
               <Typography variant="h1" component="span" lineHeight={1}>
-                {"MOTO OPREMA &"}
+                {"MOTO OPREMA  TESTTTTT&"}
                 <Typography
                   variant="h1"
                   component="span"
