@@ -28,31 +28,52 @@ export const CartSidebar = () => {
         </Button>
       </Stack>
 
-
-      <Box
-        sx={{
-          display: "flex",
-          flexGrow: "1",
-          flexDirection: "row",
-        }}
-      >
-        <Typography sx={{whiteSpace: 'nowrap'}} color="primary.dark">Total items: {items.length}</Typography>
+      <Typography sx={{ whiteSpace: "nowrap" }} color="primary.dark">
+        Total items: {items.length}
+      </Typography>
+      <Stack>
         <Scrollbar>
-          <Stack>
-            {items?.map((item: any) => {
-              return (
-                <>
-                  <Stack direction="row">
-                    <Image src={item.image} width={50} height={50} alt="asd" />
-
-                    <Stack>{item.name}</Stack>
+          {items?.map((item: any) => {
+            return (
+              <>
+                <Stack direction="row">
+                  <Image
+                    src={item.product_image}
+                    width={88}
+                    height={78}
+                    alt="asd"
+                  />
+                  <Stack>
+                    <Stack direction="row" spacing={1}>
+                      <Typography variant="h6" color="primary.dark">
+                        Sifra artikla:
+                      </Typography>
+                      <Typography variant="body2" color="primary.darker">
+                        {item.product_code}
+                      </Typography>
+                    </Stack>
+                    <Typography variant="body2" color="primary.darker">
+                      Naziv: {item.product_name}
+                    </Typography>
+                    <Typography variant="body2" color="primary.darker">
+                      {item.color?.name}
+                    </Typography>
+                    <Typography variant="body2" color="primary.darker">
+                      {item.size?.name}
+                    </Typography>
+                    <Typography variant="body2" color="primary.darker">
+                      {item.quantity}
+                    </Typography>
+                    <Typography variant="body2" color="primary.darker">
+                      {item.product_price}
+                    </Typography>
                   </Stack>
-                </>
-              );
-            })}
-          </Stack>
+                </Stack>
+              </>
+            );
+          })}
         </Scrollbar>
-      </Box>
+      </Stack>
 
       <Button>
         <Link href="/cart">Go to cart</Link>

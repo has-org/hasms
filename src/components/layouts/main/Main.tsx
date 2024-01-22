@@ -1,3 +1,4 @@
+"use client";
 // @mui
 import { Box, BoxProps } from "@mui/material";
 // hooks
@@ -11,7 +12,6 @@ import { HEADER, NAV } from "@/config-global";
 const SPACING = 0;
 
 export default function Main({ children, sx, ...other }: BoxProps) {
-
   const isDesktop = useResponsive("up", "lg");
 
   return (

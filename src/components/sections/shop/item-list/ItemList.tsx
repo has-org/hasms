@@ -28,31 +28,23 @@ const ItemList = ({ items }: { items: Product[] }) => {
     </Grid>
   );
 };
-// a
+
 const RenderItem = ({ item }: { item: Product }) => {
   const [selectedSize, setSelectedSize] = useState(null);
   const { items, addToCart } = useContext(CartContext);
   const router = useRouter();
   return (
-    <Card>
-      {item.image ? (
+    <Card sx={{ height: "650px" }}>
+      {item.image && (
         <CardMedia
           component="div"
           sx={{
             position: "relative",
-            height: "330px",
+            height: "50%",
           }}
         >
           <Image src={item.image} fill alt="asd" />
         </CardMedia>
-      ) : (
-        <div
-          style={{
-            height: 0,
-            paddingTop: "100%",
-            backgroundColor: "#ccc",
-          }}
-        />
       )}
       <Container sx={{ padding: "20px" }}>
         <Typography variant="h5" component="div" sx={{ margin: "10px 0" }}>

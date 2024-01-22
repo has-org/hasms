@@ -1,17 +1,11 @@
-import MainLayout from "@/components/layouts/main/MainLayout";
 
 
-
-
-export default async function RootLayout({
+export default async function HomeLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-
   return (
-    <MainLayout>
-      {children}
-    </MainLayout>
+   <>{children}</>
   );
 }

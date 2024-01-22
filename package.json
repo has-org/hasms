@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fontsource/poppins": "^5.0.8",
@@ -16,6 +17,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/lab": "^5.0.0-alpha.140",
     "@mui/material": "^5.11.16",
+    "@mui/material-nextjs": "^5.15.3",
     "@next/bundle-analyzer": "^13.4.7",
     "@react-three/fiber": "^8.15.12",
     "@types/node": "18.11.18",

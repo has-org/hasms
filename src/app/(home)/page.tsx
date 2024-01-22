@@ -10,6 +10,7 @@ import HomeDiscount from "@/components/sections/home/home-discount";
 import UAParser from "ua-parser-js";
 import { headers } from "next/dist/client/components/headers";
 import HomeCooperators from "@/components/sections/home/home-cooperators/HomeCooperators";
+import Box from "@mui/material/Box/";
 
 async function getUserAgent() {
   let userAgent;
@@ -65,7 +66,6 @@ export default async function HomePage() {
 
   return (
     <>
-    
 
       <section>
         <HomeWelcome />

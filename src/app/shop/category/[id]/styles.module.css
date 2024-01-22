@@ -16,4 +16,5 @@
   .ItemListWrapper {
     flex: 3;
     overflow: hidden;
+    padding-right: 16px;
   }

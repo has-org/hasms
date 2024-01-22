@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 // @mui
-import { Fade, Portal, Grid, Typography, Stack } from "@mui/material";
+import { Fade, Portal, Grid, Typography, Stack, Box } from "@mui/material";
 // hooks
 
 //
@@ -9,7 +9,6 @@ import { NavItem } from "./NavItem";
 import { StyledSubheader, StyledMenu } from "./styles";
 import Image from "next/image";
 import Iconify from "@/components/iconify";
-import Box from "@/components/MUI/Box";
 import Link from "next/link";
 // ----------------------------------------------------------------------
 
