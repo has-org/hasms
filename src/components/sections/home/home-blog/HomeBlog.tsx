@@ -115,6 +115,7 @@ const HomeBlog = ({ deviceType }: any) => {
                     src={item.image}
                     width={768}
                     height={260}
+                    style={{ width: "1024px", height: "auto" }}
                     sizes="100vw, 30vw"
                     alt="Motoshop 7"
                   />

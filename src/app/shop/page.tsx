@@ -6,6 +6,7 @@ async function getCategories() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/categories`, {
       method: "GET",
+      cache: "no-store",
     });
     if (res.status !== 200) {
       throw new Error("Failed to fetch data");
@@ -19,6 +20,7 @@ async function getCategories() {
 export default async function Shop() {
   const categories = await getCategories();
   if (!categories) return <div>Categories not found</div>;
+  
   return <>
     <CategoryList categories={categories} />
   </>;

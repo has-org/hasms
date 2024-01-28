@@ -15,7 +15,6 @@ export const ProductImagePreview = ({ image }: any) => {
         <Box sx={{ flexGrow: 1 }}>
             <ThumbnailPreview>
                 <Image
-                    className="thumbnail-list-img"
                     src={`${process.env.NEXT_PUBLIC_API_IMG_HOST}${image.url}`}
                     width={400}
                     height={400}

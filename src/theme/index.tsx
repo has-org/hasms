@@ -5,7 +5,6 @@ import { CssBaseline } from "@mui/material";
 import {
   createTheme,
   ThemeOptions,
-  StyledEngineProvider,
   ThemeProvider as MUIThemeProvider,
 } from "@mui/material/styles";
 // components
@@ -42,12 +41,10 @@ export default function ThemeProvider({ children }: Props) {
   theme.components = componentsOverride(theme);
 
   return (
-    <StyledEngineProvider injectFirst>
-      <MUIThemeProvider theme={theme}>
-        <CssBaseline />
-        <GlobalStyles />
-        {children}
-      </MUIThemeProvider>
-    </StyledEngineProvider>
+    <MUIThemeProvider theme={theme}>
+      <CssBaseline />
+      <GlobalStyles />
+      {children}
+    </MUIThemeProvider>
   );
 }

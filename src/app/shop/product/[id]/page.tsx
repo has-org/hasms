@@ -33,10 +33,6 @@ export default async function Product({ params: { id } }: any) {
   }
 
   const { variants } = product;
-  
-  return (
-    <main className="min-h-screen overflow-hidden">
-      {product && <ProductDetails product={product} />}
-    </main>
-  );
+
+  return <main>{product && <ProductDetails product={product} />}</main>;
 }

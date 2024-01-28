@@ -1,16 +1,15 @@
 "use client";
-import "./style.css"
+import "./style.css";
 import Iconify from "@/components/iconify";
 import TrendingCard from "@/components/trending-card";
 import useResponsive from "@/hooks/useResponsive";
-import { Box,  Stack, Button, Card, Container } from "@mui/material";
+import { Box, Stack, Button, Card, Container } from "@mui/material";
 import CardContent from "@mui/material/CardContent/CardContent";
 import CardMedia from "@mui/material/CardMedia/CardMedia";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
 
 const items = [
   {
@@ -39,12 +38,12 @@ const CustomButtonGroupAsArrows = ({
   previous?: any;
 }) => {
   return (
-    <Box sx={{width: '100%',}}>
+    <Box sx={{ width: "100%" }}>
       <Box
         sx={{
           position: "absolute",
           top: "50%",
-          left: 'calc(4% + 1px)',
+          left: "calc(4% + 1px)",
           transform: "translate(-50%)",
         }}
         component="span"
@@ -61,7 +60,7 @@ const CustomButtonGroupAsArrows = ({
         sx={{
           position: "absolute",
           top: "50%",
-          right: 'calc(4% + 1px)',
+          right: "calc(4% + 1px)",
           transform: "translate(-50%)",
         }}
         component="span"
@@ -104,8 +103,10 @@ const HomeTrending = ({ deviceType }: any) => {
         bgcolor: "background.primary",
       }}
     >
-      <Typography textAlign={'center'} variant="h2">Izdvojamo iz Ponude</Typography>
-      <Container maxWidth="xl" sx={{pt: 2}}>
+      <Typography textAlign={"center"} variant="h2">
+        Izdvojamo iz Ponude
+      </Typography>
+      <Container maxWidth="xl" sx={{ pt: 2 }}>
         <Carousel
           showDots={true}
           responsive={responsive}
@@ -126,8 +127,7 @@ const HomeTrending = ({ deviceType }: any) => {
           {items.map((item, index) => (
             <Card
               key={index}
-              sx={{ mx: 5, minHeight: "500px", maxWidth: "400px",}}
-              
+              sx={{ mx: 5, minHeight: "500px", maxWidth: "400px" }}
             >
               <CardContent sx={{ display: "flex", justifyContent: "center" }}>
                 <Stack>
@@ -160,6 +160,7 @@ const HomeTrending = ({ deviceType }: any) => {
                       src={item.image}
                       width={1024}
                       height={1024}
+                      style={{ width: "1024px", height: "auto" }}
                       sizes="100vw, 30vw"
                       alt="Motoshop 7"
                     />

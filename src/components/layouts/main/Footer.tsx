@@ -127,7 +127,7 @@ const LINKS = [
       },
 
       { name: "Moja korpa", href: "#", icon: "" },
-      { name: "Tvoja stara", href: "#", icon: "" },
+      { name: "Tvoja 456", href: "#", icon: "" },
       { name: "Narudzbine", href: "#", icon: "" },
       { name: "Adrese", href: "#", icon: "" },
       { name: "Blog", href: "#", icon: "" },
@@ -164,10 +164,10 @@ export default function Footer() {
   return (
     <>
       <Box sx={{ backgroundColor: "background.paper", width: "100%" }}>
-        <Container maxWidth="xl" sx={{display: 'flex', justifyItems: 'center', alignContent: 'center'}}>
-          <Grid container>
+        <Container maxWidth="xl" sx={{ overflow: "hidden" }}>
+          <Grid container columnSpacing={10}>
             {LINKS.map((list, index) => (
-              <Grid xs={12} md={4}  key={index}>
+              <Grid xs={12} md={3} key={index}>
                 <Stack spacing={3} sx={{ my: 5 }}>
                   <Typography variant="h6" sx={{ color: "text.primary" }}>
                     {list.headline}
@@ -176,7 +176,7 @@ export default function Footer() {
                     <Link
                       key={link.name}
                       href={link.href}
-                      variant="body2"
+                      variant="body1"
                       sx={{
                         display: "flex",
                         alignItems: "center",
@@ -197,7 +197,7 @@ export default function Footer() {
                 </Stack>
               </Grid>
             ))}
-            <Grid xs={12} md={4} >
+            <Grid xs={12} md={3}>
               <Stack spacing={1} sx={{ my: 5 }}>
                 <Typography variant="h6" sx={{ color: "text.primary" }}>
                   {"Drustvene mreze"}

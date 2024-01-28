@@ -82,7 +82,7 @@ export default async function HomePage() {
       </section>
       
 
-      <section className="cooperation-section">
+      <section>
         <HomeCooperators cooperators={cooperators} />
       </section>
     </>

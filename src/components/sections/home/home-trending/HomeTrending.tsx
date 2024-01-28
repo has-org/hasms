@@ -14,7 +14,7 @@ import "react-multi-carousel/lib/styles.css";
 const items = [
   {
     title: "Kacige",
-    image: "/images/kaciga.png",
+    image: "/images/rpha1_Background_Removed.png",
     url: "",
   },
   {
@@ -162,9 +162,10 @@ const HomeOffer = ({ deviceType }: any) => {
                   >
                     <Image
                       src={item.image}
-                      width={1024}
+                      width={768}
                       height={200}
                       sizes="100vw, 30vw"
+                      style={{ width: "768px", height: "auto" }}
                       alt="Motoshop 7"
                     />
                   </Box>

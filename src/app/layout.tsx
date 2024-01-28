@@ -13,10 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="">
-        <AppRouterCacheProvider>
-          <CartProvider>
-            <ThemeProvider>
+      <body>
+        <AppRouterCacheProvider >
+          <ThemeProvider>
+            <CartProvider>
               <Box
                 sx={{
                   display: "flex",
@@ -39,8 +39,8 @@ export default function RootLayout({
 
                 <Footer />
               </Box>
-            </ThemeProvider>
-          </CartProvider>
+            </CartProvider>
+          </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

@@ -36,16 +36,17 @@ const CatalogueList = ({ catalogues }: { catalogues: ICatalogue[] }) => {
                   padding: "12px",
                 }}
               >
-                <Typography>{catalogue.name}</Typography>
-                <CardMedia>
+                <Typography textAlign="center" variant="h6">{catalogue.name}</Typography>
+                <CardMedia sx={{mt:2}}>
                   <Link href={`/catalogues/${catalogue.id}`}>
-                  <Image
-                    src={catalogue.main_image}
-                    width={1024}
-                    height={250}
-                    alt="a"
+                    <Image
+                      src={catalogue.main_image}
+                      width={1024}
+                      height={300}
+                      style={{ width: "1024px", height: "auto", borderRadius: "12px"}}
+                      alt="a"
                     />
-                    </Link>
+                  </Link>
                 </CardMedia>
               </Card>
             </Grid>

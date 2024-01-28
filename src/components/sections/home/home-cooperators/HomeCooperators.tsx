@@ -83,9 +83,10 @@ const HomeCooperators = ({
                   <Image
                     src={item.image}
                     alt=""
-                    width={1000}
+                    width={1024}
                     height={120}
                     quality={100}
+                    style={{ width: "1024px", height: "auto" }}
                   />
                 </CardMedia>
               </Card>

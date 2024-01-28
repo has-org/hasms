@@ -31,6 +31,7 @@ const HomeWelcome = () => {
               src="/images/bikee.png"
               width={1024}
               height={300}
+              style={{ width: "1024px", height: "auto" }}
               alt="Motoshop 7"
             />
           </Grid>
