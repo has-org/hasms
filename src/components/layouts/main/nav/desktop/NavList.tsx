@@ -201,24 +201,7 @@ function NavSubListChildren({ item, onClose }: NavSubListChildrenProps) {
           border: "1px solid grey",
           minHeight: "inherit",
         }}
-        whileHover={{
-          position: "relative",
-          zIndex: 1,
-          scale: 1.05,
-          transition: {
-            duration: 0.2,
-          },
-          border: "1px solid red",
-        }}
-        whileFocus={{
-          position: "relative",
-          zIndex: 1,
-          scale: 1.05,
-          transition: {
-            duration: 0.2,
-          },
-          border: "1px solid red",
-        }}
+      
       >
         <Image
           key={item.title}

@@ -8,12 +8,12 @@ import {
   ListItemText,
   Typography,
   Button,
+  Box
 } from "@mui/material";
 import { Input, TextArea } from "@/app/cart/delivery-form/Delivery";
 import { styled } from "@mui/material/styles";
 import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
-import Box from "@/components/MUI/Box";
 
 const TextInput = styled(Input)(({ theme }) => ({
   width: "100%",

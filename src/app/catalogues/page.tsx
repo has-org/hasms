@@ -45,7 +45,14 @@ export default async function CataloguesPage({}: any) {
                       href={`/catalogues/${catalogue.id}`}
                       style={{ textDecoration: "none" }}
                     >
-                      <CardMedia sx={{ mt: 2, width: "100%", height: "100%" }}>
+                      <CardMedia
+                        sx={{
+                          mt: 2,
+                          display: "flex",
+                          width: "100%",
+                          height: "350px",
+                        }}
+                      >
                         <Image
                           src={catalogue.main_image}
                           width={1024}

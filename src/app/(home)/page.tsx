@@ -1,7 +1,6 @@
 import { Catalogue as CatalogueType } from "@/types/Catalogue";
 import { Cooperator as CooperatorType } from "@/types/Cooperator";
 
-import CooperatorsAnimation from "../../components/sliderAnimation/CooperatorsAnimation";
 import { getBlogs, getCatalogues, getCooperators } from "@/services/apiService";
 import HomeTrending from "@/components/sections/home/home-trending";
 import HomeBlog from "@/components/sections/home/home-blog";
