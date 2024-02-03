@@ -38,63 +38,49 @@ const HomeCooperators = ({
   const router = useRouter();
 
   return (
-    <Box
-      sx={{
-        position: "relative",
-        overflow: "hidden",
-        pt: 2,
-      }}
+    <Carousel
+      showDots={false}
+      responsive={responsive}
+      ssr={true} // means to render carousel on server-side.
+      infinite={true}
+      autoPlay={true}
+      swipeable={false}
+      autoPlaySpeed={1654}
+      keyBoardControl={false}
+      customTransition="all .5"
+      transitionDuration={500}
+      containerClass="gd-carousel"
+      removeArrowOnDeviceType={["tablet", "mobile"]}
+      deviceType={deviceType}
+      arrows={false}
+      renderButtonGroupOutside={false}
     >
-      <Container maxWidth="xl" sx={{ pt: 2 }}>
-        {cooperators && (
-          <Carousel
-            showDots={false}
-            responsive={responsive}
-            ssr={true} // means to render carousel on server-side.
-            infinite={true}
-            autoPlay={true}
-            swipeable={false}
-            autoPlaySpeed={1654}
-            keyBoardControl={false}
-            customTransition="all .5"
-            transitionDuration={500}
-            containerClass="gd-carousel"
-            removeArrowOnDeviceType={["tablet", "mobile"]}
-            deviceType={deviceType}
-            arrows={false}
-            renderButtonGroupOutside={false}
-          >
-            {cooperators.map((item, index) => (
-              <Card
-                key={index}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  mx: 5,
-                  backgroundColor: "common.white",
-
-                  ":hover": {
-                    transform: "scale(1.2)",
-                  },
-                }}
-              >
-                <CardMedia>
-                  <Image
-                    src={item.image}
-                    alt=""
-                    width={1024}
-                    height={120}
-                    quality={100}
-                    style={{ width: "1024px", height: "auto" }}
-                  />
-                </CardMedia>
-              </Card>
-            ))}
-          </Carousel>
-        )}
-      </Container>
-    </Box>
+      {cooperators?.map((item, index) => (
+        <Card
+          key={index}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            mx: 5,
+            backgroundColor: "common.white",
+            ":hover": {
+              transform: "scale(1.2)",
+            },
+            minHeight: "120px",
+          }}
+        >
+            <Image
+              src={item.image}
+              alt=""
+              width={1024}
+              height={120}
+              quality={100}
+              style={{ width: "1024px", height: "auto" }}
+            />
+        </Card>
+      ))}
+    </Carousel>
   );
 };
 

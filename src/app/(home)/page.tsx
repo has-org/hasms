@@ -3,14 +3,15 @@ import { Cooperator as CooperatorType } from "@/types/Cooperator";
 
 import CooperatorsAnimation from "../../components/sliderAnimation/CooperatorsAnimation";
 import { getBlogs, getCatalogues, getCooperators } from "@/services/apiService";
-import HomeWelcome from "@/components/sections/home/home-welcome";
 import HomeTrending from "@/components/sections/home/home-trending";
 import HomeBlog from "@/components/sections/home/home-blog";
-import HomeDiscount from "@/components/sections/home/home-discount";
 import UAParser from "ua-parser-js";
 import { headers } from "next/dist/client/components/headers";
 import HomeCooperators from "@/components/sections/home/home-cooperators/HomeCooperators";
-import Box from "@mui/material/Box/";
+import { Button, Container, Stack, Typography, Box } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import Image from "next/image";
+import Link from "next/link";
 
 async function getUserAgent() {
   let userAgent;
@@ -39,11 +40,16 @@ async function getUserAgent() {
   }
 }
 
-export async function generateMetadata({ params, searchParams }: { params: any, searchParams: any }) {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: any;
+  searchParams: any;
+}) {
   return {
     title: "Pocetna",
     description: "My description",
-    
   };
 }
 
@@ -66,24 +72,169 @@ export default async function HomePage() {
 
   return (
     <>
+      <section>
+        <Box
+          sx={{
+            width: "100%",
+            height: "75vh",
+            backgroundImage:
+              "url(https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online/images/bg_frame.png&w=1024&q=100)",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            zIndex: "-1",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Container maxWidth="xl">
+            <Grid container spacing={3}>
+              <Grid xs={12} md={6}>
+                <Image
+                  src="/images/bikee.png"
+                  width={600}
+                  height={250}
+                  style={{ width: "600px", height: "auto" }}
+                  alt="Motoshop 7"
+                />
+              </Grid>
+              <Grid
+                xs={12}
+                md={6}
+                sx={{ display: "flex", alignItems: "center" }}
+              >
+                <Stack spacing={1}>
+                  <Typography variant="h4" fontWeight={400}>
+                    Provjereno najbolja
+                  </Typography>
+                  <Typography variant="h1" component="span" lineHeight={1}>
+                    {"MOTO OPREMA &"}
+                    <Typography
+                      variant="h1"
+                      component="span"
+                      color="primary.main"
+                      ml={1}
+                    >
+                      {"DIJELOVI"}
+                    </Typography>
+                  </Typography>
+
+                  <Stack direction={"row"} spacing={1} pt={1}>
+                    <Link
+                      href={"/catalogues"}
+                      style={{ textDecoration: "none", width: "100%" }}
+                    >
+                      <Button
+                        variant="contained"
+                        color="info"
+                        size="large"
+                        fullWidth
+                      >
+                        <Typography color={"common.white"}>PONUDA</Typography>
+                      </Button>
+                    </Link>
+                    <Link
+                      href={"/shop"}
+                      style={{ textDecoration: "none", width: "100%" }}
+                    >
+                      <Button variant="outlined" size="large" fullWidth>
+                        <Typography>SHOP</Typography>
+                      </Button>
+                    </Link>
+                  </Stack>
+                </Stack>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
+      </section>
+      <section>
+        <Box
+          sx={{
+            position: "relative",
+            overflow: "hidden",
+            pt: 2,
+          }}
+        >
+          <Container maxWidth="xl" sx={{ pt: 2 }}>
+            <HomeTrending />
+          </Container>
+        </Box>
+      </section>
+      <section>
+        <Box
+          sx={{
+            position: "relative",
+            pt: 2,
+          }}
+        >
+          <Typography textAlign={"center"} variant="h2">
+            Najnovije sa bloga
+          </Typography>
+          <Container maxWidth="xl" sx={{ pt: 2 }}>
+            <HomeBlog />
+          </Container>
+        </Box>
+      </section>
 
       <section>
-        <HomeWelcome />
-      </section>
-      <section>
-        <HomeTrending />
-      </section>
-      <section>
-        <HomeBlog />
+        <Box
+          sx={{
+            position: "relative",
+            pt: 2,
+          }}
+        >
+          <Container maxWidth="xl" sx={{ pt: 2 }}>
+            <Grid container>
+              <Grid xs={12} md={6} display="flex">
+                <Image
+                  src={discount.image}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                  alt="Motoshop 7"
+                />
+              </Grid>
+              <Grid
+                xs={12}
+                md={6}
+                display="flex"
+                alignItems="center"
+                sx={{ backgroundColor: "background.paper", px: 3 }}
+              >
+                <Stack>
+                  <Typography variant="h2">{discount.title}</Typography>
+
+                  <Typography variant="body1" fontWeight={300}>
+                    {discount.description}
+                  </Typography>
+
+                  <Button variant="contained" color="info">
+                    PONUDA
+                  </Button>
+                </Stack>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
       </section>
 
       <section>
-        <HomeDiscount discount={discount}/>
-      </section>
-      
-
-      <section>
-        <HomeCooperators cooperators={cooperators} />
+        <Box
+          sx={{
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          <Container maxWidth="xl">
+            <HomeCooperators cooperators={cooperators} />
+          </Container>
+        </Box>
       </section>
     </>
   );

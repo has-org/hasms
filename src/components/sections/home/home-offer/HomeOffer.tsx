@@ -124,7 +124,7 @@ const HomeTrending = ({ deviceType }: any) => {
           customButtonGroup={<CustomButtonGroupAsArrows />}
           renderButtonGroupOutside={true}
         >
-          {items.map((item, index) => (
+          {items?.map((item, index) => (
             <Card
               key={index}
               sx={{ mx: 5, minHeight: "500px", maxWidth: "400px" }}

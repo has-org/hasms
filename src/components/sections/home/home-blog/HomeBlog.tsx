@@ -1,6 +1,5 @@
 "use client";
-import Iconify from "@/components/iconify";
-import TrendingCard from "@/components/trending-card";
+
 import useResponsive from "@/hooks/useResponsive";
 import {
   Box,
@@ -15,7 +14,6 @@ import {
 } from "@mui/material";
 import CardContent from "@mui/material/CardContent/CardContent";
 import CardMedia from "@mui/material/CardMedia/CardMedia";
-import Paper from "@mui/material/Paper";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Carousel from "react-multi-carousel";
@@ -70,85 +68,70 @@ const HomeBlog = ({ deviceType }: any) => {
   const router = useRouter();
 
   return (
-    <Box
-      sx={{
-        position: "relative",
-        pt: 2,
-      }}
+    <Carousel
+      showDots={true}
+      responsive={responsive}
+      ssr={true} // means to render carousel on server-side.
+      infinite={true}
+      autoPlay={false}
+      autoPlaySpeed={1000}
+      keyBoardControl={true}
+      customTransition="all .5"
+      transitionDuration={500}
+      containerClass="gd-carousel"
+      removeArrowOnDeviceType={["tablet", "mobile"]}
+      deviceType={deviceType}
+      arrows={false}
+      renderButtonGroupOutside={true}
     >
-      <Typography textAlign={"center"} variant="h2">
-        Najnovije sa bloga
-      </Typography>
-      <Container maxWidth="xl" sx={{ pt: 2 }}>
-        <Carousel
-          showDots={true}
-          responsive={responsive}
-          ssr={true} // means to render carousel on server-side.
-          infinite={true}
-          autoPlay={false}
-          autoPlaySpeed={1000}
-          keyBoardControl={true}
-          customTransition="all .5"
-          transitionDuration={500}
-          containerClass="gd-carousel"
-          removeArrowOnDeviceType={["tablet", "mobile"]}
-          deviceType={deviceType}
-          arrows={false}
-          renderButtonGroupOutside={true}
-        >
-          {items.map((item, index) => (
-            <Card
-              key={index}
-              sx={{ mx: 5, minHeight: "500px", maxWidth: "400px" }}
+      {items?.map((item, index) => (
+        <Card key={index} sx={{ mx: 5, minHeight: "500px", maxWidth: "400px" }}>
+          <CardMedia>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                height: "auto",
+              }}
             >
-              <CardMedia>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: "100%",
-                    height: "auto",
-                  }}
-                >
-                  <Image
-                    src={item.image}
-                    width={768}
-                    height={260}
-                    style={{ width: "1024px", height: "auto" }}
-                    sizes="100vw, 30vw"
-                    alt="Motoshop 7"
-                  />
-                </Box>
-              </CardMedia>
-              <CardContent sx={{ display: "flex" }}>
-                <Stack spacing={0.5}>
-                  <Typography variant="body2">{item.created_at}</Typography>
-                  <Typography variant="h4">{item.title}</Typography>
-                  <Typography variant="body2">{item.description}</Typography>
+              <Image
+                src={item.image}
+                width={768}
+                height={260}
+                style={{ width: "1024px", height: "auto" }}
+                sizes="100vw, 30vw"
+                alt="Motoshop 7"
+              />
+            </Box>
+          </CardMedia>
+          <CardContent sx={{ display: "flex" }}>
+            <Stack spacing={0.5}>
+              <Typography variant="body2">{item.created_at}</Typography>
+              <Typography variant="h4">{item.title}</Typography>
+              <Typography variant="body2">{item.description}</Typography>
 
-                  <Stack direction="row" pt={3} alignItems="center" spacing={2}>
-                    {item?.tags?.slice(0, 2)?.map((tag: any, index: number) => (
-                      <Chip key={index} label={tag.name} color="info" />
-                    ))}
-                    <Box sx={{ position: "absolute", right: "2rem" }}>
-                      <Typography
-                        color="primary.main"
-                        sx={{ textDecorationColor: "primary.main" }}
-                      >
-                        <Link onClick={() => router.push(`${item.url}`)}>
-                          Procitaj tekst
-                        </Link>
-                      </Typography>
-                    </Box>
-                  </Stack>
-                </Stack>
-              </CardContent>
-            </Card>
-          ))}
-        </Carousel>
-      </Container>
-    </Box>
+              <Stack direction="row" pt={3} alignItems="center" spacing={2}>
+                {item?.tags?.slice(0, 2)?.map((tag: any, index: number) => (
+                  <Chip key={index} label={tag.name} color="info" />
+                ))}
+                <Box sx={{ position: "absolute", right: "2rem" }}>
+                  <Typography
+                    color="primary.main"
+                    sx={{ textDecorationColor: "primary.main" }}
+                  >
+                    <Link onClick={() => router.push(`${item.url}`)}>
+                      Procitaj tekst
+                    </Link>
+                  </Typography>
+                </Box>
+              </Stack>
+            </Stack>
+          </CardContent>
+        </Card>
+      ))}
+    </Carousel>
   );
 };
 

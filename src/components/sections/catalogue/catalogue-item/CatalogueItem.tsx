@@ -25,28 +25,22 @@ import { object, string } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import InputLabel from "@mui/material/InputLabel/InputLabel";
+import Link from "next/link";
 
 export type ICatalogue = {
   id: string;
-  first_name: string;
-  last_name: string;
-  country: string;
-  address: string;
-  city: string;
-  phone_number: string;
-  email: string;
+  name: string;
   images: ReactImageGalleryItem[];
   type: string;
-  shortcode: string;
   manufacturer: string;
   model: string;
-  serial_number: string;
   color: string;
   price: number;
-  topSpeed: number;
   manufactured: number;
   description: string;
-  specifications: string;
+  specification_url: string;
+  kilowatt_power: string;
+  year_manufactured: string;
 };
 
 const images360 = [
@@ -90,12 +84,12 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
   useEffect(() => {
     setImages(
       catalogue.images?.map((image) => {
-        const imageUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online${image}&w=1024&q=100`;
-        const thumbnailUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online${image}&w=400&q=100`;
+        const imageUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online/images/${image}&w=1024&q=100`;
+        const thumbnailUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online/images/${image}&w=400&q=100`;
         return { original: imageUrl, thumbnail: imageUrl };
       })
     );
-  }, [catalogue.images]);
+  }, [catalogue?.images]);
 
   if (!catalogue) return <>{"no catalogue"}</>;
 
@@ -138,7 +132,7 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
               >
                 {catalogue?.model}
               </Typography>
-              <Stack direction="row" spacing={3}>
+              <Stack direction="row" spacing={5}>
                 <Stack direction={"row"}>
                   <Iconify
                     icon="fluent:top-speed-20-filled"
@@ -147,10 +141,10 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
                   />
                   <Stack>
                     <Typography variant="h5" sx={{ whiteSpace: "nowrap" }}>
-                      Top Speed
+                      KW
                     </Typography>
                     <Typography variant="h6" color="primary.main">
-                      110 km/h
+                      {catalogue?.kilowatt_power}
                     </Typography>
                   </Stack>
                 </Stack>
@@ -162,9 +156,9 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
                       color="primary.main"
                     />
                     <Stack>
-                      <Typography variant="h5">Manufactured</Typography>
+                      <Typography variant="h5">Godina proizvodnje</Typography>
                       <Typography variant="h6" color="primary.main">
-                        2020
+                        {catalogue?.year_manufactured}
                       </Typography>
                     </Stack>
                   </Stack>
@@ -178,7 +172,6 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
                   <Divider />
                   <Typography variant="body2">Model</Typography>
                   <Divider />
-                  <Typography variant="body2">Serijski broj</Typography>
                   <Divider />
                   <Typography variant="body2">Boja</Typography>
                   <Divider />
@@ -200,9 +193,7 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
                   <Divider />
                   <Typography variant="body2">{catalogue.model}</Typography>
                   <Divider />
-                  <Typography variant="body2">
-                    {catalogue.serial_number}
-                  </Typography>
+
                   <Divider />
                   <Typography variant="body2">{catalogue.color}</Typography>
                   <Divider />
@@ -239,16 +230,16 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
               </Box>
 
               <Stack>
-                <Stack direction="row" alignItems="center" spacing={1}>
+                {/* <Stack direction="row" alignItems="center" spacing={1}>
                   <Iconify icon="mdi:checkbox-outline" color={"primary.main"} />
                   <Typography variant="body2" fontSize={"1.2em"}>
                     Kupovina na rate
                   </Typography>
-                </Stack>
+                </Stack> */}
                 <Stack direction="row" alignItems="center" spacing={1}>
                   <Iconify icon="mdi:checkbox-outline" color={"primary.main"} />
                   <Typography variant="body2" fontSize={"1.2em"}>
-                    Garancija 5 godina
+                    Garancija 3 godine
                   </Typography>
                 </Stack>
               </Stack>
@@ -257,6 +248,15 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
                 <Button variant="contained" onClick={() => setDialogOpen(true)}>
                   Zatrazi ponudu
                 </Button>
+                <Link
+                  href={`https://s3.villa-seaview.online${catalogue.specification_url}`}
+                  style={{ textDecoration: "none", width: "100%" }}
+                  target="_blank"
+                >
+                  <Button variant="outlined" fullWidth>
+                    Specifikacije
+                  </Button>
+                </Link>
               </Stack>
             </Stack>
           </Grid>
@@ -391,9 +391,9 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
                 variant="filled"
               />
             </Stack>
-              <Button variant="contained" fullWidth size="large" sx={{ mt: 5 }}>
-                Zatraži ponudu
-              </Button>
+            <Button variant="contained" fullWidth size="large" sx={{ mt: 5 }}>
+              Zatraži ponudu
+            </Button>
           </FormProvider>
         </DialogContent>
       </Dialog>

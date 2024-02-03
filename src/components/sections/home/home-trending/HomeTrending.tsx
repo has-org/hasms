@@ -34,7 +34,7 @@ const items = [
   },
 ];
 
-const CustomButtonGroupAsArrows = ({
+export const CustomButtonGroupAsArrows = ({
   next,
   previous,
 }: {
@@ -88,94 +88,70 @@ const HomeOffer = ({ deviceType }: any) => {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 4,
-      slidesToSlide: 1, // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
       items: 2,
-      slidesToSlide: 2, // optional, default to 1.
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
-      slidesToSlide: 1, // optional, default to 1.
     },
   };
   return (
-    <Box
-      sx={{
-        position: "relative",
-        overflow: "hidden",
-        pt: 2,
-      }}
+    <Carousel
+      showDots={true}
+      responsive={responsive}
+      ssr={true} // means to render carousel on server-side.
+      infinite={true}
+      autoPlay={true}
+      swipeable={true}
+      autoPlaySpeed={3000}
+      keyBoardControl={true}
+      customTransition="all .5"
+      transitionDuration={500}
+      containerClass="gd-carousel"
+      removeArrowOnDeviceType={["tablet", "mobile"]}
+      deviceType={deviceType}
+      arrows={false}
+      customButtonGroup={<CustomButtonGroupAsArrows />}
+      renderButtonGroupOutside={true}
     >
-      <Container maxWidth="xl" sx={{ pt: 2 }}>
-        <Carousel
-          showDots={true}
-          responsive={responsive}
-          ssr={true} // means to render carousel on server-side.
-          infinite={true}
-          autoPlay={true}
-          swipeable={true}
-          autoPlaySpeed={3000}
-          keyBoardControl={true}
-          customTransition="all .5"
-          transitionDuration={500}
-          containerClass="gd-carousel"
-          removeArrowOnDeviceType={["tablet", "mobile"]}
-          deviceType={deviceType}
-          arrows={false}
-          customButtonGroup={<CustomButtonGroupAsArrows />}
-          renderButtonGroupOutside={true}
-        >
-          {items.map((item, index) => (
-            <Card
-              key={index}
-              sx={{ mx: 5, minHeight: "200px", maxWidth: "400px" }}
+      {items?.map((item, index) => (
+        <Card key={index} sx={{ mx: 5,}}>
+          <CardContent sx={{ display: "flex", justifyContent: "center" }}>
+            <Stack>
+              <Typography variant="h3" textAlign={"center"}>
+                {item.title}
+              </Typography>
+              <Button variant="contained" color="info">
+                PREGLEDAJ
+              </Button>
+            </Stack>
+          </CardContent>
+          <CardMedia>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                height: "360px",
+              }}
             >
-              <CardContent sx={{ display: "flex", justifyContent: "center" }}>
-                <Stack>
-                  <Typography variant="h3" textAlign={"center"}>
-                    {item.title}
-                  </Typography>
-                  <Button variant="contained" color="info">
-                    PREGLEDAJ
-                  </Button>
-                </Stack>
-              </CardContent>
-              <CardMedia>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: "100%",
-                    height: "100%",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: "250px",
-                      height: "220px",
-                      position: "relative",
-                    }}
-                  >
-                    <Image
-                      src={item.image}
-                      width={768}
-                      height={200}
-                      sizes="100vw, 30vw"
-                      style={{ width: "768px", height: "auto" }}
-                      alt="Motoshop 7"
-                    />
-                  </Box>
-                </Box>
-              </CardMedia>
-            </Card>
-          ))}
-        </Carousel>
-      </Container>
-    </Box>
+              <Image
+                src={item.image}
+                width={768}
+                height={200}
+                sizes="100vw, 25vw"
+                style={{ width: "768px", height: "auto" }}
+                alt="Motoshop 7"
+              />
+            </Box>
+          </CardMedia>
+        </Card>
+      ))}
+    </Carousel>
   );
 };
 
