@@ -1,5 +1,5 @@
 import { getCatalogues } from "@/services/apiService";
-import { Card, CardMedia, Typography } from "@mui/material";
+import { Card, CardMedia, Typography, Container } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,16 +16,16 @@ export default async function CataloguesPage({}: any) {
   const catalogues = await getCatalogues();
   return (
     <>
-      <section>
-        <Grid container spacing={5}>
+      <Container maxWidth="xl">
+        <Grid container spacing={2}>
           {catalogues &&
             catalogues?.map((catalogue: ICatalogue, index: number) => {
               return (
                 <Grid
                   xs={12}
                   sm={6}
-                  md={3}
-                  lg={4}
+                  md={4}
+
                   key={index}
                   sx={{
                     display: "flex",
@@ -35,7 +35,7 @@ export default async function CataloguesPage({}: any) {
                 >
                   <Card
                     sx={{
-                      padding: "12px",
+                      padding: "4px",
                     }}
                   >
                     <Typography textAlign="center" variant="h6">
@@ -56,11 +56,13 @@ export default async function CataloguesPage({}: any) {
                         <Image
                           src={catalogue.main_image}
                           width={1024}
-                          height={300}
+                          height={1024}
+                          quality={100}
                           style={{
                             width: "1024px",
                             height: "auto",
                             borderRadius: "12px",
+                            objectFit: "cover",
                           }}
                           alt="a"
                         />
@@ -71,7 +73,7 @@ export default async function CataloguesPage({}: any) {
               );
             })}
         </Grid>
-      </section>
+      </Container>
     </>
   );
 }

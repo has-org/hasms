@@ -147,9 +147,11 @@ const LINKS = [
   {
     headline: "Podaci o firmi",
     children: [
-      { name: "Adresa: ", href: "#", icon: "" },
-      { name: "JIB: ", href: "#", icon: "" },
-      { name: "Naziv: 'Motoshop7' ", href: "#", icon: "" },
+      { name: "Naziv: 'MOTO SHOP 7 D.O.O' ", href: "#", icon: "" },
+      { name: "JIB: 4402922760000", href: "#", icon: "" },
+      { name: "PDV: 402922760000", href: "#", icon: "" },
+      { name: "PDV: 402922760000", href: "#", icon: "" },
+      { name: "Adresa: Jesenjinova 14, 78000 Banja Luka", href: "#", icon: "" },
     ],
   },
 ];

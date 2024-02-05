@@ -86,8 +86,12 @@ const HomeOffer = ({ deviceType }: any) => {
   const isDesktop = useResponsive("up", "lg");
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 3000, min: 1800 },
       items: 4,
+    },
+    laptop: {
+      breakpoint: { max: 1800, min: 1024 },
+      items: 3,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -118,7 +122,7 @@ const HomeOffer = ({ deviceType }: any) => {
       renderButtonGroupOutside={true}
     >
       {items?.map((item, index) => (
-        <Card key={index} sx={{ mx: 5,}}>
+        <Card key={index} sx={{ mx: 5 }}>
           <CardContent sx={{ display: "flex", justifyContent: "center" }}>
             <Stack>
               <Typography variant="h3" textAlign={"center"}>

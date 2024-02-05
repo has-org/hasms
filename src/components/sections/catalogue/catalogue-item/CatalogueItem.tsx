@@ -41,6 +41,7 @@ export type ICatalogue = {
   specification_url: string;
   kilowatt_power: string;
   year_manufactured: string;
+  cubic_centimeters: string;
 };
 
 const images360 = [
@@ -57,6 +58,7 @@ const orderInquirySchema = object({
   city: string().min(1, "City is required").max(100),
   phone_number: string().min(1, "Phone number is required").max(100),
   email: string().min(1, "Email is required").max(100),
+  
 });
 
 const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
@@ -99,12 +101,13 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
         <Grid container spacing={5}>
           <Grid
             xs={12}
-            md={4}
+            md={6}
+            lg={6}
+            xl={4}
             sx={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              flex: 1,
             }}
           >
             {/* <ProductViewer2D images={images360} /> */}
@@ -117,45 +120,56 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
               showNav={false}
               additionalClass="image-gallery-overwrite"
             />
-            {/* <Image src={catalogue.image} width={300} height={300} alt="ad" /> */}
           </Grid>
-          <Grid xs={12} md={4}>
+          <Grid xs={12} md={6} lg={6} xl={4}>
             <Stack>
-              <Typography variant="h2" textAlign={"center"}>
-                {catalogue?.name}
-              </Typography>
-              {/* <Typography variant="h5" textAlign={'center'} color="primary.light">{catalogue.shortcode}</Typography> */}
-              <Typography
-                variant="h4"
-                textAlign={"center"}
-                color="primary.light"
-              >
+              <Typography variant="h2">{catalogue?.name}</Typography>
+              <Typography variant="h4" color="primary.light">
                 {catalogue?.model}
               </Typography>
               <Stack direction="row" spacing={5}>
-                <Stack direction={"row"}>
-                  <Iconify
-                    icon="fluent:top-speed-20-filled"
-                    width={65}
-                    color="primary.main"
-                  />
-                  <Stack>
+                <Stack
+                  direction={"row"}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Iconify icon="mdi:cc" width={65} color="primary.main" />
+                  <Stack
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
                     <Typography variant="h5" sx={{ whiteSpace: "nowrap" }}>
-                      KW
+                      Zapremina
                     </Typography>
                     <Typography variant="h6" color="primary.main">
-                      {catalogue?.kilowatt_power}
+                      {catalogue?.cubic_centimeters}
                     </Typography>
                   </Stack>
                 </Stack>
                 <Stack>
-                  <Stack direction={"row"}>
+                  <Stack
+                    direction={"row"}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
                     <Iconify
                       icon="material-symbols:date-range"
-                      width={65}
+                      width={60}
                       color="primary.main"
                     />
-                    <Stack>
+                    <Stack
+                      sx={{
+                        display: "flex",
+                      }}
+                    >
                       <Typography variant="h5">Godina proizvodnje</Typography>
                       <Typography variant="h6" color="primary.main">
                         {catalogue?.year_manufactured}
@@ -165,50 +179,46 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
                 </Stack>
               </Stack>
               <Typography variant="h4">Specifikacije</Typography>
-              <Grid container>
-                <Grid xs={12} md={6}>
-                  <Divider />
-                  <Typography variant="body2">Proizvodjac</Typography>
-                  <Divider />
-                  <Typography variant="body2">Model</Typography>
-                  <Divider />
-                  <Divider />
-                  <Typography variant="body2">Boja</Typography>
-                  <Divider />
 
-                  <Stack direction={"row"} alignItems="center">
-                    <Typography variant="body2">Detaljnije</Typography>
-                    {isOpen ? (
-                      <Iconify icon="formkit:arrowup" />
-                    ) : (
-                      <Iconify icon="formkit:arrowdown" />
-                    )}
-                  </Stack>
-                </Grid>
-                <Grid xs={12} md={6}>
-                  <Divider />
-                  <Typography variant="body2">
-                    {catalogue.manufacturer}
-                  </Typography>
-                  <Divider />
-                  <Typography variant="body2">{catalogue.model}</Typography>
-                  <Divider />
+              <Divider />
+              <Stack
+                direction="row"
+                sx={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <Typography variant="body2">Proizvodjac</Typography>
+                <Typography variant="body2">
+                  {catalogue.manufacturer}
+                </Typography>
+              </Stack>
+              <Divider />
+              <Stack
+                direction="row"
+                sx={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <Typography variant="body2">Model</Typography>
+                <Typography variant="body2">{catalogue.model}</Typography>
+              </Stack>
+              <Divider />
+              <Stack
+                direction="row"
+                sx={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <Typography variant="body2">Boja</Typography>
+                <Typography variant="body2">{catalogue.color}</Typography>
+              </Stack>
+              <Divider />
 
-                  <Divider />
-                  <Typography variant="body2">{catalogue.color}</Typography>
-                  <Divider />
-                </Grid>
-              </Grid>
+              <Stack direction={"row"} alignItems="center">
+                <Typography variant="body2">Detaljnije</Typography>
+                {isOpen ? (
+                  <Iconify icon="formkit:arrowup" />
+                ) : (
+                  <Iconify icon="formkit:arrowdown" />
+                )}
+              </Stack>
             </Stack>
           </Grid>
-          <Grid
-            xs={12}
-            md={4}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
+          <Grid xs={12} md={6} lg={6} xl={4} order={{ md: 3, lg: 3, xl: 0 }}>
             <Stack spacing={2}>
               <Box
                 sx={{
@@ -216,7 +226,11 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
                   border: "1px white",
                 }}
               >
-                <Stack>
+                <Stack
+                  sx={{
+                    textAlign: "center",
+                  }}
+                >
                   <Typography
                     variant="h6"
                     sx={{ position: "relative", top: 0, left: 0 }}
@@ -230,13 +244,16 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
               </Box>
 
               <Stack>
-                {/* <Stack direction="row" alignItems="center" spacing={1}>
-                  <Iconify icon="mdi:checkbox-outline" color={"primary.main"} />
-                  <Typography variant="body2" fontSize={"1.2em"}>
-                    Kupovina na rate
-                  </Typography>
-                </Stack> */}
-                <Stack direction="row" alignItems="center" spacing={1}>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                  }}
+                >
                   <Iconify icon="mdi:checkbox-outline" color={"primary.main"} />
                   <Typography variant="body2" fontSize={"1.2em"}>
                     Garancija 3 godine
@@ -257,8 +274,56 @@ const CatalogueItem = ({ catalogue }: { catalogue: ICatalogue }) => {
                     Specifikacije
                   </Button>
                 </Link>
+                <Link
+                  href={`https://s3.villa-seaview.online${catalogue.additional_equipment}`}
+                  style={{ textDecoration: "none", width: "100%" }}
+                  target="_blank"
+                >
+                  <Button variant="outlined" fullWidth>
+                    Dodatna oprema
+                  </Button>
+                </Link>
               </Stack>
             </Stack>
+          </Grid>
+          <Grid
+            xs={12}
+            md={6}
+            lg={6}
+            xl={12}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Typography>
+              Engine Powerhouse: The TRACER 9 is equipped with a potent 890cc
+              CP3 engine, delivering a perfect balance of power and efficiency.
+              Experience smooth acceleration, impressive torque, and a
+              responsive throttle for an exhilarating ride every time. Advanced
+              Electronics: This bike boasts an advanced electronics suite,
+              featuring Yamaha's YCC-T (Yamaha Chip-Controlled Throttle), D-MODE
+              for customizable riding modes, and a quick shifter for seamless
+              gear changes. The cutting-edge technology ensures a connected and
+              intuitive riding experience. Sport-Touring Versatility: Whether
+              you're navigating urban landscapes or embarking on a cross-country
+              adventure, the TRACER 9 offers unmatched versatility. The
+              adjustable windscreen, comfortable seating, and versatile riding
+              position make it the perfect companion for both short commutes and
+              long journeys. Chassis Excellence: The lightweight aluminum frame
+              and fully adjustable suspension ensure optimal handling and
+              stability. With a compact and agile design, the TRACER 9
+              effortlessly maneuvers through twists and turns, providing a
+              thrilling and confident ride. Stunning Design: Yamaha's attention
+              to detail is evident in the TRACER 9's sleek and aerodynamic
+              design. From its aggressive front end to the bold, sporty lines,
+              this motorcycle not only performs exceptionally but also turns
+              heads wherever it goes. Connectivity and Convenience: Stay
+              connected on the go with the TRACER 9's connectivity features,
+              allowing seamless integration with your smartphone. Access
+              navigation, music, and other essential apps through the
+              user-friendly interface, enhancing your overall riding experience.
+            </Typography>
           </Grid>
         </Grid>
       </Container>
