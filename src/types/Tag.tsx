@@ -10,7 +10,6 @@ export interface Tag {
     products: Product[];
     variant?: Variant;
     variant_id?: number;
-    catalogues: Catalogue[];
     blogs: Blog[];
   }
   

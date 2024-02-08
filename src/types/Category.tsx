@@ -7,5 +7,4 @@ export type Category = {
     name: string;
     products: Product[];
     url?: string;
-    catalogues: Catalogue[];
   }
