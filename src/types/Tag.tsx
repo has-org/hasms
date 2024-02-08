@@ -1,5 +1,4 @@
 import { Blog } from "./Blog";
-import { Catalogue } from "./Catalogue";
 import { Product } from "./Product";
 import { Variant } from "./Variant";
 
