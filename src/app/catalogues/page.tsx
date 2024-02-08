@@ -1,22 +1,27 @@
+import { InquiryModal } from "@/components/modals/InquiryModal";
 import { getCatalogues } from "@/services/apiService";
-import { Card, CardMedia, Typography, Container } from "@mui/material";
+import { ICatalogue } from "@/types/Catalogue";
+import {
+  Card,
+  CardMedia,
+  Typography,
+  Container,
+  Button,
+  Stack,
+} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import Image from "next/image";
 import Link from "next/link";
-
-export type ICatalogue = {
-  main_image: string;
-  id: string;
-  name: string;
-  image: string;
-  type: string;
-};
+import InquiryButton from "./InquiryButton";
 
 export default async function CataloguesPage({}: any) {
   const catalogues = await getCatalogues();
   return (
     <>
       <Container maxWidth="xl">
+        <Typography textAlign={"center"} variant="h4">
+          Dostupno odmah
+        </Typography>
         <Grid container spacing={2}>
           {catalogues &&
             catalogues?.map((catalogue: ICatalogue, index: number) => {
@@ -25,7 +30,6 @@ export default async function CataloguesPage({}: any) {
                   xs={12}
                   sm={6}
                   md={4}
-
                   key={index}
                   sx={{
                     display: "flex",
@@ -54,7 +58,10 @@ export default async function CataloguesPage({}: any) {
                         }}
                       >
                         <Image
-                          src={catalogue.main_image}
+                          src={
+                            catalogue.catalogue_variants[0]
+                              .catalogue_variant_images[0].main_image
+                          }
                           width={1024}
                           height={1024}
                           quality={100}
@@ -73,6 +80,33 @@ export default async function CataloguesPage({}: any) {
               );
             })}
         </Grid>
+        <Stack sx={{ alignItems: "center", mt: 2 }} gap={2}>
+          <Typography sx={{ color: "white" }} variant="h4">
+            Za ostale modele zatražite ponudu
+          </Typography>
+          <InquiryButton />
+          <Stack
+            direction={"row"}
+            sx={{ alignItems: "center", justifyContent: "center" }}
+          >
+            <Typography sx={{ color: "white" }} variant="h4">
+              Ostale modele pogledajte na
+            </Typography>
+            <Link
+              href="https://www.yamaha-motor.eu/ba/hr/home/"
+              target="_blank"
+              style={{
+                textDecoration: "none",
+                textDecorationColor: "white",
+                color: "white",
+              }}
+            >
+              <Button>
+                <Typography variant="h4">Yamaha</Typography>
+              </Button>
+            </Link>
+          </Stack>
+        </Stack>
       </Container>
     </>
   );

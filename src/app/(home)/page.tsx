@@ -1,4 +1,3 @@
-import { Catalogue as CatalogueType } from "@/types/Catalogue";
 import { Cooperator as CooperatorType } from "@/types/Cooperator";
 
 import { getBlogs, getCatalogues, getCooperators } from "@/services/apiService";
@@ -11,6 +10,7 @@ import { Button, Container, Stack, Typography, Box } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import Image from "next/image";
 import Link from "next/link";
+import { ICatalogue } from "@/types/Catalogue";
 
 async function getUserAgent() {
   let userAgent;
@@ -54,7 +54,7 @@ export async function generateMetadata({
 
 export default async function HomePage() {
   const userAgent = await getUserAgent();
-  const catalogues: CatalogueType[] = await getCatalogues();
+  const catalogues: ICatalogue[] = await getCatalogues();
   const categories = catalogues?.filter(
     (catalogue) => catalogue.categories?.length! >= 1
   );
@@ -94,6 +94,7 @@ export default async function HomePage() {
                   width={600}
                   height={250}
                   style={{ width: "600px", height: "auto" }}
+                  sizes="50vw, 30vw"
                   alt="Motoshop 7"
                 />
               </Grid>

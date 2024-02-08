@@ -166,8 +166,8 @@ export default function Footer() {
   return (
     <>
       <Box sx={{ backgroundColor: "background.paper", width: "100%" }}>
-        <Container maxWidth="xl" sx={{ overflow: "hidden" }}>
-          <Grid container columnSpacing={10}>
+        <Container maxWidth="xl" >
+          <Grid container columnSpacing={2}>
             {LINKS.map((list, index) => (
               <Grid xs={12} md={3} key={index}>
                 <Stack spacing={3} sx={{ my: 5 }}>
