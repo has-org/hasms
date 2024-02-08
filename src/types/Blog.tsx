@@ -1,4 +1,3 @@
-import { Catalogue } from "./Catalogue";
 import { Tag } from "./Tag";
 
 export interface Blog {
