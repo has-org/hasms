@@ -55,11 +55,7 @@ export async function generateMetadata({
 export default async function HomePage() {
   const userAgent = await getUserAgent();
   const catalogues: ICatalogue[] = await getCatalogues();
-  const categories = catalogues?.filter(
-    (catalogue) => catalogue.categories?.length! >= 1
-  );
   const cooperators: CooperatorType[] = await getCooperators();
-  const blogs = await getBlogs();
 
   const discount = {
     name: "kacige 20%",
