@@ -84,13 +84,17 @@ export default async function HomePage() {
         >
           <Container maxWidth="xl">
             <Grid container spacing={3}>
-              <Grid xs={12} md={6}>
+              <Grid
+                xs={12}
+                md={6}
+                sx={{ display: "flex", justifyContent: "center" }}
+              >
                 <Image
+                  priority
                   src="/images/bikee.png"
                   width={600}
-                  height={250}
-                  style={{ width: "600px", height: "auto" }}
-                  sizes="50vw, 30vw"
+                  height={600}
+                  style={{ width: "auto", height: "auto" }}
                   alt="Motoshop 7"
                 />
               </Grid>
@@ -157,6 +161,7 @@ export default async function HomePage() {
           </Container>
         </Box>
       </section>
+
       <section>
         <Box
           sx={{

@@ -116,10 +116,10 @@ const HomeBlog = ({ deviceType }: any) => {
                 {item?.tags?.slice(0, 2)?.map((tag: any, index: number) => (
                   <Chip key={index} label={tag.name} color="info" />
                 ))}
-                <Box sx={{ position: "absolute", right: "2rem" }}>
+                <Box sx={{display: 'flex', flex: 1, justifyContent: 'end'}}>
                   <Typography
                     color="primary.main"
-                    sx={{ textDecorationColor: "primary.main" }}
+                    sx={{ textDecorationColor: "primary.main",}}
                   >
                     <Link onClick={() => router.push(`${item.url}`)}>
                       Procitaj tekst

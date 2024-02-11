@@ -44,7 +44,7 @@ const CatalogueItem = ({
   const [isOpen, setIsOpen] = useState(false);
   const [images, setImages] = useState<ReactImageGalleryItem[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
-
+  const [selectedColor, setSelectedColor] = useState<string>("")
 
 
   useEffect(() => {
@@ -57,9 +57,12 @@ const CatalogueItem = ({
         }
       )
     );
+    setSelectedColor(catalogue.catalogue_variants[0]?.color)
   }, [catalogue]);
 
   if (!catalogue) return <>{"no catalogue"}</>;
+
+  const {code} = catalogue;
 
   const {
     model,
@@ -187,6 +190,14 @@ const CatalogueItem = ({
               >
                 <Typography variant="body2">Proizvodjac</Typography>
                 <Typography variant="body2">{manufacturer}</Typography>
+              </Stack>
+              <Divider />
+              <Stack
+                direction="row"
+                sx={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <Typography variant="body2">Šifra</Typography>
+                <Typography variant="body2">{code}</Typography>
               </Stack>
               <Divider />
               <Stack
@@ -384,8 +395,8 @@ const CatalogueItem = ({
                     <CardContent
                       sx={{ display: "flex", justifyContent: "center" }}
                     >
-                      <Stack>
-                        <Typography variant="h6" textAlign={"center"}>
+                      <Stack gap={2}>
+                        <Typography variant="h6">
                           {characteristic.title}
                         </Typography>
                         <Typography variant="body2" textAlign={"justify"}>
@@ -403,6 +414,7 @@ const CatalogueItem = ({
       <InquiryModal  
         open={dialogOpen}
         handleClose={() => setDialogOpen(false)}
+        catalogue={{...catalogue, color: selectedColor, model: model,}}
       />
     </>
   );

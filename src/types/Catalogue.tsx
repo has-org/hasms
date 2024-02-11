@@ -39,8 +39,11 @@ export type CatalogueVariants = {
 
 export type ICatalogue = {
   id: string;
+  code: string;
   name: string;
   type: string;
+  color?: string;
+  model?: string;
   catalogue_variants: CatalogueVariants[];
   catalogue_details: CatalogueDetails[];
   catalogue_characteristics: CatalogueCharacteristics[];

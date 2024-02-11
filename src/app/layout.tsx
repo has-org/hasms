@@ -5,6 +5,7 @@ import Main from "@/components/layouts/main/Main";
 import Box from "@mui/system/Box/";
 import Footer from "@/components/layouts/main/Footer";
 import ThemeProvider from "@/theme";
+import SnackbarProvider from "@/components/snackbar/SnackbarProvider";
 
 export default function RootLayout({
   children,
@@ -17,6 +18,7 @@ export default function RootLayout({
         <AppRouterCacheProvider >
           <ThemeProvider>
             <CartProvider>
+              <SnackbarProvider>
               <Box
                 sx={{
                   display: "flex",
@@ -39,6 +41,7 @@ export default function RootLayout({
 
                 <Footer />
               </Box>
+              </SnackbarProvider>
             </CartProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>

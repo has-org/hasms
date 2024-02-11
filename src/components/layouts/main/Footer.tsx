@@ -150,7 +150,6 @@ const LINKS = [
       { name: "Naziv: 'MOTO SHOP 7 D.O.O' ", href: "#", icon: "" },
       { name: "JIB: 4402922760000", href: "#", icon: "" },
       { name: "PDV: 402922760000", href: "#", icon: "" },
-      { name: "PDV: 402922760000", href: "#", icon: "" },
       { name: "Adresa: Jesenjinova 14, 78000 Banja Luka", href: "#", icon: "" },
     ],
   },
@@ -166,7 +165,7 @@ export default function Footer() {
   return (
     <>
       <Box sx={{ backgroundColor: "background.paper", width: "100%" }}>
-        <Container maxWidth="xl" >
+        <Container maxWidth="xl">
           <Grid container columnSpacing={2}>
             {LINKS.map((list, index) => (
               <Grid xs={12} md={3} key={index}>
@@ -193,7 +192,7 @@ export default function Footer() {
                           color: "primary.main",
                         }}
                       />
-                      {link.name}
+                      <Typography variant="body2">{link.name}</Typography>
                     </Link>
                   ))}
                 </Stack>

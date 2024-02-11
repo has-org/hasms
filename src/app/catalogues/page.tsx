@@ -37,18 +37,19 @@ export default async function CataloguesPage({}: any) {
                     alignItems: "center",
                   }}
                 >
-                  <Card
-                    sx={{
-                      padding: "4px",
-                    }}
+                  <Link
+                    href={`/catalogues/${catalogue.id}`}
+                    style={{ textDecoration: "none" }}
                   >
-                    <Typography textAlign="center" variant="h6">
-                      {catalogue.name}
-                    </Typography>
-                    <Link
-                      href={`/catalogues/${catalogue.id}`}
-                      style={{ textDecoration: "none" }}
+                    <Card
+                      sx={{
+                        padding: "4px",
+                      }}
                     >
+                      <Typography textAlign="center" variant="h6">
+                        {catalogue.name}
+                      </Typography>
+
                       <CardMedia
                         sx={{
                           mt: 2,
@@ -74,8 +75,8 @@ export default async function CataloguesPage({}: any) {
                           alt="a"
                         />
                       </CardMedia>
-                    </Link>
-                  </Card>
+                    </Card>
+                  </Link>
                 </Grid>
               );
             })}

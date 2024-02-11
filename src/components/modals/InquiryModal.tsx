@@ -1,3 +1,4 @@
+"use client";
 import {
   Dialog,
   DialogTitle,
@@ -14,6 +15,9 @@ import { object, string } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import Iconify from "../iconify/Iconify";
+import { useSnackbar } from "notistack";
+import axios from "@/utils/axios";
+import { ICatalogue } from "@/types/Catalogue";
 
 const orderInquirySchema = object({
   first_name: string().min(1, "First name is required").max(100),
@@ -23,19 +27,32 @@ const orderInquirySchema = object({
   city: string().min(1, "City is required").max(100),
   phone_number: string().min(1, "Phone number is required").max(100),
   email: string().min(1, "Email is required").max(100),
-  question: string().min(1, "Question is required").max(1000),
+  message: string().min(1, "Message is required").max(1000),
 });
 
 export const InquiryModal = ({
   open,
   handleClose,
+  catalogue,
 }: {
   open: boolean;
   handleClose: VoidFunction;
+  catalogue?: ICatalogue;
 }) => {
+  const { enqueueSnackbar } = useSnackbar();
+
   const methods = useForm<any>({
     resolver: zodResolver(orderInquirySchema),
-    defaultValues: {},
+    defaultValues: {
+      first_name: "",
+      last_name: "",
+      country: "",
+      address: "",
+      city: "",
+      phone_number: "",
+      email: "",
+      message: "",
+    },
   });
   const { reset, handleSubmit } = methods;
 
@@ -43,7 +60,29 @@ export const InquiryModal = ({
     values: any,
     e?: React.BaseSyntheticEvent
   ) => {
-    console.log(values);
+    if (catalogue) {
+      const preparedObject = {
+        ...values,
+        code: catalogue.code,
+        color: catalogue.color,
+        model: catalogue.model,
+      };
+      const result = await axios.post("/sendInquiryProduct/", preparedObject);
+      if (result.status === 200) {
+        reset();
+        handleClose();
+        return enqueueSnackbar("Upit poslan uspješno", { variant: "success" });
+      }
+      return enqueueSnackbar("Upit nije poslan", { variant: "error" });
+    }
+
+    const result = await axios.post("/sendInquiry/", values);
+    if (result.status === 200) {
+      reset();
+      handleClose();
+      return enqueueSnackbar("Upit poslan uspješno", { variant: "success" });
+    }
+    return enqueueSnackbar("Upit nije poslan", { variant: "error" });
   };
 
   return (
@@ -70,10 +109,23 @@ export const InquiryModal = ({
           minWidth: "1200px",
           p: 5,
           backgroundColor: (theme) => theme.palette.primary.darker,
+          scrollbarWidth: "0.2em",
+          "&::-webkit-scrollbar": {
+            width: "0.2em",
+          },
+          "&::-webkit-scrollbar-track": {
+            background: "#f1f1f1",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "#888",
+          },
+          "&::-webkit-scrollbar-thumb:hover": {
+            background: "#555",
+          },
         }}
       >
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing={2}>
+          <Stack spacing={1}>
             <Stack direction={"row"} spacing={3}>
               <Stack sx={{ width: "100%" }}>
                 <InputLabel htmlFor="first_name" required>
@@ -83,7 +135,6 @@ export const InquiryModal = ({
                   id="first_name"
                   name="first_name"
                   type="text"
-                  margin="dense"
                   variant="filled"
                   placeholder="Ime"
                   autoFocus
@@ -101,7 +152,6 @@ export const InquiryModal = ({
                   autoFocus
                   fullWidth
                   type="text"
-                  margin="dense"
                   placeholder="Prezime"
                   variant="filled"
                 />
@@ -112,11 +162,10 @@ export const InquiryModal = ({
             </InputLabel>
             <RHFTextField
               id="country"
-              name="država"
+              name="country"
               autoFocus
               fullWidth
               type="text"
-              margin="dense"
               placeholder="Država"
               variant="filled"
             />
@@ -130,7 +179,6 @@ export const InquiryModal = ({
               autoFocus
               fullWidth
               type="text"
-              margin="dense"
               placeholder="Adresa"
               variant="filled"
             />
@@ -143,7 +191,6 @@ export const InquiryModal = ({
               name="city"
               autoFocus
               type="text"
-              margin="dense"
               placeholder="Grad"
               variant="filled"
             />
@@ -157,7 +204,6 @@ export const InquiryModal = ({
               autoFocus
               fullWidth
               type="text"
-              margin="dense"
               placeholder="Broj telefona"
               variant="filled"
             />
@@ -171,26 +217,30 @@ export const InquiryModal = ({
               autoFocus
               fullWidth
               type="text"
-              margin="dense"
               placeholder="Email adresa"
               variant="filled"
             />
-            <InputLabel htmlFor="question" required>
+            <InputLabel htmlFor="message" required>
               Pitanje
             </InputLabel>
             <RHFTextField
-              id="question"
-              name="question"
+              id="message"
+              name="message"
               autoFocus
               fullWidth
               multiline
               type="text"
-              margin="dense"
               placeholder="Pitanje"
               variant="filled"
             />
           </Stack>
-          <Button variant="contained" fullWidth size="large" sx={{ mt: 5 }}>
+          <Button
+            variant="contained"
+            fullWidth
+            size="large"
+            sx={{ mt: 2 }}
+            type="submit"
+          >
             Zatraži ponudu
           </Button>
         </FormProvider>

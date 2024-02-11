@@ -1,5 +1,5 @@
 import { Variant } from "./Variant";
-export type Product = {
+export type IProduct = {
   
   id: number;
   created_at: string;
