@@ -11,13 +11,13 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from "@mui/material";
-import { Product } from "@/types/Product";
 import { CartContext } from "@/context/CartContext/CartContext";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { IProduct } from "@/types/Product";
 const sizes = ["S", "M", "L", "XL"];
 
-const ItemList = ({ items }: { items: Product[] }) => {
+const ItemList = ({ items }: { items: IProduct[] }) => {
   return (
     <Grid container spacing={4}>
       {items?.map((item, index) => (
@@ -29,7 +29,7 @@ const ItemList = ({ items }: { items: Product[] }) => {
   );
 };
 
-const RenderItem = ({ item }: { item: Product }) => {
+const RenderItem = ({ item }: { item: IProduct }) => {
   const [selectedSize, setSelectedSize] = useState(null);
   const { items, addToCart } = useContext(CartContext);
   const router = useRouter();

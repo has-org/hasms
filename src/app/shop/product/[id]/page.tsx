@@ -1,7 +1,5 @@
 import { ProductDetails } from "@/components/ProductDetails";
-import { ProductThumbnailsList } from "@/components/ProductThumbnailsList";
-import { Product as ProductType } from "@/types/Product";
-import Image from "next/image";
+import { IProduct } from "@/types/Product";
 
 async function getProduct(id: number) {
   try {
@@ -26,7 +24,7 @@ async function getProduct(id: number) {
 }
 
 export default async function Product({ params: { id } }: any) {
-  const product: ProductType = await getProduct(id);
+  const product: IProduct = await getProduct(id);
 
   if (!product) {
     return <div>Product not found</div>;

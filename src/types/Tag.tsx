@@ -1,5 +1,5 @@
 import { Blog } from "./Blog";
-import { Product } from "./Product";
+import { IProduct } from "./Product";
 import { Variant } from "./Variant";
 
 export interface Tag {
@@ -7,7 +7,7 @@ export interface Tag {
     created_at: Date;
     updated_at: Date;
     name: string;
-    products: Product[];
+    products: IProduct[];
     variant?: Variant;
     variant_id?: number;
     blogs: Blog[];

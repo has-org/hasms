@@ -1,5 +1,4 @@
 "use client";
-import { Product } from "@/types/Product";
 import { Size } from "@/types/Size";
 import { Variant } from "@/types/Variant";
 import { Color } from "@/types/Color";
@@ -8,6 +7,7 @@ import { CartContext } from "./CartContext";
 import { cartReducer } from "./CartReducer";
 import { v4 as uuidv4 } from "uuid";
 import axiosInstance from "@/utils/axios";
+import { IProduct } from "@/types/Product";
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(cartReducer, {
     items: [],
@@ -92,7 +92,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   const removeFromCart = (id: number) => {
     let updatedCart;
-    const itemExists = state.items.find((prod: Product) => prod.id === id);
+    const itemExists = state.items.find((prod: IProduct) => prod.id === id);
     const itemHasQuantity = itemExists.variants[0]?.quantity > 1;
 
     if (itemExists) {

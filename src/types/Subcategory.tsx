@@ -1,10 +1,10 @@
 import { Category } from "./Category";
-import { Product } from "./Product";
+import { IProduct } from "./Product";
 
 export interface Subcategory {
     id: number;
     name?: string;
     category_id: number;
     category: Category;
-    products: Product[];
+    products: IProduct[];
   }

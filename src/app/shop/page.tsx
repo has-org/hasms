@@ -1,4 +1,3 @@
-import { Product as ProductType } from "@/types/Product";
 import { Button, Card, Container, Stack, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import Image, { StaticImageData } from "next/image";

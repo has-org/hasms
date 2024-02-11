@@ -1,4 +1,4 @@
-import { Product } from "./Product";
+import { IProduct } from "./Product";
 
 export interface ProductInventory {
     id: number;
@@ -6,6 +6,6 @@ export interface ProductInventory {
     updated_at: Date;
     available: boolean;
     quantity: number;
-    product?: Product;
+    product?: IProduct;
     product_id: number;
   }

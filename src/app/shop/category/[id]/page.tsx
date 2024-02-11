@@ -1,11 +1,10 @@
-import { StaticImageData } from "next/image";
 import { Category as CategoryType } from "@/types/Category";
-import { Product as ProductType } from "@/types/Product";
 import Toolbar from "@/components/sections/shop/toolbar/Toolbar";
 import Banner from "@/components/sections/shop/banner/Banner";
 import ItemList from "@/components/sections/shop/item-list/ItemList";
 
 import styles from "./styles.module.css";
+import { IProduct } from "@/types/Product";
 
 async function getCategory(id: number) {
   try {
@@ -51,7 +50,7 @@ async function getCategoryProducts(id: number) {
 
 export default async function ShopCategory({ params: { id } }: any) {
   const category: CategoryType = await getCategory(id);
-  const products: ProductType[] = await getCategoryProducts(id);
+  const products: IProduct[] = await getCategoryProducts(id);
   if (!category) return <div>catalogue not found</div>;
 
 

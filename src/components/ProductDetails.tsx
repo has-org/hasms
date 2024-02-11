@@ -1,7 +1,5 @@
 'use client'
-import { Product } from "@/types/Product";
-import Image, { StaticImageData } from "next/image";
-import Link from "next/link";
+
 import { ColoredDot } from "@/components/ColoredDot";
 import { Color as ColorType } from "@/types/Color";
 import { Box, Button, Typography } from "@mui/material";
@@ -10,9 +8,10 @@ import { useContext, useState } from "react";
 import ReactSelect from "react-select";
 import { CartContext } from "@/context/CartContext/CartContext";
 import { Controller, SubmitHandler, useForm, useFormContext } from "react-hook-form";
+import { IProduct } from "@/types/Product";
 
 type ProductProps = {
-    product: Product;
+    product: IProduct;
 }
 
 const Text = styled(Typography)(({ theme }) => ({
