@@ -17,7 +17,6 @@ import ImageGallery, { ReactImageGalleryItem } from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ProductViewer2D from "../../../productViewer2D";
 
-
 import Link from "next/link";
 import { ICatalogue } from "@/types/Catalogue";
 import Carousel from "react-multi-carousel";
@@ -32,8 +31,6 @@ const images360 = [
   // ... add more image paths for each angle
 ];
 
-
-
 const CatalogueItem = ({
   catalogue,
   deviceType,
@@ -44,8 +41,7 @@ const CatalogueItem = ({
   const [isOpen, setIsOpen] = useState(false);
   const [images, setImages] = useState<ReactImageGalleryItem[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [selectedColor, setSelectedColor] = useState<string>("")
-
+  const [selectedColor, setSelectedColor] = useState<string>("");
 
   useEffect(() => {
     setImages(
@@ -57,12 +53,12 @@ const CatalogueItem = ({
         }
       )
     );
-    setSelectedColor(catalogue.catalogue_variants[0]?.color)
+    setSelectedColor(catalogue.catalogue_variants[0]?.color);
   }, [catalogue]);
 
   if (!catalogue) return <>{"no catalogue"}</>;
 
-  const {code} = catalogue;
+  const { code } = catalogue;
 
   const {
     model,
@@ -213,7 +209,6 @@ const CatalogueItem = ({
                 sx={{ display: "flex", justifyContent: "space-between" }}
               >
                 <Typography variant="body2">Izaberi boju</Typography>
-               
               </Stack>
               <Divider />
               <Stack
@@ -284,7 +279,7 @@ const CatalogueItem = ({
                     Vec od
                   </Typography>
                   <Typography color="primary.main" variant="h3">
-                    {price} KM
+                    {price.toLocaleString()} KM
                   </Typography>
                 </Stack>
               </Box>
@@ -320,15 +315,17 @@ const CatalogueItem = ({
                     Specifikacije
                   </Button>
                 </Link>
-                <Link
-                  href={`${additional_equipment_url}`}
-                  style={{ textDecoration: "none", width: "100%" }}
-                  target="_blank"
-                >
-                  <Button variant="outlined" fullWidth>
-                    Dodatna oprema
-                  </Button>
-                </Link>
+                {additional_equipment_url && (
+                  <Link
+                    href={`${additional_equipment_url}`}
+                    style={{ textDecoration: "none", width: "100%" }}
+                    target="_blank"
+                  >
+                    <Button variant="outlined" fullWidth>
+                      Dodatna oprema
+                    </Button>
+                  </Link>
+                )}
               </Stack>
             </Stack>
           </Grid>
@@ -411,10 +408,10 @@ const CatalogueItem = ({
           </Grid>
         </Grid>
       </Container>
-      <InquiryModal  
+      <InquiryModal
         open={dialogOpen}
         handleClose={() => setDialogOpen(false)}
-        catalogue={{...catalogue, color: selectedColor, model: model,}}
+        catalogue={{ ...catalogue, color: selectedColor, model: model }}
       />
     </>
   );

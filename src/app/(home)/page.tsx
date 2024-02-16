@@ -226,6 +226,24 @@ export default async function HomePage() {
       </section>
 
       <section>
+        <Stack display="flex" justifyContent={"center"}>
+          <Typography textAlign={"center"} variant="h2">
+            Cjenovnici
+          </Typography>
+          <Button>
+            <Link
+              href={"/priceCatalogue"}
+              style={{ textDecoration: "none", width: "100%" }}
+            >
+              <Typography variant="h6" color={"white"}>
+                Pogledajte kompletnu ponudu cijena
+              </Typography>
+            </Link>
+          </Button>
+        </Stack>
+      </section>
+
+      <section>
         <Box
           sx={{
             position: "relative",

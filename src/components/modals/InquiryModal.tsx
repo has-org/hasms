@@ -18,6 +18,7 @@ import Iconify from "../iconify/Iconify";
 import { useSnackbar } from "notistack";
 import axios from "@/utils/axios";
 import { ICatalogue } from "@/types/Catalogue";
+import Scrollbar from "../scrollbar/Scrollbar";
 
 const orderInquirySchema = object({
   first_name: string().min(1, "First name is required").max(100),
@@ -109,141 +110,138 @@ export const InquiryModal = ({
           minWidth: "1200px",
           p: 5,
           backgroundColor: (theme) => theme.palette.primary.darker,
-          scrollbarWidth: "0.2em",
-          "&::-webkit-scrollbar": {
-            width: "0.2em",
-          },
-          "&::-webkit-scrollbar-track": {
-            background: "#f1f1f1",
-          },
-          "&::-webkit-scrollbar-thumb": {
-            backgroundColor: "#888",
-          },
-          "&::-webkit-scrollbar-thumb:hover": {
-            background: "#555",
-          },
         }}
       >
-        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing={1}>
-            <Stack direction={"row"} spacing={3}>
-              <Stack sx={{ width: "100%" }}>
-                <InputLabel htmlFor="first_name" required>
-                  Ime
-                </InputLabel>
-                <RHFTextField
-                  id="first_name"
-                  name="first_name"
-                  type="text"
-                  variant="filled"
-                  placeholder="Ime"
-                  autoFocus
-                  fullWidth
-                  required
-                />
+        <Scrollbar sx={{maxHeight: '700px'}} >
+          <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+            <Stack spacing={1}>
+              <Stack direction={"row"} spacing={3}>
+                <Stack sx={{ width: "100%" }}>
+                  <InputLabel htmlFor="first_name" required>
+                    Ime
+                  </InputLabel>
+                  <RHFTextField
+                    id="first_name"
+                    name="first_name"
+                    type="text"
+                    variant="filled"
+                    placeholder="Ime"
+                    size="small"
+                    autoFocus
+                    fullWidth
+                    required
+                  />
+                </Stack>
+                <Stack sx={{ width: "100%" }}>
+                  <InputLabel htmlFor="last_name" required>
+                    Prezime
+                  </InputLabel>
+                  <RHFTextField
+                    id="last_name"
+                    name="last_name"
+                    autoFocus
+                    fullWidth
+                    size="small"
+                    type="text"
+                    placeholder="Prezime"
+                    variant="filled"
+                  />
+                </Stack>
               </Stack>
-              <Stack sx={{ width: "100%" }}>
-                <InputLabel htmlFor="last_name" required>
-                  Prezime
-                </InputLabel>
-                <RHFTextField
-                  id="last_name"
-                  name="last_name"
-                  autoFocus
-                  fullWidth
-                  type="text"
-                  placeholder="Prezime"
-                  variant="filled"
-                />
-              </Stack>
+              <InputLabel htmlFor="country" required>
+                Država
+              </InputLabel>
+              <RHFTextField
+                id="country"
+                name="country"
+                autoFocus
+                fullWidth
+                size="small"
+                type="text"
+                placeholder="Država"
+                variant="filled"
+              />
+
+              <InputLabel htmlFor="address" required>
+                Adresa
+              </InputLabel>
+              <RHFTextField
+                id="address"
+                name="address"
+                autoFocus
+                fullWidth
+                size="small"
+                type="text"
+                placeholder="Adresa"
+                variant="filled"
+              />
+
+              <InputLabel htmlFor="city" required>
+                Grad
+              </InputLabel>
+              <RHFTextField
+                id="city"
+                name="city"
+                autoFocus
+                size="small"
+                type="text"
+                placeholder="Grad"
+                variant="filled"
+              />
+
+              <InputLabel htmlFor="phone_number" required>
+                Broj telefona
+              </InputLabel>
+              <RHFTextField
+                id="phone_number"
+                name="phone_number"
+                autoFocus
+                fullWidth
+                size="small"
+                type="text"
+                placeholder="Broj telefona"
+                variant="filled"
+              />
+
+              <InputLabel htmlFor="email" required>
+                Email
+              </InputLabel>
+              <RHFTextField
+                id="email"
+                name="email"
+                autoFocus
+                fullWidth
+                size="small"
+                type="text"
+                placeholder="Email adresa"
+                variant="filled"
+              />
+              <InputLabel htmlFor="message" required>
+                Pitanje
+              </InputLabel>
+              <RHFTextField
+                id="message"
+                name="message"
+                autoFocus
+                fullWidth
+                multiline
+                size="small"
+                type="text"
+                placeholder="Pitanje"
+                variant="filled"
+              />
             </Stack>
-            <InputLabel htmlFor="country" required>
-              Država
-            </InputLabel>
-            <RHFTextField
-              id="country"
-              name="country"
-              autoFocus
+            <Button
+              variant="contained"
               fullWidth
-              type="text"
-              placeholder="Država"
-              variant="filled"
-            />
-
-            <InputLabel htmlFor="address" required>
-              Adresa
-            </InputLabel>
-            <RHFTextField
-              id="address"
-              name="address"
-              autoFocus
-              fullWidth
-              type="text"
-              placeholder="Adresa"
-              variant="filled"
-            />
-
-            <InputLabel htmlFor="city" required>
-              Grad
-            </InputLabel>
-            <RHFTextField
-              id="city"
-              name="city"
-              autoFocus
-              type="text"
-              placeholder="Grad"
-              variant="filled"
-            />
-
-            <InputLabel htmlFor="phone_number" required>
-              Broj telefona
-            </InputLabel>
-            <RHFTextField
-              id="phone_number"
-              name="phone_number"
-              autoFocus
-              fullWidth
-              type="text"
-              placeholder="Broj telefona"
-              variant="filled"
-            />
-
-            <InputLabel htmlFor="email" required>
-              Email
-            </InputLabel>
-            <RHFTextField
-              id="email"
-              name="email"
-              autoFocus
-              fullWidth
-              type="text"
-              placeholder="Email adresa"
-              variant="filled"
-            />
-            <InputLabel htmlFor="message" required>
-              Pitanje
-            </InputLabel>
-            <RHFTextField
-              id="message"
-              name="message"
-              autoFocus
-              fullWidth
-              multiline
-              type="text"
-              placeholder="Pitanje"
-              variant="filled"
-            />
-          </Stack>
-          <Button
-            variant="contained"
-            fullWidth
-            size="large"
-            sx={{ mt: 2 }}
-            type="submit"
-          >
-            Zatraži ponudu
-          </Button>
-        </FormProvider>
+              size="large"
+              sx={{ mt: 2 }}
+              type="submit"
+            >
+              Zatraži ponudu
+            </Button>
+          </FormProvider>
+        </Scrollbar>
       </DialogContent>
     </Dialog>
   );
