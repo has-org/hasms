@@ -1,6 +1,22 @@
-export async function getBlogs() {
+export async function getPosts() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/blogs`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/posts`, {
+      method: "GET",
+      next: {
+        revalidate: 1,
+      },
+    });
+    if (res.status !== 200) {
+      throw new Error("Failed to fetch data");
+    } 
+    return res.json();
+  } catch (e) {
+    return null;
+  }
+}
+export async function getPost(id: string) {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/post/${id}`, {
       method: "GET",
       next: {
         revalidate: 1,

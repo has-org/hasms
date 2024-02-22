@@ -35,7 +35,7 @@ export default async function CataloguesPage({}: any) {
             <ListItem>
               <ListItemText>
                 <Link
-                  href="https://s3.villa-seaview.online/specifications/cjenovnik%20motori%202024.pdf"
+                  href="https://s3.villa-seaview.online/pdfs/cjenovnik%20motori%202024.pdf"
                   target="_blank"
                   style={{ textDecoration: "none", color: "white" }}
                 >
