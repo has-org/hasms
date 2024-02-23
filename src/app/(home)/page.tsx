@@ -1,6 +1,6 @@
 import { Cooperator as CooperatorType } from "@/types/Cooperator";
 
-import { getBlogs, getCatalogues, getCooperators } from "@/services/apiService";
+import { getCatalogues, getCooperators, getPosts } from "@/services/apiService";
 import HomeTrending from "@/components/sections/home/home-trending";
 import HomeBlog from "@/components/sections/home/home-blog";
 import UAParser from "ua-parser-js";
@@ -56,6 +56,7 @@ export default async function HomePage() {
   const userAgent = await getUserAgent();
   const catalogues: ICatalogue[] = await getCatalogues();
   const cooperators: CooperatorType[] = await getCooperators();
+  const posts = await getPosts();
 
   const discount = {
     name: "kacige 20%",
@@ -173,7 +174,7 @@ export default async function HomePage() {
             Najnovije sa bloga
           </Typography>
           <Container maxWidth="xl" sx={{ pt: 2 }}>
-            <HomeBlog />
+            <HomeBlog posts={posts} />
           </Container>
         </Box>
       </section>

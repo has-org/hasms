@@ -16,7 +16,7 @@ export async function getPosts() {
 }
 export async function getPost(id: string) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/post/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/posts/${id}`, {
       method: "GET",
       next: {
         revalidate: 1,

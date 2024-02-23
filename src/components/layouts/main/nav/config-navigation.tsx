@@ -269,7 +269,7 @@ const navConfig = [
   },
   {
     title: "O nama",
-    path: "/",
+    path: "/about-us",
   },
   {
     title: "Kontakt",

@@ -1,7 +1,7 @@
 import { Color } from "./Color";
 import { VariantImage } from "./VariantImage";
 import { Size } from "./Size";
-import { Tag } from "./Tag";
+import { Tag } from "./ITag";
 import { IProduct } from "./Product";
 
 export interface Variant {

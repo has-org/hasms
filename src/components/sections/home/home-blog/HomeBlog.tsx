@@ -1,6 +1,7 @@
 "use client";
 
 import useResponsive from "@/hooks/useResponsive";
+import { IPost } from "@/types/IPost";
 import {
   Box,
   Grid,
@@ -19,33 +20,13 @@ import { useRouter } from "next/navigation";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const items = [
-  {
-    title: "Nova Yamaha R5J - Da li vrijedi kupiti?",
-    image: "/images/yamahablog1.png",
-    created_at: "12.12.2021",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    tags: [{ name: "MOTORI" }, { name: "BRZINA" }, { name: "RACER" }],
-    url: "/blog/1",
-  },
-  {
-    title: "Yamaha ponovila revoluciju u svetu nautike",
-    image: "/images/yamahablog2.png",
-    created_at: "12.12.2021",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    tags: [{ name: "MOTORI" }],
-    url: "/blog/2",
-  },
-  {
-    title: "Sve što treba da znate o MotoGP-u",
-    image: "/images/yamahablog3.png",
-    created_at: "12.12.2021",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    url: "/blog/3",
-  },
-];
-
-const HomeBlog = ({ deviceType }: any) => {
+const HomeBlog = ({
+  deviceType,
+  posts,
+}: {
+  deviceType?: any;
+  posts: IPost[];
+}) => {
   const isDesktop = useResponsive("up", "lg");
   const responsive = {
     desktop: {
@@ -84,24 +65,23 @@ const HomeBlog = ({ deviceType }: any) => {
       arrows={false}
       renderButtonGroupOutside={true}
     >
-      {items?.map((item, index) => (
+      {posts?.map((item, index) => (
         <Card key={index} sx={{ mx: 5, minHeight: "500px", maxWidth: "400px" }}>
           <CardMedia>
             <Box
               sx={{
+                position: "relative",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
-                height: "auto",
+                height: "250px",
               }}
             >
               <Image
-                src={item.image}
-                width={768}
-                height={260}
-                style={{ width: "1024px", height: "auto" }}
-                sizes="100vw, 30vw"
+                src={item.thumbnail}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 alt="Motoshop 7"
               />
             </Box>
@@ -109,19 +89,19 @@ const HomeBlog = ({ deviceType }: any) => {
           <CardContent sx={{ display: "flex" }}>
             <Stack spacing={0.5}>
               <Typography variant="body2">{item.created_at}</Typography>
-              <Typography variant="h4">{item.title}</Typography>
-              <Typography variant="body2">{item.description}</Typography>
+              <Typography variant="h4">{item.short_title}</Typography>
+              <Typography variant="body2">{item.short_description}</Typography>
 
               <Stack direction="row" pt={3} alignItems="center" spacing={2}>
                 {item?.tags?.slice(0, 2)?.map((tag: any, index: number) => (
                   <Chip key={index} label={tag.name} color="info" />
                 ))}
-                <Box sx={{display: 'flex', flex: 1, justifyContent: 'end'}}>
+                <Box sx={{ display: "flex", flex: 1, justifyContent: "end" }}>
                   <Typography
                     color="primary.main"
-                    sx={{ textDecorationColor: "primary.main",}}
+                    sx={{ textDecorationColor: "primary.main" }}
                   >
-                    <Link onClick={() => router.push(`${item.url}`)}>
+                    <Link onClick={() => router.push(`/posts/${item.id}`)}>
                       Procitaj tekst
                     </Link>
                   </Typography>

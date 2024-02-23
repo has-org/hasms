@@ -1,8 +1,8 @@
-import { Blog } from "./Blog";
+import { IPost } from "./IPost";
 import { IProduct } from "./Product";
 import { Variant } from "./Variant";
 
-export interface Tag {
+export interface ITag {
     id: number;
     created_at: Date;
     updated_at: Date;
@@ -10,6 +10,6 @@ export interface Tag {
     products: IProduct[];
     variant?: Variant;
     variant_id?: number;
-    blogs: Blog[];
+    posts: IPost[];
   }
   
