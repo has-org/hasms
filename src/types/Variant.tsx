@@ -1,7 +1,7 @@
 import { Color } from "./Color";
 import { VariantImage } from "./VariantImage";
 import { Size } from "./Size";
-import { Tag } from "./ITag";
+import { ITag } from "./ITag";
 import { IProduct } from "./Product";
 
 export interface Variant {
@@ -12,6 +12,6 @@ export interface Variant {
   images: VariantImage[];
   colors: Color[];
   sizes: Size[];
-  tags: Tag[];
+  tags: ITag[];
   variantPrice: string;
 }
