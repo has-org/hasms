@@ -20,9 +20,7 @@ import ProductViewer2D from "../../../productViewer2D";
 import Link from "next/link";
 import { ICatalogue } from "@/types/Catalogue";
 import Carousel from "react-multi-carousel";
-import { CustomButtonGroupAsArrows } from "../../home/home-trending/HomeTrending";
 import Image from "next/image";
-import "react-multi-carousel/lib/styles.css";
 import { InquiryModal } from "@/components/modals/InquiryModal";
 
 const images360 = [
@@ -48,8 +46,8 @@ const CatalogueItem = ({
       catalogue.catalogue_variants[0]?.catalogue_variant_images[0]?.images?.map(
         (image) => {
           const imageUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online/images/${image}&w=1024&q=100`;
-          const thumbnailUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online/images/${image}&w=400&q=100`;
-          return { original: imageUrl, thumbnail: imageUrl };
+          const thumbnailUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online/images/${image}&w=1024&q=100`;
+          return { original: imageUrl, thumbnail: thumbnailUrl, originalHeight: 450, originalWidth: 1024,thumbnailHeight: 80};
         }
       )
     );
@@ -105,11 +103,9 @@ const CatalogueItem = ({
             xs={12}
             md={6}
             lg={6}
-            xl={4}
+            xl={5}
             sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
+
             }}
           >
             {/* <ProductViewer2D images={images360} /> */}
@@ -119,11 +115,11 @@ const CatalogueItem = ({
               autoPlay={false}
               showPlayButton={false}
               showFullscreenButton={false}
-              showNav={false}
+              showNav={true}
               additionalClass="image-gallery-overwrite"
             />
           </Grid>
-          <Grid xs={12} md={6} lg={6} xl={5}>
+          <Grid xs={12} md={6} lg={6} xl={7}>
             <Stack>
               <Typography variant="h2">{catalogue?.name}</Typography>
               <Typography variant="h4" color="primary.light">
@@ -259,7 +255,7 @@ const CatalogueItem = ({
               </Stack>
             </Stack>
           </Grid>
-          <Grid xs={12} md={6} lg={6} xl={3} order={{ md: 3, lg: 3, xl: 0 }}>
+          <Grid xs={12} md={6} lg={6} xl={3}>
             <Stack spacing={2}>
               <Box
                 sx={{

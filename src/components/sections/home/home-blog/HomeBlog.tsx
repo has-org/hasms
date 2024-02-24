@@ -4,11 +4,8 @@ import useResponsive from "@/hooks/useResponsive";
 import { IPost } from "@/types/IPost";
 import {
   Box,
-  Grid,
   Stack,
-  Button,
   Card,
-  Container,
   Typography,
   Chip,
   Link,
