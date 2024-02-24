@@ -56,7 +56,7 @@ const CatalogueItem = ({
 
   if (!catalogue) return <>{"no catalogue"}</>;
 
-  const { code } = catalogue;
+  const { code, state } = catalogue;
 
   const {
     model,
@@ -99,15 +99,7 @@ const CatalogueItem = ({
     <>
       <Container maxWidth="xl">
         <Grid container spacing={5}>
-          <Grid
-            xs={12}
-            md={6}
-            lg={6}
-            xl={5}
-            sx={{
-
-            }}
-          >
+          <Grid xs={12} md={6} lg={6} xl={5} sx={{}}>
             {/* <ProductViewer2D images={images360} /> */}
 
             <ImageGallery
@@ -237,6 +229,14 @@ const CatalogueItem = ({
               >
                 <Typography variant="body2">Predjenih kilometara</Typography>
                 <Typography variant="body2">{distance_traveled}</Typography>
+              </Stack>
+              <Divider />
+              <Stack
+                direction="row"
+                sx={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <Typography variant="body2">Stanje</Typography>
+                <Typography variant="body2">{state}</Typography>
               </Stack>
               <Divider />
 
