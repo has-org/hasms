@@ -11,7 +11,7 @@ const navConfig = [
     path: "/",
   },
   {
-    title: "Shop",
+    title: "Prodavnica",
     path: "/shop",
   },
   // {

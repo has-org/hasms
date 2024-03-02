@@ -1,6 +1,6 @@
 import { IPost } from "./IPost";
-import { IProduct } from "./Product";
-import { Variant } from "./Variant";
+import { IProduct } from "./IProduct";
+import { Variant } from "./IVariant";
 
 export interface ITag {
     id: number;

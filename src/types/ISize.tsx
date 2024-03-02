@@ -1,10 +1,10 @@
-import { Variant } from "./Variant";
+import { IVariant } from "./IVariant";
 
-export interface Size {
+export interface ISize {
     id: number;
     created_at?: Date;
     updated_at?: Date;
     name: string;
-    variants?: Variant[];
+    variants?: IVariant[];
     is_available: Boolean;
   }

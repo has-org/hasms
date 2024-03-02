@@ -1,4 +1,4 @@
-import { Category } from "./Category";
+import { Category } from "./ICategory";
 import { NavigationMenuItem } from "./NavigationMenuItem";
 
 export interface NavigationMenu {

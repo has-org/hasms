@@ -1,71 +1,79 @@
-import { Button, Card, Container, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, Container, Stack, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import Image, { StaticImageData } from "next/image";
-
-async function getCategories() {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/categories`, {
-      method: "GET",
-      cache: "no-store",
-    });
-    if (res.status !== 200) {
-      throw new Error("Failed to fetch data");
-    }
-    return res.json();
-  } catch (e) {
-    return null;
-  }
-}
-
-export type ICategory = {
-  id: number;
-  name: string;
-  image: string;
-};
+import Link from "next/link";
 
 export default async function Shop() {
-  const categories = await getCategories();
-  if (!categories) return <div>Categories not found</div>;
 
   return (
     <>
       <Container maxWidth="xl">
-        <Grid container spacing={2}>
-          {categories.map((category: ICategory, index: number) => {
-            return (
-              <Grid xs={12} md={4} key={index}>
-                <Card sx={{ padding: 2 }}>
-                  <Stack spacing={2}>
-                    <Typography textAlign={"center"} variant="h3">
-                      {category.name}
-                    </Typography>
-
-                    <Stack
-                      direction="row"
-                      display={"flex"}
-                      justifyContent={"center"}
-                    >
-                      <Image
-                        src={category?.image}
-                        width={500}
-                        height={500}
-                        alt="asd"
-                        style={{ borderRadius: "12px" }}
-                      />
-                    </Stack>
-                    <Button
-                      variant="outlined"
-
-                    >
-                      Pogledaj
-                    </Button>
-                  </Stack>
-                </Card>
-              </Grid>
-            );
-          })}
+        <Typography variant="h3" textAlign={"center"}>
+          PRODAVNICA
+        </Typography>
+        <Grid container spacing={2} mt={5}>
+          <Grid sm={12} md={6} height="520px">
+            <Link href="/catalogues" style={{ textDecoration: "none" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
+                <Image
+                  src={"/images/catalogue_thumbnail.png"}
+                  fill
+                  alt="catalogue background"
+                />
+                <Typography
+                  variant="h6"
+                  sx={{
+                    zIndex: "100",
+                    position: "absolute",
+                    bottom: 20,
+                    left: 20,
+                    color: "white",
+                  }}
+                >
+                  Katalog
+                </Typography>
+              </Box>
+            </Link>
+          </Grid>
+          <Grid sm={12} md={6} height="520px">
+            <Link href="/shop/category" style={{ textDecoration: "none" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
+                <Image
+                  src={"/images/category_thumbnail.png"}
+                  fill
+                  alt="catalogue background"
+                />
+                <Typography
+                  variant="h6"
+                  sx={{
+                    zIndex: "100",
+                    position: "absolute",
+                    bottom: 20,
+                    left: 20,
+                    color: "white",
+                  }}
+                >
+                  Proizvodi
+                </Typography>
+              </Box>
+            </Link>
+          </Grid>
         </Grid>
-      </Container>{" "}
+      </Container>
     </>
   );
 }

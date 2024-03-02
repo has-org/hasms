@@ -1,13 +1,13 @@
 "use client";
-import { Size } from "@/types/Size";
-import { Variant } from "@/types/Variant";
+import { Size } from "@/types/ISize";
+import { IVariant } from "@/types/IVariant";
 import { Color } from "@/types/Color";
 import { createContext, useReducer } from "react";
 import { CartContext } from "./CartContext";
 import { cartReducer } from "./CartReducer";
 import { v4 as uuidv4 } from "uuid";
 import axiosInstance from "@/utils/axios";
-import { IProduct } from "@/types/Product";
+import { IProduct } from "@/types/IProduct";
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(cartReducer, {
     items: [],

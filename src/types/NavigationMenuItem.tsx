@@ -1,4 +1,4 @@
-import { Category } from "./Category";
+import { Category } from "./ICategory";
 
 export interface NavigationMenuItem {
     id: number;

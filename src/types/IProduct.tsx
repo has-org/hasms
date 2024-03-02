@@ -1,4 +1,4 @@
-import { Variant } from "./Variant";
+import { IVariant } from "./IVariant";
 export type IProduct = {
   
   id: number;
@@ -14,6 +14,6 @@ export type IProduct = {
   order_id: number;
   workspace_id: number;
   image: string;
-  variants: Variant[];
+  variants: IVariant[];
   currency: string;
 };

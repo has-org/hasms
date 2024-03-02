@@ -1,4 +1,4 @@
-import { IProduct } from "./Product";
+import { IProduct } from "./IProduct";
 
 export interface RelatedProduct {
     related_product_id: number;

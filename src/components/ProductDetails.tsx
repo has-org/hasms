@@ -13,7 +13,7 @@ import {
   useForm,
   useFormContext,
 } from "react-hook-form";
-import { IProduct } from "@/types/Product";
+import { IProduct } from "@/types/IProduct";
 
 type ProductProps = {
   product: IProduct;

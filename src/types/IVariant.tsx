@@ -1,17 +1,17 @@
 import { Color } from "./Color";
 import { VariantImage } from "./VariantImage";
-import { Size } from "./Size";
+import { ISize } from "./ISize";
 import { ITag } from "./ITag";
-import { IProduct } from "./Product";
+import { IProduct } from "./IProduct";
 
-export interface Variant {
+export interface IVariant {
   id: number;
   name: string;
   product?: IProduct;
   product_id: number;
   images: VariantImage[];
   colors: Color[];
-  sizes: Size[];
+  sizes: ISize[];
   tags: ITag[];
   variantPrice: string;
 }

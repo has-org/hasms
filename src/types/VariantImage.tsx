@@ -1,5 +1,5 @@
 import { Color } from "./Color";
-import { Variant } from "./Variant";
+import { Variant } from "./IVariant";
 
 export interface VariantImage {
     id: number;
