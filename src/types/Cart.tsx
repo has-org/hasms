@@ -1,14 +1,14 @@
-import { Variant } from "./IVariant"
+import { IVariant } from "./IVariant"
 
 
 export type CartContext = {
-    cart: Variant[]
+    cart: IVariant[]
     addToCart: () => {}
     removeFromCart: (id: number) => {}
 }
 
 export type CartState = {
-    cart: Variant[]
+    cart: IVariant[]
     addToCart: () => {}
     removeFromCart: (id: number) => {}
 }

@@ -1,6 +1,6 @@
 import { IPost } from "./IPost";
 import { IProduct } from "./IProduct";
-import { Variant } from "./IVariant";
+import { IVariant } from "./IVariant";
 
 export interface ITag {
     id: number;
@@ -8,7 +8,7 @@ export interface ITag {
     updated_at: Date;
     name: string;
     products: IProduct[];
-    variant?: Variant;
+    variant?: IVariant;
     variant_id?: number;
     posts: IPost[];
   }

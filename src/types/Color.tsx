@@ -1,4 +1,4 @@
-import { Variant } from "./IVariant";
+import { IVariant } from "./IVariant";
 
 export interface Color {
     id: number;
@@ -7,5 +7,5 @@ export interface Color {
     name: string;
     value: string;
     variant_id?: number;
-    variant?: Variant;
+    variant?: IVariant;
   }

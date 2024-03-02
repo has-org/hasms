@@ -15,7 +15,6 @@ import {
 import Iconify from "@/components/iconify";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
-import ContactForm from "./ContactForm";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
 // ----------------------------------------------------------------------

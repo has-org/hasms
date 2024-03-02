@@ -1,5 +1,5 @@
 import { Color } from "./Color";
-import { Variant } from "./IVariant";
+import { IVariant } from "./IVariant";
 
 export interface VariantImage {
     id: number;
@@ -8,7 +8,7 @@ export interface VariantImage {
     alt?: string;
     url: string;
     variant_id?: number;
-    variant?: Variant;
+    variant?: IVariant;
     color_id?: number;
     color?: Color;
   }

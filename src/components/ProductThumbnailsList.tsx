@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import { Box, Grid } from "@mui/material";
 import { ProductImagePreview } from "./ProductImagePreview";
 import { useState } from "react";
-import { Variant as VariantType } from "@/types/IVariant";
+import { IVariant } from "@/types/IVariant";
 
 const Thumbnail = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -24,7 +24,7 @@ const Thumbnail = styled("div")(({ theme }) => ({
 export const ProductThumbnailsList = ({
   variants,
 }: {
-  variants: VariantType[];
+  variants: IVariant[];
 }) => {
   const [selectedVariant, setSelectedVariant] = useState(
     variants && variants[0]
