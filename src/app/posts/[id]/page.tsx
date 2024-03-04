@@ -9,7 +9,7 @@ export default async function PostPage({
 }: {
   params: { id: string };
 }) {
-  const post = await getPost(id);
+  const post = await getPost({ id: id });
   return (
     <Container maxWidth="xl">
       <Box
