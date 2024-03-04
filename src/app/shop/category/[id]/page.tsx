@@ -72,42 +72,41 @@ export default async function ShopCategory({ params: { id } }: any) {
             </Grid>
             {products?.map((product) => {
               return (
-                <Grid xs={4} md={4} lg={4} key={product?.id}>
-                  <Link
-                    href={`/shop/products/${product.id}`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <Card sx={{ height: "376px", boxShadow: 0 }}>
+                <Grid xs={12} md={4} lg={4} key={product?.id}>
+                  <Card sx={{ height: "376px", boxShadow: 0 }}>
+                    <Link
+                      href={`/shop/product/${product.id}`}
+                      style={{ textDecoration: "none" }}
+                    >
                       <Box sx={{ height: "184px", position: "relative" }}>
                         {product.image && (
                           <Image src={product.image} fill alt="product image" />
                         )}
                       </Box>
-                      <Stack sx={{ px: "20px", pb: '20px' }} spacing={3}>
-                        <Stack
-                          direction={"row"}
-                          spacing={1}
-                          sx={{
-                            display: "flex",
-                            pt: 2,
-                          }}
-                        >
-                          <Typography variant="body1">
-                            {product?.name}
-                          </Typography>
-                          <Typography variant="body1">
-                            {product?.manufacturer}
-                          </Typography>
-                        </Stack>
+                    </Link>
 
-                        <Typography fontSize={28} color="#00D0FD">
-                          {product?.price} KM
+                    <Stack sx={{ px: "20px", pb: "20px" }} spacing={3}>
+                      <Stack
+                        direction={"row"}
+                        spacing={1}
+                        sx={{
+                          display: "flex",
+                          pt: 2,
+                        }}
+                      >
+                        <Typography variant="body1">{product?.name}</Typography>
+                        <Typography variant="body1">
+                          {product?.manufacturer}
                         </Typography>
-
-                        <Button variant="outlined">+ Dodaj u korpu</Button>
                       </Stack>
-                    </Card>
-                  </Link>
+
+                      <Typography fontSize={28} color="#00D0FD">
+                        {product?.price} KM
+                      </Typography>
+
+                      <Button variant="outlined">+ Dodaj u korpu</Button>
+                    </Stack>
+                  </Card>
                 </Grid>
               );
             })}
