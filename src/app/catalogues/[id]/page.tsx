@@ -3,7 +3,7 @@ import { getCatalogue } from "@/services/apiService";
 
 export default async function CataloguePage({ params: { id } }: any) {
 
-  const catalogue = await getCatalogue(id);
+  const catalogue = await getCatalogue({catalogueID: id});
 
   return (
     <>

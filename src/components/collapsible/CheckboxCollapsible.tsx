@@ -1,14 +1,19 @@
 "use client";
 
-import { Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { RHFCheckbox } from "../hook-form";
 import FormProvider from "../hook-form/FormProvider";
 
-
-const CheckboxCollapsible = ({ title, selectFields }: { title: string, selectFields: string[] }) => {
+const CheckboxCollapsible = ({
+  title,
+  selectFields,
+}: {
+  title: string;
+  selectFields: string[];
+}) => {
   const [open, setOpen] = useState(false);
 
   const methods = useForm<any>({
@@ -34,11 +39,13 @@ const CheckboxCollapsible = ({ title, selectFields }: { title: string, selectFie
           display: open ? "block" : "none",
         }}
       >
-        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-          {selectFields?.map(field => {
-            return <RHFCheckbox name={field} label={field} key={field}/>;
-          })}
-        </FormProvider>
+        <Box sx={{ height: "180px", overflow: "auto" }}>
+          <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+            {selectFields?.map((field) => {
+              return <RHFCheckbox name={field} label={field} key={field} />;
+            })}
+          </FormProvider>
+        </Box>
       </Stack>
     </>
   );

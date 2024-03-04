@@ -15,6 +15,8 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { useEffect, useState } from "react";
 import ImageGallery, { ReactImageGalleryItem } from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+import "react-multi-carousel/lib/styles.css";
+
 import ProductViewer2D from "../../../productViewer2D";
 
 import Link from "next/link";
@@ -70,7 +72,7 @@ const CatalogueItem = ({
     cubic_centimeters,
     description_title,
     description,
-  } = catalogue.catalogue_details[0];
+  } = catalogue?.catalogue_details[0];
 
   const { color, price } = catalogue.catalogue_variants[0];
 
@@ -364,7 +366,10 @@ const CatalogueItem = ({
             >
               {catalogue?.catalogue_characteristics?.map(
                 (characteristic, index) => (
-                  <Card key={index} sx={{ mb: 5, mx: 1, height: "564px" }}>
+                  <Card
+                    key={`${characteristic.title}-${index}`}
+                    sx={{ mb: 5, mx: 1, height: "564px" }}
+                  >
                     <Box
                       sx={{
                         display: "flex",

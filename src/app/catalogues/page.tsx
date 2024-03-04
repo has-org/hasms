@@ -30,7 +30,7 @@ export default async function CataloguesPage({}: any) {
                   xs={12}
                   sm={6}
                   md={4}
-                  key={index}
+                  key={`${catalogue.name}` + index}
                   sx={{
                     display: "flex",
                     justifyContent: "center",

@@ -6,14 +6,14 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 export default async function Shop() {
-  const categories: ICategory[] = await getCategories();
+  const categories: ICategory[] = await getCategories({page: 0, count: 10});
   if (!categories) return <div>Categories not found</div>;
 
   return (
     <>
       <Container maxWidth="xl">
         <Grid container rowSpacing={5} columnSpacing={3}>
-          <Grid sm={12}>
+          <Grid xs={12}>
             <Box
               sx={{
                 display: "flex",
@@ -39,7 +39,7 @@ export default async function Shop() {
           {categories?.map((category) => {
             return (
               <>
-                <Grid sm={12} md={4} key={category.id}>
+                <Grid xs={12} md={4} key={category.id}>
                   <Link
                     href={`/shop/category/${category.id}`}
                     style={{ textDecoration: "none" }}
@@ -60,7 +60,7 @@ export default async function Shop() {
                       <Image
                         src={category.thumbnail}
                         fill
-                        alt="proizodi backgroud"
+                        alt="proizvodi backgroud"
                       />
                       <Typography
                         variant="h6"

@@ -105,17 +105,14 @@ export const InquiryModal = ({
         </Stack>
       </DialogTitle>
       <Divider />
-      <DialogContent
-        sx={{
-          minWidth: "1200px",
-          p: 5,
-          backgroundColor: (theme) => theme.palette.primary.darker,
-        }}
-      >
-        <Scrollbar sx={{maxHeight: '700px'}} >
+
+        <Scrollbar sx={{ minWidth:{md: '1200px'} ,p: 5}}>
           <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={1}>
-              <Stack direction={"row"} spacing={3}>
+              <Stack
+                spacing={3}
+               direction="row"
+              >
                 <Stack sx={{ width: "100%" }}>
                   <InputLabel htmlFor="first_name" required>
                     Ime
@@ -242,7 +239,6 @@ export const InquiryModal = ({
             </Button>
           </FormProvider>
         </Scrollbar>
-      </DialogContent>
     </Dialog>
   );
 };

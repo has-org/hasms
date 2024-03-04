@@ -1,20 +1,36 @@
 import CheckboxCollapsible from "@/components/collapsible/CheckboxCollapsible";
 import ColorCollapsible from "@/components/collapsible/ColorCollapsible";
 import PriceCollapsible from "@/components/collapsible/PriceCollapsible";
-import { getCategory, getCategoryProducts } from "@/services/apiService";
+import Scrollbar from "@/components/scrollbar/Scrollbar";
+import {
+  getCategory,
+  getCategoryProducts,
+  getCategoryProductsColors,
+  getCategoryProductsSizes,
+} from "@/services/apiService";
 import { ICategory } from "@/types/ICategory";
 import { IProduct } from "@/types/IProduct";
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, Container, Stack, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function ShopCategory({ params: { id } }: any) {
-  const category: ICategory = await getCategory(id);
-  const {subcategories} = category
-  const categoryTypes = [...new Set(subcategories.map(subcategory => subcategory.name))]
-  const products: IProduct[] = await getCategoryProducts(id);
- 
-  const manufacturerTypes = [...new Set(products.map(product => product.manufacturer))]
+  const category: ICategory = await getCategory({ id: id });
+  const { subcategories } = category;
+  const categoryTypes = [
+    ...new Set(subcategories?.map((subcategory) => subcategory.name)),
+  ];
+  const products: IProduct[] = await getCategoryProducts({
+    id,
+    page: 0,
+    count: 10,
+  });
+  const categoryProductsSizes = await getCategoryProductsSizes({ id: id });
+  const categoryProductsColors = await getCategoryProductsColors({ id: id });
+  const manufacturerTypes = [
+    ...new Set(products?.map((product) => product.manufacturer)),
+  ];
   if (!category) return <div>catalogue not found</div>;
 
   return (
@@ -32,34 +48,71 @@ export default async function ShopCategory({ params: { id } }: any) {
               borderRadius: "16px",
             }}
           >
-            <Image src={category.main_image} fill alt="proizvodi backgroud" />
+            <Image src={category?.main_image} fill alt="proizvodi backgroud" />
             <Typography variant="h1" sx={{ zIndex: "100" }}>
-              {category.name}
+              {category?.name}
             </Typography>
           </Box>
         </Grid>
         <Grid xs={12} md={3}>
-          <Stack>
-            <Typography variant="body2">Prodavnica - kacige</Typography>
-            <CheckboxCollapsible title="Vrsta" selectFields={categoryTypes} />
-            <CheckboxCollapsible
-              title="Brend"
-              selectFields={manufacturerTypes}
-            />
-            {/* <CheckboxCollapsible
-              title="Veličina"
-              selectFields={[
-
-              ]}
-            /> */}
-            <ColorCollapsible
-              title="Boja"
-              colors={[{ name: "crvena", value: "#F12212" }]}
-            />
-            <PriceCollapsible title="Cijena" min={0} max={70000} />
-          </Stack>
+          <Typography variant="body2">Prodavnica - kacige</Typography>
+          <CheckboxCollapsible title="Vrsta" selectFields={categoryTypes} />
+          <CheckboxCollapsible title="Brend" selectFields={manufacturerTypes} />
+          <CheckboxCollapsible
+            title="Veličina"
+            selectFields={categoryProductsSizes}
+          />
+          <ColorCollapsible title="Boja" colors={categoryProductsColors} />
+          <PriceCollapsible title="Cijena" min={0} max={70000} />
         </Grid>
-        <Grid xs={12} md={8}></Grid>
+        <Grid container xs={12} md={9}>
+          <Grid container columnSpacing={4} rowSpacing={4}>
+            <Grid xs={12}>
+              filterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilteri
+            </Grid>
+            {products?.map((product) => {
+              return (
+                <Grid xs={4} md={4} lg={4} key={product?.id}>
+                  <Link
+                    href={`/shop/products/${product.id}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <Card sx={{ height: "376px", boxShadow: 0 }}>
+                      <Box sx={{ height: "184px", position: "relative" }}>
+                        {product.image && (
+                          <Image src={product.image} fill alt="product image" />
+                        )}
+                      </Box>
+                      <Stack sx={{ px: "20px", pb: '20px' }} spacing={3}>
+                        <Stack
+                          direction={"row"}
+                          spacing={1}
+                          sx={{
+                            display: "flex",
+                            pt: 2,
+                          }}
+                        >
+                          <Typography variant="body1">
+                            {product?.name}
+                          </Typography>
+                          <Typography variant="body1">
+                            {product?.manufacturer}
+                          </Typography>
+                        </Stack>
+
+                        <Typography fontSize={28} color="#00D0FD">
+                          {product?.price} KM
+                        </Typography>
+
+                        <Button variant="outlined">+ Dodaj u korpu</Button>
+                      </Stack>
+                    </Card>
+                  </Link>
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Grid>
       </Grid>
     </Container>
   );

@@ -8,13 +8,13 @@ export async function getPosts() {
     });
     if (res.status !== 200) {
       throw new Error("Failed to fetch data");
-    } 
+    }
     return res.json();
   } catch (e) {
     return null;
   }
 }
-export async function getPost(id: string) {
+export async function getPost({ id }: { id: string }) {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/posts/${id}`, {
       method: "GET",
@@ -47,14 +47,17 @@ export async function getCatalogues() {
     return null;
   }
 }
-export async function getCatalogue(catalogueID: number) {
+export async function getCatalogue({ catalogueID }: { catalogueID: number }) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/catalogue/${catalogueID}`, {
-      method: "GET",
-      next: {
-        revalidate: 1,
-      },
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_HOST}/catalogue/${catalogueID}`,
+      {
+        method: "GET",
+        next: {
+          revalidate: 1,
+        },
+      }
+    );
     if (res.status !== 200) {
       throw new Error("Failed to fetch data");
     }
@@ -63,12 +66,21 @@ export async function getCatalogue(catalogueID: number) {
     return null;
   }
 }
-export async function getCategories() {
+export async function getCategories({
+  page,
+  count,
+}: {
+  page: number;
+  count: number;
+}) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/categories`, {
-      method: "GET",
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_HOST}/categories?page=${page}&count=${count}`,
+      {
+        method: "GET",
+        cache: "no-store",
+      }
+    );
     if (res.status !== 200) {
       throw new Error("Failed to fetch data");
     }
@@ -77,7 +89,7 @@ export async function getCategories() {
     return null;
   }
 }
-export async function getCategory(id: number) {
+export async function getCategory({ id }: { id: number }) {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_HOST}/category/${id}`,
@@ -98,10 +110,60 @@ export async function getCategory(id: number) {
   }
 }
 
-export async function getCategoryProducts(id: number) {
+export async function getCategoryProducts({
+  id,
+  page,
+  count,
+}: {
+  id: number;
+  page: number;
+  count: number;
+}) {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_HOST}/category/${id}/products`,
+      `${process.env.NEXT_PUBLIC_API_HOST}/category/${id}/products?page=${page}&count=${count}`,
+      {
+        method: "GET",
+        next: {
+          revalidate: 1,
+        },
+      }
+    );
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    return res.json();
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+}
+
+export async function getCategoryProductsSizes({ id }: { id: number }) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_HOST}/category/${id}/products/sizes`,
+      {
+        method: "GET",
+        next: {
+          revalidate: 1,
+        },
+      }
+    );
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    return res.json();
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+}
+
+export async function getCategoryProductsColors({ id }: { id: number }) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_HOST}/category/${id}/products/colors`,
       {
         method: "GET",
         next: {
@@ -121,15 +183,12 @@ export async function getCategoryProducts(id: number) {
 
 export async function getProducts() {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_HOST}/products`,
-      {
-        method: "GET",
-        next: {
-          revalidate: 1,
-        },
-      }
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/products`, {
+      method: "GET",
+      next: {
+        revalidate: 1,
+      },
+    });
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }
@@ -139,7 +198,7 @@ export async function getProducts() {
     return null;
   }
 }
-export async function getProduct(id: number) {
+export async function getProduct({ id }: { id: number }) {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_HOST}/product/${id}`,
@@ -159,7 +218,7 @@ export async function getProduct(id: number) {
     return null;
   }
 }
-export async function getProductVariants(id: number) {
+export async function getProductVariants({ id }: { id: number }) {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_HOST}/product/${id}/variants`,
@@ -195,30 +254,11 @@ export async function getCooperators() {
   }
 }
 
-export async function getNavMenus() {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_HOST}/navigationMenus`,
-      {
-        method: "GET",
-        next: {
-          revalidate: 1,
-        },
-      }
-    );
-    if (res.status !== 200) {
-      throw new Error("Failed to fetch data");
-    }
-    return res.json();
-  } catch (e) {
-    return null;
-  }
-}
 
-export async function getCatalogueProducts(catalogueId: number) {
+export async function getCatalogueProducts({ id }: { id: number }) {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_HOST}/catalogue/${catalogueId}/products`,
+      `${process.env.NEXT_PUBLIC_API_HOST}/catalogue/${id}/products`,
       {
         method: "GET",
         next: {
