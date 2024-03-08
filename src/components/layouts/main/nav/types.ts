@@ -2,24 +2,17 @@ import { ListItemButtonProps } from "@mui/material";
 
 // ----------------------------------------------------------------------
 
-export type NavItemChildItems = {
-  title: string;
-  description: string;
-  path: string;
-  image: string;
-};
-
-export type NavItemChild = {
-  id: string;
-  title: string;
-  path: string;
-  items: NavItemChildItems[];
-};
-
 export type NavItemProps = {
   title: string;
   path: string;
-  children?: NavItemChild[];
+  icon?: React.ReactElement;
+  children?: {
+    subheader: string;
+    items: {
+      title: string;
+      path: string;
+    }[];
+  }[];
 };
 
 export interface NavItemDesktopProps extends ListItemButtonProps {

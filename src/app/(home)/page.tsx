@@ -126,20 +126,20 @@ export default async function HomePage() {
                       style={{ textDecoration: "none", width: "100%" }}
                     >
                       <Button
-                        variant="contained"
-                        color="info"
+                        variant="outlined"
+                        color="secondary"
                         size="large"
                         fullWidth
                       >
-                        <Typography color={"common.white"}>PONUDA</Typography>
+                        <Typography variant="h6">Ponuda</Typography>
                       </Button>
                     </Link>
                     <Link
                       href={"/shop"}
                       style={{ textDecoration: "none", width: "100%" }}
                     >
-                      <Button variant="outlined" size="large" fullWidth>
-                        <Typography>SHOP</Typography>
+                      <Button variant="outlinedTransparent" size="large" fullWidth>
+                        <Typography variant="h6">Shop</Typography>
                       </Button>
                     </Link>
                   </Stack>

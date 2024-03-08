@@ -126,21 +126,19 @@ const LINKS = [
       },
 
       { name: "Moja korpa", href: "#", icon: "" },
-      { name: "Tvoja 456", href: "#", icon: "" },
       { name: "Narudzbine", href: "#", icon: "" },
       { name: "Adrese", href: "#", icon: "" },
-      { name: "Blog", href: "#", icon: "" },
+      { name: "Blog", href: "/blog", icon: "" },
     ],
   },
   {
     headline: "Brzi linkovi",
     children: [
-      { name: "Reklamacije", href: "#", icon: "" },
-      { name: "Uslovi kupovine", href: "#", icon: "" },
-      { name: "Politika privatnosti", href: "#", icon: "" },
-      { name: "Obrazac za reklamaciju", href: "#", icon: "" },
-      { name: "Zaposlenje", href: "#", icon: "" },
-      { name: "O nama", href: "#", icon: "" },
+      { name: "Reklamacije", href: "/complaints", icon: "" },
+      { name: "Uslovi kupovine", href: "/shopping-process", icon: "" },
+      { name: "Načini plaćanja", href: "/payment-methods", icon: "" },
+      { name: "O nama", href: "/about-us", icon: "" },
+      { name: "Cjenovnici", href: "/price-list", icon: "" },
     ],
   },
   {

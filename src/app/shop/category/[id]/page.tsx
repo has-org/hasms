@@ -67,18 +67,20 @@ export default async function ShopCategory({ params: { id } }: any) {
         </Grid>
         <Grid container xs={12} md={9}>
           <Grid container columnSpacing={4} rowSpacing={4}>
-            <Grid xs={12}>
-              filterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilterifilteri
+            <Grid xs={12} sx={{display: 'flex'}}>
+              <Typography variant="body2">
+              filteri
+              </Typography>
             </Grid>
             {products?.map((product) => {
               return (
                 <Grid xs={12} md={4} lg={4} key={product?.id}>
-                  <Card sx={{ height: "376px", boxShadow: 0 }}>
+                  <Card sx={{ height: "376px", boxShadow: 0, borderRadius: '16px' }}>
                     <Link
                       href={`/shop/product/${product.id}`}
                       style={{ textDecoration: "none" }}
                     >
-                      <Box sx={{ height: "184px", position: "relative" }}>
+                      <Box sx={{ height: "184px", position: "relative", borderRadius: '16px' }}>
                         {product.image && (
                           <Image src={product.image} fill alt="product image" />
                         )}

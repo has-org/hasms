@@ -9,6 +9,7 @@ const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'] a
 declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
     soft: true;
+    outlinedTransparent: true,
   }
 }
 
@@ -21,6 +22,8 @@ export default function Button(theme: Theme) {
     const containedVariant = ownerState.variant === 'contained';
 
     const outlinedVariant = ownerState.variant === 'outlined';
+
+    const outlinedTransparentVariant = ownerState.variant === 'outlinedTransparent';
 
     const textVariant = ownerState.variant === 'text';
 
@@ -35,22 +38,22 @@ export default function Button(theme: Theme) {
         // CONTAINED
         ...(containedVariant && {
           color: theme.palette.common.white,
-          '&:hover': {
+          "&:hover": {
             boxShadow: theme.customShadows.z8,
-            backgroundColor: theme.palette.primary.main,
+            backgroundColor: theme.palette.primary.main
           },
         }),
         // OUTLINED
         ...(outlinedVariant && {
           borderColor: alpha(theme.palette.grey[500], 0.32),
-          '&:hover': {
+          "&:hover": {
             borderColor: theme.palette.text.primary,
             backgroundColor: theme.palette.action.hover,
           },
         }),
         // TEXT
         ...(textVariant && {
-          '&:hover': {
+          "&:hover": {
             backgroundColor: theme.palette.action.hover,
           },
         }),
@@ -58,7 +61,7 @@ export default function Button(theme: Theme) {
         ...(softVariant && {
           color: theme.palette.text.primary,
           backgroundColor: alpha(theme.palette.grey[500], 0.08),
-          '&:hover': {
+          "&:hover": {
             backgroundColor: alpha(theme.palette.grey[500], 0.24),
           },
         }),
@@ -69,8 +72,10 @@ export default function Button(theme: Theme) {
       ...(ownerState.color === color && {
         // CONTAINED
         ...(containedVariant && {
+          // color: theme.palette[color]['contrastText'],
           "&:hover": {
-            boxShadow: theme.customShadows[color],
+            backgroundColor: alpha(theme.palette[color].dark, 0.31),
+            color: theme.palette[color].main,
           },
         }),
         // SOFT
@@ -84,11 +89,25 @@ export default function Button(theme: Theme) {
         // OUTLINED
         ...(outlinedVariant && {
           color: theme.palette[color][isLight ? "contrastText" : "main"],
+          backgroundColor: theme.palette[color].main,
+
+          border: `1px solid ${theme.palette[color].contrastText}`,
+          "&:hover": {
+            backgroundColor: alpha(theme.palette[color].darker, 0.82),
+            color: theme.palette[color].main,
+            textDecoration: "underline",
+          },
+        }),
+        // OUTLINED TRANSPARENT
+        ...(outlinedTransparentVariant && {
+          color: theme.palette[color][isLight ? "contrastText" : "main"],
           backgroundColor: alpha(theme.palette[color].dark, 0.16),
 
           border: `1px solid ${theme.palette[color].contrastText}`,
           "&:hover": {
             backgroundColor: alpha(theme.palette[color].darker, 0.82),
+            // color: theme.palette[color].main,
+            textDecoration: "underline",
           },
         }),
       }),

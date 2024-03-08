@@ -103,12 +103,12 @@ export default function Header() {
           <Stack>
             <Stack direction={"row"} justifyContent="end" spacing={1}>
               <Button
-                variant="contained"
-                color="info"
+                variant="outlined"
+                color="secondary"
                 onClick={() => togglecartDrawerOpen(!cartDrawerOpen)}
               >
                 <Stack direction={"row"} spacing={0.5} alignItems="center">
-                  <Iconify icon="tdesign:cart" color="text.primary" />
+                  <Iconify icon="tdesign:cart" />
                   {isDesktop && (
                     <Typography variant="body1" fontWeight={500}>
                       KORPA
@@ -116,11 +116,10 @@ export default function Header() {
                   )}
                 </Stack>
               </Button>
-              <Button variant="outlined">
+              <Button variant="outlined" color="secondary">
                 <Stack direction={"row"} spacing={0.5} alignItems="center">
                   <Iconify
                     icon="iconamoon:profile-circle"
-                    color="primary.main"
                   />
                 </Stack>
               </Button>
