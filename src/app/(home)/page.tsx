@@ -72,33 +72,23 @@ export default async function HomePage() {
         <Box
           sx={{
             width: "100%",
-            height: "75vh",
-            backgroundImage:
-              "url(https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online/images/bg_frame.png&w=1024&q=100)",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            zIndex: "-1",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            height: "608px",
+            position: "relative",
           }}
         >
+          <Image
+            priority
+            src="/images/welcomepozadina.png"
+            fill
+            alt="Motoshop 7"
+          />
           <Container maxWidth="xl">
             <Grid container spacing={3}>
               <Grid
                 xs={12}
                 md={6}
                 sx={{ display: "flex", justifyContent: "center" }}
-              >
-                <Image
-                  priority
-                  src="/images/bikee.png"
-                  width={600}
-                  height={600}
-                  style={{ width: "auto", height: "auto" }}
-                  alt="Motoshop 7"
-                />
-              </Grid>
+              ></Grid>
               <Grid
                 xs={12}
                 md={6}
@@ -138,7 +128,11 @@ export default async function HomePage() {
                       href={"/shop"}
                       style={{ textDecoration: "none", width: "100%" }}
                     >
-                      <Button variant="outlinedTransparent" size="large" fullWidth>
+                      <Button
+                        variant="outlinedTransparent"
+                        size="large"
+                        fullWidth
+                      >
                         <Typography variant="h6">Shop</Typography>
                       </Button>
                     </Link>
