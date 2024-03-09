@@ -87,7 +87,7 @@ export default function Header() {
       >
         <Container
           sx={{ height: 1, display: "flex", alignItems: "center" }}
-          maxWidth="xl"
+          maxWidth="lg"
         >
           {isDesktop && <Logo />}
           <Stack

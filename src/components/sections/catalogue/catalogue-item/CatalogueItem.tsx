@@ -99,7 +99,7 @@ const CatalogueItem = ({
 
   return (
     <>
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Grid container spacing={5}>
           <Grid xs={12} md={6} lg={6} xl={5} sx={{}}>
             {/* <ProductViewer2D images={images360} /> */}

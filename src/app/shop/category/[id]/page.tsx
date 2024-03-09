@@ -1,3 +1,4 @@
+import AddToCartButton from "@/components/cart/buttons/AddToCartButton";
 import CheckboxCollapsible from "@/components/collapsible/CheckboxCollapsible";
 import ColorCollapsible from "@/components/collapsible/ColorCollapsible";
 import PriceCollapsible from "@/components/collapsible/PriceCollapsible";
@@ -34,8 +35,8 @@ export default async function ShopCategory({ params: { id } }: any) {
   if (!category) return <div>catalogue not found</div>;
 
   return (
-    <Container maxWidth="xl">
-      <Grid container>
+    <Container maxWidth="lg">
+      <Grid container >
         <Grid xs={12}>
           <Box
             sx={{
@@ -75,14 +76,34 @@ export default async function ShopCategory({ params: { id } }: any) {
             {products?.map((product) => {
               return (
                 <Grid xs={12} md={4} lg={4} key={product?.id}>
-                  <Card sx={{ height: "376px", boxShadow: 0, borderRadius: '16px' }}>
+                  <Card
+                    sx={{ height: "376px", boxShadow: 0, borderRadius: "16px" }}
+                  >
                     <Link
                       href={`/shop/product/${product.id}`}
                       style={{ textDecoration: "none" }}
                     >
-                      <Box sx={{ height: "184px", position: "relative", borderRadius: '16px' }}>
-                        {product.image && (
-                          <Image src={product.image} fill alt="product image" />
+                      <Box
+                        sx={{
+                          height: "184px",
+                          position: "relative",
+                          borderRadius: "16px",
+                        }}
+                      >
+                        {product.image ? (
+                          <Image
+                            src={product.image}
+                            fill
+                            alt="product image"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
+                        ) : (
+                          <Image
+                            src={'/images/no-image.jpg'}
+                            fill
+                            alt="product image"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
                         )}
                       </Box>
                     </Link>
@@ -106,7 +127,7 @@ export default async function ShopCategory({ params: { id } }: any) {
                         {product?.price} KM
                       </Typography>
 
-                      <Button variant="outlined">+ Dodaj u korpu</Button>
+                      <AddToCartButton product={product}/>
                     </Stack>
                   </Card>
                 </Grid>

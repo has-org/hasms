@@ -7,7 +7,7 @@ export default async function Shop() {
 
   return (
     <>
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Typography variant="h3" textAlign={"center"}>
           PRODAVNICA
         </Typography>

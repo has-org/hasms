@@ -11,7 +11,7 @@ export default async function PostPage({
 }) {
   const post = await getPost({ id: id });
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="lg">
       <Box
         sx={{
           position: "relative",

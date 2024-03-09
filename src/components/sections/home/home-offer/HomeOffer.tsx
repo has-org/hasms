@@ -106,7 +106,7 @@ const HomeTrending = ({ deviceType }: any) => {
       <Typography textAlign={"center"} variant="h2">
         Izdvojamo iz Ponude
       </Typography>
-      <Container maxWidth="xl" sx={{ pt: 2 }}>
+      <Container maxWidth="lg" sx={{ pt: 2 }}>
         <Carousel
           showDots={true}
           responsive={responsive}

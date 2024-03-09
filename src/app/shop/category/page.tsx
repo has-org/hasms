@@ -11,7 +11,7 @@ export default async function Shop() {
 
   return (
     <>
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Grid container rowSpacing={5} columnSpacing={3}>
           <Grid xs={12}>
             <Box

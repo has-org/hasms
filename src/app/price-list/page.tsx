@@ -22,7 +22,7 @@ import Link from "next/link";
 export default async function CataloguesPage({}: any) {
   return (
     <>
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Stack sx={{ minHeight: "500px" }}>
           <Typography variant="h1" component="h3" textAlign="center">
             Cjenovnik

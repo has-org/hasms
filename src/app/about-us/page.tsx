@@ -2,7 +2,7 @@ import { Container, Stack, Typography } from "@mui/material";
 
 export default async function AboutUsPage() {
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="lg">
       <Stack
         sx={{
           justifyContent: "center",

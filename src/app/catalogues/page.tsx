@@ -18,7 +18,7 @@ export default async function CataloguesPage({}: any) {
   const catalogues = await getCatalogues();
   return (
     <>
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Typography textAlign={"center"} variant="h4">
           Dostupno odmah
         </Typography>

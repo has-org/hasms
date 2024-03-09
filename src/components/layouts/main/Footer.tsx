@@ -162,7 +162,7 @@ export default function Footer() {
   return (
     <>
       <Box sx={{ backgroundColor: "background.paper", width: "100%" }}>
-        <Container maxWidth="xl">
+        <Container maxWidth="lg">
           <Grid container columnSpacing={2}>
             {LINKS.map((list, index) => (
               <Grid xs={12} md={3} key={index}>

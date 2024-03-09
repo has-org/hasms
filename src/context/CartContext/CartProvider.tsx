@@ -20,49 +20,47 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       product_price: item.price,
       product_image: item.variants[0]?.images[0]?.url,
       variant_id: item.variants[0]?.id,
-      color: item.color,
-      size: item.size,
+      color: item.selectedColor,
+      size: item.selectedSize,
       quantity: 1,
     };
-    const itemExists = state.items.find(
+    const itemExists = state.items?.find(
       (cartItem: any) =>
-        cartItem.product_id === item.id &&
-        cartItem.color.id === item.color.id &&
-        cartItem.size.id === item.size.id
+        cartItem?.product_id === item?.id &&
+        cartItem?.color?.id === item?.color?.id &&
+        cartItem?.size?.id === item?.size?.id
     );
     if (itemExists) {
-      return dispatch({
+      dispatch({
         type: "INCREASE_CART_ITEM_QUANTITY",
         payload: {
           item: itemExists,
         },
       });
-    }
-
-    dispatch({
-      type: "ADD",
-      payload: {
-        items: [...state.items, preparedProductToAdd],
-      },
-    });
-
-    try {
-      const res = await axiosInstance.post("/cart", {
-        cart: preparedProductToAdd,
+    } else {
+      dispatch({
+        type: "ADD",
+        payload: {
+          items: [...state.items, preparedProductToAdd],
+        },
       });
-      console.log(res);
-    } catch (err) {
-      console.log(err);
     }
 
-    try {
-      const res1 = await axiosInstance.get(
-        `/cart/${preparedProductToAdd.id}`
-      );
-      console.log(res1);
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   const res = await axiosInstance.post("/cart", {
+    //     cart: preparedProductToAdd,
+    //   });
+    //   console.log(res);
+    // } catch (err) {
+    //   console.log(err);
+    // }
+
+    // try {
+    //   const res1 = await axiosInstance.get(`/cart/${preparedProductToAdd.id}`);
+    //   console.log(res1);
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   const updateCartItemQuantity = (payload: any, action: string) => {

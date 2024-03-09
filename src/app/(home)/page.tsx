@@ -83,7 +83,7 @@ export default async function HomePage() {
             fill
             alt="Motoshop 7"
           />
-          <Container maxWidth="xl">
+          <Container maxWidth="lg">
             <Stack spacing={1}>
               <Typography variant="h4" fontWeight={400} sx={{ zIndex: "2" }}>
                 Provjereno najbolja
@@ -130,7 +130,7 @@ export default async function HomePage() {
             pt: 2,
           }}
         >
-          <Container maxWidth="xl" sx={{ pt: 2 }}>
+          <Container maxWidth="lg" sx={{ pt: 2 }}>
             <HomeTrending />
           </Container>
         </Box>
@@ -146,7 +146,7 @@ export default async function HomePage() {
           <Typography textAlign={"center"} variant="h2">
             Najnovije sa bloga
           </Typography>
-          <Container maxWidth="xl" sx={{ pt: 2 }}>
+          <Container maxWidth="lg" sx={{ pt: 2 }}>
             <HomeBlog posts={posts} />
           </Container>
         </Box>
@@ -159,7 +159,7 @@ export default async function HomePage() {
             pt: 2,
           }}
         >
-          <Container maxWidth="xl" sx={{ pt: 2 }}>
+          <Container maxWidth="lg" sx={{ pt: 2 }}>
             <Grid container>
               <Grid xs={12} md={6} display="flex">
                 <Image
@@ -224,7 +224,7 @@ export default async function HomePage() {
             overflow: "hidden",
           }}
         >
-          <Container maxWidth="xl">
+          <Container maxWidth="lg">
             <HomeCooperators cooperators={cooperators} />
           </Container>
         </Box>
