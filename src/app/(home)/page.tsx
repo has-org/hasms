@@ -74,6 +74,7 @@ export default async function HomePage() {
             width: "100%",
             height: "608px",
             position: "relative",
+            zIndex: "0",
           }}
         >
           <Image
@@ -83,63 +84,41 @@ export default async function HomePage() {
             alt="Motoshop 7"
           />
           <Container maxWidth="xl">
-            <Grid container spacing={3}>
-              <Grid
-                xs={12}
-                md={6}
-                sx={{ display: "flex", justifyContent: "center" }}
-              ></Grid>
-              <Grid
-                xs={12}
-                md={6}
-                sx={{ display: "flex", alignItems: "center" }}
-              >
-                <Stack spacing={1}>
-                  <Typography variant="h4" fontWeight={400}>
-                    Provjereno najbolja
-                  </Typography>
-                  <Typography variant="h1" component="span" lineHeight={1}>
-                    {"MOTO OPREMA &"}
-                    <Typography
-                      variant="h1"
-                      component="span"
-                      color="primary.main"
-                      ml={1}
-                    >
-                      {"DIJELOVI"}
-                    </Typography>
-                  </Typography>
+            <Stack spacing={1}>
+              <Typography variant="h4" fontWeight={400} sx={{ zIndex: "2" }}>
+                Provjereno najbolja
+              </Typography>
+              <Typography variant="h1" component="span">
+                {"MOTO OPREMA &"}
+                <Typography
+                  variant="h1"
+                  component="span"
+                  color="primary.main"
+                  ml={1}
+                >
+                  {"DIJELOVI"}
+                </Typography>
+              </Typography>
 
-                  <Stack direction={"row"} spacing={1} pt={1}>
-                    <Link
-                      href={"/catalogues"}
-                      style={{ textDecoration: "none", width: "100%" }}
-                    >
-                      <Button
-                        variant="outlined"
-                        color="secondary"
-                        size="large"
-                        fullWidth
-                      >
-                        <Typography variant="h6">Ponuda</Typography>
-                      </Button>
-                    </Link>
-                    <Link
-                      href={"/shop"}
-                      style={{ textDecoration: "none", width: "100%" }}
-                    >
-                      <Button
-                        variant="outlinedTransparent"
-                        size="large"
-                        fullWidth
-                      >
-                        <Typography variant="h6">Shop</Typography>
-                      </Button>
-                    </Link>
-                  </Stack>
-                </Stack>
-              </Grid>
-            </Grid>
+              <Stack direction={"row"} spacing={1} pt={1}>
+                <Link
+                  href={"/catalogues"}
+                  style={{ textDecoration: "none", width: "100%" }}
+                >
+                  <Button variant="outlined" color="secondary" size="large">
+                    <Typography variant="h6">Ponuda</Typography>
+                  </Button>
+                </Link>
+                <Link
+                  href={"/shop"}
+                  style={{ textDecoration: "none", width: "100%" }}
+                >
+                  <Button variant="outlinedTransparent" size="large">
+                    <Typography variant="h6">Shop</Typography>
+                  </Button>
+                </Link>
+              </Stack>
+            </Stack>
           </Container>
         </Box>
       </section>
