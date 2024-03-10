@@ -100,10 +100,10 @@ export default function Button(theme: Theme) {
         }),
         // OUTLINED TRANSPARENT
         ...(outlinedTransparentVariant && {
-          color: theme.palette[color][isLight ? "contrastText" : "main"],
+          color: theme.palette[color][isLight ? "main" : "contrastText"],
           backgroundColor: alpha(theme.palette[color].dark, 0.16),
 
-          border: `1px solid ${theme.palette[color].contrastText}`,
+          border: `1px solid ${theme.palette[color].main}`,
           "&:hover": {
             backgroundColor: alpha(theme.palette[color].darker, 0.82),
             // color: theme.palette[color].main,

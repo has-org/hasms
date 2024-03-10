@@ -169,6 +169,7 @@ export default async function HomePage() {
                 <Link href={"/shop"} style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlinedTransparent"
+                    color="secondary"
                     size="large"
                     sx={{
                       width: {
