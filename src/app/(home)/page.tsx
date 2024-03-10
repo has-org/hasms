@@ -82,42 +82,105 @@ export default async function HomePage() {
             src="/images/welcomepozadina.png"
             fill
             alt="Motoshop 7"
+            style={{ zIndex: -1 }}
+          />
+          <Image
+            priority
+            src="/images/welcome_gradient_bg.png"
+            fill
+            alt="Motoshop 7"
+            style={{ zIndex: -1 }}
           />
           <Container maxWidth="lg">
-            <Stack spacing={1}>
-              <Typography variant="h4" fontWeight={400} sx={{ zIndex: "2" }}>
-                Provjereno najbolja
-              </Typography>
-              <Typography variant="h1" component="span">
-                {"MOTO OPREMA &"}
+            <Stack
+              spacing={1}
+              sx={{ height: "608px", justifyContent: "center" }}
+            >
+              <Box
+                sx={{
+                  width: {
+                    xs: "367px",
+                    md: "610px",
+                  },
+                }}
+              >
                 <Typography
-                  variant="h1"
-                  component="span"
-                  color="primary.main"
-                  ml={1}
+                  variant="h4"
+                  fontWeight={400}
+                  sx={{ zIndex: "2", lineHeight: 1.1 }}
                 >
-                  {"DIJELOVI"}
+                  Provjereno najbolja
                 </Typography>
-              </Typography>
-
-              <Stack direction={"row"} spacing={1} pt={1}>
-                <Link
-                  href={"/catalogues"}
-                  style={{ textDecoration: "none", width: "100%" }}
+                <Typography
+                  fontWeight={700}
+                  lineHeight={1.1}
+                  sx={{
+                    fontSize: {
+                      xs: "56px",
+                      md: "80px",
+                    },
+                  }}
                 >
-                  <Button variant="outlined" color="secondary" size="large">
+                  {"MOTO OPREMA &"}
+                  <Typography
+                    component="span"
+                    color="primary.main"
+                    ml={1}
+                    fontWeight={700}
+                    lineHeight={1.1}
+                    sx={{
+                      fontSize: {
+                        xs: "56px",
+                        md: "80px",
+                      },
+                    }}
+                  >
+                    {"DIJELOVI"}
+                  </Typography>
+                </Typography>
+              </Box>
+
+              <Box
+                pt={1}
+                sx={{
+                  display: "flex",
+                  flexDirection: {
+                    xs: "column",
+                    md: "row",
+                  },
+                  gap: 3,
+                }}
+              >
+                <Link href={"/catalogues"} style={{ textDecoration: "none" }}>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    size="large"
+                    sx={{
+                      width: {
+                        xs: "100%",
+                        md: "143px",
+                      },
+                    }}
+                  >
                     <Typography variant="h6">Ponuda</Typography>
                   </Button>
                 </Link>
-                <Link
-                  href={"/shop"}
-                  style={{ textDecoration: "none", width: "100%" }}
-                >
-                  <Button variant="outlinedTransparent" size="large">
+                <Link href={"/shop"} style={{ textDecoration: "none" }}>
+                  <Button
+                    variant="outlinedTransparent"
+                    size="large"
+                    sx={{
+                      width: {
+                        xs: "100%",
+                        md: "143px",
+                      },
+                    }}
+                  >
                     <Typography variant="h6">Shop</Typography>
                   </Button>
                 </Link>
-              </Stack>
+              </Box>
             </Stack>
           </Container>
         </Box>
@@ -147,7 +210,7 @@ export default async function HomePage() {
             Najnovije sa bloga
           </Typography>
           <Container maxWidth="lg" sx={{ pt: 2 }}>
-            <HomeBlog posts={posts} />
+            {posts && <HomeBlog posts={posts} />}{" "}
           </Container>
         </Box>
       </section>
@@ -225,7 +288,7 @@ export default async function HomePage() {
           }}
         >
           <Container maxWidth="lg">
-            <HomeCooperators cooperators={cooperators} />
+            {cooperators && <HomeCooperators cooperators={cooperators} />}{" "}
           </Container>
         </Box>
       </section>

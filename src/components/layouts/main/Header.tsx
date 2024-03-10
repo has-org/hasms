@@ -36,7 +36,7 @@ import { CartSidebar } from "@/components/cart/sidebar/CartSidebar";
 // ----------------------------------------------------------------------
 
 export default function Header() {
-  const [cartDrawerOpen, togglecartDrawerOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const carouselRef = useRef(null);
 
@@ -46,17 +46,9 @@ export default function Header() {
 
   const isOffset = useOffSetTop(HEADER.H_MAIN_DESKTOP);
 
-  const toggleCartDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-      togglecartDrawerOpen(!cartDrawerOpen);
-    };
+  const handleClose = (event: React.KeyboardEvent | React.MouseEvent) => {
+    setOpen(!open);
+  };
 
   return (
     <AppBar
@@ -105,7 +97,7 @@ export default function Header() {
               <Button
                 variant="outlined"
                 color="secondary"
-                onClick={() => togglecartDrawerOpen(!cartDrawerOpen)}
+                onClick={handleClose}
               >
                 <Stack direction={"row"} spacing={0.5} alignItems="center">
                   <Iconify icon="tdesign:cart" />
@@ -118,9 +110,7 @@ export default function Header() {
               </Button>
               <Button variant="outlined" color="secondary">
                 <Stack direction={"row"} spacing={0.5} alignItems="center">
-                  <Iconify
-                    icon="iconamoon:profile-circle"
-                  />
+                  <Iconify icon="iconamoon:profile-circle" />
                 </Stack>
               </Button>
             </Stack>
@@ -129,18 +119,18 @@ export default function Header() {
       </Toolbar>
       {isOffset && <Shadow />}
       <Drawer
-        open={cartDrawerOpen}
-        onClose={toggleCartDrawer(false)}
+        open={open}
+        onClose={handleClose}
         anchor="right"
         PaperProps={{
           sx: {
-            width: "30%",
+            width: { xs: "100%", md: "30%" },
             backgroundColor: alpha("#FFFFFF", 0.47),
             backdropFilter: "blur(50px)",
           },
         }}
       >
-        <CartSidebar />
+        <CartSidebar onClose={handleClose} />
       </Drawer>
     </AppBar>
   );

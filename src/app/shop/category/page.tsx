@@ -61,6 +61,7 @@ export default async function Shop() {
                         src={category.thumbnail}
                         fill
                         alt="proizvodi backgroud"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <Typography
                         variant="h6"

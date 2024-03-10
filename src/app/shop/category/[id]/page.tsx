@@ -18,6 +18,8 @@ import Link from "next/link";
 
 export default async function ShopCategory({ params: { id } }: any) {
   const category: ICategory = await getCategory({ id: id });
+  if (!category) return <div>Category not found</div>;
+
   const { subcategories } = category;
   const categoryTypes = [
     ...new Set(subcategories?.map((subcategory) => subcategory.name)),
@@ -32,11 +34,10 @@ export default async function ShopCategory({ params: { id } }: any) {
   const manufacturerTypes = [
     ...new Set(products?.map((product) => product.manufacturer)),
   ];
-  if (!category) return <div>catalogue not found</div>;
 
   return (
     <Container maxWidth="lg">
-      <Grid container >
+      <Grid container>
         <Grid xs={12}>
           <Box
             sx={{
@@ -68,10 +69,8 @@ export default async function ShopCategory({ params: { id } }: any) {
         </Grid>
         <Grid container xs={12} md={9}>
           <Grid container columnSpacing={4} rowSpacing={4}>
-            <Grid xs={12} sx={{display: 'flex'}}>
-              <Typography variant="body2">
-              filteri
-              </Typography>
+            <Grid xs={12} sx={{ display: "flex" }}>
+              <Typography variant="body2">filteri</Typography>
             </Grid>
             {products?.map((product) => {
               return (
@@ -99,7 +98,7 @@ export default async function ShopCategory({ params: { id } }: any) {
                           />
                         ) : (
                           <Image
-                            src={'/images/no-image.jpg'}
+                            src={"/images/no-image.jpg"}
                             fill
                             alt="product image"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -127,7 +126,7 @@ export default async function ShopCategory({ params: { id } }: any) {
                         {product?.price} KM
                       </Typography>
 
-                      <AddToCartButton product={product}/>
+                      <AddToCartButton product={product} />
                     </Stack>
                   </Card>
                 </Grid>

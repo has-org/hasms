@@ -3,18 +3,19 @@ import { useReducer } from "react";
 import { CartContext } from "./CartContext";
 import { cartReducer } from "./CartReducer";
 import { v4 as uuidv4 } from "uuid";
-import axiosInstance from "@/utils/axios";
+// import axiosInstance from "@/utils/axios";
 import { IProduct } from "@/types/IProduct";
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(cartReducer, {
     items: [],
+    totalAmount: 0
   });
 
   const addToCart = async (item: any) => {
-    console.log(item);
     const preparedProductToAdd = {
       id: uuidv4(),
       product_id: item.id,
+      product_manufacturer: item.manufacturer,
       product_code: item.code,
       product_name: item.name,
       product_price: item.price,
@@ -22,30 +23,30 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       variant_id: item.variants[0]?.id,
       color: item.selectedColor,
       size: item.selectedSize,
-      quantity: 1,
+      quantity: item.quantity,
     };
     const itemExists = state.items?.find(
       (cartItem: any) =>
-        cartItem?.product_id === item?.id &&
-        cartItem?.color?.id === item?.color?.id &&
-        cartItem?.size?.id === item?.size?.id
+        cartItem.product_code === item.code &&
+        cartItem.color.id === item?.selectedColor.id &&
+        cartItem.size.id === item?.selectedSize.id
     );
+
     if (itemExists) {
       dispatch({
-        type: "INCREASE_CART_ITEM_QUANTITY",
+        type: "UPDATE",
         payload: {
-          item: itemExists,
+          item: preparedProductToAdd,
         },
       });
     } else {
       dispatch({
         type: "ADD",
         payload: {
-          items: [...state.items, preparedProductToAdd],
+          item: preparedProductToAdd,
         },
       });
     }
-
     // try {
     //   const res = await axiosInstance.post("/cart", {
     //     cart: preparedProductToAdd,
@@ -109,6 +110,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   const value = {
     items: state.items,
+    totalAmount: state.totalAmount,
     addToCart,
     removeFromCart,
     updateCartItemQuantity,

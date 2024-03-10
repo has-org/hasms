@@ -16,12 +16,27 @@ import { useState, useContext } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import CloseIcon from "@mui/icons-material/Close";
 import { CartContext } from "@/context/CartContext/CartContext";
+import { number, object, string } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+type FormValuesProps = {
+  productColor: number | string;
+  productSize: number | string;
+  quantity: string | number;
+  afterSubmit?: string;
+};
+
+const addToCartSchema = object({
+  productColor: number().or(string()),
+  productSize: number().or(string()),
+  quantity: string().min(1, ""),
+});
 
 const AddToCartButton = ({ product }: { product: IProduct }) => {
   const { addToCart } = useContext(CartContext);
 
-  const productSizes = product?.variants[0]?.sizes;
-  const productColors = product?.variants[0]?.colors;
+  const productSizes = product.variants[0].sizes;
+  const productColors = product.variants[0].colors;
 
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
@@ -37,11 +52,12 @@ const AddToCartButton = ({ product }: { product: IProduct }) => {
   const open = Boolean(anchorEl);
   const id = open ? "cart-button-popover" : undefined;
 
-  const methods = useForm<any>({
+  const methods = useForm<FormValuesProps>({
+    resolver: zodResolver(addToCartSchema),
     defaultValues: {
       productSize: "",
       productColor: "",
-      quantity: 0,
+      quantity: "1",
     },
   });
   const { reset, handleSubmit } = methods;
@@ -51,12 +67,13 @@ const AddToCartButton = ({ product }: { product: IProduct }) => {
     e?: React.BaseSyntheticEvent
   ) => {
     const { productColor, productSize, quantity } = values;
-    const selectedColor = productColors?.find(
+    const selectedColor = productColors.find(
       (color) => color.id === productColor
     );
-    const selectedSize = productSizes?.find((size) => size.id === productSize);
+    const selectedSize = productSizes.find((size) => size.id === productSize);
 
     addToCart({ ...product, selectedColor, selectedSize, quantity });
+    handleClose();
   };
 
   return (
@@ -104,7 +121,7 @@ const AddToCartButton = ({ product }: { product: IProduct }) => {
                 name="productColor"
                 label="Boja"
                 variant="outlined"
-                defaultValue={""}
+                defaultValue={0}
                 fullWidth
               >
                 {productColors.map((color) => {
