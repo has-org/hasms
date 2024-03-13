@@ -6,11 +6,15 @@ import HomeBlog from "@/components/sections/home/home-blog";
 import UAParser from "ua-parser-js";
 import { headers } from "next/dist/client/components/headers";
 import HomeCooperators from "@/components/sections/home/home-cooperators/HomeCooperators";
-import { Button, Container, Stack, Typography, Box } from "@mui/material";
+import { Button, Container, Stack, Typography, Box, Card } from "@mui/material";
+import CardContent from "@mui/material/CardContent/CardContent";
+import CardMedia from "@mui/material/CardMedia/CardMedia";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import Image from "next/image";
 import Link from "next/link";
 import { ICatalogue } from "@/types/Catalogue";
+import zIndex from "@mui/material/styles/zIndex";
+import { NonceProvider } from "react-select";
 
 async function getUserAgent() {
   let userAgent;
@@ -65,6 +69,34 @@ export default async function HomePage() {
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
   };
+
+  const items = [
+    {
+      title: "Motori",
+      image: "/images/motori-card.png",
+      url: "",
+      id: "1"
+    },
+    {
+      title: "Kacige",
+      image: "/images/kacige-card.png",
+      url: "",
+      id: "2"
+    },
+    {
+      title: "ATV",
+      image: "/images/atv-card.png",
+      url: "",
+      id: "3"
+    },
+    {
+      title: "Marina",
+      image: "/images/marina-card.png",
+      url: "",
+      id: "4"
+    },
+
+  ];
 
   return (
     <>
@@ -187,18 +219,97 @@ export default async function HomePage() {
         </Box>
       </section>
       <section>
-        <Box
-          sx={{
-            position: "relative",
-            overflow: "hidden",
-            pt: 2,
-          }}
-        >
-          <Container maxWidth="lg" sx={{ pt: 2 }}>
-            <HomeTrending />
-          </Container>
-        </Box>
-      </section>
+        <Grid container direction="row" >
+          {items.map((item) => (<Grid md={3} xs={12}>
+            <Card sx={{
+              borderRadius: 0,
+              position: "relative",
+              "&:hover": {
+                boxShadow: "0px 33px 15px rgba(0, 0, 0, 0.2)",
+                backgroundColor: "rgba(0, 0, 0, 0.1)"
+              },
+              "&:hover .imageHover": {
+                backgroundColor: "rgba(0, 0, 0, 0.1)",
+                transition: "background-color 0.3s ease",
+              },
+              "&:hover .showContent": {
+                opacity: 1,
+              },
+              "&:hover .titleHover": {
+                top: "-236px"
+              }
+            }} key={item.id}>
+              <Image
+                className="imageHover"
+                src={item.image}
+                layout="fill"
+                objectFit="cover"
+                alt="Motoshop 7"
+              />
+              <Image
+                className="imageHover"
+                src="/images/bottom-card.png"
+                layout="fill"
+                objectFit="cover"
+                alt="Motoshop 7"
+              />
+              <CardContent sx={{
+                display: "flex",
+                alignItems: "flex-end",
+                justifyContent: "flex-start",
+                height: "520px",
+                width: "341px",
+              }}>
+                <Stack width="100%">
+                  <Stack sx={{ alignItems: "flex-start" }}>
+                    <Typography
+                      className="titleHover"
+                      textAlign={"center"}
+                      zIndex={2}
+                      fontSize={"27px"}
+                      marginLeft="40px"
+                      sx={{
+                        position: "relative",
+                        transition: "top 0.3s ease",
+                        top: 0,
+                      }}>
+                      {item.title}
+                    </Typography>
+                  </Stack>
+                  <Stack alignItems="center" className="showContent" sx={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    padding: "0px",
+                    opacity: 0,
+                    transition: "opacity 0.8s ease",
+                  }}>
+                    <Typography marginBottom="35.08px" height="113.47px" width="245px" fontFamily="poppins" fontSize="14px">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                    </Typography>
+
+                    <Button
+                      variant="outlinedTransparent"
+                      color="secondary"
+                      size="large"
+                      sx={{
+                        width: "254px",
+                        height: "47.37px",
+                        marginBottom: "43.63px"
+                      }}>
+                      PREGLEDAJ
+                    </Button>
+                  </Stack>
+                </Stack>
+              </CardContent>
+
+            </Card>
+          </Grid >
+          ))}
+        </Grid>
+      </section >
 
       <section>
         <Box
