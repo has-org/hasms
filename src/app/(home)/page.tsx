@@ -219,97 +219,111 @@ export default async function HomePage() {
         </Box>
       </section>
       <section>
-        <Grid container direction="row" >
-          {items.map((item) => (<Grid md={3} xs={12}>
-            <Card sx={{
-              borderRadius: 0,
-              position: "relative",
-              "&:hover": {
-                boxShadow: "0px 33px 15px rgba(0, 0, 0, 0.2)",
-                backgroundColor: "rgba(0, 0, 0, 0.1)"
-              },
-              "&:hover .imageHover": {
-                backgroundColor: "rgba(0, 0, 0, 0.1)",
-                transition: "background-color 0.3s ease",
-              },
-              "&:hover .showContent": {
-                opacity: 1,
-              },
-              "&:hover .titleHover": {
-                top: "-236px"
-              }
-            }} key={item.id}>
-              <Image
-                className="imageHover"
-                src={item.image}
-                layout="fill"
-                objectFit="cover"
-                alt="Motoshop 7"
-              />
-              <Image
-                className="imageHover"
-                src="/images/bottom-card.png"
-                layout="fill"
-                objectFit="cover"
-                alt="Motoshop 7"
-              />
-              <CardContent sx={{
-                display: "flex",
-                alignItems: "flex-end",
-                justifyContent: "flex-start",
-                height: "520px",
-                width: "341px",
-              }}>
-                <Stack width="100%">
-                  <Stack sx={{ alignItems: "flex-start" }}>
-                    <Typography
-                      className="titleHover"
-                      textAlign={"center"}
-                      zIndex={2}
-                      fontSize={"27px"}
-                      marginLeft="40px"
+        <Grid container direction="row">
+          {items.map((item) => (
+            <Grid md={3} xs={12} key={`${item.title}-${item.id}`}>
+              <Card
+                sx={{
+                  borderRadius: 0,
+                  position: "relative",
+                  "&:hover": {
+                    boxShadow: "0px 33px 15px rgba(0, 0, 0, 0.2)",
+                    backgroundColor: "rgba(0, 0, 0, 0.1)",
+                  },
+                  "&:hover .imageHover": {
+                    backgroundColor: "rgba(0, 0, 0, 0.1)",
+                    transition: "background-color 0.3s ease",
+                  },
+                  "&:hover .showContent": {
+                    opacity: 1,
+                  },
+                  "&:hover .titleHover": {
+                    top: "-236px",
+                  },
+                }}
+              >
+                <Image
+                  className="imageHover"
+                  src={item.image}
+                  fill
+                  alt="Motoshop 7"
+                />
+                <Image
+                  className="imageHover"
+                  src="/images/bottom-card.png"
+                  fill
+                  alt="Motoshop 7"
+                />
+                <CardContent
+                  sx={{
+                    display: "flex",
+                    alignItems: "flex-end",
+                    justifyContent: "flex-start",
+                    height: "520px",
+                    width: "341px",
+                  }}
+                >
+                  <Stack width="100%">
+                    <Stack sx={{ alignItems: "flex-start" }}>
+                      <Typography
+                        className="titleHover"
+                        textAlign={"center"}
+                        zIndex={2}
+                        fontSize={"27px"}
+                        marginLeft="40px"
+                        sx={{
+                          position: "relative",
+                          transition: "top 0.3s ease",
+                          top: 0,
+                        }}
+                      >
+                        {item.title}
+                      </Typography>
+                    </Stack>
+                    <Stack
+                      alignItems="center"
+                      className="showContent"
                       sx={{
-                        position: "relative",
-                        transition: "top 0.3s ease",
-                        top: 0,
-                      }}>
-                      {item.title}
-                    </Typography>
-                  </Stack>
-                  <Stack alignItems="center" className="showContent" sx={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    padding: "0px",
-                    opacity: 0,
-                    transition: "opacity 0.8s ease",
-                  }}>
-                    <Typography marginBottom="35.08px" height="113.47px" width="245px" fontFamily="poppins" fontSize="14px">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                    </Typography>
+                        position: "absolute",
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        padding: "0px",
+                        opacity: 0,
+                        transition: "opacity 0.8s ease",
+                      }}
+                    >
+                      <Typography
+                        marginBottom="35px"
+                        height="113px"
+                        width="245px"
+                        fontSize="14px"
+                      >
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the
+                        industry standard dummy text ever since the 1500s
+                      </Typography>
 
-                    <Button
-                      variant="outlinedTransparent"
-                      color="secondary"
-                      size="large"
-                      sx={{
-                        width: "254px",
-                        height: "47.37px",
-                        marginBottom: "43.63px"
-                      }}>
-                      PREGLEDAJ
-                    </Button>
+                      <Button
+                        variant="outlinedTransparent"
+                        color="secondary"
+                        size="large"
+                        sx={{
+                          width: "254px",
+                          height: "47px",
+                          marginBottom: "43px",
+                        }}
+                      >
+                        PREGLEDAJ
+                      </Button>
+                    </Stack>
                   </Stack>
-                </Stack>
-              </CardContent>
-
-            </Card>
-          </Grid >
+                </CardContent>
+              </Card>
+            </Grid>
           ))}
         </Grid>
-      </section >
+      </section>
 
       <section>
         <Box

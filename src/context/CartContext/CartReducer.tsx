@@ -1,13 +1,12 @@
 export const cartReducer = (state: any, action: any) => {
   const { type, payload } = action;
+
+
   switch (type) {
     case "ADD":
       return {
         ...state,
         items: [...state.items, payload.item],
-        totalAmount:
-          state.totalAmount +
-          payload.item.product_price * payload.item.quantity,
       };
 
     case "UPDATE":
@@ -24,18 +23,12 @@ export const cartReducer = (state: any, action: any) => {
       return {
         ...state,
         items: updatedItems,
-        totalAmount:
-          state.totalAmount +
-          payload.item.product_price * payload.item.quantity,
       };
 
     case "REMOVE":
       return {
         ...state,
-        items: payload.items,
-        totalAmount:
-          state.totalAmount -
-          payload.item.product_price * payload.item.quantity,
+        items: state.items.filter((item: any) => item.id !== payload.id),
       };
 
     case "INCREASE_CART_ITEM_QUANTITY":
@@ -60,6 +53,12 @@ export const cartReducer = (state: any, action: any) => {
           return item;
         }),
       };
+
+    case "UPDATE_TOTAL_AMOUNT":
+      return {
+        ...state,
+        totalAmount: state.totalAmount + payload.totalAmount,
+      }
 
     default:
       throw new Error("No case for that type");

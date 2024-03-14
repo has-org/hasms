@@ -57,6 +57,8 @@ const CatalogueItem = ({
   }, [catalogue]);
 
   if (!catalogue) return <>{"no catalogue"}</>;
+  if (!catalogue.catalogue_details) return <>{"no catalogue details"}</>;
+  if (!catalogue.catalogue_variants) return <>{"no catalogue variants"}</>;
 
   const { code, state } = catalogue;
 

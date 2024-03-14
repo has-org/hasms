@@ -11,12 +11,10 @@ import {
 } from "@mui/material";
 import { CartContext } from "@/context/CartContext/CartContext";
 import { useContext, useEffect, useMemo } from "react";
-import { ReactTable } from "../../react-table/ReactTable";
-import Iconify from "../../iconify";
 import Link from "next/link";
-import Scrollbar from "@/components/scrollbar/Scrollbar";
 import Image from "next/image";
 import { CloseIcon } from "@/theme/overrides/CustomIcons";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const CartTypography = styled(Typography)(({ theme }) => ({
   fontSize: "12px",
@@ -24,7 +22,7 @@ const CartTypography = styled(Typography)(({ theme }) => ({
 }));
 
 export const CartSidebar = ({ onClose }: { onClose: any }) => {
-  const { items, totalAmount } = useContext(CartContext);
+  const { items, totalAmount, removeFromCart } = useContext(CartContext);
 
   return (
     <Box
@@ -34,7 +32,12 @@ export const CartSidebar = ({ onClose }: { onClose: any }) => {
     >
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Typography variant={"h6"}>Korpa</Typography>
-        <IconButton color="secondary" size="small" onClick={onClose}>
+        <IconButton
+          color="secondary"
+          size="small"
+          onClick={onClose}
+          sx={{ "&:hover": { backgroundColor: "secondary.dark" } }}
+        >
           <CloseIcon />
         </IconButton>
       </Stack>
@@ -47,44 +50,64 @@ export const CartSidebar = ({ onClose }: { onClose: any }) => {
                 key={`${item.product_code}-${item.color?.name}-${item.size?.name}`}
               >
                 <ListItem sx={{ p: 0, m: 0 }}>
-                  <Stack direction="row" alignItems="center" spacing={1}>
-                    {item.product_image ? (
-                      <Image
-                        src={item.product_image}
-                        width={48}
-                        height={48}
-                        alt="asd"
-                        style={{ borderRadius: "8px" }}
-                      />
-                    ) : (
-                      <Image
-                        src={"/images/no-image.jpg"}
-                        width={48}
-                        height={48}
-                        alt="asd"
-                        style={{ borderRadius: "8px" }}
-                      />
-                    )}
-                    <Stack>
-                      <Typography variant="body2" fontSize={12}>
-                        {item.product_manufacturer}
-                      </Typography>
-                      <Stack direction="row" alignItems="center" spacing={1}>
-                        <CartTypography variant="body2">
-                          {item.product_name}
-                        </CartTypography>
-                        <CartTypography variant="body2">
-                          {item.color?.name}
-                        </CartTypography>
-                        <CartTypography variant="body2">
-                          {item.size?.name}
-                        </CartTypography>
-                      </Stack>
+                  <Stack
+                    sx={{ width: "100%", justifyContent: "space-between" }}
+                    direction="row"
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                      {item.product_image ? (
+                        <Image
+                          src={item.product_image}
+                          width={48}
+                          height={48}
+                          alt="asd"
+                          style={{ borderRadius: "8px" }}
+                        />
+                      ) : (
+                        <Image
+                          src={"/images/no-image.jpg"}
+                          width={48}
+                          height={48}
+                          alt="asd"
+                          style={{ borderRadius: "8px" }}
+                        />
+                      )}
+                      <Stack>
+                        <Typography variant="body2" fontSize={12}>
+                          {item.product_manufacturer}
+                        </Typography>
+                        <Stack direction="row" alignItems="center" spacing={1}>
+                          <CartTypography variant="body2">
+                            {item.product_name}
+                          </CartTypography>
+                          <CartTypography variant="body2">
+                            {item.color?.name}
+                          </CartTypography>
+                          <CartTypography variant="body2">
+                            {item.size?.name}
+                          </CartTypography>
+                        </Stack>
 
-                      <Typography variant="body2">
-                        {item.product_price * item.quantity} KM
-                      </Typography>
+                        <Typography variant="body2">
+                          {item.product_price * item.quantity} KM
+                        </Typography>
+                      </Stack>
                     </Stack>
+
+                    <IconButton
+                      sx={{
+                        color: "white",
+                        "&:hover": {
+                          backgroundColor: (theme) =>
+                            theme.palette.secondary.dark,
+                        },
+                      }}
+                      onClick={() => removeFromCart(item.id)}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
                   </Stack>
                 </ListItem>
                 <Divider color="black" />
@@ -105,19 +128,22 @@ export const CartSidebar = ({ onClose }: { onClose: any }) => {
         sx={{
           display: "flex",
           gap: 3,
-          width: '100%',
+          width: "100%",
           flexDirection: {
             xs: "column",
             md: "row",
           },
         }}
       >
-        <Link href="/cart" style={{ textDecoration: "none", width: '100%' }}>
+        <Link
+          href="/checkout"
+          style={{ textDecoration: "none", width: "100%" }}
+        >
           <Button variant="outlined" color="secondary" fullWidth>
             <Typography>Placanje</Typography>
           </Button>
         </Link>
-        <Link href="/checkout" style={{ textDecoration: "none", width: '100%' }}>
+        <Link href="/cart" style={{ textDecoration: "none", width: "100%" }}>
           <Button variant="outlinedTransparent" color="secondary" fullWidth>
             <Typography>Pregled</Typography>
           </Button>
