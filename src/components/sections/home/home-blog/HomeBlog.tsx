@@ -10,6 +10,7 @@ import {
   Chip,
   Link,
 } from "@mui/material";
+import { grey } from '@mui/material/colors';
 import CardContent from "@mui/material/CardContent/CardContent";
 import CardMedia from "@mui/material/CardMedia/CardMedia";
 import Image from "next/image";
@@ -45,6 +46,8 @@ const HomeBlog = ({
 
   const router = useRouter();
 
+  const color = grey[700];
+
   return (
     <Carousel
       showDots={true}
@@ -63,7 +66,7 @@ const HomeBlog = ({
       renderButtonGroupOutside={true}
     >
       {posts?.map((item, index) => (
-        <Card key={index} sx={{ mx: 5, minHeight: "500px", maxWidth: "400px" }}>
+        <Card key={index} sx={{ width: "360px", height: "468px" }}>
           <CardMedia>
             <Box
               sx={{
@@ -72,39 +75,30 @@ const HomeBlog = ({
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
-                height: "250px",
+                height: "246px",
               }}
             >
               <Image
                 src={item.thumbnail}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 alt="Motoshop 7"
               />
             </Box>
           </CardMedia>
           <CardContent sx={{ display: "flex" }}>
-            <Stack spacing={0.5}>
-              <Typography variant="body2">{item.created_at}</Typography>
-              <Typography variant="h4">{item.short_title}</Typography>
-              <Typography variant="body2">{item.short_description}</Typography>
-
-              <Stack direction="row" pt={3} alignItems="center" spacing={2}>
-                {item?.tags?.slice(0, 2)?.map((tag: any, index: number) => (
-                  <Chip key={index} label={tag.name} color="info" />
-                ))}
-                <Box sx={{ display: "flex", flex: 1, justifyContent: "end" }}>
-                  <Typography
-                    color="primary.main"
-                    sx={{ textDecorationColor: "primary.main" }}
-                  >
-                    <Link onClick={() => router.push(`/posts/${item.id}`)}>
-                      Procitaj tekst
-                    </Link>
-                  </Typography>
+            <Box sx={{ width: "330px" }}>
+              <Stack spacing={0.5}>
+                <Typography variant="body2">{item.created_at}</Typography><Typography >{item.short_title}</Typography>
+                <Box sx={{ display: "inlineBlock", width: "100%", overflow: "hidden", textOverflow: "ellipsis", maxHeight: "60px" }}>
+                  <Typography variant="body2">{item.short_description}</Typography>
                 </Box>
+                <Stack direction="row" pt={3} alignItems="center" spacing={2}>
+                  {item.tags && item.tags.slice(0, 2).map((tag: any, index: number) => (
+                    <Chip key={index} label={tag.name} style={{ backgroundColor: color, borderRadius: "5px" }} />
+                  ))}
+                </Stack>
               </Stack>
-            </Stack>
+            </Box>
           </CardContent>
         </Card>
       ))}
