@@ -1,5 +1,4 @@
 import { Cooperator as CooperatorType } from "@/types/Cooperator";
-
 import { getCatalogues, getCooperators, getPosts } from "@/services/apiService";
 import HomeTrending from "@/components/sections/home/home-trending";
 import HomeBlog from "@/components/sections/home/home-blog";
@@ -316,11 +315,14 @@ export default async function HomePage() {
           sx={{
             position: "relative",
             pt: 2,
+            marginTop: "80px"
           }}
         >
-          <Typography textAlign={"center"} variant="h2">
-            Najnovije sa bloga
-          </Typography>
+          <Stack direction="row" justifyContent="center">
+            <Typography textAlign={"center"} height="39px" width="370px" fontSize="40px" >
+              Najnovije sa bloga
+            </Typography>
+          </Stack>
           <Container maxWidth="lg" sx={{ pt: 2 }}>
             {posts && <HomeBlog posts={posts} />}{" "}
           </Container>
