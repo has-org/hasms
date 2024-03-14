@@ -1,5 +1,4 @@
 import { Cooperator as CooperatorType } from "@/types/Cooperator";
-
 import { getCatalogues, getCooperators, getPosts } from "@/services/apiService";
 import HomeTrending from "@/components/sections/home/home-trending";
 import HomeBlog from "@/components/sections/home/home-blog";
