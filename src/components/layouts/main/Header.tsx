@@ -125,7 +125,7 @@ export default function Header() {
         PaperProps={{
           sx: {
             width: { xs: "100%", md: "30%" },
-            backgroundColor: alpha("#FFFFFF", 0.47),
+            backgroundColor: alpha("#313131", 0.8),
             backdropFilter: "blur(50px)",
           },
         }}

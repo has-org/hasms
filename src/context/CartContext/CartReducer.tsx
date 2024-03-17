@@ -57,7 +57,9 @@ export const cartReducer = (state: any, action: any) => {
     case "UPDATE_TOTAL_AMOUNT":
       return {
         ...state,
-        totalAmount: state.totalAmount + payload.totalAmount,
+        totalAmount: payload.totalAmount,
+        totalWithoutTax: payload.totalWithoutTax,
+        totalTax: payload.totalTax,
       }
 
     default:

@@ -82,6 +82,7 @@ const AddToCartButton = ({ product }: { product: IProduct }) => {
         aria-describedby={id}
         variant="outlinedTransparent"
         sx={{ textTransform: "none" }}
+        color="secondary"
         onClick={handleClick}
       >
         <Stack direction="row" alignItems="center" spacing={1}>

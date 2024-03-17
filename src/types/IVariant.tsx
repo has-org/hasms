@@ -3,6 +3,7 @@ import { VariantImage } from "./VariantImage";
 import { ISize } from "./ISize";
 import { ITag } from "./ITag";
 import { IProduct } from "./IProduct";
+import { IProductPrice } from "./IProductPrice";
 
 export interface IVariant {
   id: number;
@@ -13,5 +14,5 @@ export interface IVariant {
   colors: Color[];
   sizes: ISize[];
   tags: ITag[];
-  variantPrice: string;
+  product_prices: IProductPrice[];
 }

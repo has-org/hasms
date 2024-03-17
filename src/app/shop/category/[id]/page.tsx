@@ -2,7 +2,6 @@ import AddToCartButton from "@/components/cart/buttons/AddToCartButton";
 import CheckboxCollapsible from "@/components/collapsible/CheckboxCollapsible";
 import ColorCollapsible from "@/components/collapsible/ColorCollapsible";
 import PriceCollapsible from "@/components/collapsible/PriceCollapsible";
-import Scrollbar from "@/components/scrollbar/Scrollbar";
 import {
   getCategory,
   getCategoryProducts,
@@ -123,7 +122,7 @@ export default async function ShopCategory({ params: { id } }: any) {
                       </Stack>
 
                       <Typography fontSize={28} color="#00D0FD">
-                        {product?.price} KM
+                        {product?.variants[0]?.product_prices[0]?.price} KM
                       </Typography>
 
                       <AddToCartButton product={product} />

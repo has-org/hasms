@@ -88,10 +88,13 @@ export const CartSidebar = ({ onClose }: { onClose: any }) => {
                           <CartTypography variant="body2">
                             {item.size?.name}
                           </CartTypography>
+                          <CartTypography variant="body2">
+                            x{item.quantity}
+                          </CartTypography>
                         </Stack>
 
                         <Typography variant="body2">
-                          {item.product_price * item.quantity} KM
+                          {item.product_price} KM
                         </Typography>
                       </Stack>
                     </Stack>

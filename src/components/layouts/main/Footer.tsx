@@ -42,10 +42,14 @@ const LINKS = [
     children: [
       {
         name: "Njegoševa 34a, 78000 Banja Luka",
-        href: "#",
+        href: "https://maps.app.goo.gl/b2JLwiRgeLDk3oRF6",
         icon: "vaadin:office",
       },
-      { name: "+387 51 305 077", href: "#", icon: "ic:baseline-phone" },
+      {
+        name: "+387 51 305 077",
+        href: "tel:+387 51 305 077",
+        icon: "ic:baseline-phone",
+      },
       {
         name: "motoshop7bl@gmail.com",
         href: "#",
@@ -69,12 +73,20 @@ const LINKS = [
     children: [
       {
         name: "Jesenjinova 14, 78000 Banja Luka",
-        href: "#",
+        href: "https://maps.app.goo.gl/erqUqb4TNfgvoS1r9",
         icon: "vaadin:office",
       },
 
-      { name: "+387 65 514 807", href: "#", icon: "ic:baseline-phone" },
-      { name: "+387 66 173 700", href: "#", icon: "ic:baseline-phone" },
+      {
+        name: "+387 65 514 807",
+        href: "tel:+387 65 514 807",
+        icon: "ic:baseline-phone",
+      },
+      {
+        name: "+387 66 173 700",
+        href: "tel:+387 66 173 700",
+        icon: "ic:baseline-phone",
+      },
 
       {
         name: "PON-PET: 09:00 - 17:00h",
@@ -91,7 +103,11 @@ const LINKS = [
   {
     headline: "Servis",
     children: [
-      { name: "+387 66 173 700", href: "#", icon: "ic:baseline-phone" },
+      {
+        name: "+387 66 173 700",
+        href: "tel:+387 66 173 700",
+        icon: "ic:baseline-phone",
+      },
       {
         name: "servis@motoshop7.com",
         href: "#",
@@ -102,7 +118,11 @@ const LINKS = [
   {
     headline: "Prodaja dijelova i opreme",
     children: [
-      { name: "+387 66 173 700", href: "#", icon: "ic:baseline-phone" },
+      {
+        name: "+387 66 173 700",
+        href: "tel:+387 66 173 700",
+        icon: "ic:baseline-phone",
+      },
       {
         name: "yamaha@motoshop7.ba",
         href: "#",
@@ -174,6 +194,7 @@ export default function Footer() {
                     <Link
                       key={link.name}
                       href={link.href}
+                      target="_blank"
                       variant="body1"
                       sx={{
                         display: "flex",

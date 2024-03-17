@@ -1,3 +1,4 @@
+import { ICategory } from "./ICategory";
 import { IVariant } from "./IVariant";
 export type IProduct = {
   
@@ -9,11 +10,10 @@ export type IProduct = {
   description: string;
   manufacturer: string;
   model: string;
-  price: number;
   category_id: number;
   order_id: number;
   workspace_id: number;
   image: string;
   variants: IVariant[];
-  currency: string;
+  category: ICategory,
 };
