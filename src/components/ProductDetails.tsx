@@ -78,8 +78,8 @@ export const ProductDetails = ({ product }: ProductProps) => {
       <Box className="product-price flex gap-x-2">
         <Text className="product-price-key">Cijena</Text>
 
-        <Text className="product-price-value">{product.price}</Text>
-        <Text className="product-currency">{product.currency}</Text>
+        {/* <Text className="product-price-value">{product.price}</Text> */}
+        {/* <Text className="product-currency">{product.currency}</Text> */}
       </Box>
 
       <Box className="variants-wrap flex items-center gap-x-2">
