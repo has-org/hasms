@@ -343,31 +343,43 @@ const CatalogueItem = ({
                     spacing: { xs: 1.5, md: "0" },
                   }}
                 >
-                  <Button
-                    variant="outlinedTransparent"
-                    color="secondary"
-                    sx={{
-                      width: { xs: "90%", md: "auto" },
-                      padding: "10px 30px",
-                      borderRadius: "10px",
-                      marginRight: { xs: "0px", md: "17px" },
-                      marginBottom: { xs: "12px", md: "0px" },
-                    }}
+                  <Link
+                    href={`https://s3.villa-seaview.online${specification_url}`}
+                    style={{ textDecoration: "none" }}
+                    target="_blank"
                   >
-                    <Typography fontSize="12px">Katalog</Typography>
-                  </Button>
-                  <Button
-                    variant="outlinedTransparent"
-                    color="secondary"
-                    sx={{
-                      padding: "10px 20px",
-                      width: { xs: "90%", md: "auto" },
-                      borderRadius: "10px",
-                      marginRight: { xs: "0px", md: "16px" },
-                    }}
+                    <Button
+                      variant="outlinedTransparent"
+                      color="secondary"
+                      sx={{
+                        width: { xs: "90%", md: "auto" },
+                        padding: "10px 30px",
+                        borderRadius: "10px",
+                        marginRight: { xs: "0px", md: "17px" },
+                        marginBottom: { xs: "12px", md: "0px" },
+                      }}
+                    >
+                      <Typography fontSize="12px">Katalog</Typography>
+                    </Button>
+                  </Link>
+                  <Link
+                    href={`${additional_equipment_url}`}
+                    style={{ textDecoration: "none" }}
+                    target="_blank"
                   >
-                    <Typography fontSize="12px">Dodatna oprema</Typography>
-                  </Button>
+                    <Button
+                      variant="outlinedTransparent"
+                      color="secondary"
+                      sx={{
+                        padding: "10px 20px",
+                        width: { xs: "90%", md: "auto" },
+                        borderRadius: "10px",
+                        marginRight: { xs: "0px", md: "16px" },
+                      }}
+                    >
+                      <Typography fontSize="12px">Dodatna oprema</Typography>
+                    </Button>
+                  </Link>
                 </Stack>
               </Stack>
 
