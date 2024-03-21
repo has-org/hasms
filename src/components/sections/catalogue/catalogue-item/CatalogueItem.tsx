@@ -374,7 +374,6 @@ const CatalogueItem = ({
               <Stack
                 sx={{
                   backgroundColor: "#262626",
-                  height: "61px",
                   borderRadius: "16px",
                   justifyContent: "center",
                 }}
@@ -384,6 +383,7 @@ const CatalogueItem = ({
                     aria-controls="panel1-content"
                     id="panel1-header"
                     expandIcon={<ExpandMoreIcon />}
+                    sx={{ height: "61px" }}
                   >
                     <Typography fontWeight={600} fontSize="18px">
                       Specifikacije
@@ -473,7 +473,6 @@ const CatalogueItem = ({
               <Stack
                 sx={{
                   backgroundColor: "#262626",
-                  height: "61px",
                   borderRadius: "16px",
                   justifyContent: "center",
                 }}
@@ -483,6 +482,7 @@ const CatalogueItem = ({
                     aria-controls="panel1-content"
                     id="panel1-header"
                     expandIcon={<ExpandMoreIcon />}
+                    sx={{ height: "61px" }}
                   >
                     <Typography fontWeight={600} fontSize="18px">
                       Opis
