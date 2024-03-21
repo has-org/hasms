@@ -187,6 +187,7 @@ const CatalogueItem = ({
             <Stack
               sx={{
                 flexDirection: { xs: "column", md: "row" },
+                justifyContent: "space-between",
                 marginBottom: "48px",
               }}
             >
@@ -194,6 +195,7 @@ const CatalogueItem = ({
                 direction="row"
                 alignItems="center"
                 sx={{ paddingBottom: { xs: "24px", md: "0px" } }}
+                spacing={2}
               >
                 <Iconify
                   icon="lets-icons:date-today-light"
@@ -203,8 +205,6 @@ const CatalogueItem = ({
                 />
                 <Stack
                   sx={{
-                    marginLeft: "12px",
-                    marginRight: { xs: "0px", md: "41px" },
                     flexDirection: { xs: "row", md: "column" },
                     justifyContent: {
                       xs: "space-between",
@@ -213,30 +213,34 @@ const CatalogueItem = ({
                     flexGrow: 1,
                   }}
                 >
-                  <Typography sx={{ color: "rgba(172, 172, 172, 0.86)" }}>
+                  <Typography
+                    sx={{
+                      color: "rgba(172, 172, 172, 0.86)",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     Godina proizvodnje
                   </Typography>
                   <Typography fontWeight={500}>{year_manufactured}</Typography>
                 </Stack>
               </Stack>
 
-              {isXsScreen ? (
-                <Divider orientation="horizontal" flexItem color="D9D9D9" />
-              ) : (
-                <Divider
-                  orientation="vertical"
-                  variant="middle"
-                  flexItem
-                  color="D9D9D9"
-                />
-              )}
+              <Divider
+                variant="middle"
+                flexItem
+                color="D9D9D9"
+                sx={{
+                  marginLeft: { xs: "0px", md: "8px" },
+                  marginRight: { xs: "0px", md: "8px" },
+                  borderBottomWidth: { xs: "thin", md: 0 },
+                  borderRightWidth: { xs: 0, md: "thin" },
+                }}
+              />
 
               <Stack
                 direction="row"
                 alignItems="center"
                 sx={{
-                  marginLeft: { xs: "0px", md: "41px" },
-                  marginRight: { xs: "0px", md: "79px" },
                   paddingBottom: { xs: "24px", md: "0px" },
                   paddingTop: { xs: "24px", md: "0px" },
                 }}
@@ -267,22 +271,22 @@ const CatalogueItem = ({
                 </Stack>
               </Stack>
 
-              {isXsScreen ? (
-                <Divider orientation="horizontal" flexItem color="D9D9D9" />
-              ) : (
-                <Divider
-                  orientation="vertical"
-                  variant="middle"
-                  flexItem
-                  color="D9D9D9"
-                />
-              )}
+              <Divider
+                variant="middle"
+                flexItem
+                color="D9D9D9"
+                sx={{
+                  marginLeft: { xs: "0px", md: "8px" },
+                  marginRight: { xs: "0px", md: "8px" },
+                  borderBottomWidth: { xs: "thin", md: 0 },
+                  borderRightWidth: { xs: 0, md: "thin" },
+                }}
+              />
 
               <Stack
                 direction="row"
                 alignItems="center"
                 sx={{
-                  marginLeft: { xs: "0px", md: "34px" },
                   paddingTop: { xs: "24px", md: "0px" },
                 }}
               >
@@ -315,7 +319,6 @@ const CatalogueItem = ({
                 sx={{
                   backgroundColor: "#262626",
                   height: { xs: "161px", md: "75px" },
-                  width: { xs: "100%", md: "670px" },
                   borderRadius: "16px",
                   flexDirection: { xs: "column", md: "row" },
                   alignItems: { xs: "flex-start", md: "center" },
@@ -372,7 +375,6 @@ const CatalogueItem = ({
                 sx={{
                   backgroundColor: "#262626",
                   height: "61px",
-                  width: { xs: "100%", md: "670px" },
                   borderRadius: "16px",
                   justifyContent: "center",
                 }}
@@ -472,7 +474,6 @@ const CatalogueItem = ({
                 sx={{
                   backgroundColor: "#262626",
                   height: "61px",
-                  width: { xs: "100%", md: "670px" },
                   borderRadius: "16px",
                   justifyContent: "center",
                 }}
