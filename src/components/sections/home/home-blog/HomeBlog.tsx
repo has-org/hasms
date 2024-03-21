@@ -2,15 +2,8 @@
 
 import useResponsive from "@/hooks/useResponsive";
 import { IPost } from "@/types/IPost";
-import {
-  Box,
-  Stack,
-  Card,
-  Typography,
-  Chip,
-  Link,
-} from "@mui/material";
-import { grey } from '@mui/material/colors';
+import { Box, Stack, Card, Typography, Chip, Link } from "@mui/material";
+import { grey } from "@mui/material/colors";
 import CardContent from "@mui/material/CardContent/CardContent";
 import CardMedia from "@mui/material/CardMedia/CardMedia";
 import Image from "next/image";
@@ -78,24 +71,41 @@ const HomeBlog = ({
                 height: "246px",
               }}
             >
-              <Image
-                src={item.thumbnail}
-                fill
-                alt="Motoshop 7"
-              />
+              <Image src={item.thumbnail} fill alt="Motoshop 7" />
             </Box>
           </CardMedia>
           <CardContent sx={{ display: "flex" }}>
             <Box sx={{ width: "330px" }}>
               <Stack spacing={0.5}>
-                <Typography variant="body2">{item.created_at}</Typography><Typography >{item.short_title}</Typography>
-                <Box sx={{ display: "inlineBlock", width: "100%", overflow: "hidden", textOverflow: "ellipsis", maxHeight: "60px" }}>
-                  <Typography variant="body2">{item.short_description}</Typography>
+                <Typography variant="body2">{item.created_at}</Typography>
+                <Typography>{item.short_title}</Typography>
+                <Box
+                  sx={{
+                    display: "inlineBlock",
+                    width: "100%",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    maxHeight: "60px",
+                  }}
+                >
+                  <Typography variant="body2">
+                    {item.short_description}
+                  </Typography>
                 </Box>
                 <Stack direction="row" pt={3} alignItems="center" spacing={2}>
-                  {item.tags && item.tags.slice(0, 2).map((tag: any, index: number) => (
-                    <Chip key={index} label={tag.name} style={{ backgroundColor: color, borderRadius: "5px" }} />
-                  ))}
+                  {item.tags &&
+                    item.tags
+                      .slice(0, 2)
+                      .map((tag: any, index: number) => (
+                        <Chip
+                          key={index}
+                          label={tag.name}
+                          style={{
+                            backgroundColor: color,
+                            borderRadius: "5px",
+                          }}
+                        />
+                      ))}
                 </Stack>
               </Stack>
             </Box>

@@ -74,27 +74,26 @@ export default async function HomePage() {
       title: "Motori",
       image: "/images/motori-card.png",
       url: "",
-      id: "1"
+      id: "1",
     },
     {
       title: "Kacige",
       image: "/images/kacige-card.png",
       url: "",
-      id: "2"
+      id: "2",
     },
     {
       title: "ATV",
       image: "/images/atv-card.png",
       url: "",
-      id: "3"
+      id: "3",
     },
     {
       title: "Marina",
       image: "/images/marina-card.png",
       url: "",
-      id: "4"
+      id: "4",
     },
-
   ];
 
   return (
@@ -299,8 +298,8 @@ export default async function HomePage() {
                         fontSize="14px"
                       >
                         Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry standard dummy text ever since the 1500s
+                        typesetting industry. Lorem Ipsum has been the industry
+                        standard dummy text ever since the 1500s
                       </Typography>
 
                       <Button
@@ -329,11 +328,16 @@ export default async function HomePage() {
           sx={{
             position: "relative",
             pt: 2,
-            marginTop: "80px"
+            marginTop: "80px",
           }}
         >
           <Stack direction="row" justifyContent="center">
-            <Typography textAlign={"center"} height="39px" width="370px" fontSize="40px" >
+            <Typography
+              textAlign={"center"}
+              height="39px"
+              width="370px"
+              fontSize="40px"
+            >
               Najnovije sa bloga
             </Typography>
           </Stack>
