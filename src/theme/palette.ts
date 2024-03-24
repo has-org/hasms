@@ -34,13 +34,13 @@ const GREY = {
 };
 
 const PRIMARY = {
-  lighter: "#8A8E99", //#00D0FD
-  light: "#8A8E99",
-  main: "#00D0FD",
-  dark: "#1E1E1E",
-  darker: "#171717",
-  contrastText: "#FFFFFF",
-  neutral: "#1E1E1E",
+  lighter: '#313131', //#00D0FD
+  light: '#262626',
+  main: '#00D0FD',
+  dark: '#1E1E1E',
+  darker: '#171717',
+  contrastText: '#FFFFFF',
+  neutral: '#1E1E1E',
 };
 
 const SECONDARY = {
@@ -89,7 +89,7 @@ const ERROR = {
 };
 
 const COMMON = {
-  common: { black: "#000000", white: "#FFFFFF", fluo: "#54F2F2" },
+  common: { black: '#000000', white: '#FFFFFF', fluo: '#54F2F2' },
   primary: PRIMARY,
   secondary: SECONDARY,
   info: INFO,
@@ -101,7 +101,7 @@ const COMMON = {
   action: {
     hover: alpha(GREY[500], 0.08),
     selected: alpha(GREY[500], 0.16),
-    disabled: alpha(GREY[500], 0.8),
+    disabled: alpha('#8C8C8C', 0.8),
     disabledBackground: alpha(GREY[500], 0.24),
     focus: alpha(GREY[500], 0.24),
     hoverOpacity: 0.08,
@@ -119,7 +119,7 @@ export default function palette(themeMode: 'light' | 'dark') {
       disabled: GREY[500],
     },
     background: {
-      primary: PRIMARY.dark,
+      primary: PRIMARY.darker,
       // paper: alpha(PRIMARY.dark, 0.8),
       paper: PRIMARY.neutral,
       // default: alpha(PRIMARY.darker, 0.94),
@@ -139,7 +139,7 @@ export default function palette(themeMode: 'light' | 'dark') {
     text: {
       primary: '#FFFFFF',
       secondary: GREY[500],
-      disabled: GREY[600],
+      disabled: '#5E5E5E',
     },
     background: {
       paper: GREY[800],

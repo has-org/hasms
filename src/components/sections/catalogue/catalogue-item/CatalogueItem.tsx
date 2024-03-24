@@ -110,7 +110,6 @@ const CatalogueItem = ({
     },
   };
 
-  const isXsScreen = useMediaQuery("(max-width:464px)");
 
   return (
     <>
