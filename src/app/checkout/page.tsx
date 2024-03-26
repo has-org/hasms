@@ -126,12 +126,8 @@ export default function CheckoutPage() {
             <Box
               sx={{
                 display: 'flex',
-                gap: 3,
                 width: '100%',
-                flexDirection: {
-                  xs: 'column',
-                  md: 'row',
-                },
+              
               }}
             >
               <Link
@@ -139,21 +135,10 @@ export default function CheckoutPage() {
                 style={{ textDecoration: 'none', width: '100%' }}
               >
                 <Button variant='outlined' color='secondary' fullWidth>
-                  <Typography>Placanje</Typography>
+                  <Typography>Naruci</Typography>
                 </Button>
               </Link>
-              <Link
-                href='/cart'
-                style={{ textDecoration: 'none', width: '100%' }}
-              >
-                <Button
-                  variant='outlinedTransparent'
-                  color='secondary'
-                  fullWidth
-                >
-                  <Typography>Pregled</Typography>
-                </Button>
-              </Link>
+            
             </Box>
           </Box>
         </Grid>
