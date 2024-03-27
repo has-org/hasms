@@ -9,13 +9,15 @@ import {
   FormHelperText,
   RadioGroupProps,
   FormControlLabel,
+  Card,
+  Stack,
 } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
 type Props = RadioGroupProps & {
   name: string;
-  options: { label: string; value: any }[];
+  options: { label: string; value: any, disabled?: boolean }[];
   label?: string;
   spacing?: number;
   helperText?: React.ReactNode;
@@ -56,25 +58,32 @@ export default function RHFRadioGroup({
             row={row}
             {...other}
           >
-            {options.map((option) => (
-              <FormControlLabel
-                key={option.value}
-                value={option.value}
-                control={<Radio />}
-                label={option.label}
-                sx={{
-                  '&:not(:last-of-type)': {
-                    mb: spacing || 0,
-                  },
-                  ...(row && {
-                    mr: 0,
-                    '&:not(:last-of-type)': {
-                      mr: spacing || 2,
-                    },
-                  }),
-                }}
-              />
-            ))}
+            <Stack spacing={1}>
+              {options.map((option) => (
+                <Card
+                  key={option.value}
+                  sx={{ boxShadow: 0, backgroundColor: 'primary.light', p: 2 }}
+                >
+                  <FormControlLabel
+                    value={option.value}
+                    control={<Radio />}
+                    label={option.label}
+                    disabled={option.disabled ?? false}
+                    sx={{
+                      '&:not(:last-of-type)': {
+                        mb: spacing || 0,
+                      },
+                      ...(row && {
+                        mr: 0,
+                        '&:not(:last-of-type)': {
+                          mr: spacing || 2,
+                        },
+                      }),
+                    }}
+                  />
+                </Card>
+              ))}
+            </Stack>
           </RadioGroup>
 
           {(!!error || helperText) && (
