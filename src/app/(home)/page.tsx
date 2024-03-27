@@ -244,6 +244,7 @@ export default async function HomePage() {
                   },
                   '&:hover .titleHover': {
                     top: '-236px',
+                    left: '45px'
                   },
                 }}
               >
