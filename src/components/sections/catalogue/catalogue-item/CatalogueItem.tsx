@@ -480,7 +480,6 @@ const CatalogueItem = ({
                   </AccordionDetails>
                 </Accordion>
               </Stack>
-
               <Stack
                 sx={{
                   backgroundColor: "#262626",

@@ -101,8 +101,8 @@ const COMMON = {
   action: {
     hover: alpha(GREY[500], 0.08),
     selected: alpha(GREY[500], 0.16),
-    disabled: alpha('#8C8C8C', 0.8),
-    disabledBackground: alpha(GREY[500], 0.24),
+    disabled: alpha('#535353', 0.8),
+    disabledBackground: alpha('#8C8C8C', 0.8),
     focus: alpha(GREY[500], 0.24),
     hoverOpacity: 0.08,
     disabledOpacity: 0.48,

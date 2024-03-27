@@ -199,6 +199,7 @@ export async function getProducts() {
   }
 }
 export async function getProduct({ id }: { id: number }) {
+  console.log(id)
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_HOST}/product/${id}`,
