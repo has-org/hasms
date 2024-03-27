@@ -12,8 +12,7 @@ import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ICatalogue } from '@/types/Catalogue';
-import zIndex from '@mui/material/styles/zIndex';
-import { NonceProvider } from 'react-select';
+import Alert from '@mui/material/Alert';
 
 async function getUserAgent() {
   let userAgent;
@@ -74,24 +73,28 @@ export default async function HomePage() {
       title: 'Motori',
       image: '/images/motori-card.png',
       url: '',
+      text: '-Pregledajte našu ponudu novih i korištenih motocikala i skutera Japanskog brenda Yamaha.  Veliki izbor modela za razne namjene, od skuter modela za izbjegavanje gradskih gužvi pa sve do modela za zabavu.',
       id: '1',
     },
     {
       title: 'Kacige',
       image: '/images/kacige-card.png',
       url: '',
+      text: '-Široka ponuda kaciga poznatih brendova IXS,HJC i LS2 kao i rezevnih dijelova dostupni su na našem WEBSHOPU. ',
       id: '2',
     },
     {
       title: 'ATV',
       image: '/images/atv-card.png',
       url: '',
+      text: '-Pored Yamahinih motocikala i skutera u ponudi imamo i ATV vozila za sportske i radne namjene. Više informacija i ponudu ATV vozila pogledajte u nastavku.',
       id: '3',
     },
     {
       title: 'Marina',
       image: '/images/marina-card.png',
       url: '',
+      text: '-Yamaha je daleko poznata i u svijetu vodenog programa. Yamahini vanbrodski motori i gumeni čamci kao i prateća oprema dostupni su u Moto Shop #7. P',
       id: '4',
     },
   ];
@@ -107,6 +110,10 @@ export default async function HomePage() {
             zIndex: '0',
           }}
         >
+          <Alert severity='error'>
+            Stranica je trenutno u izradi!
+            Neke opcije su limitirane ili onemogucene!
+          </Alert>
           <Image
             priority
             src='/images/welcomepozadina.png'
@@ -297,9 +304,7 @@ export default async function HomePage() {
                         width='245px'
                         fontSize='14px'
                       >
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the industry
-                        standard dummy text ever since the 1500s
+                       {item.text}
                       </Typography>
 
                       <Button
