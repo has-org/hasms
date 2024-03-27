@@ -339,12 +339,14 @@ const CheckoutTabs = () => {
                 {
                   label: 'Licno preuzimanje',
                   value: 'delivery',
+                  price: 'Besplatno'
                 },
-                // {
-                //   label: 'EuroExpress',
-                //   value: 'euroexpress',
-                //   disabled: true,
-                // },
+                {
+                  label: 'Posta (Poste Srpske)',
+                  value: 'euroexpress',
+                  disabled: true,
+                  price: '0.00 KM'
+                },
               ]} 
               />
             </Stack>

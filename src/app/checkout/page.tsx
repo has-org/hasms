@@ -21,7 +21,7 @@ export default function CheckoutPage() {
         >
           <Iconify icon='mdi:clock-outline'></Iconify>
           <Typography variant='body2'>
-            Prosecno vreme za popunjavanje formulara je 5 minuta
+            Prosjecno vreme za popunjavanje formulara je 5 minuta
           </Typography>
         </Stack>
       </Stack>

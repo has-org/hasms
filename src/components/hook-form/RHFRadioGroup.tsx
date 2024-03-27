@@ -11,13 +11,14 @@ import {
   FormControlLabel,
   Card,
   Stack,
+  Typography,
 } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
 type Props = RadioGroupProps & {
   name: string;
-  options: { label: string; value: any, disabled?: boolean }[];
+  options: { label: string; value: any; disabled?: boolean; price?: string }[];
   label?: string;
   spacing?: number;
   helperText?: React.ReactNode;
@@ -64,23 +65,26 @@ export default function RHFRadioGroup({
                   key={option.value}
                   sx={{ boxShadow: 0, backgroundColor: 'primary.light', p: 2 }}
                 >
-                  <FormControlLabel
-                    value={option.value}
-                    control={<Radio />}
-                    label={option.label}
-                    disabled={option.disabled ?? false}
-                    sx={{
-                      '&:not(:last-of-type)': {
-                        mb: spacing || 0,
-                      },
-                      ...(row && {
-                        mr: 0,
+                  <Stack direction='row' justifyContent={'space-between'} alignItems="center">
+                    <FormControlLabel
+                      value={option.value}
+                      control={<Radio />}
+                      label={option.label}
+                      disabled={option.disabled ?? false}
+                      sx={{
                         '&:not(:last-of-type)': {
-                          mr: spacing || 2,
+                          mb: spacing || 0,
                         },
-                      }),
-                    }}
-                  />
+                        ...(row && {
+                          mr: 0,
+                          '&:not(:last-of-type)': {
+                            mr: spacing || 2,
+                          },
+                        }),
+                      }}
+                    />
+                 <Typography variant='body2'>{option.price}</Typography>
+                  </Stack>
                 </Card>
               ))}
             </Stack>
