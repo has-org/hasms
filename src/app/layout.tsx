@@ -6,6 +6,7 @@ import Box from "@mui/system/Box/";
 import Footer from "@/components/layouts/main/Footer";
 import ThemeProvider from "@/theme";
 import SnackbarProvider from "@/components/snackbar/SnackbarProvider";
+import Alert from '@mui/material/Alert';
 
 export default function RootLayout({
   children,
@@ -13,34 +14,40 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body>
-        <AppRouterCacheProvider >
+        <AppRouterCacheProvider>
           <ThemeProvider>
             <CartProvider>
               <SnackbarProvider>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  height: 1,
-                  backgroundColor: "background.default",
-                }}
-              >
-                <Header />
-
                 <Box
-                  component="main"
                   sx={{
-                    flexGrow: 1,
-                    paddingX: { xs: 0, sm: 0, md: 0 },
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 1,
+                    backgroundColor: 'background.default',
                   }}
                 >
-                  <Main>{children}</Main>
-                </Box>
+                  <Header />
 
-                <Footer />
-              </Box>
+                  <Box
+                    component='main'
+                    sx={{
+                      flexGrow: 1,
+                      paddingX: { xs: 0, sm: 0, md: 0 },
+                    }}
+                  >
+                    <Main>
+                      <Alert severity='error'>
+                        Stranica je trenutno u izradi! Neke opcije su limitirane
+                        ili onemogucene!
+                      </Alert>
+                      {children}
+                    </Main>
+                  </Box>
+
+                  <Footer />
+                </Box>
               </SnackbarProvider>
             </CartProvider>
           </ThemeProvider>

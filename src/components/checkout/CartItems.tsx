@@ -94,12 +94,7 @@ const CartItems = () => {
       <Box
         sx={{
           display: 'flex',
-          gap: 3,
           width: '100%',
-          flexDirection: {
-            xs: 'column',
-            md: 'row',
-          },
         }}
       >
         <Link
@@ -107,12 +102,7 @@ const CartItems = () => {
           style={{ textDecoration: 'none', width: '100%' }}
         >
           <Button variant='outlined' color='secondary' fullWidth>
-            <Typography>Placanje</Typography>
-          </Button>
-        </Link>
-        <Link href='/cart' style={{ textDecoration: 'none', width: '100%' }}>
-          <Button variant='outlinedTransparent' color='secondary' fullWidth>
-            <Typography>Pregled</Typography>
+            <Typography>Naruci</Typography>
           </Button>
         </Link>
       </Box>

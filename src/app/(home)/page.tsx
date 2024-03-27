@@ -12,7 +12,6 @@ import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ICatalogue } from '@/types/Catalogue';
-import Alert from '@mui/material/Alert';
 
 async function getUserAgent() {
   let userAgent;
@@ -110,10 +109,7 @@ export default async function HomePage() {
             zIndex: '0',
           }}
         >
-          <Alert severity='error'>
-            Stranica je trenutno u izradi!
-            Neke opcije su limitirane ili onemogucene!
-          </Alert>
+
           <Image
             priority
             src='/images/welcomepozadina.png'
