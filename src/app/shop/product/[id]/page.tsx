@@ -35,7 +35,7 @@ export default async function Product({ params: { id } }: any) {
 
   return (
     <Container maxWidth='lg'>
-      <Grid container sx={{ marginTop: '20px'}}>
+      <Grid container sx={{ marginTop: '20px' }}>
         <Grid md={5.5} xs={12}>
           <Stack>
             {productImages[0].url ? (
@@ -127,7 +127,7 @@ export default async function Product({ params: { id } }: any) {
                 )}
               </Stack>
 
-              <SizeSelector />
+              <SizeSelector sizes={productSizes} />
 
               <Counter />
             </Stack>
