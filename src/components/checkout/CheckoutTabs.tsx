@@ -28,21 +28,23 @@ type FormValuesProps = {
   zip: string;
   address: string;
   notes: string;
-  delivery: string;
+  deliveryMethod: string;
+  paymentMethod: string;
   afterSubmit?: string;
 };
 
 const addToCartSchema = object({
-  first_name: string().min(2, 'Ime mora imati najmanje 2 karaktera'),
-  last_name: string().min(2, 'Prezime mora imati najmanje 2 karaktera'),
-  email: string().email('Unesite validan email'),
-  phone: string().min(6, 'Telefon mora imati najmanje 6 karaktera'),
-  country: string().min(2, 'Drzava mora imati najmanje 2 karaktera'),
-  city: string().min(2, 'Grad mora imati najmanje 2 karaktera'),
-  zip: string().min(4, 'Zip mora imati najmanje 4 karaktera'),
-  address: string().min(5, 'Adresa mora imati najmanje 5 karaktera'),
-  notes: string().optional(),
-  delivery: string().optional(),
+  // first_name: string().min(2, 'Ime mora imati najmanje 2 karaktera'),
+  // last_name: string().min(2, 'Prezime mora imati najmanje 2 karaktera'),
+  // email: string().email('Unesite validan email'),
+  // phone: string().min(6, 'Telefon mora imati najmanje 6 karaktera'),
+  // country: string().min(2, 'Drzava mora imati najmanje 2 karaktera'),
+  // city: string().min(2, 'Grad mora imati najmanje 2 karaktera'),
+  // zip: string().min(4, 'Zip mora imati najmanje 4 karaktera'),
+  // address: string().min(5, 'Adresa mora imati najmanje 5 karaktera'),
+  // notes: string().optional(),
+  // deliveryMethod: string(),
+  // paymentMethod: string(),
 });
 
 const StyledTab = styled(Tab)(({ theme }) => ({
@@ -53,8 +55,18 @@ const StyledTab = styled(Tab)(({ theme }) => ({
   marginRigth: '0px',
 }));
 
+const TABOVI = [
+  {
+    id: '1',
+    label: 'Korak 1',
+    title: 'Licni podaci',
+  },
+  { id: '2', label: 'Korak 2', title: 'Nacin dostave' },
+  { id: '3', label: 'Korak 3', title: 'Nacin placanja' },
+];
+
 const CheckoutTabs = () => {
-  const [currentTab, setCurrentTab] = useState('2');
+  const [currentTab, setCurrentTab] = useState('1');
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setCurrentTab(newValue);
@@ -72,25 +84,34 @@ const CheckoutTabs = () => {
       zip: '',
       address: '',
       notes: '',
-      delivery: ''
+      deliveryMethod: '',
+      paymentMethod: '',
     },
   });
-  const { reset, handleSubmit } = methods;
+  const { reset, handleSubmit} = methods;
+
+  const handleBackStep = () => {
+    setCurrentTab((prevState) => {
+      if (prevState === '1') return prevState;
+      let incr = Number(prevState);
+      incr -= 1;
+      return incr.toString();
+    });
+  };
+
+  const handleForwardStep = () => {
+    setCurrentTab((prevState) => {
+      if (prevState === '3') return prevState;
+      let incr = Number(prevState);
+      incr += 1;
+      return incr.toString();
+    });
+  };
 
   const onSubmit: SubmitHandler<any> = async (
     values: any,
     e?: React.BaseSyntheticEvent,
-  ) => {
-    if (currentTab === '1') {
-      setCurrentTab('2');
-    }
-    if (currentTab === '2') {
-      setCurrentTab('3');
-    }
-    if (currentTab === '3') {
-      console.log('submit');
-    }
-  };
+  ) => {};
 
   return (
     <TabContext value={currentTab}>
@@ -98,6 +119,7 @@ const CheckoutTabs = () => {
         <Card
           sx={{
             boxShadow: 0,
+            paddingBottom: 3,
           }}
         >
           <Box
@@ -109,115 +131,50 @@ const CheckoutTabs = () => {
               borderTopRightRadius: '16px',
             }}
           >
-            <TabList aria-label='lab API tabs example' variant='fullWidth'>
-              <StyledTab
-                label={
-                  <Stack sx={{ textAlign: 'left' }}>
-                    <Typography
-                      variant='body2'
-                      fontSize='14px'
-                      sx={{
-                        color:
-                          currentTab === '1'
-                            ? 'primary.darker'
-                            : 'primary.contarastText',
-                      }}
-                    >
-                      Korak 1
-                    </Typography>
-                    <Typography
-                      variant='body2'
-                      fontSize='18px'
-                      fontWeight='600'
-                      sx={{
-                        color:
-                          currentTab === '1'
-                            ? 'primary.darker'
-                            : 'primary.contrastText',
-                      }}
-                    >
-                      Licni podaci
-                    </Typography>
-                  </Stack>
-                }
-                value='1'
-                sx={{
-                  backgroundColor:
-                    currentTab === '1' ? 'primary.main' : 'primary.neutral',
-                }}
-              />
-              <StyledTab
-                label={
-                  <Stack sx={{ textAlign: 'left' }}>
-                    <Typography
-                      variant='body2'
-                      fontSize='14px'
-                      sx={{
-                        color:
-                          currentTab === '2'
-                            ? 'primary.darker'
-                            : 'primary.contrastText',
-                      }}
-                    >
-                      Korak 2
-                    </Typography>
-                    <Typography
-                      variant='body2'
-                      fontSize='18px'
-                      fontWeight='600'
-                      sx={{
-                        color:
-                          currentTab === '2'
-                            ? 'primary.darker'
-                            : 'primary.contrastText',
-                      }}
-                    >
-                      Nacin dostave
-                    </Typography>
-                  </Stack>
-                }
-                sx={{
-                  backgroundColor:
-                    currentTab === '2' ? 'primary.main' : 'primary.neutral',
-                }}
-                value='2'
-              />
-              <StyledTab
-                label={
-                  <Stack sx={{ textAlign: 'left' }}>
-                    <Typography
-                      variant='body2'
-                      fontSize='14px'
-                      sx={{
-                        color:
-                          currentTab === '3'
-                            ? 'primary.darker'
-                            : 'primary.contrastText',
-                      }}
-                    >
-                      Korak 3
-                    </Typography>
-                    <Typography
-                      variant='body2'
-                      fontSize='18px'
-                      fontWeight='600'
-                      sx={{
-                        color:
-                          currentTab === '3'
-                            ? 'primary.darker'
-                            : 'primary.contrastText',
-                      }}
-                    >
-                      Nacin placanja
-                    </Typography>
-                  </Stack>
-                }
-                sx={{
-                  backgroundColor:
-                    currentTab === '3' ? 'primary.main' : 'primary.neutral',
-                }}
-                value='3'
-              />
+            <TabList aria-label='API tabs' variant='fullWidth'>
+              {TABOVI.map((tab, index) => {
+                return (
+                  <StyledTab
+                    key={`${tab.label} ${index}`}
+                    label={
+                      <Stack sx={{ textAlign: 'left' }}>
+                        <Typography
+                          variant='body2'
+                          fontSize='14px'
+                          sx={{
+                            color:
+                              currentTab === tab.id
+                                ? 'primary.darker'
+                                : 'primary.contarastText',
+                          }}
+                        >
+                          {tab.label}
+                        </Typography>
+                        <Typography
+                          variant='body2'
+                          fontSize='18px'
+                          fontWeight='600'
+                          sx={{
+                            color:
+                              currentTab === tab.id
+                                ? 'primary.darker'
+                                : 'primary.contrastText',
+                          }}
+                        >
+                          {tab.title}
+                        </Typography>
+                      </Stack>
+                    }
+                    value={1}
+                    sx={{
+                      backgroundColor:
+                        currentTab === tab.id
+                          ? 'primary.main'
+                          : 'primary.neutral',
+                    }}
+                  />
+                );
+              })}
             </TabList>
           </Box>
           <TabPanel value='1'>
@@ -326,32 +283,64 @@ const CheckoutTabs = () => {
                   rows={4}
                 />
               </Stack>
-              <Stack direction='row' justifyContent='end'>
-                <Button variant='outlined' color='secondary' type='submit'>
-                  Dalje
-                </Button>
-              </Stack>
             </Stack>
           </TabPanel>
           <TabPanel value='2'>
             <Stack>
-              <RHFRadioGroup name="delivery" options={[
-                {
-                  label: 'Licno preuzimanje',
-                  value: 'delivery',
-                  price: 'Besplatno'
-                },
-                {
-                  label: 'Posta (Poste Srpske)',
-                  value: 'euroexpress',
-                  disabled: true,
-                  price: '0.00 KM'
-                },
-              ]} 
+              <RHFRadioGroup
+                name='deliveryMethod'
+                options={[
+                  {
+                    label: 'Licno preuzimanje',
+                    value: 'licno preuzimanje',
+                    price: 'Besplatno',
+                  },
+                  {
+                    label: 'Posta (Poste Srpske)',
+                    value: 'posta',
+                    disabled: true,
+                    price: '0.00 KM',
+                  },
+                ]}
               />
             </Stack>
           </TabPanel>
-          <TabPanel value='3'>Item Three</TabPanel>
+          <TabPanel value='3'>
+            <Stack>
+              <RHFRadioGroup
+                name='paymentMethod'
+                options={[
+                  {
+                    label: 'Licno preuzimanje',
+                    value: 'licno preuzimanje',
+                  },
+                  {
+                    label: 'Pouzecem',
+                    value: 'posta',
+                    disabled: true,
+                  },
+                ]}
+              />
+            </Stack>
+          </TabPanel>
+          <Stack direction='row' justifyContent='space-between' paddingX={3}>
+            <Button
+              variant='outlined'
+              color='secondary'
+              onClick={() => handleBackStep()}
+              disabled={currentTab === '1'}
+            >
+              Nazad
+            </Button>
+            <Button
+              variant='outlined'
+              color='secondary'
+              onClick={() => handleForwardStep()}
+              disabled={currentTab === '3'}
+            >
+              Dalje
+            </Button>
+          </Stack>
         </Card>
       </FormProvider>
     </TabContext>
