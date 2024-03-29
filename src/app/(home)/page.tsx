@@ -53,12 +53,6 @@ export async function generateMetadata({
   };
 }
 
-export default async function HomePage() {
-  const userAgent = await getUserAgent();
-  const catalogues: ICatalogue[] = await getCatalogues();
-  const cooperators: CooperatorType[] = await getCooperators();
-  const posts = await getPosts();
-
   const discount = {
     name: 'kacige 20%',
     title: '20% Popusta Na Nove Modele Kaciga',
@@ -98,6 +92,14 @@ export default async function HomePage() {
     },
   ];
 
+
+export default async function HomePage() {
+  const userAgent = await getUserAgent();
+  const catalogues: ICatalogue[] = await getCatalogues();
+  const cooperators: CooperatorType[] = await getCooperators();
+  const posts = await getPosts();
+
+
   return (
     <>
       <section>
@@ -109,13 +111,15 @@ export default async function HomePage() {
             zIndex: '0',
           }}
         >
-
           <Image
             priority
             src='/images/welcomepozadina.png'
             fill
             alt='Motoshop 7'
+            quality={85}
             style={{ zIndex: -1 }}
+            placeholder='blur'
+            sizes='100vw'
           />
           <Image
             priority
@@ -240,7 +244,7 @@ export default async function HomePage() {
                   },
                   '&:hover .titleHover': {
                     top: '-236px',
-                    left: '45px'
+                    left: '45px',
                   },
                 }}
               >
@@ -301,7 +305,7 @@ export default async function HomePage() {
                         width='245px'
                         fontSize='14px'
                       >
-                       {item.text}
+                        {item.text}
                       </Typography>
 
                       <Button
