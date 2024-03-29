@@ -1,6 +1,6 @@
-"use client";
-import "./image-gallery.css";
-import Iconify from "@/components/iconify/Iconify";
+'use client';
+import './image-gallery.css';
+import Iconify from '@/components/iconify/Iconify';
 import {
   Card,
   CardContent,
@@ -14,25 +14,25 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-} from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Grid from "@mui/material/Unstable_Grid2";
-import { useEffect, useState } from "react";
-import ImageGallery, { ReactImageGalleryItem } from "react-image-gallery";
-import "react-image-gallery/styles/css/image-gallery.css";
-import "react-multi-carousel/lib/styles.css";
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Grid from '@mui/material/Unstable_Grid2';
+import { useEffect, useState } from 'react';
+import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
+import 'react-image-gallery/styles/css/image-gallery.css';
+import 'react-multi-carousel/lib/styles.css';
 
-import ProductViewer2D from "../../../productViewer2D";
+import ProductViewer2D from '../../../productViewer2D';
 
-import Link from "next/link";
-import { ICatalogue } from "@/types/Catalogue";
-import Carousel from "react-multi-carousel";
-import Image from "next/image";
-import { InquiryModal } from "@/components/modals/InquiryModal";
+import Link from 'next/link';
+import { ICatalogue } from '@/types/Catalogue';
+import Carousel from 'react-multi-carousel';
+import Image from 'next/image';
+import { InquiryModal } from '@/components/modals/InquiryModal';
 
 const images360 = [
-  "https://picsum.photos/id/1018/1000/600/",
-  "https://picsum.photos/id/1019/1000/600/",
+  'https://picsum.photos/id/1018/1000/600/',
+  'https://picsum.photos/id/1019/1000/600/',
   // ... add more image paths for each angle
 ];
 
@@ -46,7 +46,7 @@ const CatalogueItem = ({
   const [isOpen, setIsOpen] = useState(false);
   const [images, setImages] = useState<ReactImageGalleryItem[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [selectedColor, setSelectedColor] = useState<string>("");
+  const [selectedColor, setSelectedColor] = useState<string>('');
 
   useEffect(() => {
     setImages(
@@ -61,15 +61,15 @@ const CatalogueItem = ({
             originalWidth: 1024,
             thumbnailHeight: 80,
           };
-        }
-      )
+        },
+      ),
     );
     setSelectedColor(catalogue.catalogue_variants[0]?.color);
   }, [catalogue]);
 
-  if (!catalogue) return <>{"no catalogue"}</>;
-  if (!catalogue.catalogue_details) return <>{"no catalogue details"}</>;
-  if (!catalogue.catalogue_variants) return <>{"no catalogue variants"}</>;
+  if (!catalogue) return <>{'no catalogue'}</>;
+  if (!catalogue.catalogue_details) return <>{'no catalogue details'}</>;
+  if (!catalogue.catalogue_variants) return <>{'no catalogue variants'}</>;
 
   const { code, state } = catalogue;
 
@@ -110,12 +110,11 @@ const CatalogueItem = ({
     },
   };
 
-
   return (
     <>
-      <Container maxWidth="lg" sx={{ marginTop: "48px" }}>
+      <Container maxWidth='lg' sx={{ marginTop: '48px' }}>
         <Grid container spacing={5}>
-          <Grid xs={12} md={5} sx={{ marginTop: "-100px" }}>
+          <Grid xs={12} md={5} sx={{ marginTop: '-100px' }}>
             {/* <ProductViewer2D images={images360} /> */}
 
             <ImageGallery
@@ -124,58 +123,58 @@ const CatalogueItem = ({
               showPlayButton={false}
               showFullscreenButton={false}
               showNav={true}
-              additionalClass="image-gallery-overwrite"
+              additionalClass='image-gallery-overwrite'
             />
           </Grid>
-          <Grid xs={12} md={7} marginBottom="72px">
+          <Grid xs={12} md={7} marginBottom='72px'>
             <Grid
               container
-              direction="row"
-              justifyContent="space-between"
-              marginBottom="49px"
+              direction='row'
+              justifyContent='space-between'
+              marginBottom='49px'
             >
               <Grid>
                 <Stack>
-                  <Typography fontWeight="400" color="primary.light">
+                  <Typography fontWeight='400' color='primary.light'>
                     Yamaha
                   </Typography>
-                  <Typography variant="h3" sx={{ lineHeight: 1.1 }}>
+                  <Typography variant='h3' sx={{ lineHeight: 1.1 }}>
                     {model}
                   </Typography>
                 </Stack>
               </Grid>
               <Stack
-                direction="row"
+                direction='row'
                 sx={{
-                  backgroundColor: "#262626",
-                  borderRadius: "20px",
-                  height: "75px",
-                  width: "387px",
-                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                  backgroundColor: '#262626',
+                  borderRadius: '20px',
+                  height: '75px',
+                  width: '387px',
+                  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
                 }}
-                alignItems="center"
-                justifyContent="space-between"
+                alignItems='center'
+                justifyContent='space-between'
               >
                 <Grid>
-                  <Stack sx={{ color: "rgba(172, 172, 172, 0.86)" }}>
-                    <Typography fontSize="14px">Vec od</Typography>
-                    <Typography color="primary.main" variant="h6">
+                  <Stack sx={{ color: 'rgba(172, 172, 172, 0.86)' }}>
+                    <Typography fontSize='14px'>Vec od</Typography>
+                    <Typography color='primary.main' variant='h6'>
                       {price.toLocaleString()} KM
                     </Typography>
                   </Stack>
                 </Grid>
                 <Grid>
                   <Button
-                    variant="outlined"
-                    color="secondary"
-                    size="large"
+                    variant='outlined'
+                    color='secondary'
+                    size='large'
                     sx={{
-                      width: "158px",
-                      height: "43px",
+                      width: '158px',
+                      height: '43px',
                     }}
                     onClick={() => setDialogOpen(true)}
                   >
-                    <Typography fontSize="14px" fontWeight="bold">
+                    <Typography fontSize='14px' fontWeight='bold'>
                       Zatrazi ponudu
                     </Typography>
                   </Button>
@@ -185,37 +184,37 @@ const CatalogueItem = ({
 
             <Stack
               sx={{
-                flexDirection: { xs: "column", md: "row" },
-                justifyContent: "space-between",
-                marginBottom: "48px",
+                flexDirection: { xs: 'column', md: 'row' },
+                justifyContent: 'space-between',
+                marginBottom: '48px',
               }}
             >
               <Stack
-                direction="row"
-                alignItems="center"
-                sx={{ paddingBottom: { xs: "24px", md: "0px" } }}
+                direction='row'
+                alignItems='center'
+                sx={{ paddingBottom: { xs: '24px', md: '0px' } }}
                 spacing={2}
               >
                 <Iconify
-                  icon="lets-icons:date-today-light"
-                  width="32px"
-                  height="32px"
-                  color="primary.main"
+                  icon='lets-icons:date-today-light'
+                  width='32px'
+                  height='32px'
+                  color='primary.main'
                 />
                 <Stack
                   sx={{
-                    flexDirection: { xs: "row", md: "column" },
+                    flexDirection: { xs: 'row', md: 'column' },
                     justifyContent: {
-                      xs: "space-between",
-                      md: "flex-start",
+                      xs: 'space-between',
+                      md: 'flex-start',
                     },
                     flexGrow: 1,
                   }}
                 >
                   <Typography
                     sx={{
-                      color: "rgba(172, 172, 172, 0.86)",
-                      whiteSpace: "nowrap",
+                      color: 'rgba(172, 172, 172, 0.86)',
+                      whiteSpace: 'nowrap',
                     }}
                   >
                     Godina proizvodnje
@@ -225,41 +224,41 @@ const CatalogueItem = ({
               </Stack>
 
               <Divider
-                variant="middle"
+                variant='middle'
                 flexItem
-                color="D9D9D9"
+                color='D9D9D9'
                 sx={{
-                  marginLeft: { xs: "0px", md: "8px" },
-                  marginRight: { xs: "0px", md: "8px" },
-                  borderBottomWidth: { xs: "thin", md: 0 },
-                  borderRightWidth: { xs: 0, md: "thin" },
+                  marginLeft: { xs: '0px', md: '8px' },
+                  marginRight: { xs: '0px', md: '8px' },
+                  borderBottomWidth: { xs: 'thin', md: 0 },
+                  borderRightWidth: { xs: 0, md: 'thin' },
                 }}
               />
 
               <Stack
-                direction="row"
-                alignItems="center"
+                direction='row'
+                alignItems='center'
                 sx={{
-                  paddingBottom: { xs: "24px", md: "0px" },
-                  paddingTop: { xs: "24px", md: "0px" },
+                  paddingBottom: { xs: '24px', md: '0px' },
+                  paddingTop: { xs: '24px', md: '0px' },
                 }}
               >
-                <Iconify icon="ph:engine-light" width="32px" color="#d4531c" />
+                <Iconify icon='ph:engine-light' width='32px' color='#d4531c' />
                 <Stack
                   sx={{
-                    marginLeft: "12px",
-                    flexDirection: { xs: "row", md: "column" },
+                    marginLeft: '12px',
+                    flexDirection: { xs: 'row', md: 'column' },
                     justifyContent: {
-                      xs: "space-between",
-                      md: "flex-start",
+                      xs: 'space-between',
+                      md: 'flex-start',
                     },
                     flexGrow: 1,
                   }}
                 >
                   <Typography
                     sx={{
-                      whiteSpace: "nowrap",
-                      color: "rgba(172, 172, 172, 0.86)",
+                      whiteSpace: 'nowrap',
+                      color: 'rgba(172, 172, 172, 0.86)',
                     }}
                   >
                     Zapremina
@@ -271,41 +270,41 @@ const CatalogueItem = ({
               </Stack>
 
               <Divider
-                variant="middle"
+                variant='middle'
                 flexItem
-                color="D9D9D9"
+                color='D9D9D9'
                 sx={{
-                  marginLeft: { xs: "0px", md: "8px" },
-                  marginRight: { xs: "0px", md: "8px" },
-                  borderBottomWidth: { xs: "thin", md: 0 },
-                  borderRightWidth: { xs: 0, md: "thin" },
+                  marginLeft: { xs: '0px', md: '8px' },
+                  marginRight: { xs: '0px', md: '8px' },
+                  borderBottomWidth: { xs: 'thin', md: 0 },
+                  borderRightWidth: { xs: 0, md: 'thin' },
                 }}
               />
 
               <Stack
-                direction="row"
-                alignItems="center"
+                direction='row'
+                alignItems='center'
                 sx={{
-                  paddingTop: { xs: "24px", md: "0px" },
+                  paddingTop: { xs: '24px', md: '0px' },
                 }}
               >
                 <Iconify
-                  icon="ri:checkbox-circle-line"
-                  color={"#38a11b"}
-                  width="32px"
+                  icon='ri:checkbox-circle-line'
+                  color={'#38a11b'}
+                  width='32px'
                 />
                 <Stack
                   sx={{
-                    marginLeft: "12px",
-                    flexDirection: { xs: "row", md: "column" },
+                    marginLeft: '12px',
+                    flexDirection: { xs: 'row', md: 'column' },
                     justifyContent: {
-                      xs: "space-between",
-                      md: "flex-start",
+                      xs: 'space-between',
+                      md: 'flex-start',
                     },
                     flexGrow: 1,
                   }}
                 >
-                  <Typography sx={{ color: "rgba(172, 172, 172, 0.86)" }}>
+                  <Typography sx={{ color: 'rgba(172, 172, 172, 0.86)' }}>
                     Garancija
                   </Typography>
                   <Typography fontWeight={500}>3 godine</Typography>
@@ -316,67 +315,67 @@ const CatalogueItem = ({
             <Stack spacing={2.5}>
               <Stack
                 sx={{
-                  backgroundColor: "#262626",
-                  height: { xs: "161px", md: "75px" },
-                  borderRadius: "16px",
-                  flexDirection: { xs: "column", md: "row" },
-                  alignItems: { xs: "flex-start", md: "center" },
+                  backgroundColor: '#262626',
+                  height: { xs: '161px', md: '75px' },
+                  borderRadius: '16px',
+                  flexDirection: { xs: 'column', md: 'row' },
+                  alignItems: { xs: 'flex-start', md: 'center' },
                 }}
-                justifyContent="space-around"
+                justifyContent='space-around'
               >
                 <Typography
-                  fontSize="18px"
+                  fontSize='18px'
                   sx={{
-                    paddingLeft: { xs: "20px", md: "16px" },
-                    fontWeight: { xs: "400", md: "600" },
+                    paddingLeft: { xs: '20px', md: '16px' },
+                    fontWeight: { xs: '400', md: '600' },
                   }}
                 >
                   Preuzmite
                 </Typography>
                 <Stack
                   sx={{
-                    flexDirection: { xs: "column", md: "row" },
-                    width: "100%",
-                    alignItems: { xs: "center", md: "center" },
-                    justifyContent: { xs: "center", md: "flex-end" },
-                    spacing: { xs: 1.5, md: "0" },
+                    flexDirection: { xs: 'column', md: 'row' },
+                    width: '100%',
+                    alignItems: { xs: 'center', md: 'center' },
+                    justifyContent: { xs: 'center', md: 'flex-end' },
+                    spacing: { xs: 1.5, md: '0' },
                   }}
                 >
                   <Link
                     href={`https://s3.villa-seaview.online${specification_url}`}
-                    style={{ textDecoration: "none" }}
-                    target="_blank"
+                    style={{ textDecoration: 'none' }}
+                    target='_blank'
                   >
                     <Button
-                      variant="outlinedTransparent"
-                      color="secondary"
+                      variant='outlinedTransparent'
+                      color='secondary'
                       sx={{
-                        width: { xs: "90%", md: "auto" },
-                        padding: "10px 30px",
-                        borderRadius: "10px",
-                        marginRight: { xs: "0px", md: "17px" },
-                        marginBottom: { xs: "12px", md: "0px" },
+                        width: { xs: '90%', md: 'auto' },
+                        padding: '10px 30px',
+                        borderRadius: '10px',
+                        marginRight: { xs: '0px', md: '17px' },
+                        marginBottom: { xs: '12px', md: '0px' },
                       }}
                     >
-                      <Typography fontSize="12px">Katalog</Typography>
+                      <Typography fontSize='12px'>Katalog</Typography>
                     </Button>
                   </Link>
                   <Link
                     href={`${additional_equipment_url}`}
-                    style={{ textDecoration: "none" }}
-                    target="_blank"
+                    style={{ textDecoration: 'none' }}
+                    target='_blank'
                   >
                     <Button
-                      variant="outlinedTransparent"
-                      color="secondary"
+                      variant='outlinedTransparent'
+                      color='secondary'
                       sx={{
-                        padding: "10px 20px",
-                        width: { xs: "90%", md: "auto" },
-                        borderRadius: "10px",
-                        marginRight: { xs: "0px", md: "16px" },
+                        padding: '10px 20px',
+                        width: { xs: '90%', md: 'auto' },
+                        borderRadius: '10px',
+                        marginRight: { xs: '0px', md: '16px' },
                       }}
                     >
-                      <Typography fontSize="12px">Dodatna oprema</Typography>
+                      <Typography fontSize='12px'>Dodatna oprema</Typography>
                     </Button>
                   </Link>
                 </Stack>
@@ -384,97 +383,97 @@ const CatalogueItem = ({
 
               <Stack
                 sx={{
-                  backgroundColor: "#262626",
-                  borderRadius: "16px",
-                  justifyContent: "center",
+                  backgroundColor: '#262626',
+                  borderRadius: '16px',
+                  justifyContent: 'center',
                 }}
               >
                 <Accordion>
                   <AccordionSummary
-                    aria-controls="panel1-content"
-                    id="panel1-header"
+                    aria-controls='panel1-content'
+                    id='panel1-header'
                     expandIcon={<ExpandMoreIcon />}
-                    sx={{ height: "61px" }}
+                    sx={{ height: '61px' }}
                   >
-                    <Typography fontWeight={600} fontSize="18px">
+                    <Typography fontWeight={600} fontSize='18px'>
                       Specifikacije
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <Stack
-                      direction="row"
-                      sx={{ display: "flex", justifyContent: "space-between" }}
+                      direction='row'
+                      sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
-                      <Typography variant="body2">Proizvodjac</Typography>
-                      <Typography variant="body2">{manufacturer}</Typography>
+                      <Typography variant='body2'>Proizvodjac</Typography>
+                      <Typography variant='body2'>{manufacturer}</Typography>
                     </Stack>
                     <Divider />
                     <Stack
-                      direction="row"
-                      sx={{ display: "flex", justifyContent: "space-between" }}
+                      direction='row'
+                      sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
-                      <Typography variant="body2">Šifra</Typography>
-                      <Typography variant="body2">{code}</Typography>
+                      <Typography variant='body2'>Šifra</Typography>
+                      <Typography variant='body2'>{code}</Typography>
                     </Stack>
                     <Divider />
 
                     <Stack
-                      direction="row"
-                      sx={{ display: "flex", justifyContent: "space-between" }}
+                      direction='row'
+                      sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
-                      <Typography variant="body2">Model</Typography>
-                      <Typography variant="body2">{model}</Typography>
+                      <Typography variant='body2'>Model</Typography>
+                      <Typography variant='body2'>{model}</Typography>
                     </Stack>
                     <Divider />
                     <Stack
-                      direction="row"
-                      sx={{ display: "flex", justifyContent: "space-between" }}
+                      direction='row'
+                      sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
-                      <Typography variant="body2">Izaberi boju</Typography>
+                      <Typography variant='body2'>Izaberi boju</Typography>
                     </Stack>
                     <Divider />
                     <Stack
-                      direction="row"
-                      sx={{ display: "flex", justifyContent: "space-between" }}
+                      direction='row'
+                      sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
-                      <Typography variant="body2">Boja</Typography>
-                      <Typography variant="body2">{color}</Typography>
+                      <Typography variant='body2'>Boja</Typography>
+                      <Typography variant='body2'>{color}</Typography>
                     </Stack>
                     <Divider />
                     <Stack
-                      direction="row"
-                      sx={{ display: "flex", justifyContent: "space-between" }}
+                      direction='row'
+                      sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
-                      <Typography variant="body2">Kw</Typography>
-                      <Typography variant="body2">{kilowatt_power}</Typography>
+                      <Typography variant='body2'>Kw</Typography>
+                      <Typography variant='body2'>{kilowatt_power}</Typography>
                     </Stack>
                     <Divider />
                     <Stack
-                      direction="row"
-                      sx={{ display: "flex", justifyContent: "space-between" }}
+                      direction='row'
+                      sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
-                      <Typography variant="body2">Hp</Typography>
-                      <Typography variant="body2">{horse_power}</Typography>
+                      <Typography variant='body2'>Hp</Typography>
+                      <Typography variant='body2'>{horse_power}</Typography>
                     </Stack>
                     <Divider />
                     <Stack
-                      direction="row"
-                      sx={{ display: "flex", justifyContent: "space-between" }}
+                      direction='row'
+                      sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
-                      <Typography variant="body2">
+                      <Typography variant='body2'>
                         Predjenih kilometara
                       </Typography>
-                      <Typography variant="body2">
+                      <Typography variant='body2'>
                         {distance_traveled}
                       </Typography>
                     </Stack>
                     <Divider />
                     <Stack
-                      direction="row"
-                      sx={{ display: "flex", justifyContent: "space-between" }}
+                      direction='row'
+                      sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
-                      <Typography variant="body2">Stanje</Typography>
-                      <Typography variant="body2">{state}</Typography>
+                      <Typography variant='body2'>Stanje</Typography>
+                      <Typography variant='body2'>{state}</Typography>
                     </Stack>
                     <Divider />
                   </AccordionDetails>
@@ -482,27 +481,27 @@ const CatalogueItem = ({
               </Stack>
               <Stack
                 sx={{
-                  backgroundColor: "#262626",
-                  borderRadius: "16px",
-                  justifyContent: "center",
+                  backgroundColor: '#262626',
+                  borderRadius: '16px',
+                  justifyContent: 'center',
                 }}
               >
                 <Accordion>
                   <AccordionSummary
-                    aria-controls="panel1-content"
-                    id="panel1-header"
+                    aria-controls='panel1-content'
+                    id='panel1-header'
                     expandIcon={<ExpandMoreIcon />}
-                    sx={{ height: "61px" }}
+                    sx={{ height: '61px' }}
                   >
-                    <Typography fontWeight={600} fontSize="18px">
+                    <Typography fontWeight={600} fontSize='18px'>
                       Opis
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <Typography variant="h4" textAlign={"center"}>
+                    <Typography variant='h4' textAlign={'center'}>
                       {description_title}
                     </Typography>
-                    <Typography variant="body1" textAlign={"justify"}>
+                    <Typography variant='body1' textAlign={'justify'}>
                       {description}
                     </Typography>
                   </AccordionDetails>
@@ -521,10 +520,10 @@ const CatalogueItem = ({
               swipeable={true}
               autoPlaySpeed={5000}
               keyBoardControl={true}
-              customTransition="all .5"
+              customTransition='all .5'
               transitionDuration={500}
-              containerClass="gd-carousel"
-              removeArrowOnDeviceType={["tablet", "mobile"]}
+              containerClass='gd-carousel'
+              removeArrowOnDeviceType={['tablet', 'mobile']}
               deviceType={deviceType}
               arrows={false}
             >
@@ -532,42 +531,38 @@ const CatalogueItem = ({
                 (characteristic, index) => (
                   <Card
                     key={`${characteristic.title}-${index}`}
-                    sx={{ mb: 5, mx: 1, height: "564px" }}
+                    sx={{ mb: 5, mx: 1, height: '564px' }}
                   >
                     <Box
                       sx={{
-                        display: "flex",
-                        width: "100%",
-                        height: "288px",
+                        display: 'flex',
+                        width: '100%',
+                        height: '288px',
+                        position: 'relative'
                       }}
                     >
                       <Image
                         src={characteristic.image}
-                        width={500}
-                        height={288}
-                        sizes="100vw, 25vw"
-                        style={{
-                          width: "500px",
-                          height: "auto",
-                          objectFit: "cover",
-                        }}
-                        alt="Motoshop 7"
+                        sizes='100%, 30%'
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        alt='Motoshop 7'
                       />
                     </Box>
                     <CardContent
-                      sx={{ display: "flex", justifyContent: "center" }}
+                      sx={{ display: 'flex', justifyContent: 'center' }}
                     >
                       <Stack gap={2}>
-                        <Typography variant="h6">
+                        <Typography variant='h6'>
                           {characteristic.title}
                         </Typography>
-                        <Typography variant="body2" textAlign={"justify"}>
+                        <Typography variant='body2' textAlign={'justify'}>
                           {characteristic.text}
                         </Typography>
                       </Stack>
                     </CardContent>
                   </Card>
-                )
+                ),
               )}
             </Carousel>
           </Grid>

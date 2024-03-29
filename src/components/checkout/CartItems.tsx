@@ -101,7 +101,7 @@ const CartItems = () => {
           href='/checkout'
           style={{ textDecoration: 'none', width: '100%' }}
         >
-          <Button variant='outlined' color='secondary' fullWidth>
+          <Button variant='outlined' color='secondary' fullWidth disabled>
             <Typography>Naruci</Typography>
           </Button>
         </Link>
