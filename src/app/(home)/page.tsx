@@ -53,52 +53,50 @@ export async function generateMetadata({
   };
 }
 
-  const discount = {
-    name: 'kacige 20%',
-    title: '20% Popusta Na Nove Modele Kaciga',
-    image: '/images/discount1.png',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-  };
+const discount = {
+  name: 'kacige 20%',
+  title: '20% Popusta Na Nove Modele Kaciga',
+  image: '/images/discount1.png',
+  description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+};
 
-  const items = [
-    {
-      title: 'Motori',
-      image: '/images/motori-card.png',
-      url: '',
-      text: '-Pregledajte našu ponudu novih i korištenih motocikala i skutera Japanskog brenda Yamaha.  Veliki izbor modela za razne namjene, od skuter modela za izbjegavanje gradskih gužvi pa sve do modela za zabavu.',
-      id: '1',
-    },
-    {
-      title: 'Kacige',
-      image: '/images/kacige-card.png',
-      url: '',
-      text: '-Široka ponuda kaciga poznatih brendova IXS,HJC i LS2 kao i rezevnih dijelova dostupni su na našem WEBSHOPU. ',
-      id: '2',
-    },
-    {
-      title: 'ATV',
-      image: '/images/atv-card.png',
-      url: '',
-      text: '-Pored Yamahinih motocikala i skutera u ponudi imamo i ATV vozila za sportske i radne namjene. Više informacija i ponudu ATV vozila pogledajte u nastavku.',
-      id: '3',
-    },
-    {
-      title: 'Marina',
-      image: '/images/marina-card.png',
-      url: '',
-      text: '-Yamaha je daleko poznata i u svijetu vodenog programa. Yamahini vanbrodski motori i gumeni čamci kao i prateća oprema dostupni su u Moto Shop #7. P',
-      id: '4',
-    },
-  ];
-
+const items = [
+  {
+    title: 'Motori',
+    image: '/images/motori-card.png',
+    url: '',
+    text: '-Pregledajte našu ponudu novih i korištenih motocikala i skutera Japanskog brenda Yamaha.  Veliki izbor modela za razne namjene, od skuter modela za izbjegavanje gradskih gužvi pa sve do modela za zabavu.',
+    id: '1',
+  },
+  {
+    title: 'Kacige',
+    image: '/images/kacige-card.png',
+    url: '',
+    text: '-Široka ponuda kaciga poznatih brendova IXS,HJC i LS2 kao i rezevnih dijelova dostupni su na našem WEBSHOPU. ',
+    id: '2',
+  },
+  {
+    title: 'ATV',
+    image: '/images/atv-card.png',
+    url: '',
+    text: '-Pored Yamahinih motocikala i skutera u ponudi imamo i ATV vozila za sportske i radne namjene. Više informacija i ponudu ATV vozila pogledajte u nastavku.',
+    id: '3',
+  },
+  {
+    title: 'Marina',
+    image: '/images/marina-card.png',
+    url: '',
+    text: '-Yamaha je daleko poznata i u svijetu vodenog programa. Yamahini vanbrodski motori i gumeni čamci kao i prateća oprema dostupni su u Moto Shop #7. P',
+    id: '4',
+  },
+];
 
 export default async function HomePage() {
   const userAgent = await getUserAgent();
   const catalogues: ICatalogue[] = await getCatalogues();
   const cooperators: CooperatorType[] = await getCooperators();
   const posts = await getPosts();
-
 
   return (
     <>
@@ -118,11 +116,9 @@ export default async function HomePage() {
             alt='Motoshop 7'
             quality={85}
             style={{ zIndex: -1 }}
-            placeholder='blur'
             sizes='100vw'
           />
           <Image
-            priority
             src='/images/welcome_gradient_bg.png'
             fill
             alt='Motoshop 7'
@@ -231,6 +227,7 @@ export default async function HomePage() {
                 sx={{
                   borderRadius: 0,
                   position: 'relative',
+                  boxShadow: 0,
                   '&:hover': {
                     boxShadow: '0px 33px 15px rgba(0, 0, 0, 0.2)',
                     backgroundColor: 'rgba(0, 0, 0, 0.1)',
@@ -253,12 +250,16 @@ export default async function HomePage() {
                   src={item.image}
                   fill
                   alt='Motoshop 7'
+                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                  style={{ objectFit: 'cover' }}
                 />
                 <Image
                   className='imageHover'
                   src='/images/bottom-card.png'
+                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                   fill
                   alt='Motoshop 7'
+                  style={{ objectFit: 'cover' }}
                 />
                 <CardContent
                   sx={{
