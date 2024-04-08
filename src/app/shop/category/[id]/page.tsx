@@ -55,7 +55,8 @@ export default async function ShopCategory({ params: { id } }: any) {
             </Typography>
           </Box>
         </Grid>
-        <Grid xs={12} md={3}>
+        <Grid xs={12} md={3} marginTop="20px">
+          <Stack spacing={0.5}>
           <Typography variant="body2">Prodavnica - kacige</Typography>
           <CheckboxCollapsible title="Vrsta" selectFields={categoryTypes} />
           <CheckboxCollapsible title="Brend" selectFields={manufacturerTypes} />
@@ -65,6 +66,7 @@ export default async function ShopCategory({ params: { id } }: any) {
           />
           <ColorCollapsible title="Boja" colors={categoryProductsColors} />
           <PriceCollapsible title="Cijena" min={0} max={70000} />
+          </Stack>
         </Grid>
         <Grid container xs={12} md={9}>
           <Grid container columnSpacing={4} rowSpacing={4}>

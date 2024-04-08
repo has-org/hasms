@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import FormProvider from "../hook-form/FormProvider";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 const ColorCollapsible = ({
   title,
@@ -27,28 +29,35 @@ const ColorCollapsible = ({
 
   return (
     <>
-      <Stack direction="row">
+      <Stack
+        direction='row'
+        alignItems='center'
+        justifyContent='space-between'
+        spacing={1}
+      >
         <Typography>{title}</Typography>
-        <Button onClick={() => setOpen(!open)}>{open ? "Hide" : "Show"}</Button>
+        <Button onClick={() => setOpen(!open)}>
+          {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        </Button>
       </Stack>
       <Stack
         sx={{
-          display: open ? "block" : "none",
+          display: open ? 'block' : 'none',
         }}
       >
-        <Box sx={{ height: "180px", overflow: "auto" }}>
+        <Box sx={{ maxHeight: '180px', overflow: 'auto' }}>
           <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-            <Stack direction="row">
+            <Stack direction='row'>
               {colors?.map((color) => {
                 // return <RHFCheckbox name={color.name} label={color.name} key={color.value}/>;
                 return (
                   <Box
                     key={color}
                     sx={{
-                      height: "24px",
-                      width: "24px",
+                      height: '24px',
+                      width: '24px',
                       backgroundColor: color,
-                      borderRadius: "4px",
+                      borderRadius: '4px',
                     }}
                   ></Box>
                 );
