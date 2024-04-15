@@ -1,5 +1,5 @@
-import { Color } from "./Color";
-import { VariantImage } from "./VariantImage";
+import { IColor } from "./IColor";
+import { IVariantImage } from "./IVariantImage";
 import { ISize } from "./ISize";
 import { ITag } from "./ITag";
 import { IProduct } from "./IProduct";
@@ -10,8 +10,8 @@ export interface IVariant {
   name: string;
   product?: IProduct;
   product_id: number;
-  images: VariantImage[];
-  colors: Color[];
+  variant_images: IVariantImage[];
+  colors: IColor[];
   sizes: ISize[];
   tags: ITag[];
   product_prices: IProductPrice[];

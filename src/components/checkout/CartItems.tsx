@@ -53,7 +53,7 @@ const CartItems = () => {
                         />
                       ) : (
                         <Image
-                          src={'/images/no-image.jpg'}
+                          src={'/no-image.jpg'}
                           width={48}
                           height={48}
                           alt='asd'

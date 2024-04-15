@@ -1,7 +1,6 @@
-import { ICategory } from "./ICategory";
-import { IVariant } from "./IVariant";
-export type IProduct = {
-  
+import { ICategory } from './ICategory';
+import { IVariant } from './IVariant';
+export interface IProduct {
   id: number;
   created_at: string;
   updated_at: string;
@@ -15,5 +14,5 @@ export type IProduct = {
   workspace_id: number;
   image: string;
   variants: IVariant[];
-  category: ICategory,
-};
+  category: ICategory;
+}

@@ -47,7 +47,7 @@ const Logo = forwardRef<HTMLDivElement, LogoProps>(
         {...other}
       >
         <Image
-          src={'/images/logomw.png'}
+          src={'/logomw.png'}
           width={0}
           height={0}
           sizes="100vw"

@@ -63,7 +63,7 @@ export default function CartPage() {
                             />
                           ) : (
                             <Image
-                              src={"/images/no-image.jpg"}
+                              src={"/no-image.jpg"}
                               width={90}
                               height={68}
                               alt="asd"

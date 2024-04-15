@@ -1,6 +1,6 @@
 import { IVariant } from "./IVariant";
 
-export interface Color {
+export interface IColor {
     id: number;
     created_at?: Date;
     updated_at?: Date;

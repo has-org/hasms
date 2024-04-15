@@ -23,7 +23,7 @@ export default async function Shop() {
                 }}
               >
                 <Image
-                  src={"/images/catalogue_thumbnail.png"}
+                  src={"/catalogue_thumbnail.png"}
                   fill
                   alt="catalogue background"
                 />
@@ -53,7 +53,7 @@ export default async function Shop() {
                 }}
               >
                 <Image
-                  src={"/images/category_thumbnail.png"}
+                  src={"/category_thumbnail.png"}
                   fill
                   alt="catalogue background"
                 />

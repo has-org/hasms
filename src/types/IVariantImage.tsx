@@ -1,7 +1,8 @@
-import { Color } from "./Color";
+import { IColor } from "./IColor";
+import { IImage } from "./IImage";
 import { IVariant } from "./IVariant";
 
-export interface VariantImage {
+export interface IVariantImage {
     id: number;
     code: string;
     name: string;
@@ -10,5 +11,6 @@ export interface VariantImage {
     variant_id?: number;
     variant?: IVariant;
     color_id?: number;
-    color?: Color;
+    color?: IColor;
+    images: IImage[];
   }

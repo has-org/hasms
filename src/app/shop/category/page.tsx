@@ -6,7 +6,7 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 export default async function Shop() {
-  const categories: ICategory[] = await getCategories({page: 0, count: 10});
+  const categories: ICategory[] = await getCategories({page: 0, count: 30});
   if (!categories) return <div>Categories not found</div>;
 
   return (
@@ -26,7 +26,7 @@ export default async function Shop() {
               }}
             >
               <Image
-                src="/images/proizvodi_main.png"
+                src="/proizvodi_main.png"
                 fill
                 alt="proizodi background"
               />
