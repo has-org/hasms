@@ -24,6 +24,8 @@ import Counter from './Counter';
 import SizeSelector from './SizeSelector';
 import { IImage } from '@/types/IImage';
 import { ISize } from '@/types/ISize';
+import { getProductVariants } from '@/services/apiService';
+import ProductAddToCartSection from './ProductAddToCartSection';
 
 export default async function Product({ params: { id } }: any) {
 	const product: IProduct = await getProduct({ id: id });
@@ -89,9 +91,6 @@ export default async function Product({ params: { id } }: any) {
 								})}
 							</Stack>
 
-							<SizeSelector sizes={productSizes} />
-
-							<Counter />
 						</Stack>
 						<Stack
 							sx={{

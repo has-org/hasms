@@ -51,13 +51,15 @@ export default async function ShopCategory({ params: { id } }: any) {
 						</Typography>
 					</Box>
 				</Grid>
-				<Grid xs={12} md={3}>
-					<Typography variant='body2'>Prodavnica - kacige</Typography>
-					<CheckboxCollapsible title='Vrsta' selectFields={categoryTypes} />
-					<CheckboxCollapsible title='Brend' selectFields={manufacturerTypes} />
-					<CheckboxCollapsible title='Veličina' selectFields={categoryProductsSizes} />
-					<ColorCollapsible title='Boja' colors={categoryProductsColors} />
-					<PriceCollapsible title='Cijena' min={0} max={70000} />
+				<Grid xs={12} md={3} marginTop='20px'>
+					<Stack spacing={0.5}>
+						<Typography variant='body2'>Prodavnica - kacige</Typography>
+						<CheckboxCollapsible title='Vrsta' selectFields={categoryTypes} />
+						<CheckboxCollapsible title='Brend' selectFields={manufacturerTypes} />
+						<CheckboxCollapsible title='Veličina' selectFields={categoryProductsSizes} />
+						<ColorCollapsible title='Boja' colors={categoryProductsColors} />
+						<PriceCollapsible title='Cijena' min={0} max={70000} />
+					</Stack>
 				</Grid>
 				<Grid container xs={12} md={9}>
 					<Grid container columnSpacing={4} rowSpacing={4}>
@@ -65,16 +67,15 @@ export default async function ShopCategory({ params: { id } }: any) {
 							<Typography variant='body2'>filteri</Typography>
 						</Grid>
 						{products?.map((product) => {
-							const {
-								variants: [
-									{
-										variant_images: [{ images = [] }],
-									},
-								],
-							} = product;
-							const image = images[0] ?? false;
-							const defaultImage = image ? `${image.name}.${image.extension}` : '/no-image.jpg';
-
+								const {
+									variants: [
+										{
+											variant_images: [{ images = [] }],
+										},
+									],
+								} = product;
+								const image = images[0] ?? false;
+								const defaultImage = image ? `${image.name}.${image.extension}` : '/no-image.jpg';
 							return (
 								<Grid xs={12} md={4} lg={4} key={product?.id}>
 									<Card sx={{ height: '376px', boxShadow: 0, borderRadius: '16px' }}>
