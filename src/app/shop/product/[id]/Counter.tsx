@@ -1,18 +1,20 @@
 'use client';
 
 import { Stack, Button, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { CartContext } from '@/context/CartContext/CartContext';
 
-export default function Counter() {
-  const [count, setCount] = useState(1);
-  function hadleIncrease() {
-    setCount(count + 1);
-  }
-  function handleDecrease() {
-    if (count > 1) {
-      setCount(count - 1);
-    }
-  }
+export default function Counter({
+  count,
+  setCount,
+  handleDecrease,
+  hadleIncrease,
+}: {
+  count: number;
+  setCount: (selectedCount: number) => void;
+  handleDecrease: () => void;
+  hadleIncrease: () => void;
+}) {
   return (
     <Stack direction='row' spacing={2}>
       <Button
@@ -44,11 +46,7 @@ export default function Counter() {
         +
       </Button>
 
-      <Button variant='outlined' color='secondary' size='large'>
-        <Typography fontSize='14px' fontWeight='bold'>
-          + Dodaj u korpu
-        </Typography>
-      </Button>
+      
     </Stack>
   );
 }

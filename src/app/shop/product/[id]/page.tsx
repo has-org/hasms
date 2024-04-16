@@ -17,8 +17,7 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import { getProductVariants } from '@/services/apiService';
-import Counter from './Counter';
-import SizeSelector from '../SizeSelector';
+import ProductAddToCartSection from './ProductAddToCartSection';
 
 export default async function Product({ params: { id } }: any) {
   const product: IProduct = await getProduct({ id: id });
@@ -78,59 +77,12 @@ export default async function Product({ params: { id } }: any) {
                 fontWeight='bold'
                 color='#00D0FD'
               >
-                100 KM
+                {product.variants[0].product_prices[0].price} KM
               </Typography>
             </Box>
-            <Stack spacing={3}>
-              <Stack direction='row' spacing={1} alignItems='center'>
-                <Typography
-                  className='product-colors-title'
-                  color='#ACACAC'
-                  fontSize='14px'
-                >
-                  Izaberi boju:
-                </Typography>
-                {productColors.map((color: ColorType, index: number) => {
-                  return (
-                    <span
-                      key={index}
-                      className='variant-color'
-                      style={{ color: 'white', fontWeight: '500' }}
-                    >
-                      {color.name}
-                    </span>
-                  );
-                })}
-              </Stack>
 
-              <Stack direction='row'>
-                {product.variants[0].images.map((miniPic) =>
-                  miniPic.url ? (
-                    <Image
-                      src={miniPic.url}
-                      alt='product image'
-                      width={54}
-                      height={50}
-                      style={{ borderRadius: '16px' }}
-                      key={`${product.id}_${product.variants[0].id}_${miniPic.id}`}
-                    />
-                  ) : (
-                    <Image
-                      src={'/images/no-image.jpg'}
-                      alt='product image'
-                      width={54}
-                      height={50}
-                      style={{ borderRadius: '16px' }}
-                      key={`${product.id}_${product.variants[0].id}_${miniPic.id}`}
-                    />
-                  ),
-                )}
-              </Stack>
+            <ProductAddToCartSection product={product} />
 
-              <SizeSelector sizes={productSizes} />
-
-              <Counter />
-            </Stack>
             <Stack
               sx={{
                 backgroundColor: '#262626',
@@ -172,31 +124,7 @@ export default async function Product({ params: { id } }: any) {
                       sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
                       <Typography variant='body2'>Serijski br.</Typography>
-                      <Typography variant='body2'>
-                        Serijski br.Serijski br.
-                      </Typography>
-                    </Stack>
-                    <Divider />
-                    <Stack
-                      direction='row'
-                      sx={{ display: 'flex', justifyContent: 'space-between' }}
-                    >
-                      <Typography variant='body2'>Boja</Typography>
-                      {productColors.map((color: ColorType, index: number) => {
-                        return (
-                          <Typography key={index} className='variant-color'>
-                            {color.name}
-                          </Typography>
-                        );
-                      })}
-                    </Stack>
-                    <Divider />
-                    <Stack
-                      direction='row'
-                      sx={{ display: 'flex', justifyContent: 'space-between' }}
-                    >
-                      <Typography variant='body2'>Veličina</Typography>
-                      <Typography variant='body2'>VeličinaVeličina</Typography>
+                      <Typography variant='body2'>{product.code}</Typography>
                     </Stack>
                     <Divider />
                     <Stack
