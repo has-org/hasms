@@ -21,36 +21,43 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import Counter from './Counter';
-import SizeSelector from '../SizeSelector';
+import SizeSelector from './SizeSelector';
 import { IImage } from '@/types/IImage';
 import { ISize } from '@/types/ISize';
 
 export default async function Product({ params: { id } }: any) {
 	const product: IProduct = await getProduct({ id: id });
-	const productImages: IImage[] = await getProductVariantImages({ id: product.variants[0].id });
-	const productSizes: ISize[] = await getProductVariantSizes({ id: product.variants[0].id });
-	const productColors: IColor[] = await getProductVariantColors({ id: product.variants[0].id });
-	const defaultImage = productImages[0] ? `${productImages[0].name}.${productImages[0].extension}` : '/no-image.jpg';
 
 	if (!product) {
 		return <div>Product not found</div>;
 	}
 
+	const { variants: [{ id: variant_id = 0 }] = [] } = product;
+
+	const productImages: IImage[] = await getProductVariantImages({ id: variant_id });
+	const productSizes: ISize[] = await getProductVariantSizes({ id: variant_id });
+	const productColors: IColor[] = await getProductVariantColors({ id: variant_id });
+
+	const [{ name: imageName = '', extension: imageExtension = '' }] = ([] = productImages);
+	const defaultImage = imageName && imageExtension ? `${imageName}.${imageExtension}` : '/no-image.jpg';
+
+
+	
+
+
 	return (
 		<Container maxWidth='lg'>
 			<Grid container sx={{ marginTop: '20px' }}>
-				<Grid md={5.5} xs={12}>
-					<Stack>
-						<Image src={defaultImage} alt='product image' width={470} height={352} style={{ borderRadius: '16px' }} />
-					</Stack>
+				<Grid md={5} xs={12}>
+					<Image src={defaultImage} alt='product image' width={470} height={352} style={{ borderRadius: '16px' }} />
 				</Grid>
-				<Grid md={6.5} xs={12}>
+				<Grid md={7} xs={12} sx={{ paddingLeft: { md: 2 } }}>
 					<Stack spacing={2} sx={{ marginTop: { xs: '10px', md: '0px' } }}>
 						<Box>
 							<Typography fontSize='16px' color='#ACACAC'>
 								{product.manufacturer}
 							</Typography>
-							<Typography fontSize='20px' fontWeight='bold' className='product-name'>
+							<Typography fontSize='20px' fontWeight='bold'>
 								{product.name}
 							</Typography>
 						</Box>
@@ -64,22 +71,15 @@ export default async function Product({ params: { id } }: any) {
 								<Typography className='product-colors-title' color='#ACACAC' fontSize='14px'>
 									Izaberi boju:
 								</Typography>
-								{productColors.map((color: IColor, index: number) => {
-									return (
-										<Typography component='span' key={index} style={{ color: 'white', fontWeight: '500' }}>
-											{color.name}
-										</Typography>
-									);
-								})}
 							</Stack>
 
-							<Stack direction='row'>
+							<Stack direction='row' spacing={1}>
 								{productImages?.map((miniPic) => {
-									const defaultImage = miniPic ? `${miniPic.name}.${miniPic.extension}` : '/no-image.jpg';
+									const defaultMiniImage = miniPic ? `${miniPic.name}.${miniPic.extension}` : '/no-image.jpg';
 									return (
 										<Image
 											key={miniPic.name}
-											src={defaultImage}
+											src={defaultMiniImage}
 											alt='product image'
 											width={54}
 											height={50}
