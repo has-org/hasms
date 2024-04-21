@@ -4,107 +4,30 @@ import { CartContext } from './CartContext';
 import { cartReducer } from './CartReducer';
 import { v4 as uuidv4 } from 'uuid';
 // import axiosInstance from "@/utils/axios";
-import { IProduct } from '@/types/IProduct';
+import { ICartProduct } from '@/types/ICartProduct';
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 	const [state, dispatch] = useReducer(cartReducer, {
-		items: [],
+		products: [],
 		totalAmount: 0,
 		totalWithoutTax: 0,
 		totalTax: 0,
 	});
 
-	const addToCart = useCallback(
-		async (item: any) => {
-			const {
-				id: productId,
-				manufacturer,
-				code,
-				name,
-				selectedColor,
-				selectedSize,
-				quantity,
-				variants: [
-					{
-						id: variant_id,
-						product_prices: [{ price = 0, price_without_tax = 0, tax_amount = 0 }],
-						variant_images: [{ images = [] }],
-					},
-				],
-			} = item;
+	const addToCart = useCallback(async (product: ICartProduct) => {
+		const preparedProductToAdd = {
+			...product,
+			cartItemId: uuidv4(),
+		};
 
-			const defaultImage = images[0] ? `${images[0]?.name}.${images[0].extension}` : '/no-image.jpg';
-
-			const preparedProductToAdd = {
-				id: uuidv4(),
-				product_id: productId,
-				product_manufacturer: manufacturer,
-				product_code: code,
-				product_name: name,
-				product_price: price,
-				product_price_without_tax: price_without_tax,
-				product_tax_amount: tax_amount,
-				product_image: defaultImage,
-				variant_id: variant_id,
-				color: selectedColor,
-				size: selectedSize,
-				quantity: quantity,
-			};
-
-			const itemExists = state.items?.find(
-				(cartItem: any) =>
-					cartItem.product_code === item.code &&
-					cartItem.color.id === item?.selectedColor.id &&
-					cartItem.size.id === item?.selectedSize.id,
-			);
-
-			if (itemExists) {
-				dispatch({
-					type: 'UPDATE',
-					payload: {
-						item: preparedProductToAdd,
-					},
-				});
-			} else {
-				dispatch({
-					type: 'ADD',
-					payload: {
-						item: preparedProductToAdd,
-					},
-				});
-			}
-		},
-		[state.items],
-	);
-
-	const updateCartItemQuantity = useCallback((payload: any, action: string) => {
-		switch (action) {
-			case 'INCREASE':
-				dispatch({
-					type: 'INCREASE_CART_ITEM_QUANTITY',
-					payload: {
-						item: payload,
-					},
-				});
-				return;
-			case 'DECREASE':
-				dispatch({
-					type: 'DECREASE_CART_ITEM_QUANTITY',
-					payload: {
-						item: payload,
-					},
-				});
-				return;
-		}
 		dispatch({
-			type: 'UPDATE_TOTAL_AMOUNT',
+			type: 'ADD',
 			payload: {
-				totalAmount: 1,
+				product: preparedProductToAdd,
 			},
 		});
-		return;
 	}, []);
 
-	const removeFromCart = useCallback((id: number) => {
+	const removeFromCart = useCallback((id: number | string) => {
 		dispatch({
 			type: 'REMOVE',
 			payload: {
@@ -114,15 +37,15 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 	}, []);
 
 	useEffect(() => {
-		if (state.items) {
+		if (state.products) {
 			const calculateTotalAmount = () => {
 				let totalWithTax = 0;
 				let totalWithoutTax = 0;
 				let totalTax = 0;
-				for (const item of state.items) {
-					totalWithTax += Math.round(item.product_price * item.quantity);
-					totalWithoutTax += Math.round(item.product_price_without_tax * item.quantity);
-					totalTax += item.product_tax_amount * item.quantity;
+				for (const product of state.products) {
+					totalWithTax += Math.round(product.price * product.quantity);
+					totalWithoutTax += Math.round(product.priceWithoutTax * product.quantity);
+					totalTax += product.taxAmount * product.quantity;
 				}
 				return { totalWithTax, totalWithoutTax, totalTax };
 			};
@@ -138,27 +61,18 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 				},
 			});
 		}
-	}, [state.items]);
+	}, [state.products]);
 
 	const memoizedValue = useMemo(
 		() => ({
-			items: state.items,
+			products: state.products,
 			totalAmount: state.totalAmount,
 			totalWithoutTax: state.totalWithoutTax,
 			totalTax: state.totalTax,
 			addToCart,
 			removeFromCart,
-			updateCartItemQuantity,
 		}),
-		[
-			state.items,
-			state.totalAmount,
-			state.totalWithoutTax,
-			state.totalTax,
-			addToCart,
-			removeFromCart,
-			updateCartItemQuantity,
-		],
+		[state.products, state.totalAmount, state.totalWithoutTax, state.totalTax, addToCart, removeFromCart],
 	);
 
 	return <CartContext.Provider value={memoizedValue}>{children}</CartContext.Provider>;

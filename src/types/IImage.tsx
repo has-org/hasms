@@ -8,5 +8,5 @@ export interface IImage {
     extension: string;
     variant_image_id?: number;
     alt?: string;
-
+    color_id: number | null;
   }

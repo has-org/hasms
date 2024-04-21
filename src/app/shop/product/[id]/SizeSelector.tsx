@@ -1,64 +1,49 @@
 'use client';
 
+import { ProductContext } from '@/context/ProductContext/ProductContext';
 import { ISize } from '@/types/ISize';
 import { Stack, Box, Typography, Button } from '@mui/material';
-import { useState, } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
-export default function SizeSelector({
-  sizes,
-  setSelectedSize,
-  selectedSize,
-}: {
-  sizes: ISize[];
-  setSelectedSize: (sizeName: string) => void;
-  selectedSize: string;
-}) {
-  return (
-    <Stack spacing={0.5}>
-      <Box>
-        <Typography
-          className='product-size-title'
-          color='#ACACAC'
-          fontSize='14px'
-        >
-          Veličina: {selectedSize}
-        </Typography>
-        <Box component='form'>
-          <Stack direction='row' spacing={1}>
-            {sizes.map((size) =>
-              size.quantity > 0 ? (
-                <Button
-                  key={size.id}
-                  variant='outlinedTransparent'
-                  color='secondary'
-                  style={{ width: '32px', height: '32px', minWidth: '32px' }}
-                  onClick={() => setSelectedSize(size.name)}
-                  value={size.name}
-                  sx={{
-                    border:
-                      selectedSize === size.name
-                        ? '2px solid #00D0FD'
-                        : '2px solid transparent',
-                  }}
-                >
-                  {size.name}
-                </Button>
-              ) : (
-                <Button
-                  key={size.id}
-                  variant='outlinedTransparent'
-                  color='secondary'
-                  style={{ width: '32px', height: '32px', minWidth: '32px' }}
-                  disabled
-                  sx={{ border: '2px solid #ACACAC' }}
-                >
-                  {size.name}
-                </Button>
-              ),
-            )}
-          </Stack>
-        </Box>
-      </Box>
-    </Stack>
-  );
+export default function SizeSelector({ sizes }: { sizes: ISize[] }) {
+	const { selectedSize, selectSize } = useContext(ProductContext);
+
+	useEffect(() => {
+		if (sizes.length > 0) {
+			selectSize(sizes[0]);
+		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	return (
+		<Stack spacing={1}>
+			<Stack direction='row' spacing={1}>
+				<Typography className='product-size-title' color='#ACACAC'>
+					Veličina:
+				</Typography>
+				<Typography color='primary' component='span'>
+					{selectedSize?.name}
+				</Typography>
+			</Stack>
+			<Stack direction='row' spacing={1}>
+				{sizes.map((size) => (
+					<Button
+						key={size.id}
+						variant='outlinedTransparent'
+						color='secondary'
+						onClick={() => selectSize(size)}
+						sx={{
+							border: selectedSize?.name === size.name ? '1px solid #00D0FD' : '1px solid #ACACAC',
+							color: selectedSize?.name === size.name ? '#00D0FD' : '#ACACAC',
+							width: '32px',
+							height: '32px',
+							minWidth: '32px',
+						}}
+					>
+						{size.name}
+					</Button>
+				))}
+			</Stack>
+		</Stack>
+	);
 }

@@ -8,4 +8,5 @@ export interface IColor {
     value: string;
     variant_id?: number;
     variant?: IVariant;
+    color_id: number;
   }
