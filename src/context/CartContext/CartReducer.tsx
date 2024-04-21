@@ -29,7 +29,7 @@ export const cartReducer = (state: any, action: any) => {
 		case 'REMOVE':
 			return {
 				...state,
-				products: state.products.filter((product: ICartProduct) => product.id !== payload.id),
+				products: state.products.filter((product: ICartProduct) => product.cartItemId !== payload.id),
 			};
 
 		case 'UPDATE_TOTAL_AMOUNT':

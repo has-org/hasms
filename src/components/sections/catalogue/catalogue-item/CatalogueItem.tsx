@@ -22,19 +22,11 @@ import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import 'react-multi-carousel/lib/styles.css';
 
-import ProductViewer2D from '../../../productViewer2D';
-
 import Link from 'next/link';
 import { ICatalogue } from '@/types/Catalogue';
 import Carousel from 'react-multi-carousel';
 import Image from 'next/image';
 import { InquiryModal } from '@/components/modals/InquiryModal';
-
-const images360 = [
-  'https://picsum.photos/id/1018/1000/600/',
-  'https://picsum.photos/id/1019/1000/600/',
-  // ... add more image paths for each angle
-];
 
 const CatalogueItem = ({
   catalogue,
@@ -43,7 +35,6 @@ const CatalogueItem = ({
   catalogue: ICatalogue;
   deviceType?: any;
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [images, setImages] = useState<ReactImageGalleryItem[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState<string>('');
@@ -89,8 +80,6 @@ const CatalogueItem = ({
 
   const { color, price } = catalogue.catalogue_variants[0];
 
-  const colors = catalogue.catalogue_variants.map((variant) => variant.color);
-
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1800 },
@@ -115,8 +104,6 @@ const CatalogueItem = ({
       <Container maxWidth='lg' sx={{ marginTop: '48px' }}>
         <Grid container spacing={5}>
           <Grid xs={12} md={5} sx={{ marginTop: '-100px' }}>
-            {/* <ProductViewer2D images={images360} /> */}
-
             <ImageGallery
               items={images}
               autoPlay={false}
@@ -514,7 +501,7 @@ const CatalogueItem = ({
             <Carousel
               showDots={true}
               responsive={responsive}
-              ssr={true} // means to render carousel on server-side.
+              ssr={true} 
               infinite={true}
               autoPlay={true}
               swipeable={true}

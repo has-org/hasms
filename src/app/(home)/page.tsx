@@ -13,32 +13,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ICatalogue } from '@/types/Catalogue';
 
-async function getUserAgent() {
-	let userAgent;
-	const headersList = headers();
-	const userAgentHeader = headersList.get('user-agent');
-	if (userAgentHeader) {
-		userAgent = userAgentHeader;
-	} else {
-		userAgent = window?.navigator?.userAgent;
-	}
-	const parser = new UAParser();
-
-	parser.setUA(userAgent);
-	const result = parser.getResult();
-	switch (result.device.type) {
-		case 'wearable':
-		case 'mobile':
-			return 'mobile';
-		case 'console':
-		case 'tablet':
-		case 'smarttv':
-		case 'embedded':
-		case undefined:
-		default:
-			return 'desktop';
-	}
-}
 
 export async function generateMetadata({ params, searchParams }: { params: any; searchParams: any }) {
 	return {
@@ -87,8 +61,6 @@ const items = [
 ];
 
 export default async function HomePage() {
-	const userAgent = await getUserAgent();
-	const catalogues: ICatalogue[] = await getCatalogues();
 	const cooperators: CooperatorType[] = await getCooperators();
 	const posts = await getPosts();
 

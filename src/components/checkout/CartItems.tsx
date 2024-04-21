@@ -13,7 +13,7 @@ import { CartContext } from '@/context/CartContext/CartContext';
 import { useContext } from 'react';
 
 const CartItems = () => {
-  const { items, totalAmount, removeFromCart } = useContext(CartContext);
+  const { products, totalAmount, removeFromCart } = useContext(CartContext);
 
   return (
     <Box
@@ -27,7 +27,7 @@ const CartItems = () => {
       <Stack>
         <List>
           <Divider color='black' />
-          {items?.map((item: any) => {
+          {products?.map((item: any) => {
             return (
               <Box
                 key={`${item.product_code}-${item.color?.name}-${item.size?.name}`}

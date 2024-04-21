@@ -22,11 +22,11 @@ import {
 
 import { IImage } from '@/types/IImage';
 import { ISize } from '@/types/ISize';
-import ColorSelector from './ColorSelector';
-import SizeSelector from './SizeSelector';
+import ColorSelector from '@/components/common/ProductCard/ColorSelector';
+import SizeSelector from '@/components/common/ProductCard/SizeSelector';
 import { ProductProvider } from '@/context/ProductContext/ProductProvider';
-import { SelectedImage } from './SelectedImage';
-import ProductAddToCart from './ProductAddToCart';
+import { SelectedImage } from '@/components/common/ProductCard/SelectedImage';
+import ProductAddToCart from '@/components/common/ProductCard/ProductAddToCart';
 import { IProductPrice } from '@/types/IProductPrice';
 
 export default async function Product({ params: { id } }: any) {
@@ -70,7 +70,7 @@ export default async function Product({ params: { id } }: any) {
 							<Stack spacing={3}>
 								<ColorSelector images={variantImages} colors={variantColors} />
 								<SizeSelector sizes={variantSizes} />
-								<ProductAddToCart product={product} />
+								<ProductAddToCart product={product}  prices={variantPrices}/>
 							</Stack>
 							<Stack
 								sx={{

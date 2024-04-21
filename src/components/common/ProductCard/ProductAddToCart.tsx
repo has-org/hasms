@@ -11,7 +11,6 @@ import { ProductContext } from '@/context/ProductContext/ProductContext';
 import { CartContext } from '@/context/CartContext/CartContext';
 import { IProduct } from '@/types/IProduct';
 import { IProductPrice } from '@/types/IProductPrice';
-import { ICartProduct } from '@/types/ICartProduct';
 
 type FormValuesProps = {
 	quantity: string | number;
@@ -22,7 +21,7 @@ const addToCartSchema = object({
 	quantity: number().or(string()),
 });
 
-export default function ProductAddToCart({ product }: { product: IProduct }) {
+export default function ProductAddToCart({ product, prices }: { product: IProduct; prices: IProductPrice[] }) {
 	const { selectedColor, selectedSize, selectedImage } = useContext(ProductContext);
 	const { addToCart } = useContext(CartContext);
 
@@ -53,16 +52,17 @@ export default function ProductAddToCart({ product }: { product: IProduct }) {
 		//add snackbar errror
 
 		const defaultImage = selectedImage ? `${selectedImage.name}.${selectedImage.extension}` : '/no-image.jpg';
-		
+
 		const cartProduct = {
 			id: product.id,
+			cartItemId: '',
 			name: product.name,
 			code: product.code,
 			description: product.description,
 			manufacturer: product.manufacturer,
 			category_id: product.category_id,
 			workspace_id: product.workspace_id,
-			price: product.price,
+			price: prices[0].price,
 			quantity: Number(quantity),
 			color: selectedColor,
 			size: selectedSize,

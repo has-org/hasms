@@ -10,15 +10,16 @@ import {
   ListItem,
   Stack,
   Typography,
+  Grid
 } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
+// import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { useContext } from "react";
 import Image from "next/image";
 import ChangeCartQuantityInput from "@/components/cart/ChangeCartQuantityInput";
 import Link from "next/link";
 
 export default function CartPage() {
-  const { items, totalAmount, totalWithoutTax, totalTax, removeFromCart } =
+  const { products, totalAmount, totalWithoutTax, totalTax, removeFromCart } =
     useContext(CartContext); // to be removed, and fetch card from backend in order to not 'use client' in whole page
 
   return (
@@ -43,7 +44,7 @@ export default function CartPage() {
                   <Typography>Ukupno</Typography>
                 </Stack>
               </Stack>
-              {items.map((item: any) => {
+              {products?.map((item: any) => {
                 return (
                   <ListItem key={item.id} sx={{ px: 0, py: 2 }}>
                     <Card sx={{ width: "100%", p: "14px", boxShadow: 0 }}>
