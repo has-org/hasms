@@ -10,11 +10,11 @@ export interface ICartProduct {
 	manufacturer: string;
 	category_id: number;
 	workspace_id: number;
-	color?: IColor;
-	size?: ISize;
-	quantity?: number;
+	color: IColor;
+	size: ISize;
+	quantity: number;
 	image: string;
-	price?: number;
-	taxAmount?: number;
-	priceWithoutTax?: number;
+	price: number;
+	taxAmount: number;
+	priceWithoutTax: number;
 }

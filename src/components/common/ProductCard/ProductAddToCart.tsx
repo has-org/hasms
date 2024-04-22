@@ -63,6 +63,8 @@ export default function ProductAddToCart({ product, prices }: { product: IProduc
 			category_id: product.category_id,
 			workspace_id: product.workspace_id,
 			price: prices[0].price,
+			taxAmount: prices[0].tax_amount,
+			priceWithoutTax: prices[0].price_without_tax,
 			quantity: Number(quantity),
 			color: selectedColor,
 			size: selectedSize,

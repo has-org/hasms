@@ -10,9 +10,8 @@ import {
   ListItem,
   Stack,
   Typography,
-  Grid
 } from "@mui/material";
-// import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { useContext } from "react";
 import Image from "next/image";
 import ChangeCartQuantityInput from "@/components/cart/ChangeCartQuantityInput";
@@ -44,9 +43,9 @@ export default function CartPage() {
                   <Typography>Ukupno</Typography>
                 </Stack>
               </Stack>
-              {products?.map((item: any) => {
+              {products?.map((product) => {
                 return (
-                  <ListItem key={item.id} sx={{ px: 0, py: 2 }}>
+                  <ListItem key={product.id} sx={{ px: 0, py: 2 }}>
                     <Card sx={{ width: "100%", p: "14px", boxShadow: 0 }}>
                       <Stack
                         direction="row"
@@ -54,9 +53,9 @@ export default function CartPage() {
                         justifyContent="space-between"
                       >
                         <Stack direction="row" spacing={1}>
-                          {item.product_image ? (
+                          {product.image ? (
                             <Image
-                              src={item.product_image}
+                              src={product.image}
                               width={90}
                               height={68}
                               alt="product image"
@@ -75,26 +74,26 @@ export default function CartPage() {
                             <Typography
                               sx={{ fontWeight: "200", fontSize: "14px" }}
                             >
-                              {item.product_manufacturer}
+                              {product.manufacturer}
                             </Typography>
                             <Stack direction="row" spacing={1}>
                               <Typography sx={{ fontSize: "14px" }}>
-                                {item.product_code}
+                                {product.code}
                               </Typography>
                               <Typography sx={{ fontSize: "14px" }}>
-                                {item.product_name}
+                                {product.name}
                               </Typography>
                             </Stack>
                             <Stack direction="row" spacing={1}>
                               <Typography
                                 sx={{ fontSize: "12px", fontWeight: "200" }}
                               >
-                                {item.color.name}
+                                {product.color.name}
                               </Typography>
                               <Typography
                                 sx={{ fontSize: "12px", fontWeight: "200" }}
                               >
-                                {item.size.name}
+                                {product.size.name}
                               </Typography>
                             </Stack>
                           </Stack>
@@ -102,14 +101,14 @@ export default function CartPage() {
 
                         <Stack direction="row" spacing={2} alignItems="center">
                           <Typography sx={{ minWidth: "70px" }}>
-                            {item.product_price}
+                            {product.price}
                           </Typography>
                           <Box sx={{ display: "flex", width: "130px" }}>
-                            <ChangeCartQuantityInput product={item} />
+                            <ChangeCartQuantityInput product={product} />
                           </Box>
                           <Box sx={{ width: "70px" }}>
                             <Typography>
-                              {item.product_price * item.quantity} KM
+                              {product.price * product.quantity} KM
                             </Typography>
                           </Box>
                         </Stack>

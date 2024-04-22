@@ -10,11 +10,18 @@ import {
 } from '@/services/apiService';
 import { ICategory } from '@/types/ICategory';
 import { IProduct } from '@/types/IProduct';
-import { Box, Button, Card, Container, Stack, Typography } from '@mui/material';
+import { Box, Button, Card, Container, Pagination, Stack, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import Image from 'next/image';
 
-export default async function ShopCategory({ params: { id } }: any) {
+export default async function ShopCategory({ params: { id, page, count, query } }: any) {
+
+
+	const currentPage = page || 0
+	const searchQuery = query || ''
+	const currentPageCount = count || 10
+
+
 	const category: ICategory = await getCategory({ id: id });
 	if (!category) return <div>Category not found</div>;
 
@@ -66,9 +73,10 @@ export default async function ShopCategory({ params: { id } }: any) {
 						<Grid xs={12} sx={{ display: 'flex' }}>
 							<Typography variant='body2'>filteri</Typography>
 						</Grid>
-						<CategoryProductList products={products} />
+							<CategoryProductList products={products} />
 					</Grid>
 				</Grid>
+			
 			</Grid>
 		</Container>
 	);

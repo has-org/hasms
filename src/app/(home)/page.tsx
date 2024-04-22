@@ -346,7 +346,7 @@ export default async function HomePage() {
 			</section>
 
 			<section>
-				<Stack display='flex' justifyContent={'center'}>
+				<Stack display='flex' justifyContent={'center'} mt={2}>
 					<Typography textAlign={'center'} variant='h2'>
 						Cjenovnici
 					</Typography>
