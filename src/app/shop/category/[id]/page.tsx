@@ -73,7 +73,7 @@ export default async function ShopCategory({ params: { id, page, count, query } 
 						<Grid xs={12} sx={{ display: 'flex' }}>
 							<Typography variant='body2'>filteri</Typography>
 						</Grid>
-							<CategoryProductList products={products} />
+							<CategoryProductList products={products}  />
 					</Grid>
 				</Grid>
 			

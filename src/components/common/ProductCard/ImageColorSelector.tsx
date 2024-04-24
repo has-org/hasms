@@ -1,33 +1,13 @@
 'use client';
 
+import { useColorSelector } from '@/hooks/useColorSelector';
+import { IColor } from '@/types/IColor';
+import { IImage } from '@/types/IImage';
 import { Stack, Typography, Button } from '@mui/material';
 import Image from 'next/image';
-import { useContext, useEffect, useState } from 'react';
-import { IProduct } from '@/types/IProduct';
-import { ProductContext } from '@/context/ProductContext/ProductContext';
-import { IImage } from '@/types/IImage';
-import { IColor } from '@/types/IColor';
 
-export default function ColorSelector({ images, colors }: { images: IImage[]; colors: IColor[] }) {
-	const { selectedColor, selectImage, selectColor } = useContext(ProductContext);
-
-	const handleSelectImage = (image: IImage) => {
-		selectImage(image);
-		const color = colors?.find((color) => color.id === image.color_id);
-		if (color) {
-			selectColor(color);
-		}
-	};
-
-	useEffect(() => {
-		if (colors.length > 0) {
-			selectColor(colors[0]);
-		}
-		if (images.length > 0) {
-			selectImage(images[0]);
-		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+export default function ImageColorSelector({ images, colors }: { images: IImage[]; colors: IColor[] }) {
+	const { selectedColor, handleSelectImage } = useColorSelector({ images, colors });
 
 	return (
 		<Stack spacing={1}>

@@ -22,7 +22,7 @@ import {
 
 import { IImage } from '@/types/IImage';
 import { ISize } from '@/types/ISize';
-import ColorSelector from '@/components/common/ProductCard/ColorSelector';
+import ImageColorSelector from '@/components/common/ProductCard/ImageColorSelector';
 import SizeSelector from '@/components/common/ProductCard/SizeSelector';
 import { ProductProvider } from '@/context/ProductContext/ProductProvider';
 import { SelectedImage } from '@/components/common/ProductCard/SelectedImage';
@@ -50,7 +50,13 @@ export default async function Product({ params: { id } }: any) {
 			<ProductProvider>
 				<Grid container sx={{ marginTop: '20px' }}>
 					<Grid md={5} xs={12}>
+						<Box sx={{
+							position: 'relative',
+							height: '352px',
+							width: '470px'
+						}}>
 						<SelectedImage defaultImage={defaultImage} />
+						</Box>
 					</Grid>
 					<Grid md={7} xs={12} sx={{ paddingLeft: { md: 2 } }}>
 						<Stack spacing={2} sx={{ marginTop: { xs: '10px', md: '0px' } }}>
@@ -68,9 +74,9 @@ export default async function Product({ params: { id } }: any) {
 								</Typography>
 							</Box>
 							<Stack spacing={3}>
-								<ColorSelector images={variantImages} colors={variantColors} />
+								<ImageColorSelector images={variantImages} colors={variantColors} />
 								<SizeSelector sizes={variantSizes} />
-								<ProductAddToCart product={product}  prices={variantPrices}/>
+								<ProductAddToCart product={product} prices={variantPrices} />
 							</Stack>
 							<Stack
 								sx={{
@@ -105,11 +111,7 @@ export default async function Product({ params: { id } }: any) {
 											<Stack direction='row' sx={{ display: 'flex', justifyContent: 'space-between' }}>
 												<Typography variant='body2'>Boja</Typography>
 												{variantColors.map((color: IColor, index: number) => {
-													return (
-														<Typography key={index}>
-															{color.name}
-														</Typography>
-													);
+													return <Typography key={index}>{color.name}</Typography>;
 												})}
 											</Stack>
 											<Divider />

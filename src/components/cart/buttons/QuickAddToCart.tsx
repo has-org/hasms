@@ -11,6 +11,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { CartContext } from '@/context/CartContext/CartContext';
 import { number, object, string } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ProductContext } from '@/context/ProductContext/ProductContext';
 
 type FormValuesProps = {
 	productColor: number | string;
@@ -27,6 +28,7 @@ const addToCartSchema = object({
 
 const QuickAddToCartButton = ({ product }: { product: IProduct }) => {
 	const { addToCart } = useContext(CartContext);
+	const {selectedColor, selectedImage} = useContext(ProductContext)
 
 	const {variants: [{ sizes, variant_images}]} = product;
 	
@@ -55,17 +57,35 @@ const QuickAddToCartButton = ({ product }: { product: IProduct }) => {
 	const { reset, handleSubmit } = methods;
 
 	const onSubmit: SubmitHandler<any> = async (values: any, e?: React.BaseSyntheticEvent) => {
-		const { productColor, productSize, quantity } = values;
-		// const selectedColor = colors.find((color) => color.id === productColor);
+		const { productSize, quantity } = values;
 		const selectedSize = sizes.find((size) => size.id === productSize);
-		// const selectedImage = variant_images?.find((variantImage) => variantImage.color_id === selectedColor?.id )
-		// const firstVariantImage = selectedImage && selectedImage.images[0]
+
+		const {variants: [{product_prices = []}]} = product
+
+		if (!selectedSize || !selectedColor) return;
+
+		const imageFallback = selectedImage ? `${selectedImage.name}.${selectedImage.extension}` : '/no-image.jpg'; 
+
+		const cartProduct = {
+			id: product.id,
+			cartItemId: '',
+			name: product.name,
+			code: product.code,
+			description: product.description,
+			manufacturer: product.manufacturer,
+			category_id: product.category_id,
+			workspace_id: product.workspace_id,
+			price: product_prices[0].price,
+			taxAmount: product_prices[0].tax_amount,
+			priceWithoutTax: product_prices[0].price_without_tax,
+			quantity: Number(quantity),
+			color: selectedColor,
+			size: selectedSize,
+			image: imageFallback,
+		};
 
 
-		// const defaultImage = !firstVariantImage ? '/no-image.jpg' : `${firstVariantImage.name}.${firstVariantImage.extension}`;
-
-		if (!selectedSize) return;
-		// addToCart({ ...product, color: selectedColor, size: selectedSize, quantity, image: defaultImage});
+		addToCart(cartProduct);
 		handleClose();
 	};
 
@@ -103,15 +123,6 @@ const QuickAddToCartButton = ({ product }: { product: IProduct }) => {
 									<CloseIcon />
 								</IconButton>
 							</Stack>
-							{/* <RHFSelect name='productColor' label='Boja' variant='outlined' defaultValue={0} fullWidth>
-								{colors.map((color) => {
-									return (
-										<MenuItem key={`${color.name}-${color.id}`} value={color.id}>
-											{color.name}
-										</MenuItem>
-									);
-								})}
-							</RHFSelect> */}
 							<RHFSelect name='productSize' label='Velicina' variant='outlined' defaultValue={''} fullWidth>
 								{sizes.map((size) => {
 									return (

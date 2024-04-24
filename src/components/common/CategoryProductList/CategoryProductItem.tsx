@@ -2,8 +2,10 @@ import { IProduct } from '@/types/IProduct';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import Link from 'next/link';
 import { Box, Button, Card, Container, Stack, Typography } from '@mui/material';
-import Image from 'next/image';
 import QuickAddToCartButton from '@/components/cart/buttons/QuickAddToCart';
+import { ColorSelector } from './ColorSelector';
+import { SelectedImage } from '../ProductCard/SelectedImage';
+import { ProductProvider } from '@/context/ProductContext/ProductProvider';
 
 export const CategoryProductItem = ({ product }: { product: IProduct }) => {
 	const {
@@ -11,14 +13,14 @@ export const CategoryProductItem = ({ product }: { product: IProduct }) => {
 			{
 				variant_images: [{ images = [] }],
 				product_prices: [{ price: productPrice = 0 }],
+				colors,
 			},
 		] = [],
 	} = product;
 	const image = images[0] ?? false;
-	const defaultImage = image ? `${image.name}.${image.extension}` : '/no-image.jpg';
 
 	return (
-		<Grid xs={12} md={4} lg={4}>
+		<ProductProvider>
 			<Card sx={{ height: '376px', boxShadow: 0, borderRadius: '16px' }}>
 				<Link href={`/shop/product/${product.id}`} style={{ textDecoration: 'none' }}>
 					<Box
@@ -28,16 +30,11 @@ export const CategoryProductItem = ({ product }: { product: IProduct }) => {
 							borderRadius: '16px',
 						}}
 					>
-						<Image
-							src={defaultImage}
-							fill
-							alt='product image'
-							sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-						/>
+						<SelectedImage defaultImage={image} />
 					</Box>
 				</Link>
 
-				<Stack sx={{ px: '20px', pb: '20px' }} spacing={3}>
+				<Stack sx={{ px: '20px', pb: '20px' }} spacing={1}>
 					<Stack
 						direction={'row'}
 						spacing={1}
@@ -54,9 +51,12 @@ export const CategoryProductItem = ({ product }: { product: IProduct }) => {
 						{productPrice} KM
 					</Typography>
 
-					<QuickAddToCartButton product={product} />
+					<Stack spacing={2}>
+						<ColorSelector colors={colors} variantImages={product.variants[0].variant_images} />
+						<QuickAddToCartButton product={product} />
+					</Stack>
 				</Stack>
 			</Card>
-		</Grid>
+		</ProductProvider>
 	);
 };
