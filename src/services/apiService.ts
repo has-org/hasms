@@ -1,3 +1,5 @@
+import { IOrder } from '@/types/IOrder';
+
 export async function getPosts() {
 	try {
 		const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/posts`, {
@@ -307,3 +309,5 @@ export async function getCatalogueProducts({ id }: { id: number }) {
 		return null;
 	}
 }
+
+

@@ -22,7 +22,7 @@ type FormValuesProps = {
 
 const addToCartSchema = object({
 	// productColor: number().or(string()),
-	productSize: number().or(string()),
+	productSize: number().or(string().min(1, 'Izaberite velicinu')),
 	quantity: string().min(1, ''),
 });
 

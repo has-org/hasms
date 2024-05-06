@@ -21,11 +21,11 @@ export default function CheckoutPage() {
         >
           <Iconify icon='mdi:clock-outline'></Iconify>
           <Typography variant='body2'>
-            Prosjecno vreme za popunjavanje formulara je 5 minuta
+            Prosjecno vreme za popunjavanje formulara je 2 minuta
           </Typography>
         </Stack>
       </Stack>
-      <Grid container>
+      <Grid container columnSpacing={2}>
         <Grid xs={12} md={7}>
           <CheckoutTabs />
         </Grid>
