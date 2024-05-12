@@ -83,7 +83,7 @@ const CheckoutTabs = () => {
 			products: products,
 		};
 
-		const result = await axios.post('/order', preparedObject);
+		const result = await axios.post('/order/create', preparedObject);
 		if (result.status === 200) {
 			reset();
 			return enqueueSnackbar('Narudžba kreirana', { variant: 'success' });

@@ -76,6 +76,7 @@ const QuickAddToCartButton = ({ product }: { product: IProduct }) => {
 			category_id: product.category_id,
 			workspace_id: product.workspace_id,
 			price: product_prices[0].price,
+			currency: product_prices[0].currency,
 			taxAmount: product_prices[0].tax_amount,
 			priceWithoutTax: product_prices[0].price_without_tax,
 			quantity: Number(quantity),
