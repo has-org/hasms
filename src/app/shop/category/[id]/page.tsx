@@ -61,11 +61,11 @@ export default async function ShopCategory({ params: { id, page, count, query } 
 				<Grid xs={12} md={3} marginTop='20px'>
 					<Stack spacing={0.5}>
 						<Typography variant='body2'>Prodavnica - kacige</Typography>
-						<CheckboxCollapsible title='Vrsta' selectFields={categoryTypes} />
+						{/* <CheckboxCollapsible title='Vrsta' selectFields={categoryTypes} />
 						<CheckboxCollapsible title='Brend' selectFields={manufacturerTypes} />
 						<CheckboxCollapsible title='Veličina' selectFields={categoryProductsSizes} />
 						<ColorCollapsible title='Boja' colors={categoryProductsColors} />
-						<PriceCollapsible title='Cijena' min={0} max={70000} />
+						<PriceCollapsible title='Cijena' min={0} max={70000} /> */}
 					</Stack>
 				</Grid>
 				<Grid container xs={12} md={9}>
