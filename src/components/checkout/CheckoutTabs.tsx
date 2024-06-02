@@ -58,7 +58,7 @@ const CheckoutTabs = () => {
 				city: '',
 				zip: '',
 				address: '',
-				notes: '',
+				note: '',
 			},
 			stepTwo: {
 				deliveryMethod: '',

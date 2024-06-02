@@ -10,7 +10,7 @@ export type FormValuesProps = {
 		city: string;
 		zip: string;
 		address: string;
-		notes: string;
+		note: string;
 	};
 	stepTwo: {
 		deliveryMethod: string;
@@ -30,7 +30,7 @@ export const userDetailsSchema = object({
 	city: string().min(2, 'Grad mora imati najmanje 2 karaktera'),
 	zip: string().min(4, 'Zip mora imati najmanje 4 karaktera'),
 	address: string().min(5, 'Adresa mora imati najmanje 5 karaktera'),
-	notes: string().optional(),
+	note: string().optional(),
 });
 
 export const deliveryMethodSchema = object({
