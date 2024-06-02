@@ -88,12 +88,12 @@ export default function CartPage() {
                               <Typography
                                 sx={{ fontSize: "12px", fontWeight: "200" }}
                               >
-                                {product.color.name}
+                                {product.color}
                               </Typography>
                               <Typography
                                 sx={{ fontSize: "12px", fontWeight: "200" }}
                               >
-                                {product.size.name}
+                                {product.size}
                               </Typography>
                             </Stack>
                           </Stack>
