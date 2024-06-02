@@ -26,8 +26,8 @@ export const CartSidebarProduct = ({ product }: { product: ICartProduct }) => {
 							</Typography>
 							<Stack direction='row' alignItems='center' spacing={1}>
 								<CartTypography variant='body2'>{product.name}</CartTypography>
-								<CartTypography variant='body2'>{product.color?.name}</CartTypography>
-								<CartTypography variant='body2'>{product.size?.name}</CartTypography>
+								<CartTypography variant='body2'>{product.color}</CartTypography>
+								<CartTypography variant='body2'>{product.size}</CartTypography>
 								<CartTypography variant='body2'>x{product.quantity}</CartTypography>
 							</Stack>
 

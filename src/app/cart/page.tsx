@@ -108,7 +108,7 @@ export default function CartPage() {
                           </Box>
                           <Box sx={{ width: "70px" }}>
                             <Typography>
-                              {product.price * product.quantity} KM
+                              {Number(product.price) * product.quantity} KM
                             </Typography>
                           </Box>
                         </Stack>

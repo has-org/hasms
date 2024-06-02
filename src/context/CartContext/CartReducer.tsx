@@ -14,8 +14,8 @@ export const cartReducer = (state: any, action: any) => {
 			const updatedItems = state.products?.map((product: ICartProduct) => {
 				if (
 					product.code === payload.product.code &&
-					product.color?.id === payload.product.color.id &&
-					product.size?.id === payload.product.size.id
+					product.color === payload.product.color &&
+					product.size === payload.product.size
 				) {
 					return payload.product;
 				}

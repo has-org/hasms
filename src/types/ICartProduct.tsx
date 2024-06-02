@@ -15,9 +15,9 @@ export interface ICartProduct {
 	size: string;
 	quantity: number;
 	image: string;
-	price: number;
-	taxAmount: number;
-	priceWithoutTax: number;
+	price: string;
+	taxAmount: string;
+	priceWithoutTax: string;
 	taxPercentage: number;
 	currency: string;
 	model: string;
