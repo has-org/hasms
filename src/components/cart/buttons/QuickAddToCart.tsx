@@ -65,7 +65,6 @@ const QuickAddToCartButton = ({ product, selectProductImage }: { product: IProdu
 			variants: [{ product_prices = [] }],
 		} = product;
 
-		if (!selectedSize || !selectedColor) return;
 		const image =
 			selectedImage?.images && selectedImage?.images?.length > 0
 				? `${selectedImage?.images[0]?.name}.${selectedImage?.images[0]?.extension}`
