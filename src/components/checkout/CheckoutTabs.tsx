@@ -62,7 +62,7 @@ const CheckoutTabs = () => {
 			},
 			stepTwo: {
 				deliveryMethod: '',
-				address: '',
+				deliveryAddress: '',
 			},
 			stepThree: {
 				paymentMethod: '',
@@ -85,7 +85,8 @@ const CheckoutTabs = () => {
 			},
 			orderDeliveryDetails: {
 				type: values.stepThree.paymentMethod,
-			}
+				address: values.stepTwo.deliveryAddress,
+			},
 		};
 		const result = await axios.post('/order/create', preparedObject);
 		if (result.status === 200) {
