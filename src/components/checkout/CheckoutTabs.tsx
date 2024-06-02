@@ -62,6 +62,7 @@ const CheckoutTabs = () => {
 			},
 			stepTwo: {
 				deliveryMethod: '',
+				address: '',
 			},
 			stepThree: {
 				paymentMethod: '',

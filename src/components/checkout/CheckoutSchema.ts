@@ -14,6 +14,7 @@ export type FormValuesProps = {
 	};
 	stepTwo: {
 		deliveryMethod: string;
+		address: string;
 	};
 	stepThree: {
 		paymentMethod: string;
@@ -35,6 +36,7 @@ export const userDetailsSchema = object({
 
 export const deliveryMethodSchema = object({
 	deliveryMethod: string().min(1, 'Izaberite metodu dostave'),
+	address: string().min(5, 'Adresa mora imati najmanje 5 karaktera'),
 });
 
 export const paymentMethodSchema = object({
