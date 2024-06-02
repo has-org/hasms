@@ -50,8 +50,8 @@ const CheckoutTabs = () => {
 		mode: 'onChange',
 		defaultValues: {
 			stepOne: {
-				first_name: '',
-				last_name: '',
+				firstName: '',
+				lastName: '',
 				email: '',
 				phone: '',
 				country: '',
@@ -77,12 +77,15 @@ const CheckoutTabs = () => {
 
 	const onSubmit: SubmitHandler<any> = async (values: any, e?: React.BaseSyntheticEvent) => {
 		const preparedObject = {
-			...values.stepOne,
-			...values.stepTwo,
-			...values.stepThree,
-			products: products,
+			orderUserDetails: values.stepOne,
+			orderProducts: products,
+			orderPaymentDetails: {
+				type: values.stepTwo.deliveryMethod,
+			},
+			orderDeliveryDetails: {
+				type: values.stepThree.paymentMethod,
+			}
 		};
-
 		const result = await axios.post('/order/create', preparedObject);
 		if (result.status === 200) {
 			reset();

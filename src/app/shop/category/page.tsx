@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 export default async function Shop() {
 	const categories: ICategory[] = await getCategories({ page: 0, count: 30 });
+	console.log(categories)
 	if (!categories) return <div>Categories not found</div>;
 
 	return (

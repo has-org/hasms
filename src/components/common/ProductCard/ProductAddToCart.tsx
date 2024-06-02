@@ -58,18 +58,24 @@ export default function ProductAddToCart({ product, prices }: { product: IProduc
 			cartItemId: '',
 			name: product.name,
 			code: product.code,
+			model: product.model,
 			description: product.description,
 			manufacturer: product.manufacturer,
+			category: product.category.name,
 			category_id: product.category_id,
+			subcategory: product.subcategory.name,
+			subcategory_id: product.subcategory.id,
 			workspace_id: product.workspace_id,
 			price: prices[0].price,
 			currency:  prices[0].currency,
+			taxPercentage: prices[0].tax_percentage,
 			taxAmount: prices[0].tax_amount,
 			priceWithoutTax: prices[0].price_without_tax,
 			quantity: Number(quantity),
-			color: selectedColor,
-			size: selectedSize,
+			color: selectedColor?.name,
+			size: selectedSize?.name,
 			image: defaultImage,
+			tags: product.tags.map(tag => tag.name)
 		};
 
 		addToCart(cartProduct);

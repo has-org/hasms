@@ -2,8 +2,8 @@ import { number, object, string, boolean, z } from 'zod';
 
 export type FormValuesProps = {
 	stepOne: {
-		first_name: string;
-		last_name: string;
+		firstName: string;
+		lastName: string;
 		email: string;
 		phone: string;
 		country: string;
@@ -22,8 +22,8 @@ export type FormValuesProps = {
 };
 
 export const userDetailsSchema = object({
-	first_name: string().min(2, 'Ime mora imati najmanje 2 karaktera'),
-	last_name: string().min(2, 'Prezime mora imati najmanje 2 karaktera'),
+	firstName: string().min(2, 'Ime mora imati najmanje 2 karaktera'),
+	lastName: string().min(2, 'Prezime mora imati najmanje 2 karaktera'),
 	email: string().email('Unesite validan email'),
 	phone: string().min(6, 'Telefon mora imati najmanje 6 karaktera'),
 	country: string().min(2, 'Drzava mora imati najmanje 2 karaktera'),

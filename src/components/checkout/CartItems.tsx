@@ -94,11 +94,11 @@ const CartItems = () => {
 					width: '100%',
 				}}
 			>
-				<Link href='/checkout' style={{ textDecoration: 'none', width: '100%' }}>
+				{/* <Link href='/checkout' style={{ textDecoration: 'none', width: '100%' }}>
 					<Button variant='outlined' color='secondary' fullWidth disabled>
 						<Typography>Naruci</Typography>
 					</Button>
-				</Link>
+				</Link> */}
 			</Box>
 		</Card>
 	);

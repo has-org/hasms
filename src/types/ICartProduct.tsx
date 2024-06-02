@@ -9,12 +9,19 @@ export interface ICartProduct {
 	description: string;
 	manufacturer: string;
 	category_id: number;
+	subcategory_id: number;
 	workspace_id: number;
-	color: IColor;
-	size: ISize;
+	color: string;
+	size: string;
 	quantity: number;
 	image: string;
 	price: number;
 	taxAmount: number;
 	priceWithoutTax: number;
+	taxPercentage: number;
+	currency: string;
+	model: string;
+	category: string;
+	subcategory: string;
+	tags: string[];
 }

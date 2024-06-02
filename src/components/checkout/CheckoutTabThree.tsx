@@ -21,11 +21,18 @@ const PAYMENT_METHOD_OPTIONS = [
 export const CheckoutTabThree = ({ setCurrentTab }: { setCurrentTab: Dispatch<SetStateAction<string>> }) => {
 	const { trigger } = useFormContext<CheckoutSchema>();
 	const onNext = async () => {
-		await trigger('stepThree');
+		const isValid = await trigger('stepThree');
+		const isValidStepOne = await trigger('stepOne');
+		if(isValid) {
+
+		}
+		if (!isValidStepOne) {
+			setCurrentTab('1');
+		}
 	};
 
 	const onPrev = async () => {
-		setCurrentTab('1');
+		setCurrentTab('2');
 	};
 
 	return (
@@ -40,7 +47,7 @@ export const CheckoutTabThree = ({ setCurrentTab }: { setCurrentTab: Dispatch<Se
 					Nazad
 				</Button>
 				<Button variant='outlined' color='secondary' onClick={onNext} type='submit'>
-					Dalje
+					Naruci
 				</Button>
 			</Stack>
 		</>

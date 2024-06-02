@@ -16,10 +16,10 @@ export const ColorSelector = ({ variantImages, colors }: { variantImages: IVaria
 						key={color.value}
 						sx={{
 							backgroundColor: color.value,
-							height: '22px',
-							width: '22px',
+							height: '16px',
+							width: '16px',
 							borderRadius: '4px',
-							scale: selectedColor?.name === color.name ? '1.3': '1',
+							scale: selectedColor?.name === color.name ? '1.2': '1',
 							'&:hover': {
 								cursor: 'pointer',
 							},

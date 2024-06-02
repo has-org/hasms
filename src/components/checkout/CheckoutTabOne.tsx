@@ -23,10 +23,10 @@ export const CheckoutTabOne = ({ setCurrentTab }: { setCurrentTab: Dispatch<SetS
 				<Stack spacing={2}>
 					<Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
 						<Stack sx={{ width: '100%' }}>
-							<InputLabel htmlFor='stepOne.first_name'>Ime</InputLabel>
+							<InputLabel htmlFor='stepOne.firstName'>Ime</InputLabel>
 							<RHFTextField
-								id='stepOne.first_name'
-								name='stepOne.first_name'
+								id='stepOne.firstName'
+								name='stepOne.firstName'
 								variant='filled'
 								placeholder='Unesite ime'
 								fullWidth
@@ -35,10 +35,10 @@ export const CheckoutTabOne = ({ setCurrentTab }: { setCurrentTab: Dispatch<SetS
 							/>
 						</Stack>
 						<Stack sx={{ width: '100%' }}>
-							<InputLabel htmlFor='stepOne.last_name'>Prezime</InputLabel>
+							<InputLabel htmlFor='stepOne.lastName'>Prezime</InputLabel>
 							<RHFTextField
-								id='stepOne.last_name'
-								name='stepOne.last_name'
+								id='stepOne.lastName'
+								name='stepOne.lastName'
 								variant='filled'
 								placeholder='Unesite prezime'
 								size='small'

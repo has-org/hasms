@@ -27,8 +27,12 @@ export const CheckoutTabTwo = ({ setCurrentTab }: { setCurrentTab: Dispatch<SetS
 
 	const onNext = async () => {
 		const isValid = await trigger('stepTwo');
-		if (isValid) {
+		const isValidStepOne = await trigger('stepOne');
+		if (isValid && isValidStepOne) {
 			setCurrentTab('3');
+		}
+		if(!isValidStepOne) {
+			setCurrentTab('2')
 		}
 	};
 

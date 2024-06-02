@@ -32,6 +32,8 @@ export default async function ShopCategory({ params: { id, page, count, query } 
 		page: 0,
 		count: 10,
 	});
+	console.log(products[0].variants[0]);
+
 	const categoryProductsSizes = await getCategoryProductsSizes({ id: id });
 	const categoryProductsColors = await getCategoryProductsColors({ id: id });
 

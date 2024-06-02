@@ -11,7 +11,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import { CartContext } from '@/context/CartContext/CartContext';
 import { number, object, string } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ProductContext } from '@/context/ProductContext/ProductContext';
 
 type FormValuesProps = {
 	productColor: number | string;
@@ -21,17 +20,18 @@ type FormValuesProps = {
 };
 
 const addToCartSchema = object({
-	// productColor: number().or(string()),
+	productColor: number().or(string().min(1, 'Izaberite boju')),
 	productSize: number().or(string().min(1, 'Izaberite velicinu')),
 	quantity: string().min(1, ''),
 });
 
-const QuickAddToCartButton = ({ product }: { product: IProduct }) => {
+const QuickAddToCartButton = ({ product, selectProductImage }: { product: IProduct; selectProductImage: any }) => {
 	const { addToCart } = useContext(CartContext);
-	const {selectedColor, selectedImage} = useContext(ProductContext)
 
-	const {variants: [{ sizes, variant_images}]} = product;
-	
+	const {
+		variants: [{ sizes, colors, variant_images }],
+	} = product;
+
 	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
 	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -57,14 +57,19 @@ const QuickAddToCartButton = ({ product }: { product: IProduct }) => {
 	const { reset, handleSubmit } = methods;
 
 	const onSubmit: SubmitHandler<any> = async (values: any, e?: React.BaseSyntheticEvent) => {
-		const { productSize, quantity } = values;
+		const { productSize, productColor, quantity } = values;
 		const selectedSize = sizes.find((size) => size.id === productSize);
-
-		const {variants: [{product_prices = []}]} = product
+		const selectedColor = colors.find((color) => color.id === productColor);
+		const selectedImage = variant_images.find((image) => image.color_id === productColor);
+		const {
+			variants: [{ product_prices = [] }],
+		} = product;
 
 		if (!selectedSize || !selectedColor) return;
-
-		const imageFallback = selectedImage ? `${selectedImage.name}.${selectedImage.extension}` : '/no-image.jpg'; 
+		const image =
+			selectedImage?.images && selectedImage?.images?.length > 0
+				? `${selectedImage?.images[0]?.name}.${selectedImage?.images[0]?.extension}`
+				: '/no-image.jpg';
 
 		const cartProduct = {
 			id: product.id,
@@ -73,19 +78,23 @@ const QuickAddToCartButton = ({ product }: { product: IProduct }) => {
 			code: product.code,
 			description: product.description,
 			manufacturer: product.manufacturer,
-			category_id: product.category_id,
 			workspace_id: product.workspace_id,
-			price: product_prices[0].price,
+			price: parseFloat(product_prices[0].price),
 			currency: product_prices[0].currency,
-			taxAmount: product_prices[0].tax_amount,
-			priceWithoutTax: product_prices[0].price_without_tax,
+			taxAmount: parseFloat(product_prices[0].tax_amount),
+			priceWithoutTax: parseFloat(product_prices[0].price_without_tax),
+			taxPercentage: product_prices[0].tax_percentage,
 			quantity: Number(quantity),
-			color: selectedColor,
-			size: selectedSize,
-			image: imageFallback,
+			color: selectedColor?.name ?? 'N/A',
+			size: selectedSize?.name ?? 'N/A',
+			image: image,
+			model: product.model,
+			category: product.category.name,
+			category_id: product.category.id,
+			subcategory: product.subcategory.name,
+			subcategory_id: product.subcategory.id,
+			tags: product.tags.map((tag) => tag.name),
 		};
-
-
 		addToCart(cartProduct);
 		handleClose();
 	};
@@ -124,15 +133,35 @@ const QuickAddToCartButton = ({ product }: { product: IProduct }) => {
 									<CloseIcon />
 								</IconButton>
 							</Stack>
-							<RHFSelect name='productSize' label='Velicina' variant='outlined' defaultValue={''} fullWidth>
-								{sizes.map((size) => {
-									return (
-										<MenuItem key={`${size.name}-${size.id}`} value={size.id}>
-											{size.name}
-										</MenuItem>
-									);
-								})}
-							</RHFSelect>
+							{colors.length > 0 && (
+								<RHFSelect
+									name='productColor'
+									label='Boja'
+									variant='outlined'
+									defaultValue={0}
+									fullWidth
+									handleChange={selectProductImage}
+								>
+									{colors.map((color) => {
+										return (
+											<MenuItem key={`${color.name}-${color.id}`} value={color.id}>
+												{color.name}
+											</MenuItem>
+										);
+									})}
+								</RHFSelect>
+							)}
+							{sizes?.length > 0 && (
+								<RHFSelect name='productSize' label='Velicina' variant='outlined' defaultValue={''} fullWidth>
+									{sizes?.map((size) => {
+										return (
+											<MenuItem key={`${size.name}-${size.id}`} value={size.id}>
+												{size.name}
+											</MenuItem>
+										);
+									})}
+								</RHFSelect>
+							)}
 							<RHFTextField name='quantity' type='number' label='Količina' />
 
 							<Button variant='outlined' color='secondary' type='submit'>
