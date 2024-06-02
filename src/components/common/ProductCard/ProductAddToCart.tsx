@@ -48,7 +48,6 @@ export default function ProductAddToCart({ product, prices }: { product: IProduc
 	const onSubmit: SubmitHandler<any> = async (values: any, e?: React.BaseSyntheticEvent) => {
 		const { quantity } = values;
 
-		if (!selectedColor || !selectedSize) return;
 		//add snackbar errror
 
 		const defaultImage = selectedImage ? `${selectedImage.name}.${selectedImage.extension}` : '/no-image.jpg';
@@ -72,8 +71,8 @@ export default function ProductAddToCart({ product, prices }: { product: IProduc
 			taxAmount: prices[0].tax_amount,
 			priceWithoutTax: prices[0].price_without_tax,
 			quantity: Number(quantity),
-			color: selectedColor?.name,
-			size: selectedSize?.name,
+			color: selectedColor?.name ?? 'N/A',
+			size: selectedSize?.name ?? 'N/A',
 			image: defaultImage,
 			tags: product.tags.map(tag => tag.name)
 		};
