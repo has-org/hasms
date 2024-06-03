@@ -13,19 +13,39 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 		totalTax: 0,
 	});
 
-	const addToCart = useCallback(async (product: ICartProduct) => {
-		const preparedProductToAdd = {
-			...product,
-			cartItemId: uuidv4(),
-		};
+	const addToCart = useCallback(
+		async (product: ICartProduct) => {
 
-		dispatch({
-			type: 'ADD',
-			payload: {
-				product: preparedProductToAdd,
-			},
-		});
-	}, []);
+			const itemExists = state.products.find(
+				(stateProduct: ICartProduct) =>
+					stateProduct.code === product.code &&
+					stateProduct.color === product.color &&
+					stateProduct.size === product.size,
+			);
+
+			if (itemExists) {
+				return dispatch({
+					type: 'UPDATE',
+					payload: {
+						product: product,
+					},
+				});
+			}
+
+			const preparedProductToAdd = {
+				...product,
+				cartItemId: uuidv4(),
+			};
+
+			dispatch({
+				type: 'ADD',
+				payload: {
+					product: preparedProductToAdd,
+				},
+			});
+		},
+		[state.products],
+	);
 
 	const removeFromCart = useCallback((id: number | string) => {
 		dispatch({

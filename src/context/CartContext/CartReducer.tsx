@@ -17,7 +17,7 @@ export const cartReducer = (state: any, action: any) => {
 					product.color === payload.product.color &&
 					product.size === payload.product.size
 				) {
-					return payload.product;
+					return {...product, quantity: product.quantity + payload.product.quantity};
 				}
 				return product;
 			});

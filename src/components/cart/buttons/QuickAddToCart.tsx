@@ -132,35 +132,39 @@ const QuickAddToCartButton = ({ product, selectProductImage }: { product: IProdu
 									<CloseIcon />
 								</IconButton>
 							</Stack>
-							{colors.length > 0 && (
-								<RHFSelect
-									name='productColor'
-									label='Boja'
-									variant='outlined'
-									defaultValue={0}
-									fullWidth
-									handleChange={selectProductImage}
-								>
-									{colors.map((color) => {
+							<RHFSelect
+								name='productColor'
+								label='Boja'
+								variant='outlined'
+								defaultValue={0}
+								fullWidth
+								handleChange={selectProductImage}
+							>
+								{colors?.length > 0 ? (
+									colors?.map((color) => {
 										return (
 											<MenuItem key={`${color.name}-${color.id}`} value={color.id}>
 												{color.name}
 											</MenuItem>
 										);
-									})}
-								</RHFSelect>
-							)}
-							{sizes?.length > 0 && (
-								<RHFSelect name='productSize' label='Velicina' variant='outlined' defaultValue={''} fullWidth>
-									{sizes?.map((size) => {
+									})
+								) : (
+									<MenuItem>{'N/A'}</MenuItem>
+								)}
+							</RHFSelect>
+							<RHFSelect name='productSize' label='Velicina' variant='outlined' defaultValue={0} fullWidth>
+								{sizes.length > 0 ? (
+									sizes?.map((size) => {
 										return (
 											<MenuItem key={`${size.name}-${size.id}`} value={size.id}>
 												{size.name}
 											</MenuItem>
 										);
-									})}
-								</RHFSelect>
-							)}
+									})
+								) : (
+									<MenuItem value={0}>N/A</MenuItem>
+								)}
+							</RHFSelect>
 							<RHFTextField name='quantity' type='number' label='Količina' />
 
 							<Button variant='outlined' color='secondary' type='submit'>
