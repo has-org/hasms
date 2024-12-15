@@ -1,7 +1,6 @@
 import { getCategories } from '@/services/apiService';
 import { ICategory } from '@/types/ICategory';
-import { Box, Button, Card, Container, Stack, Typography } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2/Grid2';
+import { Box, Button, Card, Container, Stack, Typography, Grid2 as Grid } from '@mui/material';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
@@ -14,7 +13,7 @@ export default async function Shop() {
 		<>
 			<Container maxWidth='lg'>
 				<Grid container rowSpacing={5} columnSpacing={3}>
-					<Grid xs={12}>
+					<Grid size={{ xs: 12 }}>
 						<Box
 							sx={{
 								display: 'flex',
@@ -36,7 +35,7 @@ export default async function Shop() {
 					{categories?.map((category) => {
 						return (
 							<>
-								<Grid xs={12} md={4} key={category.name}>
+								<Grid size={{ xs: 12, md: 4 }} key={category.name}>
 									<Link href={`/shop/category/${category.id}`} style={{ textDecoration: 'none' }}>
 										<Box
 											sx={{
