@@ -1,5 +1,4 @@
-import { Box, Button, Card, Container, Stack, Typography } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import { Box, Button, Card, Container, Stack, Typography, Grid2 as Grid } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 

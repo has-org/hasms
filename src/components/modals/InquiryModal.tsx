@@ -15,13 +15,13 @@ import { object, string } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import Iconify from '../iconify/Iconify';
-import { useSnackbar } from 'notistack';
 import axios from '@/utils/axios';
 import { ICatalogue } from '@/types/Catalogue';
 import Scrollbar from '../scrollbar/Scrollbar';
 import Box from '@mui/material/Box/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import { toast } from 'react-toastify';
 
 const orderInquirySchema = object({
   first_name: string()
@@ -59,7 +59,6 @@ export const InquiryModal = ({
   handleClose: VoidFunction;
   catalogue?: ICatalogue;
 }) => {
-  const { enqueueSnackbar } = useSnackbar();
 
   const methods = useForm<any>({
     resolver: zodResolver(orderInquirySchema),
@@ -91,18 +90,18 @@ export const InquiryModal = ({
       if (result.status === 200) {
         reset();
         handleClose();
-        return enqueueSnackbar('Upit poslan uspješno', { variant: 'success' });
+        return toast.success('Upit poslan uspješno');
       }
-      return enqueueSnackbar('Upit nije poslan', { variant: 'error' });
+      return toast.error('Upit nije poslan');
     }
 
     const result = await axios.post('/sendInquiry/', values);
     if (result.status === 200) {
       reset();
       handleClose();
-      return enqueueSnackbar('Upit poslan uspješno', { variant: 'success' });
+      return toast.success('Upit poslan uspješno');
     }
-    return enqueueSnackbar('Upit nije poslan', { variant: 'error' });
+    return toast.error('Upit nije poslan');
   };
 
   return (

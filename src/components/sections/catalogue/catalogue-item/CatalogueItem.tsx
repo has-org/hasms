@@ -14,14 +14,12 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Grid2 as Grid,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Grid from '@mui/material/Unstable_Grid2';
 import { useEffect, useState } from 'react';
-import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
-import 'react-image-gallery/styles/css/image-gallery.css';
-import 'react-multi-carousel/lib/styles.css';
 
+import 'react-multi-carousel/lib/styles.css';
 import Link from 'next/link';
 import { ICatalogue } from '@/types/Catalogue';
 import Carousel from 'react-multi-carousel';
@@ -35,26 +33,11 @@ const CatalogueItem = ({
   catalogue: ICatalogue;
   deviceType?: any;
 }) => {
-  const [images, setImages] = useState<ReactImageGalleryItem[]>([]);
+  const [images, setImages] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState<string>('');
 
   useEffect(() => {
-    setImages(
-      catalogue.catalogue_variants[0]?.catalogue_variant_images[0]?.images?.map(
-        (image) => {
-          const imageUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online/images/${image}&w=1024&q=100`;
-          const thumbnailUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online/images/${image}&w=1024&q=100`;
-          return {
-            original: imageUrl,
-            thumbnail: thumbnailUrl,
-            originalHeight: 450,
-            originalWidth: 1024,
-            thumbnailHeight: 80,
-          };
-        },
-      ),
-    );
     setSelectedColor(catalogue.catalogue_variants[0]?.color);
   }, [catalogue]);
 
@@ -103,17 +86,14 @@ const CatalogueItem = ({
     <>
       <Container maxWidth='lg' sx={{ marginTop: '48px' }}>
         <Grid container spacing={5}>
-          <Grid xs={12} md={5} sx={{ marginTop: '-100px' }}>
-            <ImageGallery
-              items={images}
-              autoPlay={false}
-              showPlayButton={false}
-              showFullscreenButton={false}
-              showNav={true}
-              additionalClass='image-gallery-overwrite'
-            />
+          <Grid
+            size={{ xs: 12, md: 5 }}
+            sx={{ marginTop: '-100px' }}>
+
           </Grid>
-          <Grid xs={12} md={7} marginBottom='72px'>
+          <Grid
+            size={{ xs: 12, md: 7 }}
+            marginBottom='72px'>
             <Grid
               container
               direction='row'
@@ -497,11 +477,12 @@ const CatalogueItem = ({
             </Stack>
           </Grid>
 
-          <Grid xs={12}>
+          <Grid size={{ xs: 12 }}
+          >
             <Carousel
               showDots={true}
               responsive={responsive}
-              ssr={true} 
+              ssr={true}
               infinite={true}
               autoPlay={true}
               swipeable={true}

@@ -19,7 +19,7 @@ import { CheckoutTabThree } from './CheckoutTabThree';
 import { CartContext } from '@/context/CartContext/CartContext';
 import { useContext } from 'react';
 import axios from '@/utils/axios';
-import { useSnackbar } from 'notistack';
+import { toast } from 'react-toastify';
 
 const StyledTab = styled(Tab)(({ theme }) => ({
 	justifyContent: 'start',
@@ -42,7 +42,6 @@ const TABS = [
 const CheckoutTabs = () => {
 	const { products } = useContext(CartContext);
 	const [currentTab, setCurrentTab] = useState('1');
-	const { enqueueSnackbar } = useSnackbar();
 
 	const methods = useForm<FormValuesProps>({
 		resolver: zodResolver(checkoutSchema),
@@ -91,9 +90,9 @@ const CheckoutTabs = () => {
 		const result = await axios.post('/order/create', preparedObject);
 		if (result.status === 200) {
 			reset();
-			return enqueueSnackbar('Narudžba kreirana', { variant: 'success' });
+			return toast.success('Narudžba kreirana');
 		} else {
-			return enqueueSnackbar('Narudžba nije kreirana', { variant: 'error' });
+			return toast.error('Narudžba nije kreirana');
 		}
 	};
 

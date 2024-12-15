@@ -8,13 +8,13 @@ import {
   Container,
   Button,
   Stack,
+  Grid2 as Grid
 } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import Image from "next/image";
 import Link from "next/link";
 import InquiryButton from "./InquiryButton";
 
-export default async function CataloguesPage({}: any) {
+export default async function CataloguesPage({ }: any) {
   const catalogues = await getCatalogues();
   return (
     <>
@@ -27,9 +27,8 @@ export default async function CataloguesPage({}: any) {
             catalogues?.map((catalogue: ICatalogue, index: number) => {
               return (
                 <Grid
-                  xs={12}
-                  sm={6}
-                  md={4}
+                  size={{ xs: 12, sm: 6, md: 4 }}
+
                   key={`${catalogue.name}` + index}
                   sx={{
                     display: "flex",

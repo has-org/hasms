@@ -5,7 +5,7 @@ import Iconify from '@/components/iconify/Iconify';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Unstable_Grid2/Grid2';
+import { Grid2 as Grid } from '@mui/material/';
 
 export default function CheckoutPage() {
   return (
@@ -26,10 +26,10 @@ export default function CheckoutPage() {
         </Stack>
       </Stack>
       <Grid container columnSpacing={2}>
-        <Grid xs={12} md={7}>
+        <Grid size={{ xs: 12, md: 7 }}>
           <CheckoutTabs />
         </Grid>
-        <Grid xs={12} md={5}>
+        <Grid size={{ xs: 12, md: 5 }}>
           <CartItems />
         </Grid>
       </Grid>

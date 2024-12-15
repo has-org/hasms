@@ -10,8 +10,8 @@ import {
   ListItem,
   Stack,
   Typography,
+  Grid2 as Grid
 } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { useContext } from "react";
 import Image from "next/image";
 import ChangeCartQuantityInput from "@/components/cart/ChangeCartQuantityInput";
@@ -28,7 +28,9 @@ export default function CartPage() {
           Korpa
         </Typography>
         <Grid container columnSpacing={4}>
-          <Grid xs={12} md={8}>
+          <Grid
+            size={{ xs: 12, md: 8 }}
+          >
             <List sx={{ maxHeight: "400px", overflowY: "auto" }}>
               <Stack
                 direction="row"
@@ -143,7 +145,7 @@ export default function CartPage() {
                 <Divider color="black" sx={{ borderColor: "black" }} />
                 <Link href="/checkout">
                   <Button variant="outlined" color="secondary" fullWidth>
-                    <Typography sx={{textTransform: 'none'}}>Idi na placanje</Typography>
+                    <Typography sx={{ textTransform: 'none' }}>Idi na placanje</Typography>
                   </Button>
                 </Link>
               </Stack>
