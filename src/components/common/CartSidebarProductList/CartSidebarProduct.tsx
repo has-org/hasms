@@ -1,9 +1,10 @@
 import { ICartProduct } from '@/types/ICartProduct';
-import { Box, Button, Typography, Stack, IconButton, styled, Divider, ListItem, List } from '@mui/material';
+import { Box, Button, Typography, Stack, IconButton,  Divider, ListItem, List } from '@mui/material';
 import Image from 'next/image';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useContext } from 'react';
 import { CartContext } from '@/context/CartContext/CartContext';
+import styled from '@emotion/styled';
 
 const CartTypography = styled(Typography)(({ theme }) => ({
 	fontSize: '12px',

@@ -5,8 +5,9 @@ import Main from "@/components/layouts/main/Main";
 import Box from "@mui/system/Box/";
 import Footer from "@/components/layouts/main/Footer";
 import ThemeProvider from "@/theme";
-import SnackbarProvider from "@/components/snackbar/SnackbarProvider";
 import Alert from '@mui/material/Alert';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function RootLayout({
   children,
@@ -18,8 +19,8 @@ export default function RootLayout({
       <body>
         <AppRouterCacheProvider>
           <ThemeProvider>
+          <ToastContainer />
             <CartProvider>
-              <SnackbarProvider>
                 <Box
                   sx={{
                     display: 'flex',
@@ -48,7 +49,6 @@ export default function RootLayout({
 
                   <Footer />
                 </Box>
-              </SnackbarProvider>
             </CartProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
