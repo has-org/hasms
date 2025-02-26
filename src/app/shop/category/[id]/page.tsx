@@ -10,8 +10,7 @@ import {
 } from '@/services/apiService';
 import { ICategory } from '@/types/ICategory';
 import { IProduct } from '@/types/IProduct';
-import { Box, Button, Card, Container, Pagination, Stack, Typography } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2/Grid2';
+import { Box, Button, Card, Container, Grid2 as Grid, Pagination, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 
 export default async function ShopCategory({ params: { id, page, count, query } }: any) {
@@ -42,7 +41,7 @@ export default async function ShopCategory({ params: { id, page, count, query } 
 	return (
 		<Container maxWidth='lg'>
 			<Grid container>
-				<Grid xs={12}>
+				<Grid size={{ xs: 12 }}>
 					<Box
 						sx={{
 							display: 'flex',
@@ -60,7 +59,7 @@ export default async function ShopCategory({ params: { id, page, count, query } 
 						</Typography>
 					</Box>
 				</Grid>
-				<Grid xs={12} md={3} marginTop='20px'>
+				<Grid size={{ xs: 12, md: 3 }} sx={{ marginTop: 10 }}>
 					<Stack spacing={0.5}>
 						<Typography variant='body2'>Prodavnica - kacige</Typography>
 						{/* <CheckboxCollapsible title='Vrsta' selectFields={categoryTypes} />
@@ -70,16 +69,16 @@ export default async function ShopCategory({ params: { id, page, count, query } 
 						<PriceCollapsible title='Cijena' min={0} max={70000} /> */}
 					</Stack>
 				</Grid>
-				<Grid container xs={12} md={9}>
+				<Grid size={{ xs: 12, md: 9 }}>
 					<Grid container columnSpacing={4} rowSpacing={4}>
-						<Grid xs={12} sx={{ display: 'flex' }}>
+						<Grid size={{ xs: 12 }} sx={{ display: 'flex' }}>
 							<Typography variant='body2'>filteri</Typography>
 						</Grid>
-							<CategoryProductList products={products}  />
+						<CategoryProductList products={products} />
 					</Grid>
 				</Grid>
-			
+
 			</Grid>
-		</Container>
+		</Container >
 	);
 }

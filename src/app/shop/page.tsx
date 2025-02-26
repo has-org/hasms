@@ -11,7 +11,7 @@ export default async function Shop() {
           PRODAVNICA
         </Typography>
         <Grid container spacing={2} mt={5}>
-          <Grid xs={12} md={6} height="520px">
+          <Grid size={{ xs: 12, md: 6 }} height="520px">
             <Link href="/catalogues" style={{ textDecoration: "none" }}>
               <Box
                 sx={{
@@ -41,7 +41,7 @@ export default async function Shop() {
               </Box>
             </Link>
           </Grid>
-          <Grid xs={12} md={6} height="520px">
+          <Grid size={{ xs: 12, md: 6 }} height="520px">
             <Link href="/shop/category" style={{ textDecoration: "none" }}>
               <Box
                 sx={{

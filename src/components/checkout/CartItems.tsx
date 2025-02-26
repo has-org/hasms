@@ -7,7 +7,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import Button from '@mui/material/Button/Button';
 import { CartContext } from '@/context/CartContext/CartContext';
 import { useContext } from 'react';

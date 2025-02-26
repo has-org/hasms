@@ -1,14 +1,14 @@
 import { getPost } from "@/services/apiService";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Grid2 as Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
 export default async function PostPage({
-  params: { id },
+  params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params
   const post = await getPost({ id: id });
   return (
     <Container maxWidth="lg">
@@ -35,13 +35,13 @@ export default async function PostPage({
         <Typography variant="body2">{post.text}</Typography>
       </Stack>
       <Grid container>
-        <Grid md={6}>
+        <Grid size={{ md: 6 }}>
           {post.images && (
             <Image src={post?.images[0]} fill alt="blog image"></Image>
           )}
         </Grid>
 
-        <Grid md={6}>
+        <Grid size={{ md: 6 }}>
           <Stack>
             <Typography variant="h3">Preuzmi:</Typography>
             {post?.post_extra_field?.map((item: any) => {

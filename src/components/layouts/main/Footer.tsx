@@ -185,7 +185,7 @@ export default function Footer() {
         <Container maxWidth="lg">
           <Grid container columnSpacing={2}>
             {LINKS.map((list, index) => (
-              <Grid xs={12} md={3} key={index}>
+              <Grid size={{ xs: 12, md: 3 }} key={index}>
                 <Stack spacing={3} sx={{ my: 5 }}>
                   <Typography variant="h6" sx={{ color: "text.primary" }}>
                     {list.headline}
@@ -216,7 +216,7 @@ export default function Footer() {
                 </Stack>
               </Grid>
             ))}
-            <Grid xs={12} md={3}>
+            <Grid size={{ xs: 12, md: 3 }}>
               <Stack spacing={1} sx={{ my: 5 }}>
                 <Typography variant="h6" sx={{ color: "text.primary" }}>
                   {"Drustvene mreze"}

@@ -1,6 +1,5 @@
 'use client'
 import { IProduct } from '@/types/IProduct';
-import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import Link from 'next/link';
 import { Box, Button, Card, Container, Stack, Typography } from '@mui/material';
 import QuickAddToCartButton from '@/components/cart/buttons/QuickAddToCart';

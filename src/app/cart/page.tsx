@@ -121,7 +121,7 @@ export default function CartPage() {
               })}
             </List>
           </Grid>
-          <Grid xs={12} md={4}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Card sx={{ height: "302px", boxShadow: 0, px: 3, py: "8px" }}>
               <Stack spacing={2}>
                 <Typography variant="h6">Korpa</Typography>

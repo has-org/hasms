@@ -174,7 +174,7 @@ export default async function HomePage() {
 			<section>
 				<Grid container direction='row'>
 					{items.map((item) => (
-						<Grid md={3} xs={12} key={`${item.title}-${item.id}`}>
+						<Grid size={{ xs: 12, md: 3 }} key={`${item.title}-${item.id}`}>
 							<Card
 								sx={{
 									borderRadius: 0,
@@ -305,7 +305,7 @@ export default async function HomePage() {
 				>
 					<Container maxWidth='lg' sx={{ pt: 2 }}>
 						<Grid container>
-							<Grid xs={12} md={6} display='flex'>
+							<Grid size={{ xs: 12, md: 6 }} display='flex'>
 								<Image
 									src={discount.image}
 									width={0}
@@ -320,8 +320,7 @@ export default async function HomePage() {
 								/>
 							</Grid>
 							<Grid
-								xs={12}
-								md={6}
+								size={{ xs: 12, md: 6 }}
 								display='flex'
 								alignItems='center'
 								sx={{ backgroundColor: 'background.paper', px: 3 }}
