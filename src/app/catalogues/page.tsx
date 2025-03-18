@@ -1,5 +1,5 @@
 import { InquiryModal } from "@/components/modals/InquiryModal";
-import { getCatalogues } from "@/services/apiService";
+import {getProducts } from "@/services/apiService";
 import { ICatalogue } from "@/types/Catalogue";
 import {
   Card,
@@ -13,9 +13,10 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import InquiryButton from "./InquiryButton";
+import { IProduct } from "@/types/IProduct";
 
 export default async function CataloguesPage({ }: any) {
-  const catalogues = await getCatalogues();
+  const products = await getProducts({count: 10, page: 0});
   return (
     <>
       <Container maxWidth="lg">
@@ -23,21 +24,22 @@ export default async function CataloguesPage({ }: any) {
           Dostupno odmah
         </Typography>
         <Grid container spacing={2}>
-          {catalogues &&
-            catalogues?.map((catalogue: ICatalogue, index: number) => {
+          {products &&
+            products?.map((product: IProduct, index: number) => {
               return (
                 <Grid
                   size={{ xs: 12, sm: 6, md: 4 }}
 
-                  key={`${catalogue.name}` + index}
+                  key={`${product.name}` + index}
                   sx={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                   }}
                 >
+                  
                   <Link
-                    href={`/catalogues/${catalogue.id}`}
+                    href={`/catalogues/${product.id}`}
                     style={{ textDecoration: "none" }}
                   >
                     <Card
@@ -46,7 +48,7 @@ export default async function CataloguesPage({ }: any) {
                       }}
                     >
                       <Typography textAlign="center" variant="h6">
-                        {catalogue.name}
+                        {product.name}
                       </Typography>
 
                       <CardMedia
@@ -58,10 +60,7 @@ export default async function CataloguesPage({ }: any) {
                         }}
                       >
                         <Image
-                          src={
-                            catalogue.catalogue_variants[0]
-                              .catalogue_variant_images[0].main_image
-                          }
+                          src={product?.main_image}
                           width={1024}
                           height={1024}
                           quality={100}
@@ -105,6 +104,7 @@ export default async function CataloguesPage({ }: any) {
                 <Typography variant="h4">Yamaha</Typography>
               </Button>
             </Link>
+
           </Stack>
         </Stack>
       </Container>

@@ -1,4 +1,5 @@
 import { ICategory } from './ICategory';
+import { IImage } from './IImage';
 import { ISubcategory } from './ISubcategory';
 import { ITag } from './ITag';
 import { IVariant } from './IVariant';
@@ -8,13 +9,10 @@ export interface IProduct {
   updated_at: string;
   code: string;
   name: string;
-  description: string;
-  manufacturer: string;
   category_id: number;
-  workspace_id: number;
   variants: IVariant[];
   category: ICategory;
-  subcategory: ISubcategory;
-  model: string;
   tags: ITag[]
+  images: IImage[]
+  main_image: string
 }

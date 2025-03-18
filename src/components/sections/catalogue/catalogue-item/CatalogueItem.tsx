@@ -1,6 +1,7 @@
 'use client';
-import './image-gallery.css';
+import "react-image-gallery/styles/css/image-gallery.css";
 import Iconify from '@/components/iconify/Iconify';
+
 import {
   Card,
   CardContent,
@@ -25,6 +26,7 @@ import { ICatalogue } from '@/types/Catalogue';
 import Carousel from 'react-multi-carousel';
 import Image from 'next/image';
 import { InquiryModal } from '@/components/modals/InquiryModal';
+import ReactImageGallery from 'react-image-gallery';
 
 const CatalogueItem = ({
   catalogue,
@@ -33,35 +35,47 @@ const CatalogueItem = ({
   catalogue: ICatalogue;
   deviceType?: any;
 }) => {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<any>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState<string>('');
+  const { options, characteristics } = catalogue
+  const [variantOptions, setVariantOptions] = useState<any>({})
+  const [catalogueCharacteristics, setCatalogueCharacteristics] = useState<any>([])
 
   useEffect(() => {
-    setSelectedColor(catalogue.catalogue_variants[0]?.color);
+    setImages(
+      catalogue.images?.map(
+        (image) => {
+          const imageUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online/images/${image}&w=1024&q=100`;
+          const thumbnailUrl = `https://api.villa-seaview.online/images/?url=https://s3.villa-seaview.online/images/${image}&w=1024&q=100`;
+          return {
+            original: imageUrl,
+            thumbnail: thumbnailUrl,
+            originalHeight: 450,
+            originalWidth: 1024,
+            thumbnailHeight: 80,
+          };
+        },
+      ),
+    );
+    // setSelectedColor(catalogue.catalogue_variants[0]?.color);
   }, [catalogue]);
 
+  useEffect(() => {
+    const obj: any = {}
+    for (const value of Object.values(options)) {
+      const key = value.split(":")[0].trim();
+      const val = value.split(":")[1].trim();
+      obj[key] = val;
+    }
+    setCatalogueCharacteristics(JSON.parse(characteristics))
+    setVariantOptions(obj);
+
+  }, []);
   if (!catalogue) return <>{'no catalogue'}</>;
-  if (!catalogue.catalogue_details) return <>{'no catalogue details'}</>;
-  if (!catalogue.catalogue_variants) return <>{'no catalogue variants'}</>;
 
-  const { code, state } = catalogue;
 
-  const {
-    model,
-    manufacturer,
-    year_manufactured,
-    kilowatt_power,
-    horse_power,
-    distance_traveled,
-    specification_url,
-    additional_equipment_url,
-    cubic_centimeters,
-    description_title,
-    description,
-  } = catalogue?.catalogue_details[0];
-
-  const { color, price } = catalogue.catalogue_variants[0];
+  const { color, price } = catalogue;
 
   const responsive = {
     desktop: {
@@ -82,72 +96,79 @@ const CatalogueItem = ({
     },
   };
 
+
   return (
     <>
       <Container maxWidth='lg' sx={{ marginTop: '48px' }}>
         <Grid container spacing={5}>
           <Grid
-            size={{ xs: 12, md: 5 }}
-            sx={{ marginTop: '-100px' }}>
-
+            size={{ xs: 12, md: 5 }}>
+            <ReactImageGallery
+              items={images}
+              autoPlay={false}
+              showPlayButton={false}
+              showFullscreenButton={false}
+              showNav={true}
+              additionalClass='image-gallery-overwrite'
+            />
           </Grid>
           <Grid
             size={{ xs: 12, md: 7 }}
             marginBottom='72px'>
-            <Grid
-              container
-              direction='row'
-              justifyContent='space-between'
-              marginBottom='49px'
+            <Box
+              sx={{
+                display: 'flex',
+                marginBottom: "48px",
+                whiteSpace: 'nowrap',
+                gap: 10,
+                alignItems: "center",
+                flex: 1
+
+              }}
             >
-              <Grid>
-                <Stack>
-                  <Typography fontWeight='400' color='primary.light'>
-                    Yamaha
-                  </Typography>
-                  <Typography variant='h3' sx={{ lineHeight: 1.1 }}>
-                    {model}
-                  </Typography>
-                </Stack>
-              </Grid>
-              <Stack
-                direction='row'
+              <Box>
+                <Typography fontWeight='400'>
+                  Yamaha
+                </Typography>
+                <Typography variant='h3'>
+                  {catalogue?.model}
+                </Typography>
+              </Box>
+              <Box
                 sx={{
                   backgroundColor: '#262626',
                   borderRadius: '20px',
-                  height: '75px',
-                  width: '387px',
+                  height: '76px',
                   boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '12px',
+                  flex: 1
                 }}
-                alignItems='center'
-                justifyContent='space-between'
               >
-                <Grid>
-                  <Stack sx={{ color: 'rgba(172, 172, 172, 0.86)' }}>
-                    <Typography fontSize='14px'>Vec od</Typography>
-                    <Typography color='primary.main' variant='h6'>
-                      {price.toLocaleString()} KM
-                    </Typography>
-                  </Stack>
-                </Grid>
-                <Grid>
-                  <Button
-                    variant='outlined'
-                    color='secondary'
-                    size='large'
-                    sx={{
-                      width: '158px',
-                      height: '43px',
-                    }}
-                    onClick={() => setDialogOpen(true)}
-                  >
-                    <Typography fontSize='14px' fontWeight='bold'>
-                      Zatrazi ponudu
-                    </Typography>
-                  </Button>
-                </Grid>
-              </Stack>
-            </Grid>
+                <Stack sx={{ color: 'rgba(172, 172, 172, 0.86)' }}>
+                  <Typography fontSize='14px'>Već od</Typography>
+                  <Typography color='primary.main' variant='h6'>
+                    {price?.toLocaleString()} KM
+                  </Typography>
+                </Stack>
+                <Button
+                  variant='outlined'
+                  color='secondary'
+                  size='large'
+                  sx={{
+                    width: '158px',
+                    height: '43px',
+                  }}
+                  onClick={() => setDialogOpen(true)}
+                >
+                  <Typography fontSize='14px' fontWeight='bold'>
+                    Zatrazi ponudu
+                  </Typography>
+                </Button>
+              </Box>
+            </Box>
 
             <Stack
               sx={{
@@ -186,7 +207,7 @@ const CatalogueItem = ({
                   >
                     Godina proizvodnje
                   </Typography>
-                  <Typography fontWeight={500}>{year_manufactured}</Typography>
+                  <Typography fontWeight={500}>{variantOptions?.year_manufactured}</Typography>
                 </Stack>
               </Stack>
 
@@ -231,7 +252,7 @@ const CatalogueItem = ({
                     Zapremina
                   </Typography>
                   <Typography fontWeight={500}>
-                    {cubic_centimeters} cc
+                    {variantOptions?.cubic_centimeters} cc
                   </Typography>
                 </Stack>
               </Stack>
@@ -280,36 +301,30 @@ const CatalogueItem = ({
             </Stack>
 
             <Stack spacing={2.5}>
-              <Stack
+              <Box
                 sx={{
                   backgroundColor: '#262626',
-                  height: { xs: '161px', md: '75px' },
                   borderRadius: '16px',
-                  flexDirection: { xs: 'column', md: 'row' },
-                  alignItems: { xs: 'flex-start', md: 'center' },
+                  padding: '12px'
                 }}
-                justifyContent='space-around'
               >
                 <Typography
                   fontSize='18px'
-                  sx={{
-                    paddingLeft: { xs: '20px', md: '16px' },
-                    fontWeight: { xs: '400', md: '600' },
-                  }}
+                  textAlign={'center'}
                 >
                   Preuzmite
                 </Typography>
-                <Stack
+                <Box
                   sx={{
-                    flexDirection: { xs: 'column', md: 'row' },
                     width: '100%',
-                    alignItems: { xs: 'center', md: 'center' },
-                    justifyContent: { xs: 'center', md: 'flex-end' },
-                    spacing: { xs: 1.5, md: '0' },
+                    pt: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 2
                   }}
                 >
                   <Link
-                    href={`https://s3.villa-seaview.online${specification_url}`}
+                    href={variantOptions?.specification_url ? `https://s3.villa-seaview.online${variantOptions?.specification_url}` : "#"}
                     style={{ textDecoration: 'none' }}
                     target='_blank'
                   >
@@ -317,18 +332,16 @@ const CatalogueItem = ({
                       variant='outlinedTransparent'
                       color='secondary'
                       sx={{
-                        width: { xs: '90%', md: 'auto' },
+                        width: '100%',
                         padding: '10px 30px',
                         borderRadius: '10px',
-                        marginRight: { xs: '0px', md: '17px' },
-                        marginBottom: { xs: '12px', md: '0px' },
                       }}
                     >
                       <Typography fontSize='12px'>Katalog</Typography>
                     </Button>
                   </Link>
                   <Link
-                    href={`${additional_equipment_url}`}
+                    href={variantOptions?.additional_equipment_url ? `${variantOptions?.additional_equipment_url}` : "#"}
                     style={{ textDecoration: 'none' }}
                     target='_blank'
                   >
@@ -336,17 +349,16 @@ const CatalogueItem = ({
                       variant='outlinedTransparent'
                       color='secondary'
                       sx={{
+                        width: '100%',
                         padding: '10px 20px',
-                        width: { xs: '90%', md: 'auto' },
                         borderRadius: '10px',
-                        marginRight: { xs: '0px', md: '16px' },
                       }}
                     >
                       <Typography fontSize='12px'>Dodatna oprema</Typography>
                     </Button>
                   </Link>
-                </Stack>
-              </Stack>
+                </Box>
+              </Box>
 
               <Stack
                 sx={{
@@ -372,7 +384,7 @@ const CatalogueItem = ({
                       sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
                       <Typography variant='body2'>Proizvodjac</Typography>
-                      <Typography variant='body2'>{manufacturer}</Typography>
+                      <Typography variant='body2'>{catalogue?.manufacturer}</Typography>
                     </Stack>
                     <Divider />
                     <Stack
@@ -380,7 +392,7 @@ const CatalogueItem = ({
                       sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
                       <Typography variant='body2'>Šifra</Typography>
-                      <Typography variant='body2'>{code}</Typography>
+                      <Typography variant='body2'>{catalogue?.code}</Typography>
                     </Stack>
                     <Divider />
 
@@ -389,7 +401,7 @@ const CatalogueItem = ({
                       sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
                       <Typography variant='body2'>Model</Typography>
-                      <Typography variant='body2'>{model}</Typography>
+                      <Typography variant='body2'>{catalogue?.model || "N/A"}</Typography>
                     </Stack>
                     <Divider />
                     <Stack
@@ -404,7 +416,7 @@ const CatalogueItem = ({
                       sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
                       <Typography variant='body2'>Boja</Typography>
-                      <Typography variant='body2'>{color}</Typography>
+                      <Typography variant='body2'>{variantOptions?.color}</Typography>
                     </Stack>
                     <Divider />
                     <Stack
@@ -412,7 +424,7 @@ const CatalogueItem = ({
                       sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
                       <Typography variant='body2'>Kw</Typography>
-                      <Typography variant='body2'>{kilowatt_power}</Typography>
+                      <Typography variant='body2'>{variantOptions?.kilowatt_power}</Typography>
                     </Stack>
                     <Divider />
                     <Stack
@@ -420,7 +432,7 @@ const CatalogueItem = ({
                       sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
                       <Typography variant='body2'>Hp</Typography>
-                      <Typography variant='body2'>{horse_power}</Typography>
+                      <Typography variant='body2'>{variantOptions?.horse_power}</Typography>
                     </Stack>
                     <Divider />
                     <Stack
@@ -431,7 +443,7 @@ const CatalogueItem = ({
                         Predjenih kilometara
                       </Typography>
                       <Typography variant='body2'>
-                        {distance_traveled}
+                        {variantOptions?.distance_traveled}
                       </Typography>
                     </Stack>
                     <Divider />
@@ -440,7 +452,7 @@ const CatalogueItem = ({
                       sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
                       <Typography variant='body2'>Stanje</Typography>
-                      <Typography variant='body2'>{state}</Typography>
+                      <Typography variant='body2'>{variantOptions?.state}</Typography>
                     </Stack>
                     <Divider />
                   </AccordionDetails>
@@ -465,11 +477,11 @@ const CatalogueItem = ({
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <Typography variant='h4' textAlign={'center'}>
-                      {description_title}
+                    <Typography variant='h5' textAlign={'center'}>
+                      {catalogue?.description_title}
                     </Typography>
-                    <Typography variant='body1' textAlign={'justify'}>
-                      {description}
+                    <Typography variant='body2' textAlign={'justify'}>
+                      {catalogue?.description}
                     </Typography>
                   </AccordionDetails>
                 </Accordion>
@@ -495,8 +507,8 @@ const CatalogueItem = ({
               deviceType={deviceType}
               arrows={false}
             >
-              {catalogue?.catalogue_characteristics?.map(
-                (characteristic, index) => (
+              {catalogueCharacteristics?.map(
+                (characteristic: any, index: number) => (
                   <Card
                     key={`${characteristic.title}-${index}`}
                     sx={{ mb: 5, mx: 1, height: '564px' }}
@@ -539,7 +551,7 @@ const CatalogueItem = ({
       <InquiryModal
         open={dialogOpen}
         handleClose={() => setDialogOpen(false)}
-        catalogue={{ ...catalogue, color: selectedColor, model: model }}
+      // catalogue={{ ...catalogue, color: selectedColor, model: model }}
       />
     </>
   );

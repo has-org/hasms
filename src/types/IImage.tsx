@@ -6,7 +6,7 @@ export interface IImage {
     code: string;
     name: string;
     extension: string;
-    variant_image_id?: number;
+    main_image: boolean;
+    thumbnail: boolean;
     alt?: string;
-    color_id: number | null;
   }

@@ -40,7 +40,6 @@ const HomeBlog = ({
   const router = useRouter();
 
   const color = grey[700];
-
   return (
     <Carousel
       showDots={true}

@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   web:
+    container_name: motoshop7
     build:
       context: ./
       target: runner

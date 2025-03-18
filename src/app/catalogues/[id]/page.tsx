@@ -1,13 +1,15 @@
 import CatalogueItem from "@/components/sections/catalogue/catalogue-item/CatalogueItem";
-import { getCatalogue } from "@/services/apiService";
+import { getProduct } from "@/services/apiService";
+// import { getCatalogue } from "@/services/apiService";
 
-export default async function CataloguePage({ params: { id } }: any) {
-
-  const catalogue = await getCatalogue({catalogueID: id});
+export default async function CataloguePage({ params }: any) {
+  const { id } = await params
+  const catalogue = await getProduct({ id: id });
+  // const catalogue = await getCatalogue({catalogueID: id});
 
   return (
     <>
-    <CatalogueItem catalogue={catalogue}/>
+      <CatalogueItem catalogue={catalogue} />
     </>
   );
 }

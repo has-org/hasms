@@ -45,7 +45,11 @@ export type ICatalogue = {
   color?: string;
   model?: string;
   state: string;
-  catalogue_variants: CatalogueVariants[];
-  catalogue_details: CatalogueDetails[];
-  catalogue_characteristics: CatalogueCharacteristics[];
+  options: string[]
+  price: string;
+  description: string;
+  description_title: string;
+  manufacturer: string;
+  characteristics: string
+  images: string[]
 };
