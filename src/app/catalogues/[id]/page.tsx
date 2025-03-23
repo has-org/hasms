@@ -6,7 +6,7 @@ export default async function CataloguePage({ params }: any) {
   const { id } = await params
   const catalogue = await getProduct({ id: id });
   // const catalogue = await getCatalogue({catalogueID: id});
-
+  if (!catalogue) return "No data"
   return (
     <>
       <CatalogueItem catalogue={catalogue} />

@@ -40,6 +40,8 @@ const HomeBlog = ({
   const router = useRouter();
 
   const color = grey[700];
+
+  if(!posts) return <div>No posts</div>
   return (
     <Carousel
       showDots={true}

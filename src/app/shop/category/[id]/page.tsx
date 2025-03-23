@@ -4,9 +4,6 @@ import PriceCollapsible from '@/components/collapsible/PriceCollapsible';
 import { CategoryProductList } from '@/components/common/CategoryProductList';
 import {
 	getCategory,
-	getCategoryProducts,
-	getCategoryProductsColors,
-	getCategoryProductsSizes,
 } from '@/services/apiService';
 import { ICategory } from '@/types/ICategory';
 import { IProduct } from '@/types/IProduct';
@@ -24,19 +21,13 @@ export default async function ShopCategory({ params: { id, page, count, query } 
 	const category: ICategory = await getCategory({ id: id });
 	if (!category) return <div>Category not found</div>;
 
-	const { subcategories } = category;
-	const categoryTypes = [...new Set(subcategories?.map((subcategory) => subcategory.name))];
-	const products: IProduct[] = await getCategoryProducts({
-		id,
-		page: 0,
-		count: 10,
-	});
-	console.log(products[0].variants[0]);
+	// const products: IProduct[] = await getCategoryProducts({
+	// 	id,
+	// 	page: 0,
+	// 	count: 10,
+	// });
 
-	const categoryProductsSizes = await getCategoryProductsSizes({ id: id });
-	const categoryProductsColors = await getCategoryProductsColors({ id: id });
 
-	const manufacturerTypes = [...new Set(products?.map((product) => product.manufacturer))];
 
 	return (
 		<Container maxWidth='lg'>

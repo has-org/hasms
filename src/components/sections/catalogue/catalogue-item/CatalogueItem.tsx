@@ -56,7 +56,7 @@ const CatalogueItem = ({
             thumbnailHeight: 80,
           };
         },
-      ),
+      )
     );
     // setSelectedColor(catalogue.catalogue_variants[0]?.color);
   }, [catalogue]);
@@ -65,15 +65,14 @@ const CatalogueItem = ({
     const obj: any = {}
     for (const value of Object.values(options)) {
       const key = value.split(":")[0].trim();
-      const val = value.split(":")[1].trim();
+      const val = value.split(":").slice(1).join(":").trim();
       obj[key] = val;
     }
     setCatalogueCharacteristics(JSON.parse(characteristics))
     setVariantOptions(obj);
-
+    console.log(variantOptions)
   }, []);
   if (!catalogue) return <>{'no catalogue'}</>;
-
 
   const { color, price } = catalogue;
 
@@ -324,7 +323,7 @@ const CatalogueItem = ({
                   }}
                 >
                   <Link
-                    href={variantOptions?.specification_url ? `https://s3.villa-seaview.online${variantOptions?.specification_url}` : "#"}
+                    href={variantOptions?.specification_url ? `https://s3.villa-seaview.online${variantOptions?.specification_url}` : ""}
                     style={{ textDecoration: 'none' }}
                     target='_blank'
                   >
@@ -341,7 +340,7 @@ const CatalogueItem = ({
                     </Button>
                   </Link>
                   <Link
-                    href={variantOptions?.additional_equipment_url ? `${variantOptions?.additional_equipment_url}` : "#"}
+                    href={variantOptions?.additional_equipment_url ? variantOptions?.additional_equipment_url : "#"}
                     style={{ textDecoration: 'none' }}
                     target='_blank'
                   >
@@ -432,7 +431,7 @@ const CatalogueItem = ({
                       sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
                       <Typography variant='body2'>Hp</Typography>
-                      <Typography variant='body2'>{variantOptions?.horse_power}</Typography>
+                      <Typography variant='body2'>{(variantOptions?.kilowatt_power * 1.34).toFixed(0)} </Typography>
                     </Stack>
                     <Divider />
                     <Stack

@@ -1,15 +1,11 @@
 import { Cooperator as CooperatorType } from '@/types/Cooperator';
-import { getCatalogues, getCooperators, getPosts } from '@/services/apiService';
-import HomeTrending from '@/components/sections/home/home-trending';
+import { getCooperators, getPosts } from '@/services/apiService';
 import HomeBlog from '@/components/sections/home/home-blog';
-import UAParser from 'ua-parser-js';
 import HomeCooperators from '@/components/sections/home/home-cooperators/HomeCooperators';
 import { Button, Container, Stack, Typography, Box, Card, Grid2 as Grid } from '@mui/material';
 import CardContent from '@mui/material/CardContent/CardContent';
-import CardMedia from '@mui/material/CardMedia/CardMedia';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ICatalogue } from '@/types/Catalogue';
 
 
 export async function generateMetadata({ params, searchParams }: { params: any; searchParams: any }) {
@@ -61,7 +57,7 @@ const items = [
 export default async function HomePage() {
 	const cooperators: CooperatorType[] = await getCooperators();
 	const posts = await getPosts();
-
+	if (posts.message) return <div>no posts</div>
 	return (
 		<>
 			<section>

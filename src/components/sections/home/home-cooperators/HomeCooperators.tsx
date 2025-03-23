@@ -36,6 +36,7 @@ const HomeCooperators = ({
     },
   };
   const router = useRouter();
+  if(!cooperators) return <div>No posts</div>
 
   return (
     <Carousel
